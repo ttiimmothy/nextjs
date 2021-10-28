@@ -1,3 +1,88 @@
+# css
+
+```scss
+content
+height
+min-height
+width
+min-width
+font-size
+font-weight
+text-decoration
+background-image
+background-size
+background-repeat
+background-position
+background-color
+background
+color
+object-fit
+margin
+margin-left
+margin-right
+margin-top
+margin-bottom
+padding
+padding-left
+padding-right
+padding-top
+padding-bottom
+text-align
+list-style
+border-radius
+border
+border-left
+border-right
+border-top
+border-bottom
+outline
+box-shadow
+position
+left
+right
+top
+bottom
+opacity
+display
+justify-content
+align-items
+flex
+flex-wrap
+flex-direction
+grid-template-columns
+grid-template-rows
+row-gap
+overflow-x
+overflow-y
+overflow
+cursor
+z-index
+white-space
+transition
+transform
+pointer-event
+```
+
+# packages to install
+
+```Bash
+yarn add node-sass@5 @types/node-sass
+yarn add bootstrap@4
+yarn add react-bootstrap
+yarn add redux react-redux @types/react-redux
+yarn add react-router-dom @types/react-router-dom
+yarn add history@^4.10.1 connected-react-router@^6.8.0
+yarn add redux-thunk
+yarn add immer
+yarn add swiper@6
+yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-solid-svg-icons
+yarn add @fortawesome/react-fontawesome
+yarn add @testing-library/jest-dom
+yarn add @testing-library/react @testing-library/user-event
+yarn add @types/jest
+yarn add @types/react @types/react-dom
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
