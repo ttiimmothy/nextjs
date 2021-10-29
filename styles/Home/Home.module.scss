@@ -113,14 +113,21 @@
         padding-bottom: 10px;
         display: flex;
         .video_block{
+          width: 25%;
           color: #adadad;
           padding: 5px;
           &:hover{
             text-decoration: none;
             color: #d1d0d0;
           }
+          .image{
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+          }
           .video_description{
-            text-align: start;
+            text-align: left;
             padding-top: 5px;
             .video_title{
               font-weight: 600;

@@ -2,7 +2,7 @@ import React from "react";
 import {render,screen} from "@testing-library/react";
 import {VideoBlock} from "./VideoBlock";
 
-const video = {
+export const video = {
 	cate_id:"",
 	created_at:"",
 	desc:"",

@@ -55,11 +55,14 @@ row-gap
 overflow-x
 overflow-y
 overflow
+aspect-ratio
 cursor
 z-index
+word-wrap
 white-space
 transition
 transform
+clip-path
 pointer-event
 ```
 
@@ -68,7 +71,7 @@ pointer-event
 ```Bash
 yarn add node-sass@5 @types/node-sass
 yarn add bootstrap@4
-yarn add react-bootstrap
+yarn add react-bootstrap@1.6.4
 yarn add redux react-redux @types/react-redux
 yarn add react-router-dom @types/react-router-dom
 yarn add history@^4.10.1 connected-react-router@^6.8.0

@@ -1,4 +1,4 @@
-.header{
+.component_header{
 	font-weight: 600;
 	margin-bottom: 5px;
 	position: relative;
@@ -8,7 +8,6 @@
 	.border_line{
 		content: "";
 		height: 1px;
-		background-color: #f2f2f2;
 		position: absolute;
 		bottom: 0;
 	}

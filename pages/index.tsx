@@ -15,14 +15,17 @@ import {ComponentHeader} from "./ComponentHeader/ComponentHeader";
 import {VideoBlock} from "./VideoBlock/VideoBlock";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../styles/index.module.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
+import {HomeCategoryBlock} from "./HomeCategoryBlock/HomeCategoryBlock";
+import {NextPage} from "next";
 library.add(fab,fas);
 SwiperCore.use([Navigation,Pagination,Scrollbar]);
 
-export default function Home(){
+const Home:NextPage = () => {
 	const dispatch = useDispatch();
 	const videoDetail = useSelector((state:IRootState) => state.home.video);
 	const categoryName = useSelector((state:IRootState) => state.header.category);
@@ -50,13 +53,21 @@ export default function Home(){
 								videoDetail.filter((video,index) => index < 3)
 								.map((video) =>
 									<Carousel.Item key={video.id}>
-										<a href={`${process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_PATH}/video/${video.id}`} style={{position:"relative"}}>
-											<Image className="d-block w-100" src={video.pic_url} alt="slide" layout="fill"/>
-											<Carousel.Caption>
-												<div className="carousel_category"><a href={`${process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_PATH}/${categoryName.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en)}`}>{categoryName.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}</a></div>
-												<h6>{video.title}</h6>
-											</Carousel.Caption>
-										</a>
+                    <Link href={`/video/${video.id}`}>
+                      <a>
+                        <div className="image">
+                          <Image className="d-block w-100" src={video.pic_url} alt="slide" layout="fill"/>
+                        </div>
+                        <Carousel.Caption>
+                          <div className="carousel_category">
+                            <Link href={`/${categoryName.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en)}`}>
+                              <a>{categoryName.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}</a>
+                            </Link>
+                          </div>
+                          <h6>{video.title}</h6>
+                        </Carousel.Caption>
+                      </a>
+                    </Link>
 									</Carousel.Item>
 								)
 							}
@@ -190,19 +201,23 @@ export default function Home(){
 			</main>
       <div className={style.member_extended_content}>
         <section className={style.member_extended_content_section}>
-          <ComponentHeader header="會員專區" color="#fff" padding={0}/>
+          <ComponentHeader header="會員專區" color="#fff" padding={0} borderColor="#4d535a"/>
           <div className={style.video_list}>
             {
               videoDetail.filter((video,index) => index < 3)
               .map((video) => {
                 return(
-                  <a className={style.video_block} href={`${process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_PATH}/video/${video.id}`} key={video.id}>
-                    <Image src={video.pic_url} alt="video-detail" className="d-block w-100" height={100} width={100}/>
-                    <div className={style.video_description}>
-                      <header className={style.video_title}>{video.title}</header>
-                      <div className={style.display_date}>{video.display_date}</div>
-                    </div>
-                  </a>
+                  <Link href={`/video/${video.id}`} key={video.id}>
+                    <a className={style.video_block}>
+                      <div className={style.image}>
+                        <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
+                      </div>
+                      <div className={style.video_description}>
+                        <header className={style.video_title}>{video.title}</header>
+                        <div className={style.display_date}>{video.display_date}</div>
+                      </div>
+                    </a>
+                  </Link>
                 )
               })
             }
@@ -210,13 +225,17 @@ export default function Home(){
               videoDetail.filter((video,index) => index > 8 && index < 10)
               .map((video) => {
                 return(
-                  <a className={style.video_block} href={`${process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_PATH}/video/${video.id}`} key={video.id}>
-                    <Image src={video.pic_url} alt="video-detail" className="d-block w-100" height={100} width={100}/>
-                    <div className={style.video_description}>
-                      <header className={style.video_title}>{video.title}</header>
-                      <div className={style.display_date}>{video.display_date}</div>
-                    </div>
-                  </a>
+                  <Link href={`/video/${video.id}`} key={video.id}>
+                    <a className={style.video_block}>
+                      <div className={style.image}>
+                        <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
+                      </div>
+                      <div className={style.video_description}>
+                        <header className={style.video_title}>{video.title}</header>
+                        <div className={style.display_date}>{video.display_date}</div>
+                      </div>
+                    </a>
+                  </Link>
                 )
               })
             }
@@ -224,10 +243,12 @@ export default function Home(){
         </section>
       </div>
       <div className={style.large_category_blocks}>
-        <div className={style.category_block}>
-          <section className={style.category_block_section}></section>
-        </div>
+        {categoryName.map((category) => (
+          <HomeCategoryBlock key={category.cate_id} category={category}/>
+        ))}
       </div>
 		</div>
 	)
 }
+
+export default Home;

@@ -31,30 +31,34 @@
       align-items: center;
       .major_navbar_part{
         .navbar_logo{
+          position: fixed;
+          top: 0;
+          z-index: 1;
+          .header_icon{
+            height: 80px;
+            width: 80px;
+            transition: height .3s ease,width .3s ease;
+          }
           &::after{
             content: "";
             height: 80px;
             width: 80px;
-            background-image: url(../../pages/image/unnamed.png);
             background-size: contain;
             background-repeat: no-repeat;
-            position: fixed;
-            top: 0;
-            z-index: 1;
-            transition: background-image .3s ease,height .3s ease,width .3s ease;
           }
         }
         .navbar_small_logo{
+          position: fixed;
+          top: 0;
+          z-index: 1;
+          .header_icon{
+            height: 40px;
+            width: 40px;
+          }
           &::after{
             content: "";
             height: 40px;
             width: 40px;
-            background-image: url(../../pages/image/unnamed.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            position: fixed;
-            top: 0;
-            z-index: 1;
           }
         }
         .category_bar{
@@ -116,7 +120,7 @@
     width: 100%;
     position: absolute;
     bottom: 0px;
-    box-shadow: rgba(255, 0, 0, 0.4) 0px 4px 5px -2px;
+    box-shadow: rgba(255,0,0,0.4) 0px 4px 5px -2px;
     display: block;
     z-index: 89;
   }

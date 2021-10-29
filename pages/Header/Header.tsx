@@ -3,10 +3,11 @@ import {useDispatch,useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import style from "../../styles/Header/Header.module.scss";
 import weather from "../image/weather.png";
+import headerIcon from "../image/unnamed.png";
 import {getHeader} from "../redux/header/thunks";
 import {IRootState} from "../store";
-import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Header(){
 	const dispatch = useDispatch();
@@ -28,17 +29,24 @@ export function Header(){
 			<div className={`${style.bar} ${scrollHeight > 10 ? style.bar_scroll : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.major_navbar_part}>
-						{/* eslint-disable-next-line */}
-						<a href="/" className={`${style.navbar_logo} ${scrollHeight > 10 ? style.navbar_small_logo : ""}`}></a>
+            <Link href="/">
+              <a className={`${style.navbar_logo} ${scrollHeight > 10 ? style.navbar_small_logo : ""}`}>
+                <div className={style.header_icon}>
+                  <Image src={headerIcon} alt="header-icon"/>
+                </div>
+              </a>
+            </Link>
 						<nav className={style.category_bar}>
 							<ul className={`${style.category_items} ${scrollHeight > 10 ? style.category_items_scroll : ""}`}>
 								{
 									categories.map((category,index) =>
 										(
                       <li className={style.category_item} key={index}>
-                        <a href={`${process.env.NEXT_PUBLIC_REACT_APP_FRONTEND_PATH}/${category.name_en.toLowerCase().split(" ").join("")}`}>
-                          {category.name_cn}
-                        </a>
+                        <Link href={category.name_en.toLowerCase().split(" ").join("")}>
+                          <a>
+                            {category.name_cn}
+                          </a>
+                        </Link>
                       </li>
                     )
 									)

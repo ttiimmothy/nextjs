@@ -18,14 +18,20 @@ $nav-button-shadow-color:rgba(0,0,0,0.15);
 		}
 	}
 	.carousel-inner{
-		background-color: #666;
+		background-color: rgba(102,102,102,0.377);
 		padding-bottom: 80px;
 		.carousel-item{
+      .image{
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16/9;
+      }
 			.carousel-caption{
 				left: 0;
 				bottom: -95px;
 				padding-left: 14px;
-				text-align: start;
+				text-align: left;
 				.carousel_category{
 					margin-bottom: 8px;
 					a{
