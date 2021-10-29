@@ -86,6 +86,53 @@ yarn add @types/jest
 yarn add @types/react @types/react-dom
 ```
 
+# import order
+
+```Typescript
+style
+package
+image
+next library
+react library
+local thunk/redux
+local component
+```
+
+# api used
+
+getCategory:
+
+<https://ent.i-cable.com/ci/api/category>
+
+getContent:
+
+<https://ent.i-cable.com/ci/api/content/{{cate_id>}}
+
+getStream:
+
+<https://ent.i-cable.com/ci/api/stream/{{id>}}
+
+getSubcategory:
+
+<https://ent.i-cable.com/ci/api/subcategory>
+
+getProgram:
+
+<https://ent.i-cable.com/ci/api/program>
+
+Please try the following live channel API:
+
+<https://ent.i-cable.com/ci/api/live/661>
+
+<https://ent.i-cable.com/ci/api/live/662>
+
+<https://ent.i-cable.com/ci/api/live/664>
+
+# social media link
+
+facebook: <https://www.facebook.com/icable.news>
+instagram: <https://www.instagram.com/cabletvhk>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -102,7 +149,7 @@ Open [http://localhost:3031](http://localhost:3031) with your browser to see the
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3031/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 

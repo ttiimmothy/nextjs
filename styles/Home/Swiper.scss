@@ -36,7 +36,9 @@
 		background-image: url(../../pages/image/swiper_right_arrow.svg);
 	}
 	.swiper-slide{
-		background-color: #fff;
+    height: 100%;
+    /* for slides per view auto usage */
+    width: auto;
 		/* Center slide text vertically */
 		display: -webkit-box;
 		display: -ms-flexbox;
@@ -50,11 +52,19 @@
 		-ms-flex-align: center;
 		-webkit-align-items: center;
 		align-items: center;
+    img{
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
 	}
-	.swiper-slide img{
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
-		display: block;
-	}
+}
+.long_swiper{
+  .swiper-container.swiper-container-initialized{
+    margin: 0;
+    .swiper-button-prev,.swiper-button-next{
+      top: 55%;
+    }
+  }
 }

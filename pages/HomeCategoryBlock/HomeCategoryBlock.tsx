@@ -1,18 +1,18 @@
+import style from "../../styles/HomeCategoryBlock/HomeCategoryBlock.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import style from "../../styles/HomeCategoryBlock/HomeCategoryBlock.module.scss";
+import React from "react";
 import {useSelector} from "react-redux";
-import {IRootState} from "../store";
 import {Category} from "../redux/header/actions";
+import {IRootState} from "../store";
 
 export function HomeCategoryBlock(props:{category:Category}){
 	const videoDetail = useSelector((state:IRootState) => state.home.video);
 
   return(
     <div className={style.home_category_block}>
-      <section className={style.category_block_section}>
+      <section className={style.home_category_block_section}>
         <div className={style.main_video}>
           {
             videoDetail.filter((video,index) => index < 1)

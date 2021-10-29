@@ -1,13 +1,14 @@
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {useDispatch,useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 import style from "../../styles/Header/Header.module.scss";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import weather from "../image/weather.png";
 import headerIcon from "../image/unnamed.png";
-import {getHeader} from "../redux/header/thunks";
-import {IRootState} from "../store";
 import Image from "next/image";
 import Link from "next/link";
+import {useDispatch,useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {getHeader} from "../redux/header/thunks";
+import {IRootState} from "../store";
+
 
 export function Header(){
 	const dispatch = useDispatch();

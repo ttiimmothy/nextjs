@@ -1,8 +1,8 @@
 import styles from "../../styles/VideoBlock/VideoBlock.module.scss";
-import {VideoDetail} from "../redux/home/actions";
 import Image from "next/image";
 import Link from "next/link";
 import {NextPage} from "next";
+import {VideoDetail} from "../redux/home/actions";
 
 export const VideoBlock = (props:{video:VideoDetail,blockPerRow:number,titleHeight?:number}):JSX.Element => {
 	return(
