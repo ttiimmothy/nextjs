@@ -12,6 +12,113 @@
     margin: 0 auto;
   }
 }
+@media screen and (min-width:480px){
+  .header{
+    .bar{
+      .navbar{
+        .left_major_navbar_part{
+          .category_bar{
+            display: flex;
+          }
+        }
+      }
+    }
+    .bar_second_line{
+      .weather_category_bar{
+        display: flex;
+      }
+      .category_bar_horizontal_scroll{
+        display: none;
+      }
+    }
+  }
+}
+@media screen and (max-width:480px){
+  .header{
+    .bar{
+      .navbar{
+        .left_major_navbar_part{
+          .category_bar{
+            display: none;
+          }
+        }
+      }
+    }
+    .bar_second_line{
+      .weather_category_bar{
+        display: none;
+      }
+    }
+  }
+}
+@media screen and (min-width:600px){
+  .header{
+    .bar{
+      height: 40px;
+      .navbar{
+        .left_major_navbar_part{
+          .navbar_logo{
+            .header_icon{
+              height: 80px;
+              width: 80px;
+            }
+          }
+          .navbar_small_logo{
+            .header_icon{
+              height: 40px;
+              width: 40px;
+            }
+          }
+          .category_bar{
+            ul.category_items{
+              padding-left: 100px;
+            }
+          }
+        }
+      }
+    }
+    .bar_second_line{
+      height: 40px;
+    }
+  }
+}
+@media screen and (max-width:600px){
+  .header{
+    .bar{
+      height: 44px;
+      .navbar{
+        padding: 0 10px;
+        .left_major_navbar_part{
+          .navbar_logo{
+            .header_icon{
+              height: 44px;
+              width: 44px;
+            }
+          }
+          .navbar_small_logo{
+            .header_icon{
+              height: 44px;
+              width: 44px;
+            }
+          }
+          .category_bar{
+            ul.category_items{
+              padding-left: 60px;
+            }
+          }
+        }
+        .right_listing{
+          .date_scroll{
+            display: none;
+          }
+        }
+      }
+    }
+    .bar_second_line{
+      height: 44px;
+    }
+  }
+}
 .header{
   font-size: 14px;
 	position: fixed;
@@ -20,7 +127,6 @@
 	top: 0;
 	z-index: 15;
   .bar{
-    height: 40px;
     background-color: #db5959;
     display: flex;
     .navbar{
@@ -29,45 +135,25 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .major_navbar_part{
+      .left_major_navbar_part{
         .navbar_logo{
           position: fixed;
           top: 0;
           z-index: 1;
           .header_icon{
-            height: 80px;
-            width: 80px;
             transition: height .3s ease,width .3s ease;
-          }
-          &::after{
-            content: "";
-            height: 80px;
-            width: 80px;
-            background-size: contain;
-            background-repeat: no-repeat;
           }
         }
         .navbar_small_logo{
           position: fixed;
           top: 0;
           z-index: 1;
-          .header_icon{
-            height: 40px;
-            width: 40px;
-          }
-          &::after{
-            content: "";
-            height: 40px;
-            width: 40px;
-          }
         }
         .category_bar{
           margin-right: 15px;
-          display: flex;
           align-items: stretch;
           ul.category_items{
             margin-bottom: 0;
-            padding-left: 100px;
             list-style: none;
             display: flex;
             align-items: stretch;
@@ -81,6 +167,7 @@
               padding-right: 15px;
               display: flex;
               align-items: center;
+              white-space: nowrap;
               a{
                 text-decoration: none;
                 color: #fff;
@@ -92,7 +179,7 @@
           }
         }
       }
-      .minor_list{
+      .right_listing{
         color: #fff;
         display: flex;
         flex: 0 0 auto;
@@ -101,7 +188,7 @@
           font-size: 13px;
           padding-right: 15px;
         }
-        .minor_list_icon {
+        .right_listing_icon {
           font-size: 18px;
           margin-right: 15px;
         }
@@ -125,19 +212,50 @@
     z-index: 89;
   }
   .bar_second_line{
-    height: 40px;
     background-color: #fff;
     position: relative;
     display: flex;
-    .category_bar{
+    .weather_category_bar{
       @include max-view-width;
       font-size: 12px;
       flex: 1;
-      display: flex;
       justify-content: flex-end;
       align-items: center;
       .weather{
         margin-right: 10px;
+      }
+    }
+    .category_bar_horizontal_scroll{
+      overflow-x: auto;
+      .category_bar{
+        height: 100%;
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        ul.category_items{
+          margin-bottom: 0;
+          padding-left: 15px;
+          list-style: none;
+          display: flex;
+          align-items: center;
+          transition: padding-left .2s ease;
+          .category_item{
+            height: 100%;
+            font-weight: 500;
+            color: #db5959;
+            padding-right: 15px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            a{
+              text-decoration: none;
+              color: #db5959;
+            }
+          }
+        }
+        ul.category_items_scroll{
+          padding-left: 60px;
+        }
       }
     }
     &::after{

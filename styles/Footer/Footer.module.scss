@@ -12,7 +12,23 @@
     margin: 0 auto;
   }
 }
-@media screen and (max-width:600px){
+@media screen and (min-width:1000px){
+  footer.footer{
+    .footer_section{
+      .content_section{
+        .icable_logo{
+          display: none;
+        }
+        .contents{
+          .content{
+            padding: 0 20px 0 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:1000px){
   footer.footer{
     .footer_section{
       text-align: center;
@@ -29,22 +45,6 @@
         .social_icons{
           .icon{
             margin: 2px;
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (min-width:600px){
-  footer.footer{
-    .footer_section{
-      .content_section{
-        .icable_logo{
-          display: none;
-        }
-        .contents{
-          .content{
-            padding: 0 20px 0 0;
           }
         }
       }

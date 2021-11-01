@@ -1,4 +1,3 @@
-$news-shadow-color: rgba(0,0,0,0.09);
 @mixin max-view-width(){
   @media screen and (min-width:600px){
     max-width: 77vw;
@@ -20,24 +19,25 @@ $news-shadow-color: rgba(0,0,0,0.09);
     }
   }
 }
-@media screen and (min-width:1200px){
+@media screen and (min-width:600px){
   .home{
-    .horizontal_scroll_category_blocks{
-      display: none;
+    .upwards_button{
+      height: 45px;
+      width: 45px;
+      bottom: 36px;
+      right: 44px;
     }
   }
 }
-@media screen and (max-width:1000px){
-	.home{
-		.page{
-			.body{
-				flex-direction: column;
-        aside.sidebar{
-          display: none;
-        }
-			}
-		}
-	}
+@media screen and (max-width:600px){
+  .home{
+    .upwards_button{
+      height: 36px;
+      width: 36px;
+      bottom: 28px;
+      right: 36px;
+    }
+  }
 }
 @media screen and (min-width:1000px){
 	.home{
@@ -50,42 +50,77 @@ $news-shadow-color: rgba(0,0,0,0.09);
             display: none;
           }
 				}
-        .sidebar{
+        aside.sidebar{
           width: 275px;
           padding-top: 20px;
+          .trending_topic{
+            .trending_topic_section{
+              header{
+                .border_line{
+                  display: none;
+                }
+              }
+            }
+          }
         }
 			}
-
 		}
 	}
 }
-@media screen and (min-width:600px){
+@media screen and (max-width:1000px){
+	.home{
+		.page{
+			.body{
+				flex-direction: column;
+        aside.sidebar{
+          .latest_content{
+            display: none;
+          }
+          .trending_topic{
+            background-color: #fff;
+            margin-bottom: 15px;
+            .trending_topic_section{
+              header{
+                padding: 10px 10px 5px 10px;
+              }
+              ol.trending_tag_list{
+                text-align: center;
+                padding: 5px 10px 1px 10px;
+                display: block;
+                .trending_tag_list_item{
+                  margin-bottom: 15px;
+                  .tag{
+                    background-color: #db5959;
+                    color: #e1e1e1;
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                  }
+                }
+              }
+            }
+          }
+        }
+			}
+		}
+	}
+}
+@media screen and (min-width:1200px){
   .home{
-    .upwards_button{
-      height: 45px;
-      width: 45px;
+    .horizontal_scroll_category_blocks{
+      display: none;
     }
   }
 }
-@media screen and (max-width:600px){
-  .home{
-    .upwards_button{
-      height: 40px;
-      width: 40px;
-    }
-  }
-}
+$news-shadow-color: rgba(0,0,0,0.09);
 .home{
 	font-size: 14px;
   .upwards_button{
     background-color: rgba(128,128,128,0.3);
     color: #fff;
-    border-radius: 50%;
+    border-radius: 5px;
     border: none;
     position: fixed;
     box-shadow: 0px 0 7px 0 rgba(0,0,0,0.9);
-    bottom: 80px;
-    right: 20px;
     z-index: 10;
   }
 	.page{
@@ -134,18 +169,31 @@ $news-shadow-color: rgba(0,0,0,0.09);
               color: #db5959;
               margin-bottom: 5px;
               padding-bottom: 5px;
+              position: relative;
+              .border_line{
+                content: "";
+                height: 1px;
+                background-color: #f2f2f2;
+                position: absolute;
+                left: 10px;
+                right: 10px;
+                bottom: 0;
+              }
             }
-            .trending_tag_list{
+            ol.trending_tag_list{
               font-size: 16px;
               color: #999;
               margin-top: 10px;
+              margin-bottom: 0;
               list-style: none;
               display: grid;
               grid-template-columns: 1fr 1fr;
               grid-template-rows: 25px 25px;
               row-gap: 10px;
               .trending_tag_list_item{
-                white-space: nowrap;
+                .tag{
+                  white-space: nowrap;
+                }
               }
             }
           }
@@ -259,6 +307,7 @@ $news-shadow-color: rgba(0,0,0,0.09);
               padding: 8px;
               display: flex;
               flex-direction: column;
+              clip-path: polygon(0 0,100% 0,100% 100%,35px 100%,0 calc(100% - 35px));
               .video_block{
                 position: relative;
                 .video_block_section{
