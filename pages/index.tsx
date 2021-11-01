@@ -2,8 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "swiper/swiper-bundle.min.css";
 import "swiper/components/scrollbar/scrollbar.min.css";
 import "swiper/swiper.min.css";
-import style from "../styles/Home/Home.module.scss";
 import styles from "../styles/index.module.scss";
+import style from "../styles/Home/Home.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fab} from "@fortawesome/free-brands-svg-icons";
@@ -18,8 +18,9 @@ import {Carousel} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import React,{useEffect,useRef,useState} from "react";
 import {getHomeDetail} from "./redux/home/thunks";
-import {getHeader} from "./redux/header/thunks";
+import {getHeader,getSubCategory} from "./redux/header/thunks";
 import {IRootState} from "./store";
+import {HorizontalScrollHomeCategoryBlock} from "./HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
 import {HomeCategoryBlock} from "./HomeCategoryBlock/HomeCategoryBlock";
 import {VideoBlock} from "./VideoBlock/VideoBlock";
 import {ComponentHeader} from "./ComponentHeader/ComponentHeader";
@@ -32,8 +33,10 @@ const Home:NextPage = () => {
 	const dispatch = useDispatch();
 	const videoDetail = useSelector((state:IRootState) => state.home.video);
 	const categoryName = useSelector((state:IRootState) => state.header.category);
-  const block = useRef<any>(null);
-  const [blockWidth,setBlockWidth] = useState(0);
+  const freeContentBlock = useRef<any>(null);
+  const [freeContentBlockWidth,setFreeContentBlockWidth] = useState(0);
+  const latestContentBlock = useRef<any>(null);
+  const [latestContentBlockWidth,setLatestContentBlockWidth] = useState(0);
   const [scrollHeight,setScrollHeight] = useState(0);
   const [windowDimensions,setWindowDimensions] = useState({width:0,height:0});
 	useEffect(() => {
@@ -41,11 +44,21 @@ const Home:NextPage = () => {
     dispatch(getHeader())
 	},[dispatch])
   useEffect(() => {
-    function resizeBlockWidth(){
-      setBlockWidth(block.current.offsetWidth);
+    dispatch(getSubCategory());
+  },[dispatch])
+  useEffect(() => {
+    function resizeFreeContentBlockWidth(){
+      setFreeContentBlockWidth(freeContentBlock.current.offsetWidth);
     }
-    window.addEventListener("resize",resizeBlockWidth);
-    return () => window.removeEventListener("resize",resizeBlockWidth);
+    window.addEventListener("resize",resizeFreeContentBlockWidth);
+    return () => window.removeEventListener("resize",resizeFreeContentBlockWidth);
+	},[])
+  useEffect(() => {
+    function resizeLatestContentBlockWidth(){
+      setLatestContentBlockWidth(latestContentBlock.current.offsetWidth);
+    }
+    window.addEventListener("resize",resizeLatestContentBlockWidth);
+    return () => window.removeEventListener("resize",resizeLatestContentBlockWidth);
 	},[])
   useEffect(() => {
 		function updateScrollHeight(){
@@ -108,7 +121,7 @@ const Home:NextPage = () => {
 								)
 							}
 						</Carousel>
-						<div ref={block} className={style.free_content}>
+						<div ref={freeContentBlock} className={style.free_content}>
 							<section className={style.free_content_section}>
 								<ComponentHeader header="免費任睇"/>
 								<div className={style.video_list}>
@@ -117,7 +130,7 @@ const Home:NextPage = () => {
 										.map((video) => {
                       // return同括號一定要同一衘
                       return(
-                        blockWidth > 590 ?
+                        freeContentBlockWidth > 590 ?
                         <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
                         <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
                       )
@@ -127,7 +140,7 @@ const Home:NextPage = () => {
 										videoDetail.filter((video,index) => index > 8 && index < 12)
 										.map((video) => {
                       return(
-                        blockWidth > 590 ?
+                        freeContentBlockWidth > 590 ?
                         <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
                         <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
                       )
@@ -200,35 +213,31 @@ const Home:NextPage = () => {
 								</Swiper>
 							</section>
 						</div>
-            <div className={style.latest_content}>
+            <div ref={latestContentBlock} className={style.latest_content}>
 							<section className={style.latest_content_section}>
 								<ComponentHeader header="最新影片"/>
-								<Swiper
-									spaceBetween={5}
-									slidesPerView={2}
-									slidesPerGroup={2}
-									navigation
-									pagination={{clickable:true}}
-								>
+								<div className={style.video_list}>
 									{
 										videoDetail.filter((video,index) => index < 3)
-										.map((video) =>
-											<SwiperSlide key={video.id}>
-												<VideoBlock video={video} blockPerRow={1}/>
-											</SwiperSlide>
-										)
+										.map((video) => {
+                      return(
+                        latestContentBlockWidth > 590 ?
+                        <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
+                        <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
+                      )
+                    })
 									}
-                  {
+									{
 										videoDetail.filter((video,index) => index > 8 && index < 12)
 										.map((video) => {
                       return(
-                        <SwiperSlide className={style.video_block} key={video.id}>
-                          <VideoBlock video={video} blockPerRow={1}/>
-                        </SwiperSlide>
-										  )
+                        latestContentBlockWidth > 590 ?
+                        <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
+                        <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
+                      )
                     })
 									}
-								</Swiper>
+								</div>
 							</section>
 						</div>
 					</div>
@@ -299,7 +308,7 @@ const Home:NextPage = () => {
                         <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
                       </div>
                       <div className={style.video_description}>
-                        <header className={style.video_title} style={{fontSize:windowDimensions.width < 600 ? 12 : 14}}>{video.title}</header>
+                        <header className={style.video_title} style={{minHeight:windowDimensions.width < 600 ? 36 : 42,fontSize:windowDimensions.width < 600 ? 12 : 14}}>{video.title}</header>
                         <div className={style.display_date}>{video.display_date}</div>
                       </div>
                     </a>
@@ -317,7 +326,7 @@ const Home:NextPage = () => {
                         <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
                       </div>
                       <div className={style.video_description}>
-                        <header className={style.video_title} style={{fontSize:windowDimensions.width < 600 ? 12 : 14}}>{video.title}</header>
+                        <header className={style.video_title} style={{minHeight:windowDimensions.width < 600 ? 36 : 42,fontSize:windowDimensions.width < 600 ? 12 : 14}}>{video.title}</header>
                         <div className={style.display_date}>{video.display_date}</div>
                       </div>
                     </a>
@@ -346,71 +355,8 @@ const Home:NextPage = () => {
             mousewheel={{forceToAxis:true}}
           >
             {categoryName.map(category =>
-              <SwiperSlide key={category.cate_id}>
-                <div className={style.category_block}>
-                  <section className={style.category_block_section}>
-                    <header className={style.header}>
-                      <h2 className={style.category_title}>{category.name_cn}</h2>
-                    </header>
-                    <div className={style.bottom_content}>
-                      <div className={style.main_video}>
-                        {
-                          videoDetail.filter((video,index) => index < 1)
-                          .map((video) =>
-                            (
-                              <Link href={`/video/${video.id}`} key={video.id}>
-                                <a className={style.video_block}>
-                                  <div className={style.image}>
-                                    <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
-                                  </div>
-                                  <div className={style.video_description}>
-                                    <header className={style.video_title}>
-                                      <h2 className={style.video_title_h2}>{video.title}</h2>
-                                    </header>
-                                    <div className={style.display_date}>{video.display_date}</div>
-                                  </div>
-                                </a>
-                              </Link>
-                            )
-                          )
-                        }
-                      </div>
-                      <div className={style.listing_video}>
-                        {
-                          videoDetail.filter((video,index) => index < 3)
-                          .map((video) =>
-                            (
-                              <div className={style.video_block} key={video.id}>
-                                <Link href={`/video/${video.id}`}>
-                                  <a className={style.video_block_section}>
-                                    <div className={style.image}>
-                                      <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
-                                    </div>
-                                    <div className={style.video_description}>
-                                      <header className={style.video_title}>
-                                        <h2 className={style.video_title_h2}>{video.title}</h2>
-                                      </header>
-                                      <div className={style.display_date}>{video.display_date}</div>
-                                    </div>
-                                  </a>
-                                </Link>
-                                <div className={style.video_divider}></div>
-                              </div>
-                            )
-                          )
-                        }
-                        <div className={style.align_right}>
-                          <div className={style.more_button}>
-                            <div className={style.more}>查看更多內容</div>
-                            <div className={style.arrow}>
-                              <FontAwesomeIcon icon="arrow-right" height={11} width={11}/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
-                </div>
+              <SwiperSlide className={style.category_block} key={category.cate_id}>
+                <HorizontalScrollHomeCategoryBlock category={category}/>
               </SwiperSlide>
             )}
           </Swiper>

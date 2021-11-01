@@ -2,7 +2,7 @@ import React from "react";
 import {render,screen} from "@testing-library/react";
 import {HomeCategoryBlock} from "./HomeCategoryBlock";
 
-const category = {
+export const category = {
 	cate_id:"",
 	name_cn:"",
 	name_en:"",
