@@ -6,7 +6,7 @@ import {VideoDetail} from "../redux/home/actions";
 
 export const VideoBlock = (props:{video:VideoDetail,blockPerRow:number,titleHeight?:number}):JSX.Element => {
 	return(
-    <Link href={`/video/${props.video.id}}`}>
+    <Link href={`/video/${props.video.id}`}>
       <a className={styles.video_block} style={{width:(100 / props.blockPerRow) + "%"}}>
         <div className={styles.image}>
           <Image src={props.video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>

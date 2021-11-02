@@ -43,7 +43,6 @@ bottom
 left
 right
 inset
-opacity
 display
 justify-content
 align-items
@@ -53,6 +52,8 @@ flex-direction
 grid-template-columns
 grid-template-rows
 row-gap
+opacity
+visibility
 overflow-x
 overflow-y
 overflow
@@ -63,7 +64,6 @@ word-wrap
 white-space
 transition
 transform
-visibility
 clip-path
 pointer-event
 ```

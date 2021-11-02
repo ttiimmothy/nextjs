@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import {render,screen} from "@testing-library/react";
-import {ComponentHeader} from "./ComponentHeader";
+import {LoginModal} from "./LoginModal";
 
 test("renders learn react link",() => {
-	render(<ComponentHeader header=""/>);
+	const [login,setLogin] = useState(false);
+	render(<LoginModal closeButton={setLogin}/>);
 	const linkElement = screen.getByText(/learn react/i);
 	expect(linkElement).toBeInTheDocument();
 })

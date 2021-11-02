@@ -23,7 +23,7 @@ export const video = {
 	video_url:"",
 }
 
-test("renders learn react link", () => {
+test("renders learn react link",() => {
 	render(<VideoBlock video={video} blockPerRow={1}/>);
 	const linkElement = screen.getByText(/learn react/i);
 	expect(linkElement).toBeInTheDocument();
