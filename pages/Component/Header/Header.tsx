@@ -79,7 +79,7 @@ export function Header(){
                 setShowFullMenu(!showFullMenu);
                 setSearch(false);
               }}/>
-              <FontAwesomeIcon icon="search" className={style.right_listing_icon} height={18} width={18} onClick={() => {
+              <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${search ? style.search : style.close_search_panel}`} height={18} width={18} onClick={() => {
                 setSearch(!search);
               }}/>
               <button className={style.login_button} onClick={() => {

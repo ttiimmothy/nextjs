@@ -20,12 +20,12 @@ import React,{useEffect,useRef,useState} from "react";
 import {getHomeDetail} from "./redux/home/thunks";
 import {getHeader,getSubCategory} from "./redux/header/thunks";
 import {IRootState} from "./store";
-import {HorizontalScrollHomeCategoryBlock} from "./HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
-import {HomeCategoryBlock} from "./HomeCategoryBlock/HomeCategoryBlock";
-import {VideoBlock} from "./VideoBlock/VideoBlock";
-import {ComponentHeader} from "./ComponentHeader/ComponentHeader";
-import {Footer} from "./Footer/Footer";
-import {Header} from "./Header/Header";
+import {HorizontalScrollHomeCategoryBlock} from "./Component/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
+import {HomeCategoryBlock} from "./Component/HomeCategoryBlock/HomeCategoryBlock";
+import {VideoBlock} from "./Component/VideoBlock/VideoBlock";
+import {ComponentHeader} from "./Component/ComponentHeader/ComponentHeader";
+import {Footer} from "./Component/Footer/Footer";
+import {Header} from "./Component/Header/Header";
 library.add(fab,fas,faChevronUp);
 SwiperCore.use([Navigation,Pagination,Scrollbar,Mousewheel]);
 

@@ -1,12 +1,12 @@
-import styles from "../../styles/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock.module.scss";
+import styles from "../../../styles/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock.module.scss";
 import {SwiperSlide} from "swiper/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import {useSelector} from "react-redux";
 import React from "react";
-import {Category} from "../redux/header/actions";
-import {IRootState} from "../store";
+import {Category} from "../../redux/header/actions";
+import {IRootState} from "../../store";
 
 export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
 	const videoDetail = useSelector((state:IRootState) => state.home.video);

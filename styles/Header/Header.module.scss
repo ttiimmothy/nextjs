@@ -438,6 +438,15 @@
         .close_codepen_icon{
           transform: scaleY(-1);
         }
+        .search,.close_search_panel{
+          transition: all 0.5s ease 0s;
+        }
+        .search{
+          transform: rotate(0deg);
+        }
+        .close_search_panel{
+          transform: rotate(360deg);
+        }
         .login_button{
           font-weight: 500;
           background-color: transparent;
