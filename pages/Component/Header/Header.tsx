@@ -1,14 +1,14 @@
-import style from "../../styles/Header/Header.module.scss";
+import style from "../../../styles/Header/Header.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Modal} from "react-bootstrap";
-import weather from "../image/weather.png";
-import headerIcon from "../image/unnamed.png";
+import weather from "../../image/weather.png";
+import headerIcon from "../../image/unnamed.png";
 import Image from "next/image";
 import Link from "next/link";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
-import {getHeader} from "../redux/header/thunks";
-import {IRootState} from "../store";
+import {getHeader} from "../../redux/header/thunks";
+import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
 
 export function Header(){

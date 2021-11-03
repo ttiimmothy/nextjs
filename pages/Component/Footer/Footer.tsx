@@ -1,8 +1,6 @@
-import styles from "../../styles/Footer/Footer.module.scss";
+import styles from "../../../styles/Footer/Footer.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import twitter from "../image/twitter.svg";
-import instagram from "../image/instagram.svg";
-import icon from "../image/unnamed.png";
+import icon from "../../image/unnamed.png";
 import Image from "next/image";
 
 
