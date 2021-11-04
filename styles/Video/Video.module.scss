@@ -1,0 +1,22 @@
+@mixin max-view-width(){
+	@media screen and (min-width:600px){
+	  max-width: 77vw;
+	  margin: 0 auto;
+	}
+	@media screen and (min-width:1200px){
+	  max-width: calc(100vw - 118px - 118px);
+	  margin: 0 auto;
+	}
+	@media screen and (min-width:1346px){
+	  max-width: 1110px;
+	  margin: 0 auto;
+	}
+}
+.video{
+  @include max-view-width;
+  .page{
+    .body{
+
+    }
+  }
+}

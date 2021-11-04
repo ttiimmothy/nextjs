@@ -86,6 +86,8 @@ yarn add @testing-library/jest-dom
 yarn add @testing-library/react @testing-library/user-event
 yarn add @types/jest
 yarn add @types/react @types/react-dom
+yarn add react-redux-loading-bar
+yarn add redux-logger @types/redux-logger
 ```
 
 # import order

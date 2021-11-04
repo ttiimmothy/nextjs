@@ -17,7 +17,7 @@ export function HomeCategoryBlock(props:{category:Category}){
           {
             videoDetail.filter((video,index) => index < 1)
             .map((video) =>
-              <Link href={`/video/${video.id}`} key={video.id}>
+              <Link href={`/video/${video.subcate_name}/${video.id}/${video.title}`} key={video.id}>
                 <a className={style.video_block}>
                   <div className={style.image}>
                     <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
@@ -43,7 +43,7 @@ export function HomeCategoryBlock(props:{category:Category}){
               videoDetail.filter((video,index) => index < 3)
               .map((video) =>
                 <div className={style.video_block} key={video.id}>
-                  <Link href={`/video/${video.id}`}>
+                  <Link href={`/video/${video.subcate_name}/${video.id}/${video.title}`}>
                     <a className={style.video_block_section}>
                       <div className={style.image}>
                         <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>

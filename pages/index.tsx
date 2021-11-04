@@ -30,7 +30,7 @@ library.add(fab,fas,faChevronUp);
 SwiperCore.use([Navigation,Pagination,Scrollbar,Mousewheel]);
 
 const Home:NextPage = () => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 	const videoDetail = useSelector((state:IRootState) => state.home.video);
 	const categoryName = useSelector((state:IRootState) => state.header.category);
   const freeContentBlock = useRef<any>(null);
@@ -41,11 +41,8 @@ const Home:NextPage = () => {
   const [windowDimensions,setWindowDimensions] = useState({width:0,height:0});
 	useEffect(() => {
 		dispatch(getHomeDetail());
-    dispatch(getHeader())
-	},[dispatch])
-  useEffect(() => {
     dispatch(getSubCategory());
-  },[dispatch])
+	},[dispatch])
   useEffect(() => {
     function resizeFreeContentBlockWidth(){
       setFreeContentBlockWidth(freeContentBlock.current.offsetWidth);
@@ -102,14 +99,14 @@ const Home:NextPage = () => {
 								videoDetail.filter((video,index) => index < 3)
 								.map((video) =>
 									<Carousel.Item key={video.id}>
-                    <Link href={`/video/${video.id}`}>
+                    <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
                       <a>
                         <div className="image">
                           <Image className="d-block w-100" src={video.pic_url} alt="slide" layout="fill"/>
                         </div>
                         <Carousel.Caption>
                           <div className="carousel_category">
-                            <Link href={`/${categoryName.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en)}`}>
+                            <Link href={`/category/${categoryName.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en)}`}>
                               <a>{categoryName.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}</a>
                             </Link>
                           </div>
@@ -302,7 +299,7 @@ const Home:NextPage = () => {
               videoDetail.filter((video,index) => index < 3)
               .map((video) => {
                 return(
-                  <Link href={`/video/${video.id}`} key={video.id}>
+                  <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                     <a className={style.video_block}>
                       <div className={style.image}>
                         <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
@@ -320,7 +317,7 @@ const Home:NextPage = () => {
               videoDetail.filter((video,index) => index > 8 && index < 10)
               .map((video) => {
                 return(
-                  <Link href={`/video/${video.id}`} key={video.id}>
+                  <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                     <a className={style.video_block}>
                       <div className={style.image}>
                         <Image src={video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>

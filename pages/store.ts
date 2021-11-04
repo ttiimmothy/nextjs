@@ -1,5 +1,7 @@
+import {loadingBarMiddleware, loadingBarReducer} from "react-redux-loading-bar";
 import {applyMiddleware,combineReducers,compose,createStore} from "redux";
 import thunk from "redux-thunk";
+import logger from 'redux-logger';
 import {headerReducer,IHeaderState} from "./redux/header/reducer";
 import {homeReducer,IHomeState} from "./redux/home/reducer";
 
@@ -15,10 +17,14 @@ export interface IRootState{
 	home:IHomeState,
 	header:IHeaderState
 }
-export const iRootReducer = combineReducers<IRootState>({
+export const iRootReducer = combineReducers<IRootState|any>({
 	home:homeReducer,
-	header:headerReducer
+	header:headerReducer,
+	// app reducers
+	loadingBar:loadingBarReducer,
 })
 export const store = createStore(iRootReducer,composeEnhancers(
-	applyMiddleware(thunk)
+	applyMiddleware(loadingBarMiddleware()),
+	applyMiddleware(thunk),
+	applyMiddleware(logger)
 ))

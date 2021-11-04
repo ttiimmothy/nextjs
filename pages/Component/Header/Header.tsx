@@ -1,6 +1,7 @@
 import style from "../../../styles/Header/Header.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Modal} from "react-bootstrap";
+import LoadingBar from "react-redux-loading-bar";
 import weather from "../../image/weather.png";
 import headerIcon from "../../image/unnamed.png";
 import Image from "next/image";
@@ -33,6 +34,7 @@ export function Header(){
 
 	return(
 		<header className={style.header}>
+      <LoadingBar style={{ backgroundColor: 'blue', height: '5px' }}/>
 			<div className={`${style.bar} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_scroll : ""} ${search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
@@ -57,7 +59,7 @@ export function Header(){
 									categories.map((category,index) =>
 										(
                       <li className={style.category_item} key={index}>
-                        <Link href={category.name_en.toLowerCase().split(" ").join("")}>
+                        <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("")}`}>
                           <a>
                             {category.name_cn}
                           </a>
@@ -130,14 +132,14 @@ export function Header(){
                     (
                       <li className={style.category} key={category.cate_id}>
                         <header className={style.category_head}>
-                          <Link href={category.name_en.toLowerCase().split(" ").join("")}>
+                          <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("")}`}>
                             <a className={style.category_link}>{category.name_cn}</a>
                           </Link>
                         </header>
                         <ul className={style.sub_categories}>
                           {subCategories.filter((subCategory) => subCategory.cate_id === category.cate_id).map((subCategory) =>
                             <li className={style.sub_category} key={subCategory.subcate_id}>
-                              <Link href={`/subcategory/${subCategory.name_en.toLowerCase().split(" ").join("")}`}>
+                              <Link href={`/category/${subCategory.name_en.toLowerCase().split(" ").join("")}`}>
                                 <a className={style.category_link}>{subCategory.name_cn}</a>
                               </Link>
                             </li>
@@ -241,7 +243,7 @@ export function Header(){
                     return(
                       <li className={style.category_listitem} key={subCategory.subcate_id}>
                         <div className={style.category_listitem_block}>
-                          <Link href={`/subcategory/${subCategory.name_en.toLowerCase().split(" ").join("")}`}>
+                          <Link href={`/category/${subCategory.name_en.toLowerCase().split(" ").join("")}`}>
                             <a className={style.category_listitem_link}>{subCategory.name_cn}</a>
                           </Link>
                         </div>
