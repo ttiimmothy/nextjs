@@ -1,24 +1,16 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "swiper/swiper-bundle.min.css";
-import "swiper/components/scrollbar/scrollbar.min.css";
-import "swiper/swiper.min.css";
 import styles from "../styles/index.module.scss";
 import style from "../styles/Home/Home.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {library} from "@fortawesome/fontawesome-svg-core";
-import {fab} from "@fortawesome/free-brands-svg-icons";
-import {faChevronUp,fas} from "@fortawesome/free-solid-svg-icons";
-import SwiperCore,{Navigation,Pagination,Scrollbar,Mousewheel} from "swiper";
 import {Swiper,SwiperSlide} from "swiper/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import {NextPage} from "next";
 import {Carousel} from "react-bootstrap";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useRef,useState} from "react";
 import {getHomeDetail} from "./redux/home/thunks";
-import {getHeader,getSubCategory} from "./redux/header/thunks";
+import {getSubCategory} from "./redux/header/thunks";
 import {IRootState} from "./store";
 import {HorizontalScrollHomeCategoryBlock} from "./Component/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
 import {HomeCategoryBlock} from "./Component/HomeCategoryBlock/HomeCategoryBlock";
@@ -26,8 +18,6 @@ import {VideoBlock} from "./Component/VideoBlock/VideoBlock";
 import {ComponentHeader} from "./Component/ComponentHeader/ComponentHeader";
 import {Footer} from "./Component/Footer/Footer";
 import {Header} from "./Component/Header/Header";
-library.add(fab,fas,faChevronUp);
-SwiperCore.use([Navigation,Pagination,Scrollbar,Mousewheel]);
 
 const Home:NextPage = () => {
   const dispatch = useDispatch();

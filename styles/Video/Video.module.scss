@@ -12,11 +12,49 @@
 	  margin: 0 auto;
 	}
 }
+@mixin max-video-width(){
+	@media screen and (min-width:800px){
+	  width: calc(100% - 30px - 400px);
+	}
+  @media screen and (min-width:1000px){
+	  width: 60%;
+	}
+}
 .video{
-  @include max-view-width;
+  font-size: 14px;
   .page{
+    @include max-view-width;
     .body{
-
+      margin-top: 80px;
+      .breadcrumb{
+        padding-top: 20px;
+      }
+      .video_player_description{
+        @include max-video-width;
+        padding-top: 10px;
+        .video_header{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .video_information{
+            .video_title{
+              font-weight: 600;
+              color: #db5959;
+            }
+            .video_date{
+              font-size: 12px;
+              color: #adadad;
+            }
+          }
+          .top_buttons{
+            .like_button{
+              color: rgba(0,0,0,0.78);
+              border: 0px none;
+              box-shadow: none;
+            }
+          }
+        }
+      }
     }
   }
 }

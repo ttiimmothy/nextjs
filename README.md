@@ -80,7 +80,7 @@ yarn add history@^4.10.1 connected-react-router@^6.8.0
 yarn add redux-thunk
 yarn add immer
 yarn add swiper@6
-yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-solid-svg-icons
+yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons
 yarn add @fortawesome/react-fontawesome
 yarn add @testing-library/jest-dom
 yarn add @testing-library/react @testing-library/user-event
@@ -88,6 +88,8 @@ yarn add @types/jest
 yarn add @types/react @types/react-dom
 yarn add react-redux-loading-bar
 yarn add redux-logger @types/redux-logger
+yarn add @fortawesome/free-regular-svg-icons
+yarn add @fortawesome/free-solid-svg-icons
 ```
 
 # import order

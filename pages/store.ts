@@ -4,6 +4,7 @@ import thunk from "redux-thunk";
 import logger from 'redux-logger';
 import {headerReducer,IHeaderState} from "./redux/header/reducer";
 import {homeReducer,IHomeState} from "./redux/home/reducer";
+import {IVideoState,videoReducer} from "./redux/video/reducer";
 
 declare global {
     /* tslint:disable:interface-name */
@@ -15,11 +16,13 @@ const composeEnhancers = typeof window != "undefined" && window.__REDUX_DEVTOOLS
 
 export interface IRootState{
 	home:IHomeState,
-	header:IHeaderState
+	header:IHeaderState,
+	video:IVideoState
 }
 export const iRootReducer = combineReducers<IRootState|any>({
 	home:homeReducer,
 	header:headerReducer,
+	video:videoReducer,
 	// app reducers
 	loadingBar:loadingBarReducer,
 })

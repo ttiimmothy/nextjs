@@ -1,17 +1,22 @@
 import style from "../../styles/index.module.scss";
 import styles from "../../styles/Video/Video.module.scss";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Breadcrumb} from "react-bootstrap";
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import React, {useEffect} from "react";
-import {useDispatch} from "react-redux";
-import {Header} from "../Component/Header/Header";
+import {useDispatch, useSelector} from "react-redux";
 import {getVideo} from "../redux/video/thunks";
+import {getHomeDetail} from "../redux/home/thunks";
+import {IRootState} from "../store";
+import {Header} from "../Component/Header/Header";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {pid} = router.query;
+  const videoDescription = useSelector((state:IRootState) => state.home.video);
   let imaOptions = {
 		adTagUrl:process.env.VOD_PREROLL,
 		adLabel:"",
@@ -22,6 +27,9 @@ const Video:NextPage = () => {
       dispatch(getVideo(parseInt(pid[1])));
     }
   },[dispatch,pid])
+  useEffect(() => {
+    dispatch(getHomeDetail());
+  },[dispatch])
 
 	return(
     <div className={style.App}>
@@ -35,7 +43,32 @@ const Video:NextPage = () => {
         <div className={styles.video_content}>
           <main className={styles.page}>
             <div className={styles.body}>
-
+              <div className={styles.breadcrumb}>
+                <Breadcrumb>
+                  <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+                  <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+                    Library
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item active>Data</Breadcrumb.Item>
+                </Breadcrumb>
+              </div>
+              <div className={styles.video_player_description}>
+                <header className={styles.video_header}>
+                  {
+                    pid && videoDescription.filter((video) => video.id === pid[1]).map((video) =>
+                      <div className={styles.video_information} key={video.id}>
+                        <div className={styles.video_title}>{video.title}</div>
+                        <div className={styles.video_date}>{video.updated_at}</div>
+                      </div>
+                    )
+                  }
+                  <div className={styles.top_buttons}>
+                    <button className={styles.like_button}>
+                      <FontAwesomeIcon icon={["far","thumbs-up"]} height={14} width={14}/>
+                    </button>
+                  </div>
+                </header>
+              </div>
             </div>
           </main>
         </div>

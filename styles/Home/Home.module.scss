@@ -27,6 +27,11 @@
       bottom: 36px;
       right: 44px;
     }
+    .page{
+      .body{
+        margin-top: 80px;
+      }
+    }
   }
 }
 @media screen and (max-width:600px){
@@ -36,6 +41,11 @@
       width: 36px;
       bottom: 28px;
       right: 36px;
+    }
+    .page{
+      .body{
+        margin-top: 88px;
+      }
     }
   }
 }
@@ -125,7 +135,6 @@
 	.page{
 		@include max-view-width;
 		.body{
-			margin-top: 80px;
       display: flex;
 			.main_content{
 				padding-top: 20px;
