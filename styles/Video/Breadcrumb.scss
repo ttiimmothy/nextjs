@@ -1,0 +1,10 @@
+ol.breadcrumb{
+  .breadcrumb-item{
+    a{
+      text-decoration: none;
+    }
+  }
+	.breadcrumb-item.active{
+    color: #343a40;
+  }
+}

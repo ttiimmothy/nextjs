@@ -1,0 +1,112 @@
+@mixin max-view-width(){
+  @media screen and (min-width:600px){
+    max-width: 77vw;
+    margin: 0 auto;
+  }
+  @media screen and (min-width:1200px){
+    max-width: calc(100vw - 118px - 118px);
+    margin: 0 auto;
+  }
+  @media screen and (min-width:1346px){
+    max-width: 1110px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width:1000px){
+  footer.footer{
+    .footer_section{
+      .content_section{
+        .icable_logo{
+          display: none;
+        }
+        .contents{
+          .content{
+            padding: 0 20px 0 0;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:1000px){
+  footer.footer{
+    .footer_section{
+      text-align: center;
+      .content_section{
+        justify-content: center;
+        flex-direction: column;
+        .contents{
+          justify-content: center;
+          flex-wrap: wrap;
+          .content{
+            padding: 10px;
+          }
+        }
+        .social_icons{
+          .icon{
+            margin: 2px;
+          }
+        }
+      }
+    }
+    .privacy{
+      padding: 0 10px;
+    }
+  }
+}
+footer.footer{
+  background-color: #2d2d2d;
+  color: #e1e1e1;
+  .footer_section{
+    @include max-view-width;
+    padding:20px 0 35px 0;
+    .content_section{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .icable_logo{
+        margin: 5px 0 10px 0;
+        position: relative;
+      }
+      .contents{
+        margin-bottom: 15px;
+        display: flex;
+        .content{
+          white-space: nowrap;
+        }
+      }
+      .social_icons{
+        margin-bottom: 15px;
+        display: flex;
+        .icon{
+          height: 36px;
+          width: 36px;
+          margin-left: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          .fontawesome_icon{
+            color: #fff;
+          }
+        }
+        .facebook{
+          background-color: #39599f;
+        }
+        .instagram{
+          background-color: #e1306c;
+        }
+        .twitter{
+          background-color: #55adee;
+        }
+      }
+    }
+    .address{
+      margin-bottom: 10px;
+    }
+    .privacy{
+      font-size: 12px;
+      color: #999;
+    }
+  }
+}
