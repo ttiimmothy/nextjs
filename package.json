@@ -23,11 +23,8 @@
     "@types/react-redux": "^7.1.20",
     "@types/react-router-dom": "^5.3.2",
     "@types/redux-logger": "^3.0.9",
-<<<<<<< HEAD
     "@types/video.js": "^7.3.27",
     "@videojs/http-streaming": "^2.11.2",
-=======
->>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
     "bootstrap": "4",
     "connected-react-router": "^6.8.0",
     "history": "^4.10.1",
@@ -43,14 +40,10 @@
     "redux": "^4.1.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.0",
-<<<<<<< HEAD
     "swiper": "6",
     "video.js": "^7.15.4",
     "videojs-contrib-ads": "^6.9.0",
     "videojs-ima": "^1.11.0"
-=======
-    "swiper": "6"
->>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
   },
   "devDependencies": {
     "@types/react": "^17.0.33",

@@ -1,4 +1,4 @@
-import style from "../../../styles/Header/Header.module.scss";
+import style from "../../../styles/PageHeader/PageHeader.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Modal} from "react-bootstrap";
 import LoadingBar from "react-redux-loading-bar";
@@ -12,7 +12,7 @@ import {getHeader} from "../../redux/header/thunks";
 import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
 
-export function Header(){
+export function PageHeader(){
 	const dispatch = useDispatch();
 	const categories = useSelector((state:IRootState) => state.header.category);
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
@@ -73,10 +73,6 @@ export function Header(){
 					</div>
 					{toggle &&
             <nav className={style.right_listing}>
-              {
-                scrollHeight > 10 &&
-                <div className={style.date_scroll}>2021-09-08</div>
-              }
               <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
                 setShowFullMenu(!showFullMenu);
                 setSearch(false);
@@ -96,10 +92,6 @@ export function Header(){
 				</div>
 			</div>
 			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_second_line_scroll : ""} ${search ? style.bar_second_line_for_searching : ""}`}>
-				<div className={style.weather_category_bar}>
-					<div className={style.weather}>2021-09-08 33℃ 58%</div>
-					<Image src={weather} alt="icon" height={35} width={35}/>
-				</div>
         <div className={style.category_bar_horizontal_scroll}>
           <nav className={style.category_bar}>
             <ul className={style.category_items}>
