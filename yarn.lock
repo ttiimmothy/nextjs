@@ -478,11 +478,14 @@
   dependencies:
     "@types/jest" "*"
 
+<<<<<<< HEAD
 "@types/video.js@^7.3.27":
   version "7.3.27"
   resolved "https://registry.yarnpkg.com/@types/video.js/-/video.js-7.3.27.tgz#d5e10c8529a52bad0c2a3f04d652e0c435b53925"
   integrity sha512-EiAQiVUbgp4dhR6Ury0tYXSmBaP0FuX2HMe5lCk1fuwqpTvk5UCDwlgkMfWDxzHY41LKEewn/0+/OHBuQvMrcg==
 
+=======
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
 "@types/warning@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/warning/-/warning-3.0.0.tgz#0d2501268ad8f9962b740d387c4654f5f8e23e52"
@@ -1075,11 +1078,14 @@ camelcase@^5.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
+<<<<<<< HEAD
 can-autoplay@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/can-autoplay/-/can-autoplay-3.0.2.tgz#d48b4d68c44834fdb02635a4014f06609b22caee"
   integrity sha512-Ih6wc7yJB4TylS/mLyAW0Dj5Nh3Gftq/g966TcxgvpNCOzlbqTs85srAq7mwIspo4w8gnLCVVGroyCHfh6l9aA==
 
+=======
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
 caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228:
   version "1.0.30001271"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001271.tgz#0dda0c9bcae2cf5407cd34cac304186616cc83e8"

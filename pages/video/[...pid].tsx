@@ -5,28 +5,39 @@ import {Breadcrumb} from "react-bootstrap";
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
+<<<<<<< HEAD
 import Link from "next/link";
 import Script from "next/script";
 import React,{useEffect} from "react";
+=======
+import React, {useEffect} from "react";
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
 import {useDispatch, useSelector} from "react-redux";
 import {getVideo} from "../redux/video/thunks";
 import {getHomeDetail} from "../redux/home/thunks";
 import {IRootState} from "../store";
 import {Header} from "../Component/Header/Header";
+<<<<<<< HEAD
 import {VideoPlayer} from "../Component/VideoPlayer/VideoPlayer";
+=======
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {pid} = router.query;
   const videoDescription = useSelector((state:IRootState) => state.home.video);
+<<<<<<< HEAD
   const categories = useSelector((state:IRootState) => state.header.category);
   const videoUrl = useSelector((state:IRootState) => state.video.videoUrl.stream_url);
+=======
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
   let imaOptions = {
 		adTagUrl:process.env.VOD_PREROLL,
 		adLabel:"",
 		autoPlayAdBreaks:true,
 	}
+<<<<<<< HEAD
   const videoTypescriptOptions = {
 		sources:[
 			{
@@ -35,6 +46,8 @@ const Video:NextPage = () => {
 			}
 		]
 	}
+=======
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
   useEffect(() => {
     if(pid && pid.length > 1){
       dispatch(getVideo(parseInt(pid[1])));
@@ -57,6 +70,7 @@ const Video:NextPage = () => {
           <main className={styles.page}>
             <div className={styles.body}>
               <div className={styles.breadcrumb}>
+<<<<<<< HEAD
                 {pid && videoDescription.filter((video) => video.id === pid[1]).map((video) =>
                   <Breadcrumb key={video.id}>
                     <Breadcrumb.Item>
@@ -77,6 +91,15 @@ const Video:NextPage = () => {
                     <Breadcrumb.Item active>{pid && videoDescription.filter((video) => video.id === pid[1]).map((video) => video.title)}</Breadcrumb.Item>
                   </Breadcrumb>
                 )}
+=======
+                <Breadcrumb>
+                  <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+                  <Breadcrumb.Item href="https://getbootstrap.com/docs/4.0/components/breadcrumb/">
+                    Library
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item active>Data</Breadcrumb.Item>
+                </Breadcrumb>
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
               </div>
               <div className={styles.video_player_description}>
                 <header className={styles.video_header}>
@@ -90,6 +113,7 @@ const Video:NextPage = () => {
                   }
                   <div className={styles.top_buttons}>
                     <button className={styles.like_button}>
+<<<<<<< HEAD
                       <FontAwesomeIcon icon={["far","thumbs-up"]} height={14} width={14} className={styles.fontawesome_icon}/>
                       <div>171</div>
                     </button>
@@ -111,12 +135,21 @@ const Video:NextPage = () => {
                 <div className={styles.video_player}>
                   {videoUrl && <VideoPlayer options={videoTypescriptOptions} ima={imaOptions}/>}
                 </div>
+=======
+                      <FontAwesomeIcon icon={["far","thumbs-up"]} height={14} width={14}/>
+                    </button>
+                  </div>
+                </header>
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
               </div>
             </div>
           </main>
         </div>
       </div>
+<<<<<<< HEAD
       <Script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"/>
+=======
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
     </div>
   )
 }

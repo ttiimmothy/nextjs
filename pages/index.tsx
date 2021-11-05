@@ -2,11 +2,18 @@ import styles from "../styles/index.module.scss";
 import style from "../styles/Home/Home.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper,SwiperSlide} from "swiper/react";
+<<<<<<< HEAD
 import {Carousel} from "react-bootstrap";
+=======
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import {NextPage} from "next";
+<<<<<<< HEAD
+=======
+import {Carousel} from "react-bootstrap";
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useRef,useState} from "react";
 import {getHomeDetail} from "./redux/home/thunks";

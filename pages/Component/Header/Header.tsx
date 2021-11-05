@@ -139,7 +139,11 @@ export function Header(){
                         <ul className={style.sub_categories}>
                           {subCategories.filter((subCategory) => subCategory.cate_id === category.cate_id).map((subCategory) =>
                             <li className={style.sub_category} key={subCategory.subcate_id}>
+<<<<<<< HEAD
                               <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
+=======
+                              <Link href={`/category/${subCategory.name_en.toLowerCase().split(" ").join("")}`}>
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
                                 <a className={style.category_link}>{subCategory.name_cn}</a>
                               </Link>
                             </li>
@@ -243,7 +247,11 @@ export function Header(){
                     return(
                       <li className={style.category_listitem} key={subCategory.subcate_id}>
                         <div className={style.category_listitem_block}>
+<<<<<<< HEAD
                           <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
+=======
+                          <Link href={`/category/${subCategory.name_en.toLowerCase().split(" ").join("")}`}>
+>>>>>>> 33e5c6e24b54367167db8e7a1b78afc2c1808194
                             <a className={style.category_listitem_link}>{subCategory.name_cn}</a>
                           </Link>
                         </div>
