@@ -22,10 +22,8 @@
 @media screen and (min-width:600px){
   .home{
     .upwards_button{
-      height: 45px;
-      width: 45px;
-      bottom: 36px;
-      right: 44px;
+      bottom: 26px;
+      right: 33px;
     }
     .page{
       .body{
@@ -37,10 +35,8 @@
 @media screen and (max-width:600px){
   .home{
     .upwards_button{
-      height: 36px;
-      width: 36px;
-      bottom: 28px;
-      right: 36px;
+      bottom: 18px;
+      right: 24px;
     }
     .page{
       .body{
@@ -124,12 +120,14 @@
 .home{
 	font-size: 14px;
   .upwards_button{
+    height: 32px;
+    width: 32px;
     background-color: rgba(128,128,128,0.3);
     color: #fff;
     border-radius: 5px;
     border: none;
     position: fixed;
-    box-shadow: 0px 0 7px 0 rgba(0,0,0,0.9);
+    box-shadow: 0px 0 2px 0 rgba(0,0,0,0.9);
     z-index: 10;
   }
 	.page{
