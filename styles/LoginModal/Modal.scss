@@ -1,26 +1,17 @@
-@media screen and (min-height:250px){
-  .modal.fade.login,.modal.show.fade{
-    top: 0;
-  }
-}
-@media screen and (min-height:350px){
-  .modal.fade.login,.modal.show.fade{
-    top: 10%;
-  }
-}
-@media screen and (min-height:600px){
-  .modal.fade.login,.modal.show.fade{
-    top: 25%;
-  }
-}
-@media screen and (max-height:250px){
-  .modal.fade.login,.modal.show.fade{
-    top: -5%;
-  }
-}
 .modal.fade.login,.modal.show.fade{
   font-size: 14px;
+  text-align: center;
+  &::before{
+    content: "";
+    height: 100%;
+    margin-right: -4px;
+    display: inline-block;
+    vertical-align: middle;
+  }
   .modal-dialog{
+    top: -50px;
+    display: inline-block;
+    vertical-align: middle;
     transition: none;
     transform: none;
     .modal-dialog{
@@ -36,7 +27,7 @@
   .modal{
     .modal-dialog{
       width: fit-content;
-      margin: 0 auto;
+      margin: 40px auto;
       .modal-content{
         background-color: #f2f2f2;
         border-radius: 10px;

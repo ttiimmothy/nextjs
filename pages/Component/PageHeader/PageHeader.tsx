@@ -2,13 +2,12 @@ import style from "../../../styles/PageHeader/PageHeader.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Modal} from "react-bootstrap";
 import LoadingBar from "react-redux-loading-bar";
-import weather from "../../image/weather.png";
 import headerIcon from "../../image/unnamed.png";
 import Image from "next/image";
 import Link from "next/link";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
-import {getHeader} from "../../redux/header/thunks";
+import {getHeader, getSubCategory} from "../../redux/header/thunks";
 import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
 
@@ -23,6 +22,7 @@ export function PageHeader(){
   const [login,setLogin] = useState(false);
 	useEffect(() => {
 		dispatch(getHeader());
+    dispatch(getSubCategory());
 	},[dispatch])
 	useEffect(() => {
 		function updateScrollHeight(){
@@ -34,7 +34,7 @@ export function PageHeader(){
 
 	return(
 		<header className={style.header}>
-      <LoadingBar style={{ backgroundColor: 'blue', height: '5px' }}/>
+      <LoadingBar style={{backgroundColor:'blue',height:'5px'}}/>
 			<div className={`${style.bar} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_scroll : ""} ${search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
@@ -53,6 +53,7 @@ export function PageHeader(){
                 </div>
               </a>
             </Link>
+            <div className={scrollHeight > 10 || showFullMenu || search ? style.blank_scroll : style.blank}></div>
 						<nav className={style.category_bar}>
 							<ul className={`${style.category_items} ${scrollHeight > 10 || showFullMenu || search ? style.category_items_scroll : ""}`}>
 								{
@@ -73,20 +74,56 @@ export function PageHeader(){
 					</div>
 					{toggle &&
             <nav className={style.right_listing}>
-              <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
-                setShowFullMenu(!showFullMenu);
-                setSearch(false);
-              }}/>
-              <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${search ? style.search : style.close_search_panel}`} height={18} width={18} onClick={() => {
-                setSearch(!search);
-              }}/>
-              <button className={style.login_button} onClick={() => {
-                setLogin(true);
-                setShowFullMenu(false);
-                setSearch(false);
-              }}>
-                登入
-              </button>
+              <div className={style.menu}>
+                <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
+                  setShowFullMenu(!showFullMenu);
+                  setSearch(false);
+                }}/>
+              </div>
+              <div className={style.search}>
+                <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${search ? style.open_search_panel : style.close_search_panel}`} height={18} width={18} onClick={() => {
+                  setSearch(!search);
+                }}/>
+                <div className={search ? style.show_search : style.hide_search}>
+                  <section className={style.search_section}>
+                    <div className={style.search_input}>
+                      <input className={style.input} placeholder="搜索"/>
+                    </div>
+                    <div className={style.tag_list}>
+                        <div className={style.tag_list_header}>熱門搜索</div>
+                        <ul className={style.tags}>
+                          <li className={style.tag}>
+                            <div className={style.tag_name}>魷魚遊戲</div>
+                          </li>
+                          <li className={style.tag}>
+                            <div className={style.tag_name}>魷魚遊戲</div>
+                          </li>
+                          <li className={style.tag}>
+                            <div className={style.tag_name}>魷魚遊戲</div>
+                          </li>
+                          <li className={style.tag}>
+                            <div className={style.tag_name}>魷魚遊戲</div>
+                          </li>
+                          <li className={style.tag}>
+                            <div className={style.tag_name}>魷魚遊戲</div>
+                          </li>
+                        </ul>
+                      </div>
+                  </section>
+                </div>
+              </div>
+              <div className={style.login}>
+                <button className={style.login_button} onClick={() => {
+                  setLogin(true);
+                  setShowFullMenu(false);
+                  setSearch(false);
+                }}>
+                  登入
+                </button>
+                <Modal show={login} className="login">
+                  <LoginModal closeButton={setLogin}/>
+                </Modal>
+              </div>
             </nav>
           }
 				</div>
@@ -178,36 +215,6 @@ export function PageHeader(){
           </footer>
         </section>
       </div>
-      <div className={search ? style.show_search : style.hide_search}>
-        <section className={style.search_section}>
-          <div className={style.search_input}>
-            <input className={style.input} placeholder="搜索"/>
-          </div>
-          <div className={style.tag_list}>
-              <div className={style.tag_list_header}>熱門搜索</div>
-              <ul className={style.tags}>
-                <li className={style.tag}>
-                  <div className={style.tag_name}>魷魚遊戲</div>
-                </li>
-                <li className={style.tag}>
-                  <div className={style.tag_name}>魷魚遊戲</div>
-                </li>
-                <li className={style.tag}>
-                  <div className={style.tag_name}>魷魚遊戲</div>
-                </li>
-                <li className={style.tag}>
-                  <div className={style.tag_name}>魷魚遊戲</div>
-                </li>
-                <li className={style.tag}>
-                  <div className={style.tag_name}>魷魚遊戲</div>
-                </li>
-              </ul>
-            </div>
-        </section>
-      </div>
-      <Modal show={login} className={`${style.login} login`}>
-        <LoginModal closeButton={setLogin}/>
-      </Modal>
       <nav className={toggle ? style.hidden_menu : style.show_menu}>
         <div className={style.menu}>
           <div className={style.login}>
@@ -218,7 +225,7 @@ export function PageHeader(){
                     <svg viewBox="0 0 48 48">
                       <g fill="none" fillRule="evenodd">
                       <circle strokeOpacity=".08" stroke="#000" fill="#8c8c8c" cx="24" cy="24" r="23.5"></circle>
-                      <path d="M24 25.92c5.721 0 11.442.867 11.997 8.37.05.666-.52 1.23-1.198 1.23H13.2c-.677 0-1.247-.564-1.198-1.23.555-7.503 6.276-8.37 11.996-8.37zm0-12.96c3.712 0 6.72 2.9 6.72 6.48 0 3.58-3.008 6.48-6.72 6.48-3.712 0-6.72-2.9-6.72-6.48 0-3.58 3.008-6.48 6.72-6.48z" fill="#FFF"></path>
+                      <path d="M24 25.92c5.721 0 11.442.867 11.997 8.37.05.666-.52 1.23-1.198 1.23H13.2c-.677 0-1.247-.564-1.198-1.23.555-7.503 6.276-8.37 11.996-8.37zm0-12.96c3.712 0 6.72 2.9 6.72 6.48 0 3.58-3.008 6.48-6.72 6.48-3.712 0-6.72-2.9-6.72-6.48 0-3.58 3.008-6.48 6.72-6.48z" fill="#fff"></path>
                       </g>
                     </svg>
                   </div>

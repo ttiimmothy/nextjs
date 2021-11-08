@@ -2,8 +2,17 @@ import style from "../../styles/index.module.scss";
 import styles from "../../styles/Video/Video.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Breadcrumb} from "react-bootstrap";
+import likeCount from "../image/emoji.png";
+import happyCount from "../image/emoji2.png";
+import sadCount from "../image/emoji3.png";
+import angryCount from "../image/emoji4.png";
+import like from "../image/emoji.gif";
+import happy from "../image/emoji2.gif";
+import sad from "../image/emoji3.gif";
+import angry from "../image/emoji4.gif";
 import {NextPage} from "next";
 import {useRouter} from "next/router";
+import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import Script from "next/script"
@@ -19,7 +28,7 @@ const Video:NextPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {pid} = router.query;
-  const videoDescription = useSelector((state:IRootState) => state.home.video);
+  const videos = useSelector((state:IRootState) => state.home.video);
   const categories = useSelector((state:IRootState) => state.header.category);
   const videoUrl = useSelector((state:IRootState) => state.video.videoUrl.stream_url);
   let imaOptions = {
@@ -27,7 +36,7 @@ const Video:NextPage = () => {
 		adLabel:"",
 		autoPlayAdBreaks:true,
 	}
-  const videoTypescriptOptions = {
+  const videoJsOptions = {
 		sources:[
 			{
 				src:videoUrl,
@@ -57,7 +66,7 @@ const Video:NextPage = () => {
           <main className={styles.page}>
             <div className={styles.body}>
               <div className={styles.breadcrumb}>
-                {pid && videoDescription.filter((video) => video.id === pid[1]).map((video) =>
+                {pid && videos.filter((video) => video.id === pid[1]).map((video) =>
                   <Breadcrumb key={video.id}>
                     <Breadcrumb.Item>
                       <Link href="/">
@@ -74,43 +83,121 @@ const Video:NextPage = () => {
                         <a className={styles.breadcrumb_link}>{video.subcate_name}</a>
                       </Link>
                     </Breadcrumb.Item>
-                    <Breadcrumb.Item active>{pid && videoDescription.filter((video) => video.id === pid[1]).map((video) => video.title)}</Breadcrumb.Item>
+                    <Breadcrumb.Item active>{pid && videos.filter((video) => video.id === pid[1]).map((video) => video.title)}</Breadcrumb.Item>
                   </Breadcrumb>
                 )}
               </div>
-              <div className={styles.video_player_description}>
-                <header className={styles.video_header}>
-                  {
-                    pid && videoDescription.filter((video) => video.id === pid[1]).map((video) =>
-                      <div className={styles.video_information} key={video.id}>
-                        <div className={styles.video_title}>{video.title}</div>
-                        <div className={styles.video_date}>{video.updated_at}</div>
-                      </div>
-                    )
-                  }
-                  <div className={styles.top_buttons}>
-                    <button className={styles.like_button}>
-                      <FontAwesomeIcon icon={["far","thumbs-up"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                      <div>171</div>
-                    </button>
-                    <button className={styles.comment_button}>
-                      <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                      <div>171</div>
-                    </button>
-                    <button className={styles.comment_button}>
-                      <FontAwesomeIcon icon={["far","share-square"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                      <div>分享</div>
-                    </button>
-                    <button className={styles.more_options_button}>
-                      <div className={styles.font_awesome}>
-                        <FontAwesomeIcon icon={"caret-down"} height={14} width={14} className={styles.fontawesome_icon}/>
-                      </div>
-                    </button>
+              {pid &&
+                <div className={styles.video_player_with_description}>
+                  <header className={styles.video_header}>
+                    {
+                      videos.filter((video) => video.id === pid[1]).map((video) =>
+                        <div className={styles.video_information} key={video.id}>
+                          <div className={styles.video_title}>{video.title}</div>
+                          <div className={styles.video_date}>{video.updated_at}</div>
+                        </div>
+                      )
+                    }
+                    <div className={styles.top_buttons}>
+                      <button className={styles.like_button}>
+                        <FontAwesomeIcon icon={["far","thumbs-up"]} height={14} width={14} className={styles.fontawesome_icon}/>
+                        <div>171</div>
+                      </button>
+                      <button className={styles.comment_button}>
+                        <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={styles.fontawesome_icon}/>
+                        <div>171</div>
+                      </button>
+                      <button className={styles.comment_button}>
+                        <FontAwesomeIcon icon={["far","share-square"]} height={14} width={14} className={styles.fontawesome_icon}/>
+                        <div>分享</div>
+                      </button>
+                      <button className={styles.more_options_button}>
+                        <div className={styles.font_awesome}>
+                          <FontAwesomeIcon icon={"caret-down"} height={14} width={14} className={styles.fontawesome_icon}/>
+                        </div>
+                      </button>
+                    </div>
+                  </header>
+                  <div className={styles.video_player}>
+                    {videoUrl && <VideoPlayer options={videoJsOptions}/>}
                   </div>
-                </header>
-                <div className={styles.video_player}>
-                  {videoUrl && <VideoPlayer options={videoTypescriptOptions}/>}
+                  <div className={styles.video_description}>
+                    {videos.filter((video) => video.id === pid[1]).map((video) =>
+                      <div key={video.id}>{video.desc}</div>
+                    )}
+                  </div>
                 </div>
+              }
+              <div className={styles.tag_list}>
+                <div className={styles.tag}>求其</div>
+                <div className={styles.tag}>未諗到</div>
+              </div>
+              <div className={styles.comment_row}>
+                <div className={styles.like_and_comments_count}>
+                  <div className={styles.emoji_comments_count}>
+                    <div className={styles.emoji_comments}>
+                      <div className={`${styles.emoji_comment} ${styles.like_emoji}`}>
+                        <Image src={likeCount} alt="like count" layout="fill"/>
+                      </div>
+                      <div className={`${styles.emoji_comment} ${styles.happy_emoji}`}>
+                        <Image src={happyCount} alt="happy count" layout="fill"/>
+                      </div>
+                      <div className={`${styles.emoji_comment} ${styles.sad_emoji}`}>
+                        <Image src={sadCount} alt="sad count" layout="fill"/>
+                      </div>
+                      <div className={`${styles.emoji_comment} ${styles.angry_emoji}`}>
+                        <Image src={angryCount} alt="angry count" layout="fill"/>
+                      </div>
+                    </div>
+                    <div>40</div>
+                  </div>
+                  <div>10 評論</div>
+                </div>
+              </div>
+              <section className={styles.emoji_comment_section}>
+                <div className={styles.emoji}>
+                  <div className={`${styles.emoji_image} ${styles.like}`}>
+                    <Image src={like} layout="fill" alt="like"/>
+                  </div>
+                  <span className={styles.emoji_count}>10</span>
+                </div>
+                <div className={styles.emoji}>
+                  <div className={`${styles.emoji_image} ${styles.happy}`}>
+                    <Image src={happy} layout="fill" alt="happy"/>
+                  </div>
+                  <span className={styles.emoji_count}>10</span>
+                </div>
+                <div className={styles.sad_emoji}>
+                  <div className={styles.emoji_image}>
+                    <Image src={sad} layout="fill" alt="sad"/>
+                  </div>
+                  <span className={styles.emoji_count}>10</span>
+                </div>
+                <div className={styles.emoji}>
+                  <div className={`${styles.emoji_image} ${styles.angry}`}>
+                    <Image src={angry} layout="fill" alt="angry"/>
+                  </div>
+                  <span className={styles.emoji_count}>10</span>
+                </div>
+              </section>
+              <div className={styles.word_comments}>
+                <header>
+                  <h3>全部評論(10)</h3>
+                </header>
+                <div className={styles.written_comment}>
+                  <div className={styles.icon}>
+                    <svg viewBox="0 0 48 48">
+                      <g fill="none" fillRule="evenodd">
+                      <circle strokeOpacity=".08" stroke="#000" fill="#fff" cx="24" cy="24" r="23.5"></circle>
+                      <path d="M24 25.92c5.721 0 11.442.867 11.997 8.37.05.666-.52 1.23-1.198 1.23H13.2c-.677 0-1.247-.564-1.198-1.23.555-7.503 6.276-8.37 11.996-8.37zm0-12.96c3.712 0 6.72 2.9 6.72 6.48 0 3.58-3.008 6.48-6.72 6.48-3.712 0-6.72-2.9-6.72-6.48 0-3.58 3.008-6.48 6.72-6.48z" fill="#8c8c8c"></path>
+                      </g>
+                    </svg>
+                  </div>
+                  <div className={styles.textarea}>
+                    <textarea placeholder="發表你的回應" rows={1} className={styles.comment_area}></textarea>
+                  </div>
+                </div>
+                <button className={`${styles.submit_button} btn btn-secondary`}>送出</button>
               </div>
             </div>
           </main>

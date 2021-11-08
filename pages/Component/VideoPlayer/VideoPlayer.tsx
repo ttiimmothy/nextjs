@@ -2,7 +2,7 @@ import "video.js/dist/video-js.css";
 import "videojs-contrib-ads";
 import "videojs-ima";
 import videojs from "video.js";
-import {useEffect,useRef} from "react";
+import {useCallback,useEffect,useState} from "react";
 
 interface IVideoPlayerProps{
 	options:any;
@@ -22,18 +22,23 @@ const initialOptions:any = {
 }
 
 export const VideoPlayer:React.FC<IVideoPlayerProps> = (props:{options:any,className?:any,ima?:any}) => {
-	const videoNode = useRef<any>();
-	const player = useRef<any>();
+  const [videoEl,setVideoEl] = useState(null)
+  const onVideo = useCallback((el) => {
+    setVideoEl(el)
+  },[])
 
-	useEffect(() => {
-		player.current = videojs(videoNode.current,{
-			...initialOptions,
-			...props.options
-		})
-    if(props.ima){
-      player.current.ima(props.ima);
+  useEffect(() => {
+    if (videoEl === null){
+      return;
     }
-	},[props.options,props.ima,videoNode,player])
+    const player = videojs(videoEl,{
+      ...initialOptions,
+      ...props.options
+    })
+    if(props.ima){
+      player.ima(props.ima);
+    }
+  },[props,videoEl])
 
-	return <video ref={videoNode} className="vjs-matrix video-js"/>;
+	return <video ref={onVideo} className="vjs-matrix video-js"/>;
 }

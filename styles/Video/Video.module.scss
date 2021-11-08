@@ -1,7 +1,9 @@
 @mixin max-view-width(){
-	@media screen and (min-width:600px){
-	  max-width: 77vw;
-	  margin: 0 auto;
+  @media screen and (min-width:600px){
+	  margin: 0 8px;
+	}
+	@media screen and (min-width:1000px){
+	  margin: 0 12px;
 	}
 	@media screen and (min-width:1200px){
 	  max-width: calc(100vw - 118px - 118px);
@@ -13,11 +15,13 @@
 	}
 }
 @mixin max-video-width(){
-	@media screen and (min-width:800px){
-	  width: calc(100% - 20px - 400px);
+	@media screen and (min-width:600px){
+	  width: calc(100% - 20px - 350px);
+    margin-right: 20px;
 	}
-  @media screen and (min-width:1000px){
+  @media screen and (min-width:1200px){
 	  width: calc(60% - 10px);
+    margin-right: 20px;
 	}
 }
 .video{
@@ -36,9 +40,8 @@
           }
         }
       }
-      .video_player_description{
+      .video_player_with_description{
         @include max-video-width;
-        margin-right: 20px;
         padding-top: 10px;
         .video_header{
           margin-bottom: 15px;
@@ -75,7 +78,6 @@
             .more_options_button{
               background-color: #fff;
               color: rgba(0,0,0,0.6);
-              margin-right: 5px;
               padding: 3px;
               border: solid 1px rgba(0,0,0,0.12);
               border-radius: 20px;
@@ -88,6 +90,202 @@
               }
             }
           }
+        }
+        .video_player{
+          height: auto;
+          width: auto;
+          margin-bottom: 15px;
+        }
+        .video_description{
+          margin-bottom: 10px;
+          padding: 10px 15px;
+          border: solid 1px rgba(0,0,0,0.12);
+          border-radius: 2px;
+        }
+      }
+      .tag_list{
+        @include max-video-width;
+        display: flex;
+        .tag{
+          background-color: #fff;
+          color: rgba(219,89,89,0.932);
+          margin: 0 8px 12px 0;
+          padding: 4px 12px;
+          border-radius: 20px;
+        }
+      }
+      .comment_row{
+        @include max-video-width;
+        font-size: 11px;
+        color: rgba(0,0,0,0.78);
+        padding: 0 12px;
+        border-top: solid 1px rgba(0,0,0,0.12);
+        border-bottom: solid 1px rgba(0,0,0,0.12);
+        .like_and_comments_count{
+          height: 40px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .emoji_comments_count{
+            display: flex;
+            align-items: center;
+            .emoji_comments{
+              margin-right: 5px;
+              display: flex;
+              align-items: center;
+              .emoji_comment{
+                &:nth-child(1){
+                  z-index: 3;
+                }
+                &:nth-child(2){
+                  z-index: 2;
+                }
+                &:nth-child(3){
+                  z-index: 1;
+                }
+                &:nth-child(4){
+                  z-index: 0;
+                }
+              }
+              .like_emoji{
+                height: 18px;
+                width: 18px;
+                position: relative;
+                border: solid 1px #ffcfcc;
+                border-radius: 50%;
+              }
+              .happy_emoji,.sad_emoji,.angry_emoji{
+                height: 18px;
+                width: 18px;
+                margin-left: -4px;
+                position: relative;
+                border: solid 1px #ffcfcc;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+      .emoji_comment_section{
+        @include max-video-width;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .emoji{
+          display: flex;
+          align-items: center;
+          .emoji_image{
+            height: 62px;
+            width: 62px;
+            position: relative;
+            cursor: pointer;
+            &::before{
+              background-color: rgba(0,0,0,0.78);
+              color: #ffffff;
+              font-size: 12px;
+              padding: 2px 8px;
+              border-radius: 18px;
+              position: absolute;
+              top: -18px;
+              left: 50%;
+              opacity: 0;
+              white-space: nowrap;
+              transition: opacity 0.2s ease-in-out 0s;
+              transform: translateX(-50%);
+            }
+            &:hover{
+              &::before{
+                opacity: 1;
+              }
+            }
+          }
+          .emoji_count{
+            margin-left: -6px;
+          }
+          .like{
+            &::before{
+              content: "讚好";
+            }
+          }
+          .happy{
+            &::before{
+              content: "哈哈";
+            }
+          }
+          .angry{
+            &::before{
+              content: "嬲";
+            }
+          }
+        }
+        .sad_emoji{
+          display: flex;
+          align-items: center;
+          .emoji_image{
+            height: 65px;
+            width: 65px;
+            position: relative;
+            cursor: pointer;
+            &::before{
+              content: "傷心";
+              background-color: rgba(0,0,0,0.78);
+              color: #ffffff;
+              font-size: 12px;
+              padding: 2px 8px;
+              border-radius: 18px;
+              position: absolute;
+              top: -18px;
+              left: 50%;
+              opacity: 0;
+              white-space: nowrap;
+              transition: opacity 0.2s ease-in-out 0s;
+              transform: translateX(-50%);
+            }
+            &:hover{
+              &::before{
+                opacity: 1;
+              }
+            }
+          }
+          .emoji_count{
+            margin-left: -6px;
+          }
+        }
+      }
+      .word_comments{
+        @include max-video-width;
+        padding: 0 12px;
+        header{
+          margin-bottom: 20px;
+          h3{
+            font-size: 18px;
+            font-weight: 700;
+          }
+        }
+        .written_comment{
+          display: flex;
+          .icon{
+            height: 55px;
+            width: 55px;
+            margin-right: 24px;
+          }
+          .textarea{
+            width: 100%;
+            .comment_area{
+              height: 44px;
+              width: 100%;
+              background-color: rgba(92,91,91,0.08);
+              color: #666;
+              padding: 8px 8px 8px 12px;
+              border: solid 1px rgba(0,0,0,0.4);
+              border-radius: 4px;
+              outline: none;
+            }
+          }
+        }
+        .submit_button{
+          font-size: 14px;
+          padding: 4px 16px;
         }
       }
     }
