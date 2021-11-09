@@ -1,6 +1,5 @@
 import styles from "../../../styles/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock.module.scss";
-import {SwiperSlide} from "swiper/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import {useSelector} from "react-redux";

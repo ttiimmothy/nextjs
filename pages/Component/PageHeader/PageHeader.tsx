@@ -9,6 +9,7 @@ import React,{useEffect,useState} from "react";
 import {getHeader, getSubCategory} from "../../redux/header/thunks";
 import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
+import {FooterInHeader} from "../FooterInHeader/FooterInHeader";
 
 export function PageHeader(){
 	const dispatch = useDispatch();
@@ -251,38 +252,7 @@ export function PageHeader(){
               </ul>
             </div>
           </div>
-          <footer className={style.footer}>
-            <section className={style.footer_section}>
-              <section className={style.content_section}>
-                <div className={style.contents}>
-                  <div className={style.content}>關於我們</div>
-                  <div className={style.content}>聯絡我們</div>
-                  <div className={style.content}>廣告查詢</div>
-                  <div className={style.content}>客戶服務</div>
-                  <div className={style.content}>常見問題</div>
-                </div>
-                <div className={style.social_icons}>
-                  <div className={`${style.icon} ${style.facebook}`}>
-                    <a href="https://www.facebook.com/icable.news">
-                      <FontAwesomeIcon icon={["fab","facebook-f"]} height={18} width={18} className={style.fontawesome_icon}/>
-                    </a>
-                  </div>
-                  <div className={`${style.icon} ${style.instagram}`}>
-                    <a href="https://www.instagram.com/cabletvhk">
-                      <FontAwesomeIcon icon={["fab","instagram"]} height={18} width={18} className={style.fontawesome_icon}/>
-                    </a>
-                  </div>
-                  <div className={`${style.icon} ${style.twitter}`}>
-                    <a href="https://www.instagram.com/cabletvhk">
-                      <FontAwesomeIcon icon={["fab","twitter"]} height={18} width={18} className={style.fontawesome_icon}/>
-                    </a>
-                  </div>
-                </div>
-              </section>
-              <div className={style.address}>地址: 香港新界荃灣海盛路9號有線電視大樓</div>
-              <div className={style.privacy}>私隱政策 ⓒ 2021 HK Cable Television Ltd Disclaimer & Copyright(All Right Reserved)</div>
-            </section>
-          </footer>
+          <FooterInHeader/>
         </div>
       </nav>
 	  </header>

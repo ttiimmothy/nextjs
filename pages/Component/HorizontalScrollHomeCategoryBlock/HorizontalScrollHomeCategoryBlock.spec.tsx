@@ -1,7 +1,7 @@
 import React from "react";
 import {render,screen} from "@testing-library/react";
-import {HorizontalScrollHomeCategoryBlock} from "./HorizontalScrollHomeCategoryBlock";
 import {category} from "../HomeCategoryBlock/HomeCategoryBlock.spec";
+import {HorizontalScrollHomeCategoryBlock} from "./HorizontalScrollHomeCategoryBlock";
 
 test("renders learn react link",() => {
 	render(<HorizontalScrollHomeCategoryBlock category={category}/>);

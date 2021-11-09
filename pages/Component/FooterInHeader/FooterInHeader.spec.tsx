@@ -1,9 +1,9 @@
 import React from "react";
 import {render,screen} from "@testing-library/react";
-import {CommentsBlock} from "./CommentsBlock";
+import {FooterInHeader} from "./FooterInHeader";
 
 test("renders learn react link",() => {
-	render(<CommentsBlock responseNumber={0}/>);
+	render(<FooterInHeader/>);
 	const linkElement = screen.getByText(/learn react/i);
 	expect(linkElement).toBeInTheDocument();
 })

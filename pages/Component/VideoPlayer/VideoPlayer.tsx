@@ -13,7 +13,7 @@ interface IVideoPlayerProps{
 const initialOptions:any = {
 	controls:true,
 	autoplay:true,
-	muted:false,
+	muted:true,
 	fluid:true,
 	controlBar:{
 		volumePanel:{

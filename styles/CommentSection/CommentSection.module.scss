@@ -1,17 +1,6 @@
-@mixin max-video-width(){
-	@media screen and (min-width:600px){
-	  width: calc(100% - 20px - 350px);
-    margin-right: 20px;
-	}
-  @media screen and (min-width:1200px){
-	  width: calc(60% - 10px);
-    margin-right: 20px;
-	}
-}
 $filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
 $secondary-text: #65676b;
 .comment_section{
-  @include max-video-width;
   margin-bottom: 15px;
   padding: 0 12px;
   header{
@@ -29,7 +18,7 @@ $secondary-text: #65676b;
       height: 55px;
       width: 55px;
       margin-right: 24px;
-      flex-shrink: 0;
+      flex: 1 0 auto;
     }
     .textarea{
       width: 100%;
@@ -203,11 +192,6 @@ $secondary-text: #65676b;
         align-items: center;
         .see_more_comments{
           padding-right: 8px;
-        }
-        .down_icon{
-          .fontawsome_icon{
-            width: 14px;
-          }
         }
       }
     }

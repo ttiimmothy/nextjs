@@ -1,16 +1,12 @@
-import styles from "../../../styles/Footer/Footer.module.scss";
+import styles from "../../../styles/FooterInHeader/FooterInHeader.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import icon from "../../image/unnamed_thumbnail.png";
-import Image from "next/image";
+import React from "react";
 
-export function Footer(){
+export function FooterInHeader(){
 	return(
-		<footer className={styles.footer}>
+    <footer className={styles.footer}>
       <section className={styles.footer_section}>
         <section className={styles.content_section}>
-          <div className={styles.icable_logo}>
-            <Image src={icon} alt="i-cable logo" height={70} width={70}/>
-          </div>
           <div className={styles.contents}>
             <div className={styles.content}>關於我們</div>
             <div className={styles.content}>聯絡我們</div>
@@ -39,6 +35,6 @@ export function Footer(){
         <div className={styles.address}>地址: 香港新界荃灣海盛路9號有線電視大樓</div>
         <div className={styles.privacy}>私隱政策 ⓒ 2021 HK Cable Television Ltd Disclaimer & Copyright(All Right Reserved)</div>
       </section>
-		</footer>
-	)
+    </footer>
+  )
 }
