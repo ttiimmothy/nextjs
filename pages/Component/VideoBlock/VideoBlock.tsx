@@ -9,7 +9,7 @@ export const VideoBlock = (props:{video:VideoDetail,blockPerRow:number,titleHeig
       <Link href={`/video/${props.video.subcate_name.split("・").join("")}/${props.video.id}/${props.video.title}`}>
         <a className={styles.video_block_link}>
           <div className={styles.image}>
-            <Image src={props.video.pic_url} alt="video-detail" className="d-block w-100" layout="fill"/>
+            <Image src={props.video.pic_url} alt="video-detail" layout="fill"/>
           </div>
           <div className={styles.video_description}>
             <header className={styles.video_title} style={{height:props.titleHeight ? props.titleHeight : "fit-content"}}>{props.video.title}</header>

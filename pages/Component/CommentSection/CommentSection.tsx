@@ -41,11 +41,13 @@ export function CommentSection(){
           </div>
         </div>
       </div>
-      <ul className={styles.others_comments}>
-        <CommentsBlock responseNumber={1}/>
-        <CommentsBlock responseNumber={1}/>
-        {openMoreComments && <CommentsBlock responseNumber={1}/>}
-      </ul>
+      <div className={styles.others_comments_scrollable}>
+        <ul className={styles.others_comments}>
+          <CommentsBlock responseNumber={1}/>
+          <CommentsBlock responseNumber={1}/>
+          {openMoreComments && <CommentsBlock responseNumber={1}/>}
+        </ul>
+      </div>
       {(!openMoreComments || !allComments) &&
         <div className={styles.more_comments}>
           <button className={styles.more_comments_button} onClick={() => {

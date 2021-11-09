@@ -12,13 +12,6 @@
     margin: 0 auto;
   }
 }
-@media screen and (max-width:1200px){
-  .home.index{
-    .large_category_blocks{
-      display: none;
-    }
-  }
-}
 @media screen and (min-width:600px){
   .home.index{
     .upwards_button{
@@ -113,6 +106,13 @@
 @media screen and (min-width:1200px){
   .home.index{
     .horizontal_scroll_category_blocks{
+      display: none;
+    }
+  }
+}
+@media screen and (max-width:1200px){
+  .home.index{
+    .large_category_blocks{
       display: none;
     }
   }

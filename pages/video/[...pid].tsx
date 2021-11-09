@@ -1,6 +1,7 @@
 import style from "../../styles/index.module.scss";
 import styles from "../../styles/Video/Video.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {Swiper,SwiperSlide} from "swiper/react";
 import likeCount from "../image/emoji.png";
 import happyCount from "../image/emoji2.png";
 import sadCount from "../image/emoji3.png";
@@ -26,6 +27,8 @@ import {VideoPlayer} from "../component/VideoPlayer/VideoPlayer";
 import {PageFooter} from "../component/PageFooter/PageFooter";
 import {CommentSection} from "../component/CommentSection/CommentSection";
 import {VideoPageListBlock} from "../component/VideoPageListBlock/VideoPageListBlock";
+import {VideoBlock} from "../component/VideoBlock/VideoBlock";
+import {ComponentHeader} from "../component/ComponentHeader/ComponentHeader";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -69,20 +72,12 @@ const Video:NextPage = () => {
           <div className={styles.breadcrumb}>
             {pid && videos.filter((video) => video.id === pid[1]).map((video) =>
               <Breadcrumb key={video.id}>
-                <Breadcrumb.Item>
-                  <Link href="/">
-                    <a className={styles.breadcrumb_link}>主頁</a>
-                  </Link>
+                <Breadcrumb.Item href="/" className={styles.breadcrumb_link}>主頁</Breadcrumb.Item>
+                <Breadcrumb.Item href={`/category/${categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en.toLowerCase().split(" ").join(""))}`} className={styles.breadcrumb_link}>
+                  {categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}
                 </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                  <Link href={`/category/${categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en.toLowerCase().split(" ").join(""))}`}>
-                    <a className={styles.breadcrumb_link}>{categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}</a>
-                  </Link>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>
-                  <Link href={`/channel/${video.subcate_name}/${video.subcate_id}`}>
-                    <a className={styles.breadcrumb_link}>{video.subcate_name}</a>
-                  </Link>
+                <Breadcrumb.Item href={`/channel/${video.subcate_name.split("・").join("")}/${video.subcate_id}`} className={styles.breadcrumb_link}>
+                  {video.subcate_name}
                 </Breadcrumb.Item>
                 <Breadcrumb.Item active>{pid && videos.filter((video) => video.id === pid[1]).map((video) => video.title)}</Breadcrumb.Item>
               </Breadcrumb>
@@ -104,15 +99,15 @@ const Video:NextPage = () => {
                     <div className={styles.top_buttons}>
                       <button className={styles.like_button}>
                         <FontAwesomeIcon icon={["far","thumbs-up"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                        <div>171</div>
+                        <div className={styles.number}>171</div>
                       </button>
                       <button className={styles.comment_button}>
                         <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                        <div>10</div>
+                        <div className={styles.number}>10</div>
                       </button>
-                      <button className={styles.comment_button}>
+                      <button className={styles.share_button}>
                         <FontAwesomeIcon icon={["far","share-square"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                        <div>分享</div>
+                        <div className={styles.share}>分享</div>
                       </button>
                       <button className={styles.more_options_button}>
                         <div className={styles.font_awesome}>
@@ -208,6 +203,193 @@ const Video:NextPage = () => {
             </aside>
           </div>
         </main>
+        <div className={`${styles.trending_content} video_page_swiper`}>
+          <section className={styles.trending_content_section}>
+            <div className={styles.component_header}>
+              <div>熱門影片</div>
+            </div>
+            <Swiper
+              spaceBetween={8}
+              slidesPerView={2}
+              slidesPerGroup={2}
+              navigation
+              pagination={{clickable:true}}
+              mousewheel={{forceToAxis:true}}
+            >
+              {
+                videos.filter((video,index) => index < 3)
+                .map((video) => {
+                  return(
+                    <SwiperSlide key={video.id}>
+                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                        <a className={styles.video_block}>
+                          <div className={styles.image}>
+                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                          </div>
+                          <div className={styles.video_description}>
+                            <header className={styles.video_title}>{video.title}</header>
+                            <div className={styles.display_date}>{video.display_date}</div>
+                          </div>
+                        </a>
+                      </Link>
+                    </SwiperSlide>
+                  )
+                })
+              }
+              {
+                videos.filter((video,index) => index > 8 && index < 10)
+                .map((video) => {
+                  return(
+                    <SwiperSlide key={video.id}>
+                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                        <a className={styles.video_block}>
+                          <div className={styles.image}>
+                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                          </div>
+                          <div className={styles.video_description}>
+                            <header className={styles.video_title}>{video.title}</header>
+                            <div className={styles.display_date}>{video.display_date}</div>
+                          </div>
+                        </a>
+                      </Link>
+                    </SwiperSlide>
+                  )
+                })
+              }
+              {
+                videos.filter((video,index) => index > 7 && index < 12)
+                .map((video) => {
+                  return(
+                    <SwiperSlide key={video.id}>
+                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                        <a className={styles.video_block}>
+                          <div className={styles.image}>
+                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                          </div>
+                          <div className={styles.video_description}>
+                            <header className={styles.video_title}>{video.title}</header>
+                            <div className={styles.display_date}>{video.display_date}</div>
+                          </div>
+                        </a>
+                      </Link>
+                    </SwiperSlide>
+                  )
+                })
+              }
+              {
+                videos.filter((video,index) => index > 16 && index < 23)
+                .map((video) => {
+                  return(
+                    <SwiperSlide key={video.id}>
+                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                        <a className={styles.video_block}>
+                          <div className={styles.image}>
+                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                          </div>
+                          <div className={styles.video_description}>
+                            <header className={styles.video_title}>{video.title}</header>
+                            <div className={styles.display_date}>{video.display_date}</div>
+                          </div>
+                        </a>
+                      </Link>
+                    </SwiperSlide>
+                  )
+                })
+              }
+              {
+                videos.filter((video,index) => index > 25 && index < 30)
+                .map((video) => {
+                  return(
+                    <SwiperSlide key={video.id}>
+                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                        <a className={styles.video_block}>
+                          <div className={styles.image}>
+                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                          </div>
+                          <div className={styles.video_description}>
+                            <header className={styles.video_title}>{video.title}</header>
+                            <div className={styles.display_date}>{video.display_date}</div>
+                          </div>
+                        </a>
+                      </Link>
+                    </SwiperSlide>
+                  )
+                })
+              }
+            </Swiper>
+          </section>
+        </div>
+        <div className={styles.advice_videos}>
+          <header className={styles.advice_videos_header}>
+            <h2>你可能感興趣</h2>
+          </header>
+          <div className={styles.video_list}>
+            {videos.filter((video,index) => index < 3).map((video) =>
+              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                <a className={styles.video_block}>
+                  <div className={styles.image}>
+                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                  </div>
+                  <div className={styles.video_description}>
+                    <header className={styles.video_title}>{video.title}</header>
+                    <div className={styles.category_and_date}>
+                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
+                      <div className={styles.display_date}>{video.display_date}</div>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            )}
+            {videos.filter((video,index) => index > 7 && index < 12).map((video) =>
+              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                <a className={styles.video_block}>
+                  <div className={styles.image}>
+                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                  </div>
+                  <div className={styles.video_description}>
+                    <header className={styles.video_title}>{video.title}</header>
+                    <div className={styles.category_and_date}>
+                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
+                      <div className={styles.display_date}>{video.display_date}</div>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            )}
+            {videos.filter((video,index) => index > 16 && index < 23).map((video) =>
+              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                <a className={styles.video_block}>
+                  <div className={styles.image}>
+                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                  </div>
+                  <div className={styles.video_description}>
+                    <header className={styles.video_title}>{video.title}</header>
+                    <div className={styles.category_and_date}>
+                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
+                      <div className={styles.display_date}>{video.display_date}</div>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            )}
+            {videos.filter((video,index) => index > 25 && index < 30).map((video) =>
+              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                <a className={styles.video_block}>
+                  <div className={styles.image}>
+                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                  </div>
+                  <div className={styles.video_description}>
+                    <header className={styles.video_title}>{video.title}</header>
+                    <div className={styles.category_and_date}>
+                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
+                      <div className={styles.display_date}>{video.display_date}</div>
+                    </div>
+                  </div>
+                </a>
+              </Link>
+            )}
+          </div>
+        </div>
       </div>
       <PageFooter/>
       <Script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></Script>

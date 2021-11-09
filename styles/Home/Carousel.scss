@@ -49,6 +49,10 @@ $nav-button-shadow-color:rgba(0,0,0,0.15);
 						color: #fff;
 						padding: 5px 10px;
 						border-radius: 4px;
+            &:hover{
+              background-color: rgba(219,89,89,0.8);
+              color: #e2e2e2;
+            }
 					}
 				}
         h6{

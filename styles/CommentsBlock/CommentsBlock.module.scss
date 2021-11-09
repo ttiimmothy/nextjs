@@ -1,14 +1,33 @@
+@media screen and (min-width:600px){
+  .comments_block{
+    .comment_article{
+      .icon{
+        height: 55px;
+        width: 55px;
+        margin-right: 24px;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width:600px){
+  .comments_block{
+    .comment_article{
+      .icon{
+        height: 36px;
+        width: 36px;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+    }
+  }
+}
 $filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
 $secondary-text: #65676b;
 .comments_block{
   .comment_article{
     padding-top: 24px;
     display: flex;
-    .icon{
-      height: 55px;
-      width: 55px;
-      margin-right: 24px;
-    }
     .comment_with_response{
       .comment{
         width: fit-content;

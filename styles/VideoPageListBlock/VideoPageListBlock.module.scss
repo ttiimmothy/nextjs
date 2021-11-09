@@ -2,26 +2,33 @@
 	border-top: solid 1px rgba(0,0,0,0.12);
 	.video_detail{
 	  padding: 8px;
-	  display: flex;
-	  .image{
-      width: 42%;
-      margin-right: 10px;
-      position: relative;
-      flex-shrink: 0;
-      aspect-ratio: 16/9;
-	  }
-	  .video_description{
-      padding: 4px 0;
+    .video_link{
+      color: #000;
+      text-decoration: none;
       display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-      .video_title{
-        font-weight: 500;
+      .image{
+        width: 42%;
+        margin-right: 10px;
+        position: relative;
+        flex-shrink: 0;
+        aspect-ratio: 16/9;
       }
-      .date{
-        font-size: 10px;
+      .video_description{
+        padding: 4px 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        .video_title{
+          font-weight: 500;
+        }
+        .date{
+          font-size: 10px;
+          color: #adadad;
+        }
+      }
+      &:hover{
         color: #adadad;
       }
-	  }
+    }
 	}
 }

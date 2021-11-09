@@ -1,9 +1,17 @@
-.vjs-matrix.video-js{
-  border-radius: 8px;
-  cursor: pointer;
-  .vjs-tech{
+@media screen and (min-width:600px){
+  .vjs-matrix.video-js{
     border-radius: 8px;
+    .vjs-tech,.vjs-error-display{
+      border-radius: 8px;
+    }
+    .vjs-control-bar{
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
   }
+}
+.vjs-matrix.video-js{
+  cursor: pointer;
 	.vjs-big-play-button{
     height: 1.7em;
     width: 1.7em;
@@ -20,8 +28,4 @@
       }
     }
 	}
-  .vjs-control-bar{
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
 }

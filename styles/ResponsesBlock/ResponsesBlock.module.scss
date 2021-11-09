@@ -8,6 +8,7 @@ $secondary-text: #65676b;
       height: 36px;
       width: 36px;
       margin-right: 10px;
+      flex-shrink: 0;
     }
     .comment_with_response{
       .comment{
@@ -28,6 +29,7 @@ $secondary-text: #65676b;
           font-size: 11px;
           display: flex;
           align-items: center;
+          flex-wrap: wrap;
           .time{
             color: #adadad;
             &::after{
