@@ -197,7 +197,10 @@ const Video:NextPage = () => {
                     <textarea placeholder="發表你的回應" rows={1} className={styles.comment_area}></textarea>
                   </div>
                 </div>
-                <button className={`${styles.submit_button} btn btn-secondary`}>送出</button>
+                <div className={styles.image_and_submit}>
+                  <input type="file"/>
+                  <button className={`${styles.submit_button} btn btn-secondary`}>送出</button>
+                </div>
               </div>
             </div>
           </main>

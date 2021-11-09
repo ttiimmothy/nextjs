@@ -44,8 +44,8 @@ left
 right
 inset
 display
-justify-content
 align-items
+justify-content
 flex
 flex-wrap
 flex-direction

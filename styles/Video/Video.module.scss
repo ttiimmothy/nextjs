@@ -283,9 +283,14 @@
             }
           }
         }
-        .submit_button{
-          font-size: 14px;
-          padding: 4px 16px;
+        .image_and_submit{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .submit_button{
+            font-size: 14px;
+            padding: 4px 16px;
+          }
         }
       }
     }
