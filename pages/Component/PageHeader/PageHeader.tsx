@@ -1,10 +1,9 @@
 import style from "../../../styles/PageHeader/PageHeader.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Modal} from "react-bootstrap";
-import LoadingBar from "react-redux-loading-bar";
-import headerIcon from "../../image/unnamed.png";
+import headerIcon from "../../image/unnamed_thumbnail.png";
 import Image from "next/image";
 import Link from "next/link";
+import {Modal} from "react-bootstrap";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
 import {getHeader, getSubCategory} from "../../redux/header/thunks";
@@ -33,8 +32,7 @@ export function PageHeader(){
 	},[scrollHeight])
 
 	return(
-		<header className={style.header}>
-      <LoadingBar style={{backgroundColor:'blue',height:'5px'}}/>
+		<header className={style.page_header}>
 			<div className={`${style.bar} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_scroll : ""} ${search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
@@ -224,8 +222,8 @@ export function PageHeader(){
                   <div className={style.icon}>
                     <svg viewBox="0 0 48 48">
                       <g fill="none" fillRule="evenodd">
-                      <circle strokeOpacity=".08" stroke="#000" fill="#8c8c8c" cx="24" cy="24" r="23.5"></circle>
-                      <path d="M24 25.92c5.721 0 11.442.867 11.997 8.37.05.666-.52 1.23-1.198 1.23H13.2c-.677 0-1.247-.564-1.198-1.23.555-7.503 6.276-8.37 11.996-8.37zm0-12.96c3.712 0 6.72 2.9 6.72 6.48 0 3.58-3.008 6.48-6.72 6.48-3.712 0-6.72-2.9-6.72-6.48 0-3.58 3.008-6.48 6.72-6.48z" fill="#fff"></path>
+                        <circle strokeOpacity=".08" stroke="#000" fill="#8c8c8c" cx="24" cy="24" r="23.5"></circle>
+                        <path d="M24 25.92c5.721 0 11.442.867 11.997 8.37.05.666-.52 1.23-1.198 1.23H13.2c-.677 0-1.247-.564-1.198-1.23.555-7.503 6.276-8.37 11.996-8.37zm0-12.96c3.712 0 6.72 2.9 6.72 6.48 0 3.58-3.008 6.48-6.72 6.48-3.712 0-6.72-2.9-6.72-6.48 0-3.58 3.008-6.48 6.72-6.48z" fill="#fff"></path>
                       </g>
                     </svg>
                   </div>

@@ -1,11 +1,11 @@
-import styles from "../../../styles/Footer/Footer.module.scss";
+import styles from "../../../styles/PageFooter/PageFooter.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import icon from "../../image/unnamed_thumbnail.png";
 import Image from "next/image";
 
-export function Footer(){
+export function PageFooter(){
 	return(
-		<footer className={styles.footer}>
+		<footer className={styles.page_footer}>
       <section className={styles.footer_section}>
         <section className={styles.content_section}>
           <div className={styles.icable_logo}>
@@ -27,13 +27,11 @@ export function Footer(){
             <div className={`${styles.icon} ${styles.instagram}`}>
               <a href="https://www.instagram.com/cabletvhk">
                 <FontAwesomeIcon icon={["fab","instagram"]} height={18} width={18} className={styles.fontawesome_icon}/>
-                {/* <Image src={instagram} alt="twitter" className={styles.fontawesome_icon} height={18} width={18}/> */}
               </a>
             </div>
             <div className={`${styles.icon} ${styles.twitter}`}>
               <a href="https://www.instagram.com/cabletvhk">
                 <FontAwesomeIcon icon={["fab","twitter"]} height={18} width={18} className={styles.fontawesome_icon}/>
-                {/* <Image src={twitter} alt="twitter" className={styles.fontawesome_icon} height={18} width={18}/> */}
               </a>
             </div>
           </div>

@@ -13,14 +13,14 @@
   }
 }
 @media screen and (max-width:1200px){
-  .home{
+  .home.index{
     .large_category_blocks{
       display: none;
     }
   }
 }
 @media screen and (min-width:600px){
-  .home{
+  .home.index{
     .upwards_button{
       bottom: 26px;
       right: 33px;
@@ -33,7 +33,7 @@
   }
 }
 @media screen and (max-width:600px){
-  .home{
+  .home.index{
     .upwards_button{
       bottom: 18px;
       right: 24px;
@@ -46,7 +46,7 @@
   }
 }
 @media screen and (min-width:1000px){
-	.home{
+	.home.index{
 		.page{
 			.body{
 				.main_content{
@@ -74,7 +74,7 @@
 	}
 }
 @media screen and (max-width:1000px){
-	.home{
+	.home.index{
 		.page{
 			.body{
 				flex-direction: column;
@@ -111,13 +111,13 @@
 	}
 }
 @media screen and (min-width:1200px){
-  .home{
+  .home.index{
     .horizontal_scroll_category_blocks{
       display: none;
     }
   }
 }
-.home{
+.home.index{
 	font-size: 14px;
   .upwards_button{
     height: 32px;

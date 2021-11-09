@@ -15,7 +15,6 @@ import {fas} from "@fortawesome/free-solid-svg-icons";
 import {far} from "@fortawesome/free-regular-svg-icons";
 import SwiperCore,{Mousewheel, Navigation, Pagination,Scrollbar} from "swiper";
 import {AppProps} from "next/app";
-import Script from "next/script";
 import {Provider} from "react-redux";
 import React from "react";
 import {store} from "./store";

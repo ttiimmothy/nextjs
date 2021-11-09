@@ -1,4 +1,3 @@
-import {loadingBarMiddleware, loadingBarReducer} from "react-redux-loading-bar";
 import {applyMiddleware,combineReducers,compose,createStore} from "redux";
 import thunk from "redux-thunk";
 import logger from 'redux-logger';
@@ -9,7 +8,7 @@ import {IVideoState,videoReducer} from "./redux/video/reducer";
 declare global {
     /* tslint:disable:interface-name */
     interface Window {
-        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__:any
     }
 }
 const composeEnhancers = typeof window != "undefined" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -19,15 +18,12 @@ export interface IRootState{
 	header:IHeaderState,
 	video:IVideoState
 }
-export const iRootReducer = combineReducers<IRootState|any>({
+export const iRootReducer = combineReducers<IRootState>({
 	home:homeReducer,
 	header:headerReducer,
-	video:videoReducer,
-	// app reducers
-	loadingBar:loadingBarReducer,
+	video:videoReducer
 })
 export const store = createStore(iRootReducer,composeEnhancers(
-	applyMiddleware(loadingBarMiddleware()),
 	applyMiddleware(thunk),
 	applyMiddleware(logger)
 ))

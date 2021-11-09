@@ -1,4 +1,5 @@
 import "video.js/dist/video-js.css";
+import styles from "../../../styles/VideoPlayer/VideoPlayer.module.scss";
 import "videojs-contrib-ads";
 import "videojs-ima";
 import videojs from "video.js";
@@ -40,5 +41,5 @@ export const VideoPlayer:React.FC<IVideoPlayerProps> = (props:{options:any,class
     }
   },[props,videoEl])
 
-	return <video ref={onVideo} className="vjs-matrix video-js"/>;
+	return <video ref={onVideo} className={`vjs-matrix video-js ${styles.video_player}`}/>;
 }

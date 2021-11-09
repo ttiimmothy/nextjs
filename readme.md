@@ -9,11 +9,11 @@ min-width
 font-size
 font-weight
 text-decoration
-background-image
-background-size
-background-repeat
-background-position
 background-color
+background-image
+background-repeat
+background-size
+background-position
 background
 color
 object-fit
@@ -64,6 +64,7 @@ word-wrap
 white-space
 transition
 transform
+filter
 clip-path
 pointer-event
 ```
