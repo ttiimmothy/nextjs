@@ -14,7 +14,6 @@ import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import Script from "next/script";
 import {Breadcrumb} from "react-bootstrap";
 import React,{useEffect} from "react";
@@ -27,8 +26,8 @@ import {VideoPlayer} from "../component/VideoPlayer/VideoPlayer";
 import {PageFooter} from "../component/PageFooter/PageFooter";
 import {CommentSection} from "../component/CommentSection/CommentSection";
 import {VideoPageListBlock} from "../component/VideoPageListBlock/VideoPageListBlock";
-import {VideoBlock} from "../component/VideoBlock/VideoBlock";
-import {ComponentHeader} from "../component/ComponentHeader/ComponentHeader";
+import {VideoPageTrendingVideoSwiperBlock} from "../component/VideoPageTrendingVideoSwiperBlock/VideoPageTrendingVideoSwiperBlock.spec";
+import {VideoPageAdviceVideoBlock} from "../component/VideoPageAdviceVideoBlock/VideoPageAdviceVideoBlock";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -181,25 +180,27 @@ const Video:NextPage = () => {
               <CommentSection/>
             </div>
             <aside className={styles.sidebar}>
-              <section className={styles.sidebar_section}>
-                <header>熱門影片</header>
-                <div className={styles.video_list_scrollable}>
-                  <ul className={styles.video_list}>
-                    {videos.filter((video,index) => index < 3).map((video) =>
-                      <VideoPageListBlock key={video.id} video={video}/>
-                    )}
-                    {videos.filter((video,index) => index > 7 && index < 12).map((video) =>
-                      <VideoPageListBlock key={video.id} video={video}/>
-                    )}
-                    {videos.filter((video,index) => index > 16 && index < 23).map((video) =>
-                      <VideoPageListBlock key={video.id} video={video}/>
-                    )}
-                    {videos.filter((video,index) => index > 25 && index < 30).map((video) =>
-                      <VideoPageListBlock key={video.id} video={video}/>
-                    )}
-                  </ul>
-                </div>
-              </section>
+              <div className={styles.sticky_sidebar}>
+                <section className={styles.sidebar_section}>
+                  <header>熱門影片</header>
+                  <div className={styles.video_list_scrollable}>
+                    <ul className={styles.video_list}>
+                      {videos.filter((video,index) => index < 3).map((video) =>
+                        <VideoPageListBlock key={video.id} video={video}/>
+                      )}
+                      {videos.filter((video,index) => index > 7 && index < 12).map((video) =>
+                        <VideoPageListBlock key={video.id} video={video}/>
+                      )}
+                      {videos.filter((video,index) => index > 16 && index < 23).map((video) =>
+                        <VideoPageListBlock key={video.id} video={video}/>
+                      )}
+                      {videos.filter((video,index) => index > 25 && index < 30).map((video) =>
+                        <VideoPageListBlock key={video.id} video={video}/>
+                      )}
+                    </ul>
+                  </div>
+                </section>
+              </div>
             </aside>
           </div>
         </main>
@@ -221,17 +222,7 @@ const Video:NextPage = () => {
                 .map((video) => {
                   return(
                     <SwiperSlide key={video.id}>
-                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                        <a className={styles.video_block}>
-                          <div className={styles.image}>
-                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                          </div>
-                          <div className={styles.video_description}>
-                            <header className={styles.video_title}>{video.title}</header>
-                            <div className={styles.display_date}>{video.display_date}</div>
-                          </div>
-                        </a>
-                      </Link>
+                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
                     </SwiperSlide>
                   )
                 })
@@ -241,17 +232,7 @@ const Video:NextPage = () => {
                 .map((video) => {
                   return(
                     <SwiperSlide key={video.id}>
-                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                        <a className={styles.video_block}>
-                          <div className={styles.image}>
-                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                          </div>
-                          <div className={styles.video_description}>
-                            <header className={styles.video_title}>{video.title}</header>
-                            <div className={styles.display_date}>{video.display_date}</div>
-                          </div>
-                        </a>
-                      </Link>
+                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
                     </SwiperSlide>
                   )
                 })
@@ -261,17 +242,7 @@ const Video:NextPage = () => {
                 .map((video) => {
                   return(
                     <SwiperSlide key={video.id}>
-                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                        <a className={styles.video_block}>
-                          <div className={styles.image}>
-                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                          </div>
-                          <div className={styles.video_description}>
-                            <header className={styles.video_title}>{video.title}</header>
-                            <div className={styles.display_date}>{video.display_date}</div>
-                          </div>
-                        </a>
-                      </Link>
+                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
                     </SwiperSlide>
                   )
                 })
@@ -281,17 +252,7 @@ const Video:NextPage = () => {
                 .map((video) => {
                   return(
                     <SwiperSlide key={video.id}>
-                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                        <a className={styles.video_block}>
-                          <div className={styles.image}>
-                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                          </div>
-                          <div className={styles.video_description}>
-                            <header className={styles.video_title}>{video.title}</header>
-                            <div className={styles.display_date}>{video.display_date}</div>
-                          </div>
-                        </a>
-                      </Link>
+                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
                     </SwiperSlide>
                   )
                 })
@@ -301,17 +262,7 @@ const Video:NextPage = () => {
                 .map((video) => {
                   return(
                     <SwiperSlide key={video.id}>
-                      <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                        <a className={styles.video_block}>
-                          <div className={styles.image}>
-                            <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                          </div>
-                          <div className={styles.video_description}>
-                            <header className={styles.video_title}>{video.title}</header>
-                            <div className={styles.display_date}>{video.display_date}</div>
-                          </div>
-                        </a>
-                      </Link>
+                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
                     </SwiperSlide>
                   )
                 })
@@ -325,68 +276,16 @@ const Video:NextPage = () => {
           </header>
           <div className={styles.video_list}>
             {videos.filter((video,index) => index < 3).map((video) =>
-              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                <a className={styles.video_block}>
-                  <div className={styles.image}>
-                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                  </div>
-                  <div className={styles.video_description}>
-                    <header className={styles.video_title}>{video.title}</header>
-                    <div className={styles.category_and_date}>
-                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
-                      <div className={styles.display_date}>{video.display_date}</div>
-                    </div>
-                  </div>
-                </a>
-              </Link>
+              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
             )}
             {videos.filter((video,index) => index > 7 && index < 12).map((video) =>
-              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                <a className={styles.video_block}>
-                  <div className={styles.image}>
-                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                  </div>
-                  <div className={styles.video_description}>
-                    <header className={styles.video_title}>{video.title}</header>
-                    <div className={styles.category_and_date}>
-                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
-                      <div className={styles.display_date}>{video.display_date}</div>
-                    </div>
-                  </div>
-                </a>
-              </Link>
+              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
             )}
             {videos.filter((video,index) => index > 16 && index < 23).map((video) =>
-              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                <a className={styles.video_block}>
-                  <div className={styles.image}>
-                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                  </div>
-                  <div className={styles.video_description}>
-                    <header className={styles.video_title}>{video.title}</header>
-                    <div className={styles.category_and_date}>
-                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
-                      <div className={styles.display_date}>{video.display_date}</div>
-                    </div>
-                  </div>
-                </a>
-              </Link>
+              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
             )}
             {videos.filter((video,index) => index > 25 && index < 30).map((video) =>
-              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                <a className={styles.video_block}>
-                  <div className={styles.image}>
-                    <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                  </div>
-                  <div className={styles.video_description}>
-                    <header className={styles.video_title}>{video.title}</header>
-                    <div className={styles.category_and_date}>
-                      <div className={styles.category}>{video.subcate_name.split("・").join("")}</div>
-                      <div className={styles.display_date}>{video.display_date}</div>
-                    </div>
-                  </div>
-                </a>
-              </Link>
+              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
             )}
           </div>
         </div>

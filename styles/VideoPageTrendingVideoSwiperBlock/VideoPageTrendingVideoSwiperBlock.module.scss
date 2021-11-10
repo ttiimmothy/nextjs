@@ -1,0 +1,30 @@
+.video_page_trending_video_swiper_block{
+  width: 100%;
+  .video_block{
+    color: #000;
+    &:hover{
+      text-decoration: none;
+      color: #adadad;
+    }
+    .image{
+      width: 100%;
+      margin-bottom: 5px;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .video_description{
+      text-align: left;
+      .video_title{
+        font-weight: 600;
+      }
+      .display_date{
+        font-size: 10px;
+        color: #747474;
+        &:hover{
+          color: #adadad;
+        }
+      }
+    }
+  }
+}

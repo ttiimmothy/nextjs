@@ -1,0 +1,58 @@
+@media screen and (min-width:500px){
+  .video_page_advice_video_block{
+    width: 33.33%;
+    padding: 8px 6px;
+  }
+}
+@media screen and (max-width:500px){
+  .video_page_advice_video_block{
+    width: 100%;
+    padding: 8px 0;
+    .video_block{
+      .video_description{
+        padding: 0 6px;
+      }
+    }
+  }
+}
+.video_page_advice_video_block{
+  .video_block{
+    color: #000;
+    &:hover{
+      text-decoration: none;
+      color: #adadad;
+    }
+    .image{
+      width: 100%;
+      margin-bottom: 5px;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .video_description{
+      text-align: left;
+      .video_title{
+        min-height: 42px;
+        font-weight: 600;
+      }
+      .category_and_date{
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        .category{
+          background-color: #db5959;
+          color: #fff;
+          margin-right: 5px;
+          padding: 4px 8px;
+          border-radius: 4px;
+        }
+        .display_date{
+          color: #747474;
+          &:hover{
+            color: #adadad;
+          }
+        }
+      }
+    }
+  }
+}
