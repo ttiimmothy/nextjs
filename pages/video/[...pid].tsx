@@ -15,19 +15,20 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";
-import {Breadcrumb} from "react-bootstrap";
+import {Breadcrumb,Modal} from "react-bootstrap";
 import React,{useEffect,useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
 import {getVideo} from "../redux/video/thunks";
 import {getHomeDetail} from "../redux/home/thunks";
 import {IRootState} from "../store";
-import {PageHeader} from "../component/PageHeader/PageHeader";
-import {VideoPlayer} from "../component/VideoPlayer/VideoPlayer";
-import {PageFooter} from "../component/PageFooter/PageFooter";
-import {CommentSection} from "../component/CommentSection/CommentSection";
-import {VideoPageListBlock} from "../component/VideoPageListBlock/VideoPageListBlock";
-import {VideoPageTrendingVideoSwiperBlock} from "../component/VideoPageTrendingVideoSwiperBlock/VideoPageTrendingVideoSwiperBlock.spec";
-import {VideoPageAdviceVideoBlock} from "../component/VideoPageAdviceVideoBlock/VideoPageAdviceVideoBlock";
+import {PageHeader} from "../components/PageHeader/PageHeader";
+import {VideoPlayer} from "../components/VideoPlayer/VideoPlayer";
+import {PageFooter} from "../components/PageFooter/PageFooter";
+import {CommentSection} from "../components/CommentSection/CommentSection";
+import {VideoPageListBlock} from "../components/VideoPageListBlock/VideoPageListBlock";
+import {VideoPageTrendingVideoSwiperBlock} from "../components/VideoPageTrendingVideoSwiperBlock/VideoPageTrendingVideoSwiperBlock.spec";
+import {VideoPageAdviceVideoBlock} from "../components/VideoPageAdviceVideoBlock/VideoPageAdviceVideoBlock";
+import {EmojiNumberDetailModal} from "../components/EmojiNumberDetailModal/EmojiNumberDetailModal";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const Video:NextPage = () => {
   const categories = useSelector((state:IRootState) => state.header.category);
   const videoUrl = useSelector((state:IRootState) => state.video.videoUrl.stream_url);
   const [openEmoji,setOpenEmoji] = useState(false);
+  const [emojiNumberDetail,setEmojiNumberDetail] = useState(false);
   let imaOptions = {
 		adTagUrl:process.env.VOD_PREROLL,
 		adLabel:"",
@@ -132,7 +134,9 @@ const Video:NextPage = () => {
               </div>
               <div className={styles.comment_row}>
                 <div className={styles.like_and_comments_count}>
-                  <div className={styles.emoji_comments_count}>
+                  <div className={styles.emoji_comments_count} onClick={() => {
+                    setEmojiNumberDetail(true);
+                  }}>
                     <div className={styles.emoji_comments}>
                       <div className={`${styles.emoji_comment} ${styles.like_emoji}`}>
                         <Image src={likeCount} alt="like count" layout="fill"/>
@@ -149,6 +153,9 @@ const Video:NextPage = () => {
                     </div>
                     <span>40</span>
                   </div>
+                  <Modal show={emojiNumberDetail} className="emoji_number_detail">
+                    <EmojiNumberDetailModal closeButton={setEmojiNumberDetail}/>
+                  </Modal>
                   <div>10 評論</div>
                 </div>
               </div>
@@ -186,16 +193,7 @@ const Video:NextPage = () => {
                   <header>熱門影片</header>
                   <div className={styles.video_list_scrollable}>
                     <ul className={styles.video_list}>
-                      {videos.filter((video,index) => index < 3).map((video) =>
-                        <VideoPageListBlock key={video.id} video={video}/>
-                      )}
-                      {videos.filter((video,index) => index > 7 && index < 12).map((video) =>
-                        <VideoPageListBlock key={video.id} video={video}/>
-                      )}
-                      {videos.filter((video,index) => index > 16 && index < 23).map((video) =>
-                        <VideoPageListBlock key={video.id} video={video}/>
-                      )}
-                      {videos.filter((video,index) => index > 25 && index < 30).map((video) =>
+                      {videos.filter((video,index) => index < 3 || (index > 7 && index < 12) || (index > 16 && index < 23) || (index > 25 && index < 30)).map((video) =>
                         <VideoPageListBlock key={video.id} video={video}/>
                       )}
                     </ul>
@@ -219,47 +217,7 @@ const Video:NextPage = () => {
               mousewheel={{forceToAxis:true}}
             >
               {
-                videos.filter((video,index) => index < 3)
-                .map((video) => {
-                  return(
-                    <SwiperSlide key={video.id}>
-                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
-                    </SwiperSlide>
-                  )
-                })
-              }
-              {
-                videos.filter((video,index) => index > 8 && index < 10)
-                .map((video) => {
-                  return(
-                    <SwiperSlide key={video.id}>
-                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
-                    </SwiperSlide>
-                  )
-                })
-              }
-              {
-                videos.filter((video,index) => index > 7 && index < 12)
-                .map((video) => {
-                  return(
-                    <SwiperSlide key={video.id}>
-                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
-                    </SwiperSlide>
-                  )
-                })
-              }
-              {
-                videos.filter((video,index) => index > 16 && index < 23)
-                .map((video) => {
-                  return(
-                    <SwiperSlide key={video.id}>
-                      <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
-                    </SwiperSlide>
-                  )
-                })
-              }
-              {
-                videos.filter((video,index) => index > 25 && index < 30)
+                videos.filter((video,index) => index < 3 || (index > 7 && index < 12) || (index > 16 && index < 23) || (index > 25 && index < 30))
                 .map((video) => {
                   return(
                     <SwiperSlide key={video.id}>
@@ -276,19 +234,7 @@ const Video:NextPage = () => {
             <h2>你可能感興趣</h2>
           </header>
           <div className={styles.video_list}>
-            {videos.filter((video,index) => index < 3).map((video) =>
-              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
-            )}
-            {videos.filter((video,index) => index > 7 && index < 12).map((video) =>
-              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
-            )}
-            {videos.filter((video,index) => index > 16 && index < 23).map((video) =>
-              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
-            )}
-            {videos.filter((video,index) => index > 25 && index < 35).map((video) =>
-              <VideoPageAdviceVideoBlock video={video} key={video.id}/>
-            )}
-			      {videos.filter((video,index) => index > 35 && index < 40).map((video) =>
+            {videos.filter((video,index) => index < 3 || (index > 7 && index < 12) || (index > 16 && index < 23) || (index > 25 && index < 35) || (index > 35 && index < 40)).map((video) =>
               <VideoPageAdviceVideoBlock video={video} key={video.id}/>
             )}
           </div>

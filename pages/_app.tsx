@@ -1,9 +1,9 @@
 import "../styles/globals.css";
-import "../styles/Home/Carousel.scss";
-import "../styles/Home/Swiper.scss";
-import "../styles/LoginModal/Modal.scss";
+import "../styles/components/BootstrapComponent/Carousel.scss";
+import "../styles/components/SwiperPackage/Swiper.scss";
+import "../styles/components/BootstrapComponent/Modal.scss";
 import "../styles/VideoPlayer/VideoPlayer.scss";
-import "../styles/Video/Breadcrumb.scss";
+import "../styles/components/BootstrapComponent/Breadcrumb.scss";
 import "../styles/styles.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "swiper/swiper-bundle.min.css";

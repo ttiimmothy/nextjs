@@ -1,4 +1,4 @@
-.modal.fade.login,.modal.show.fade{
+.modal.fade.login,.modal.show.fade,.modal.fade.emoji_number_detail{
   font-size: 14px;
   text-align: center;
   &::before{
@@ -17,9 +17,22 @@
     .modal-dialog{
       margin: 0 auto;
       .modal-content{
-        background-color: #f2f2f2;
         border-radius: 10px;
       }
+    }
+  }
+}
+.modal.fade.login,.modal.show.fade{
+  .modal-dialog{
+    .modal-content{
+      background-color: #f2f2f2;
+    }
+  }
+}
+.modal.fade.emoji_number_detail{
+  .modal-dialog{
+    .modal-content{
+      background-color: #fff;
     }
   }
 }

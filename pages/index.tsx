@@ -11,12 +11,12 @@ import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useRef,useState} from "react";
 import {getHomeDetail} from "./redux/home/thunks";
 import {IRootState} from "./store";
-import {HorizontalScrollHomeCategoryBlock} from "./component/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
-import {HomeCategoryBlock} from "./component/HomeCategoryBlock/HomeCategoryBlock";
-import {VideoBlock} from "./component/VideoBlock/VideoBlock";
-import {ComponentHeader} from "./component/ComponentHeader/ComponentHeader";
-import {Footer} from "./component/Footer/Footer";
-import {Header} from "./component/Header/Header";
+import {HorizontalScrollHomeCategoryBlock} from "./components/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
+import {HomeCategoryBlock} from "./components/HomeCategoryBlock/HomeCategoryBlock";
+import {VideoBlock} from "./components/VideoBlock/VideoBlock";
+import {ComponentHeader} from "./components/ComponentHeader/ComponentHeader";
+import {Footer} from "./components/Footer/Footer";
+import {Header} from "./components/Header/Header";
 
 const Home:NextPage = () => {
   const dispatch = useDispatch();
@@ -111,19 +111,9 @@ const Home:NextPage = () => {
 								<ComponentHeader header="免費任睇"/>
 								<div className={style.video_list}>
 									{
-										videoDetail.filter((video,index) => index < 3)
+										videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12))
 										.map((video) => {
                       // return同括號一定要同一衘
-                      return(
-                        freeContentBlockWidth > 590 ?
-                        <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
-                        <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
-                      )
-                    })
-									}
-									{
-										videoDetail.filter((video,index) => index > 8 && index < 12)
-										.map((video) => {
                       return(
                         freeContentBlockWidth > 590 ?
                         <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
@@ -145,17 +135,7 @@ const Home:NextPage = () => {
 									pagination={{clickable:true}}
 								>
 									{
-										videoDetail.filter((video,index) => index < 3)
-										.map((video) => {
-                      return(
-                        <SwiperSlide key={video.id}>
-                          <VideoBlock video={video} blockPerRow={1}/>
-                        </SwiperSlide>
-										  )
-                    })
-									}
-                  {
-										videoDetail.filter((video,index) => index > 8 && index < 10)
+										videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10))
 										.map((video) => {
                       return(
                         <SwiperSlide key={video.id}>
@@ -178,22 +158,12 @@ const Home:NextPage = () => {
 									pagination={{clickable:true}}
 								>
 									{
-										videoDetail.filter((video,index) => index < 3)
+										videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10))
 										.map((video) =>
 											<SwiperSlide key={video.id}>
 												<VideoBlock video={video} blockPerRow={1}/>
 											</SwiperSlide>
 										)
-									}
-                  {
-										videoDetail.filter((video,index) => index > 8 && index < 10)
-										.map((video) => {
-                      return(
-                        <SwiperSlide key={video.id}>
-                          <VideoBlock video={video} blockPerRow={1}/>
-                        </SwiperSlide>
-										  )
-                    })
 									}
 								</Swiper>
 							</section>
@@ -203,17 +173,7 @@ const Home:NextPage = () => {
 								<ComponentHeader header="最新影片"/>
 								<div className={style.video_list}>
 									{
-										videoDetail.filter((video,index) => index < 3)
-										.map((video) => {
-                      return(
-                        latestContentBlockWidth > 590 ?
-                        <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
-                        <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
-                      )
-                    })
-									}
-									{
-										videoDetail.filter((video,index) => index > 8 && index < 12)
+										videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12))
 										.map((video) => {
                       return(
                         latestContentBlockWidth > 590 ?
@@ -233,13 +193,7 @@ const Home:NextPage = () => {
                 <div className={style.video_list_scroll}>
                   <div className={style.video_list}>
                     {
-                      videoDetail.filter((video,index) => index < 3)
-                      .map((video) =>
-                        <VideoBlock key={video.id} video={video} blockPerRow={1}/>
-                      )
-                    }
-                    {
-                      videoDetail.filter((video,index) => index > 8 && index < 12)
+                      videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12))
                       .map((video) =>
                         <VideoBlock key={video.id} video={video} blockPerRow={1}/>
                       )
@@ -284,25 +238,7 @@ const Home:NextPage = () => {
           <ComponentHeader header="會員專區" color="#fff" padding={0} borderColor="#4d535a"/>
           <div className={style.video_list}>
             {
-              videoDetail.filter((video,index) => index < 3)
-              .map((video) => {
-                return(
-                  <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
-                    <a className={style.video_block}>
-                      <div className={style.image}>
-                        <Image src={video.pic_url} alt="video-detail" layout="fill"/>
-                      </div>
-                      <div className={style.video_description}>
-                        <header className={style.video_title} style={{minHeight:windowDimensions.width < 600 ? 36 : 42,fontSize:windowDimensions.width < 600 ? 12 : 14}}>{video.title}</header>
-                        <div className={style.display_date}>{video.display_date}</div>
-                      </div>
-                    </a>
-                  </Link>
-                )
-              })
-            }
-            {
-              videoDetail.filter((video,index) => index > 8 && index < 10)
+              videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10))
               .map((video) => {
                 return(
                   <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
