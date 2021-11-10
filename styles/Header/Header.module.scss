@@ -88,6 +88,7 @@
         .right_listing{
           .search{
             .show_search,.hide_search{
+              top: 36px;
               left: -230px;
               section.search_section{
                 .search_input{
@@ -147,7 +148,8 @@
             .show_search,.hide_search{
               min-height: 100vh;
               min-width: 100vw;
-              right: 0;
+              top: 32px;
+              right: -52px;
               transition: all 0.2s ease-in-out 0s;
               section.search_section{
                 .search_input{
@@ -458,7 +460,6 @@
             border-radius: 4px;
             box-shadow: rgba(0,33,155,0.12) 0px 0px 6px 2px;
             position: absolute;
-            top: 36px;
             overflow-y: auto;
             z-index: 10;
             section.search_section{

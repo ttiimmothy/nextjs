@@ -26,7 +26,7 @@ $filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) h
 $secondary-text: #65676b;
 .comments_block{
   .comment_article{
-    padding-top: 24px;
+    padding-top: 5px;
     display: flex;
     .comment_with_response{
       .comment{
@@ -36,9 +36,10 @@ $secondary-text: #65676b;
         padding: 4px 8px;
         border-radius: 10px;
         .name{
-          font-size: 16px;
-          font-weight: 500;
-          margin-bottom: 2px;
+          font-weight: 600;
+        }
+        .words{
+          font-size: 11px;
         }
       }
       .response{

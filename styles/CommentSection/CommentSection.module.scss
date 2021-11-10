@@ -1,3 +1,8 @@
+@media screen and (max-width:600px){
+  .comment_section{
+    margin-top: 10px;
+  }
+}
 @media screen and (min-width:1000px){
   .comment_section{
     .written_comment_area{
@@ -42,7 +47,6 @@
           .image_upload{
             height: 22px;
             width: 22px;
-            padding: 2px;
           }
           .submit_button{
             font-size: 12px;
@@ -56,7 +60,6 @@
 $filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) hue-rotate(174deg) brightness(94%) contrast(86%);
 $secondary-text: #65676b;
 .comment_section{
-  margin-bottom: 15px;
   padding: 0 12px;
   header{
     margin-bottom: 20px;
@@ -98,7 +101,11 @@ $secondary-text: #65676b;
     }
   }
   .others_comments_scrollable{
+    padding-top: 19px;
     overflow-x: auto;
+    .others_comments{
+      margin: 0;
+    }
   }
   .more_comments{
     display: flex;

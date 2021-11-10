@@ -2,7 +2,7 @@ $filter-secondary-icon: invert(39%) sepia(21%) saturate(200%) saturate(109.5%) h
 $secondary-text: #65676b;
 .responses_block{
   .comment_article{
-    padding-top: 10px;
+    padding-top: 5px;
     display: flex;
     .icon{
       height: 36px;
@@ -18,9 +18,10 @@ $secondary-text: #65676b;
         padding: 4px 8px;
         border-radius: 10px;
         .name{
-          font-size: 16px;
-          font-weight: 500;
-          margin-bottom: 2px;
+          font-weight: 600;
+        }
+        .words{
+          font-size: 11px;
         }
       }
       .response{

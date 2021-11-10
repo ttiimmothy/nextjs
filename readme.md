@@ -43,6 +43,7 @@ bottom
 left
 right
 inset
+vertical-align
 display
 align-items
 justify-content
@@ -67,6 +68,7 @@ transform
 filter
 clip-path
 pointer-event
+resize
 ```
 
 # packages to install

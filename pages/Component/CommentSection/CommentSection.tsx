@@ -6,7 +6,7 @@ import {CommentsBlock} from "../CommentsBlock/CommentsBlock";
 export function CommentSection(){
   const file = useRef<HTMLInputElement|null>(null);
   const [openMoreComments,setOpenMoreComments] = useState(false);
-  const [allComments,setAllComments] = useState(false);
+  const [allCommentsNumber,setAllCommentsNumber] = useState(2);
 
 	return(
     <div className={styles.comment_section}>
@@ -23,7 +23,7 @@ export function CommentSection(){
           </svg>
         </div>
         <div className={styles.textarea}>
-          <textarea placeholder="發表你的回應" rows={1} className={styles.comment_area}></textarea>
+          <textarea placeholder="發表你的回應" rows={1} className={styles.comment_area}/>
           <div className={styles.image_and_submit}>
             <div className={styles.image_upload}>
               <svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" onClick={() => {
@@ -45,13 +45,15 @@ export function CommentSection(){
         <ul className={styles.others_comments}>
           <CommentsBlock responseNumber={1}/>
           <CommentsBlock responseNumber={1}/>
-          {openMoreComments && <CommentsBlock responseNumber={1}/>}
+          {openMoreComments && allCommentsNumber <= 1 && <CommentsBlock responseNumber={1}/>}
+          {openMoreComments && allCommentsNumber === 0 && <CommentsBlock responseNumber={0}/>}
         </ul>
       </div>
-      {(!openMoreComments || !allComments) &&
+      {(!openMoreComments || allCommentsNumber > 0) &&
         <div className={styles.more_comments}>
           <button className={styles.more_comments_button} onClick={() => {
             setOpenMoreComments(true);
+            setAllCommentsNumber(allCommentsNumber - 1);
           }}>
             <div className={styles.more_comments_button_section}>
               <span className={styles.see_more_comments}>查看更多回應</span>
