@@ -50,10 +50,12 @@ $shadow-inset:rgba(255,255,255,0.5);
           height: 100%;
           color: #6c757d;
           padding: 0 16px;
+          position: relative;
           display: flex;
           align-items: center;
           cursor: pointer;
           word-break: keep-all;
+
         }
         .like,.happy,.sad,.angry{
           display: flex;
@@ -65,10 +67,23 @@ $shadow-inset:rgba(255,255,255,0.5);
             position: relative;
           }
         }
+        .active{
+          color: #db5959;
+          .border_bottom{
+            height: 3px;
+            background-color: #db5959;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+        }
       }
       .more_corner{
+        height: 59px;
         position: relative;
         .more{
+          height: 100%;
           font-weight: 500;
           color: #6c757d;
           padding: 0 16px;
@@ -80,13 +95,51 @@ $shadow-inset:rgba(255,255,255,0.5);
             margin-right: 5px;
           }
         }
+        .active{
+          color: #db5959;
+        }
         .dropdown_menu{
           position: absolute;
-          top: 0;
+          top: 60px;
           left: 0;
           .dropdown_menu_box{
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 12px 28px 0 $shadow-2,0 2px 4px 0 $shadow-1,inset 0 0 0 1px $shadow-inset;
+            .emoji_types{
+              width: 100%;
+              margin-right: 48px;
+              margin-bottom: 0;
+              padding: 8px 0;
+              .emoji_type{
+                font-weight: 500;
+                color: #6c757d;
+                margin: 0 8px;
+                padding: 8px;
+                cursor: pointer;
+                .emoji_type_detail{
+                  display: flex;
+                  align-items: center;
+                  .image{
+                    height: 26px;
+                    width: 26px;
+                    margin-right: 8px;
+                    position: relative;
+                  }
+                  .all,.emoji_count{
+                    min-width: 0;
+                    text-align: left;
+                    flex-grow: 1;
+                  }
+                  .fontawesome_icon{
+                    font-size: 20px;
+                  }
+                }
+              }
+              .active_emoji{
+                color: #db5959;
+              }
+            }
           }
         }
       }

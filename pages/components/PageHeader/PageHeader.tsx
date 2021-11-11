@@ -9,14 +9,12 @@ import React,{useEffect,useState} from "react";
 import {getHeader, getSubCategory} from "../../redux/header/thunks";
 import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
-import {FooterInHeader} from "../FooterInHeader/FooterInHeader";
 
-export function PageHeader(){
+export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React.SetStateAction<boolean>>}){
 	const dispatch = useDispatch();
 	const categories = useSelector((state:IRootState) => state.header.category);
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
 	const [scrollHeight,setScrollHeight] = useState(0);
-  const [toggle,setToggle] = useState(true);
   const [showFullMenu,setShowFullMenu] = useState(false);
   const [search,setSearch] = useState(false);
   const [login,setLogin] = useState(false);
@@ -34,15 +32,15 @@ export function PageHeader(){
 
 	return(
 		<header className={style.page_header}>
-			<div className={`${style.bar} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_scroll : ""} ${search ? style.bar_for_searching : ""}`}>
+			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_scroll : ""} ${search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
             <div className={style.toggler}>
               <button className={style.toggler_button} onClick={() => {
-                setToggle(!toggle);
+                props.openToggle(!props.toggle);
                 setSearch(false);
               }}>
-                <span className={toggle ? style.close_toggler_icon : style.open_toggler_icon}></span>
+                <span className={props.toggle ? style.close_toggler_icon : style.open_toggler_icon}></span>
               </button>
             </div>
             <Link href="/">
@@ -71,7 +69,7 @@ export function PageHeader(){
 							</ul>
 						</nav>
 					</div>
-					{toggle &&
+					{props.toggle &&
             <nav className={style.right_listing}>
               <div className={style.menu}>
                 <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
@@ -127,7 +125,7 @@ export function PageHeader(){
           }
 				</div>
 			</div>
-			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_second_line_scroll : ""} ${search ? style.bar_second_line_for_searching : ""}`}>
+			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_second_line_scroll : ""} ${search ? style.bar_second_line_for_searching : ""}`}>
         <div className={style.category_bar_horizontal_scroll}>
           <nav className={style.category_bar}>
             <ul className={style.category_items}>
@@ -214,47 +212,6 @@ export function PageHeader(){
           </footer>
         </section>
       </div>
-      <nav className={toggle ? style.hidden_menu : style.show_menu}>
-        <div className={style.menu}>
-          <div className={style.login}>
-            <section className={style.login_section}>
-              <button className={style.login_button}>
-                <div className={style.login_button_detail}>
-                  <div className={style.icon}>
-                    <svg viewBox="0 0 48 48">
-                      <g fill="none" fillRule="evenodd">
-                        <circle strokeOpacity=".08" stroke="#000" fill="#8c8c8c" cx="24" cy="24" r="23.5"></circle>
-                        <path d="M24 25.92c5.721 0 11.442.867 11.997 8.37.05.666-.52 1.23-1.198 1.23H13.2c-.677 0-1.247-.564-1.198-1.23.555-7.503 6.276-8.37 11.996-8.37zm0-12.96c3.712 0 6.72 2.9 6.72 6.48 0 3.58-3.008 6.48-6.72 6.48-3.712 0-6.72-2.9-6.72-6.48 0-3.58 3.008-6.48 6.72-6.48z" fill="#fff"></path>
-                      </g>
-                    </svg>
-                  </div>
-                  <div className={style.login_word}>登入 / 註冊</div>
-                </div>
-              </button>
-            </section>
-          </div>
-          <div className={style.category}>
-            <div className={style.category_section}>
-              <ul className={style.category_list}>
-                {
-                  subCategories.map((subCategory) =>{
-                    return(
-                      <li className={style.category_listitem} key={subCategory.subcate_id}>
-                        <div className={style.category_listitem_block}>
-                          <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
-                            <a className={style.category_listitem_link}>{subCategory.name_cn}</a>
-                          </Link>
-                        </div>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-          </div>
-          <FooterInHeader/>
-        </div>
-      </nav>
 	  </header>
 	)
 }

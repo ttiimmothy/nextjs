@@ -1,3 +1,12 @@
+@media screen and (min-width:420px){
+  .login_modal{
+    .login_modal_section{
+      .first_page,.first_login_method,.second_login_method{
+        width: 380px;
+      }
+    }
+  }
+}
 .login_modal{
   text-align: center;
   section.login_modal_section{
@@ -22,7 +31,6 @@
       }
     }
     .first_page{
-      width: 380px;
       .header{
         margin-bottom: 15px;
         .vip{
@@ -65,7 +73,6 @@
       }
     }
     .first_login_method{
-      width: 380px;
       .header{
         color: #adadad;
         margin-bottom: 30px;
@@ -116,7 +123,6 @@
       }
     }
     .second_login_method{
-      width: 380px;
       .header{
         color: #adadad;
         margin-bottom: 30px;

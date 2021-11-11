@@ -1,11 +1,25 @@
-@media (min-width:576px){
+@media screen and (max-width:420px){
+  .modal.fade.login,.modal.show.fade.login{
+    .modal-dialog{
+      width: 85%;
+    }
+  }
+}
+@media screen and (min-width:420px){
+  .modal.fade.login,.modal.show.fade.login{
+    .modal-dialog{
+      width: fit-content;
+    }
+  }
+}
+@media screen and (min-width:576px){
   .modal.fade.show.emoji_number_detail{
     .modal-dialog{
       max-width: 100%;
     }
   }
 }
-@media (max-width:600px){
+@media screen and (max-width:600px){
   .modal.fade.emoji_number_detail,.modal.fade.show.emoji_number_detail{
     overflow-y: hidden;
     transition: none;
@@ -50,8 +64,11 @@
 }
 .modal.fade.login,.modal.show.fade{
   .modal-dialog{
-    .modal-content{
-      background-color: #f2f2f2;
+    .modal-dialog{
+      width: fit-content;
+      .modal-content{
+        background-color: #f2f2f2;
+      }
     }
   }
 }
