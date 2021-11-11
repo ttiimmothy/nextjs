@@ -1,6 +1,31 @@
-.modal.fade.login,.modal.show.fade,.modal.fade.emoji_number_detail{
+@media (min-width:576px){
+  .modal.fade.show.emoji_number_detail{
+    .modal-dialog{
+      max-width: 100%;
+    }
+  }
+}
+@media (max-width:600px){
+  .modal.fade.emoji_number_detail,.modal.fade.show.emoji_number_detail{
+    overflow-y: hidden;
+    transition: none;
+    &::before{
+      margin-right: 0;
+    }
+    .modal-dialog{
+      width: 100%;
+      margin-top: 260px;
+      margin-bottom: 0;
+      .modal-content{
+        border-radius: 20px;
+      }
+    }
+  }
+}
+.modal.show.fade,.modal.fade.login,.modal.fade.emoji_number_detail{
   font-size: 14px;
   text-align: center;
+  z-index: 20;
   &::before{
     content: "";
     height: 100%;
@@ -9,6 +34,7 @@
     vertical-align: middle;
   }
   .modal-dialog{
+    width: fit-content;
     top: -50px;
     display: inline-block;
     vertical-align: middle;
@@ -50,10 +76,4 @@
 }
 .fade.modal-backdrop.show{
   z-index: 18;
-}
-.modal.show.fade{
-  z-index: 20;
-  .modal-dialog{
-    width: fit-content;
-  }
 }

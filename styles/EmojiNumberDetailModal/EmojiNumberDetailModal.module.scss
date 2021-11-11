@@ -1,32 +1,86 @@
+@media screen and (min-width:600px){
+  .emoji_number_detail_modal{
+    width: 500px;
+    box-shadow: rgba(29,29,29,0.4) 0px 0px 20px 2px;
+    header{
+      .close{
+        padding-right: 5px;
+      }
+    }
+    .like_people_scrollable{
+      height: 370px;
+    }
+  }
+}
+@media screen and (max-width:600px){
+  .emoji_number_detail_modal{
+    width: 100%;
+    header{
+      .close{
+        padding-right: 12px;
+      }
+    }
+    .like_people_scrollable{
+      height: calc(100vh - 250px);
+    }
+  }
+}
 .emoji_number_detail_modal{
-  width: 500px;
   header{
     padding: 0 16px;
     border-bottom: solid 1px #e2e2e2;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .emoji_type{
+    .emoji_type_list{
       display: flex;
       align-items: center;
-      .all,.like,.happy,.sad,.angry{
-        color: #6c757d;
-        padding: 16px;
-        cursor: pointer;
-      }
-      .like,.happy,.sad,.angry{
+      ul.emoji_type{
+        height: 59px;
+        font-weight: 500;
+        margin: 0;
         display: flex;
-        align-items: center;
-        .emoji_image{
-          height: 26px;
-          width: 26px;
-          margin-right: 5px;
-          position: relative;
+        flex-wrap: wrap;
+        overflow: hidden;
+        .all,.like,.happy,.sad,.angry{
+          /* height = 100% is the main key */
+          height: 100%;
+          color: #6c757d;
+          padding: 0 16px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          word-break: keep-all;
+        }
+        .like,.happy,.sad,.angry{
+          display: flex;
+          align-items: center;
+          .emoji_image{
+            height: 26px;
+            width: 26px;
+            margin-right: 5px;
+            position: relative;
+          }
+        }
+      }
+      .more_corner{
+        position: relative;
+        .more{
+          font-weight: 500;
+          color: #6c757d;
+          padding: 0 16px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          word-break: keep-all;
+          .text{
+            margin-right: 5px;
+          }
         }
       }
     }
     .close{
-      padding-right: 5px;
+      flex-shrink: 0;
       .close_button{
         height: 20px;
         width: 20px;
@@ -35,6 +89,7 @@
         border: 0px none;
         border-radius: 0;
         box-shadow: none;
+        outline: none;
         svg{
           height: 100%;
           width: 100%;
@@ -42,4 +97,27 @@
       }
     }
   }
+  .like_people_scrollable{
+    overflow-y: auto;
+    .like_people{
+      margin: 11px 0;
+      padding: 0 16px;
+      .person{
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        .icon{
+          height: 45px;
+          width: 45px;
+          margin-right: 10px;
+          flex-shrink: 0;
+        }
+        .name{
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
 }

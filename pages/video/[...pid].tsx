@@ -69,7 +69,9 @@ const Video:NextPage = () => {
         <link rel="icon" href="/swiper_favicon.ico"/>
       </Head>
       <PageHeader/>
-      <div className={styles.video_content}>
+      <div className={styles.video_content} onClick={() => {
+        setOpenEmoji(false);
+      }}>
         <main className={styles.page}>
           <div className={styles.breadcrumb}>
             {pid && videos.filter((video) => video.id === pid[1]).map((video) =>
@@ -243,7 +245,9 @@ const Video:NextPage = () => {
       <div className={styles.bottom_typing_comment}>
         <div className={styles.comment_row}>
           <div className={styles.like_and_comments_count}>
-            <div className={styles.emoji_comments_count}>
+            <div className={styles.emoji_comments_count}onClick={() => {
+              setEmojiNumberDetail(true);
+            }}>
               <div className={styles.emoji_comments}>
                 <div className={`${styles.emoji_comment} ${styles.like_emoji}`}>
                   <Image src={likeCount} alt="like count" layout="fill"/>
