@@ -293,7 +293,7 @@ const Home:NextPage = () => {
                   <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                     <a className={style.video_block}>
                       <div className={style.image}>
-                        <Image src={video.pic_url} alt="video-detail" layout="fill"/>
+                        <Image src={video.pic_url} alt="video detail" layout="fill"/>
                       </div>
                       <div className={style.video_description}>
                         <header className={style.video_title} style={{minHeight:windowDimensions.width < 600 ? 36 : 42,fontSize:windowDimensions.width < 600 ? 12 : 14}}>{video.title}</header>

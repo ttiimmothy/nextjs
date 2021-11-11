@@ -26,10 +26,12 @@ import {VideoPlayer} from "../components/VideoPlayer/VideoPlayer";
 import {PageFooter} from "../components/PageFooter/PageFooter";
 import {CommentSection} from "../components/CommentSection/CommentSection";
 import {VideoPageListBlock} from "../components/VideoPageListBlock/VideoPageListBlock";
-import {VideoPageTrendingVideoSwiperBlock} from "../components/VideoPageTrendingVideoSwiperBlock/VideoPageTrendingVideoSwiperBlock.spec";
+import {VideoPageTrendingVideoSwiperBlock} from "../components/VideoPageTrendingVideoSwiperBlock/VideoPageTrendingVideoSwiperBlock";
 import {VideoPageAdviceVideoBlock} from "../components/VideoPageAdviceVideoBlock/VideoPageAdviceVideoBlock";
 import {EmojiNumberDetailModal} from "../components/EmojiNumberDetailModal/EmojiNumberDetailModal";
 import {PageHeaderMobileMenu} from "../components/PageHeaderMobileMenu/PageHeaderMobileMenu";
+import LikeButtonWithEmojiBox from "../components/LikeButtonWithEmojiBox/LikeButtonWithEmojiBox";
+import ShareButtonWithShareBox from "../components/ShareButtonWithShareBox/ShareButtonWithShareBox";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -105,23 +107,29 @@ const Video:NextPage = () => {
                       )
                     }
                     <div className={styles.top_buttons}>
-                      <button className={styles.like_button}>
-                        <FontAwesomeIcon icon={["far","thumbs-up"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                        <div className={styles.number}>171</div>
-                      </button>
+                      <LikeButtonWithEmojiBox/>
                       <button className={styles.comment_button}>
                         <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={styles.fontawesome_icon}/>
                         <div className={styles.number}>10</div>
                       </button>
-                      <button className={styles.share_button}>
-                        <FontAwesomeIcon icon={["far","share-square"]} height={14} width={14} className={styles.fontawesome_icon}/>
-                        <div className={styles.share}>分享</div>
-                      </button>
-                      <button className={styles.more_options_button}>
-                        <div className={styles.font_awesome}>
-                          <FontAwesomeIcon icon={"caret-down"} height={14} width={14} className={styles.fontawesome_icon}/>
+                      <ShareButtonWithShareBox/>
+                      <div className={styles.more_options_button_with_more_box}>
+                        <button className={styles.more_options_button}>
+                          <div className={styles.font_awesome}>
+                            <FontAwesomeIcon icon={"caret-down"} height={14} width={14} className={styles.fontawesome_icon}/>
+                          </div>
+                        </button>
+                        <div className={styles.more_box}>
+                          <div className={styles.more_options_box}>
+                            <div className={styles.word_size}>
+                              <div className={styles.size}>字型</div>
+                              <div className={styles.small_size}>A</div>
+                              <div className={styles.medium_size}>A</div>
+                              <div className={styles.large_size}>A</div>
+                            </div>
+                          </div>
                         </div>
-                      </button>
+                      </div>
                     </div>
                   </header>
                   <div className={styles.video_player}>

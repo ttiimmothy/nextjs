@@ -9,7 +9,7 @@ export function VideoPageAdviceVideoBlock(props:{video:VideoDetail}){
       <Link href={`/video/${props.video.subcate_name.split("・").join("")}/${props.video.id}/${props.video.title}`}>
         <a className={styles.video_block}>
           <div className={styles.image}>
-            <Image src={props.video.pic_url} alt="video-detail" layout="fill"/>
+            <Image src={props.video.pic_url} alt="video detail" layout="fill"/>
           </div>
           <div className={styles.video_description}>
             <header className={styles.video_title}>{props.video.title}</header>

@@ -93,6 +93,7 @@ yarn add react-redux-loading-bar
 yarn add redux-logger @types/redux-logger
 yarn add @fortawesome/free-regular-svg-icons
 yarn add @fortawesome/free-solid-svg-icons
+yarn add react-onclickoutside @types/react-onclickoutside
 ```
 
 # import order
