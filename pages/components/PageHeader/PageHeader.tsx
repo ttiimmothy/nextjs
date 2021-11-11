@@ -10,7 +10,7 @@ import {getHeader, getSubCategory} from "../../redux/header/thunks";
 import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
 
-export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React.SetStateAction<boolean>>}){
+export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React.SetStateAction<boolean>>,search:boolean,openSearch:React.Dispatch<React.SetStateAction<boolean>>}){
 	const dispatch = useDispatch();
 	const categories = useSelector((state:IRootState) => state.header.category);
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
@@ -32,27 +32,27 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
 
 	return(
 		<header className={style.page_header}>
-			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_scroll : ""} ${search ? style.bar_for_searching : ""}`}>
+			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_scroll : ""} ${props.search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
             <div className={style.toggler}>
               <button className={style.toggler_button} onClick={() => {
                 props.openToggle(!props.toggle);
-                setSearch(false);
+                props.openSearch(false);
               }}>
                 <span className={props.toggle ? style.close_toggler_icon : style.open_toggler_icon}></span>
               </button>
             </div>
             <Link href="/">
-              <a className={`${style.navbar_logo} ${scrollHeight > 10 || showFullMenu || search ? style.navbar_small_logo : ""}`}>
+              <a className={`${style.navbar_logo} ${scrollHeight > 10 || showFullMenu || props.search ? style.navbar_small_logo : ""}`}>
                 <div className={style.header_icon}>
                   <Image src={headerIcon} alt="header-icon"/>
                 </div>
               </a>
             </Link>
-            <div className={scrollHeight > 10 || showFullMenu || search ? style.blank_scroll : style.blank}></div>
+            <div className={scrollHeight > 10 || showFullMenu || props.search ? style.blank_scroll : style.blank}></div>
 						<nav className={style.category_bar}>
-							<ul className={`${style.category_items} ${scrollHeight > 10 || showFullMenu || search ? style.category_items_scroll : ""}`}>
+							<ul className={`${style.category_items} ${scrollHeight > 10 || showFullMenu || props.search ? style.category_items_scroll : ""}`}>
 								{
 									categories.map((category,index) =>
 										(
@@ -74,14 +74,14 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
               <div className={style.menu}>
                 <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
                   setShowFullMenu(!showFullMenu);
-                  setSearch(false);
+                  props.openSearch(false);
                 }}/>
               </div>
               <div className={style.search}>
-                <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${search ? style.open_search_panel : style.close_search_panel}`} height={18} width={18} onClick={() => {
-                  setSearch(!search);
+                <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${props.search ? style.open_search_panel : style.close_search_panel}`} height={18} width={18} onClick={() => {
+                  props.openSearch(!props.search);
                 }}/>
-                <div className={search ? style.show_search : style.hide_search}>
+                <div className={props.search ? style.show_search : style.hide_search}>
                   <section className={style.search_section}>
                     <div className={style.search_input}>
                       <input className={style.input} placeholder="搜索"/>
@@ -113,7 +113,7 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
                 <button className={style.login_button} onClick={() => {
                   setLogin(true);
                   setShowFullMenu(false);
-                  setSearch(false);
+                  props.openSearch(false);
                 }}>
                   登入
                 </button>
@@ -125,7 +125,7 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
           }
 				</div>
 			</div>
-			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_second_line_scroll : ""} ${search ? style.bar_second_line_for_searching : ""}`}>
+			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_second_line_scroll : ""} ${props.search ? style.bar_second_line_for_searching : ""}`}>
         <div className={style.category_bar_horizontal_scroll}>
           <nav className={style.category_bar}>
             <ul className={style.category_items}>
