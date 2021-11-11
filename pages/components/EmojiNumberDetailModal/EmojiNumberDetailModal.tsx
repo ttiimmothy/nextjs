@@ -64,6 +64,9 @@ export function EmojiNumberDetailModal(props:{closeButton:React.Dispatch<React.S
                 <div className={styles.text}>更多</div>
                 <FontAwesomeIcon icon="caret-down" className={styles.fontawesome_icon}/>
               </div>
+              <div className={styles.dropdown_menu}>
+                <div className={styles.dropdown_menu_box}></div>
+              </div>
             </div>
           }
         </div>
