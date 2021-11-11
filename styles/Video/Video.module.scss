@@ -91,10 +91,22 @@
           .main_content{
             .video_player_with_description{
               .video_header{
-                flex-direction: column;
-                .video_information{
-                  .video_date{
-                    margin-bottom: 5px;
+                align-items: center;
+                justify-content: space-between;
+                .top_buttons{
+                  display: flex;
+                  align-items: center;
+                  .like_button,.comment_button{
+                    .fontawesome_icon{
+                      height: 14px;
+                      width: 14px;
+                    }
+                  }
+                  .share_button{
+                    .fontawesome_icon{
+                      height: 14px;
+                      width: 14px;
+                    }
                   }
                 }
               }
@@ -134,6 +146,9 @@
             .video_player_with_description{
               .video_header{
                 padding: 0 6px;
+                .top_buttons{
+                  display: none;
+                }
               }
             }
             .tag_list{
@@ -145,105 +160,6 @@
           }
           .sidebar{
             display: none;
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (min-width:700px) and (max-width:900px){
-  .video.pid{
-    .video_content{
-      .page{
-        .body{
-          .main_content{
-            .video_player_with_description{
-              .video_header{
-                .top_buttons{
-                  .like_button,.comment_button{
-                    .number{
-                      display: none;
-                    }
-                  }
-                  .share_button{
-                    .share{
-                      display: none;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (min-width:700px){
-  .video.pid{
-    .video_content{
-      .page{
-        .body{
-          .main_content{
-            .video_player_with_description{
-              .video_header{
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                .video_information{
-                  .video_date{
-                    margin-bottom: 0;
-                  }
-                }
-                .top_buttons{
-                  .like_button,.comment_button{
-                    padding: 6px;
-                    border-radius: 50%;
-                    .fontawesome_icon{
-                      height: 14px;
-                      width: 14px;
-                      margin: 0;
-                    }
-                  }
-                  .share_button{
-                    padding: 6px;
-                    border-radius: 50%;
-                    .fontawesome_icon{
-                      height: 14px;
-                      width: 14px;
-                      margin: 0;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (max-width:700px){
-  .video.pid{
-    .video_content{
-      .page{
-        .body{
-          .main_content{
-            .video_player_with_description{
-              .video_header{
-                .top_buttons{
-                  .like_button,.comment_button,.share_button{
-                    height: 29px;
-                    font-size: 12px;
-                    padding: 3px 9px;
-                    border-radius: 20px;
-                    .fontawesome_icon{
-                      margin-right: 5px;
-                    }
-                  }
-                }
-              }
-            }
           }
         }
       }
@@ -264,6 +180,38 @@
                     border-radius: 20px;
                     .fontawesome_icon{
                       margin-right: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:900px){
+  .video.pid{
+    .video_content{
+      .page{
+        .body{
+          .main_content{
+            .video_player_with_description{
+              .video_header{
+                .top_buttons{
+                  .like_button,.comment_button{
+                    padding: 6px;
+                    border-radius: 50%;
+                    .number{
+                      display: none;
+                    }
+                  }
+                  .share_button{
+                    padding: 6px;
+                    border-radius: 50%;
+                    .share{
+                      display: none;
                     }
                   }
                 }
@@ -315,8 +263,6 @@
                 }
               }
               .top_buttons{
-                display: flex;
-                align-items: center;
                 .like_button,.comment_button,.share_button{
                   background-color: #fff;
                   color: rgba(0,0,0,0.78);

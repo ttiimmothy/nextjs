@@ -147,6 +147,60 @@
 						}
 					}
 				}
+        .free_content_mobile{
+					background-color: #fff;
+					margin-bottom: 10px;
+          padding-bottom: 8px;
+          .free_content_mobile_header{
+            color : #db5959;
+            margin-bottom: 5px;
+            padding: 10px 10px 5px 10px;
+            position: relative;
+            h2{
+              font-size: 14px;
+              font-weight: 600;
+              margin: 0;
+            }
+            .border_line{
+              height: 1px;
+              background-color: #f2f2f2;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+            }
+          }
+          .video_list{
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .more_button{
+            color: rgba(0,0,0,0.78);
+            margin: 0 16px;
+            .more_button_section{
+              padding-bottom: 8px;
+              .see_more{
+                width: 100%;
+                background-color: transparent;
+                padding: 4px 0;
+                border: solid 1px #adadad;
+                border-radius: 4px;
+                outline: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .more{
+                  padding-right: 5px;
+                }
+                .fontawesome_icon{
+                  font-size: 12px;
+                  color: #adadad;
+                }
+              }
+            }
+          }
+        }
 				.trending_content,.advice_content{
 					background-color: #fff;
 					margin-bottom: 10px;
@@ -162,6 +216,60 @@
 						}
 					}
 				}
+        .latest_content_mobile{
+					background-color: #fff;
+					margin-bottom: 10px;
+          padding-bottom: 8px;
+          .latest_content_mobile_header{
+            color : #db5959;
+            margin-bottom: 5px;
+            padding: 10px 10px 5px 10px;
+            position: relative;
+            h2{
+              font-size: 14px;
+              font-weight: 600;
+              margin: 0;
+            }
+            .border_line{
+              height: 1px;
+              background-color: #f2f2f2;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+            }
+          }
+          .video_list{
+            margin-bottom: 10px;
+            display: flex;
+            flex-wrap: wrap;
+          }
+          .more_button{
+            color: rgba(0,0,0,0.78);
+            margin: 0 16px;
+            .more_button_section{
+              padding-bottom: 8px;
+              .see_more{
+                width: 100%;
+                background-color: transparent;
+                padding: 4px 0;
+                border: solid 1px #adadad;
+                border-radius: 4px;
+                outline: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .more{
+                  padding-right: 5px;
+                }
+                .fontawesome_icon{
+                  font-size: 12px;
+                  color: #adadad;
+                }
+              }
+            }
+          }
+        }
 			}
       .sidebar{
         .latest_content{

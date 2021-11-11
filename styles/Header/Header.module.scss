@@ -603,11 +603,11 @@
 	}
   .bar_second_line_for_searching{
     background-color: #f5f5f5;
+    .category_bar_horizontal_scroll,.weather_category_bar{
+      display: none;
+    }
     &::after{
       box-shadow: none;
-    }
-    .weather_category_bar{
-      display: none;
     }
   }
   .full_menu,.hide_full_menu{

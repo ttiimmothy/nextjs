@@ -35,7 +35,7 @@ export function Header(){
 
 	return(
 		<header className={style.header}>
-			<div className={`${style.bar} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_scroll : ""} ${search ? style.bar_for_searching : ""}`}>
+			<div className={`${style.bar} ${scrollHeight > 10 || !toggle ? style.bar_scroll : ""} ${showFullMenu || search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
             <div className={style.toggler}>
@@ -132,7 +132,7 @@ export function Header(){
           }
 				</div>
 			</div>
-			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !toggle || showFullMenu ? style.bar_second_line_scroll : ""} ${search ? style.bar_second_line_for_searching : ""}`}>
+			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !toggle ? style.bar_second_line_scroll : ""} ${showFullMenu || search ? style.bar_second_line_for_searching : ""}`}>
 				<div className={style.weather_category_bar}>
 					<div className={style.weather}>2021-09-08 33℃ 58%</div>
 					<Image src={weather} alt="icon" height={35} width={35}/>

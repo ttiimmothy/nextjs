@@ -16,7 +16,6 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
 	const [scrollHeight,setScrollHeight] = useState(0);
   const [showFullMenu,setShowFullMenu] = useState(false);
-  const [search,setSearch] = useState(false);
   const [login,setLogin] = useState(false);
 	useEffect(() => {
 		dispatch(getHeader());
@@ -32,7 +31,7 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
 
 	return(
 		<header className={style.page_header}>
-			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_scroll : ""} ${props.search ? style.bar_for_searching : ""}`}>
+			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle ? style.bar_scroll : ""} ${showFullMenu || props.search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
             <div className={style.toggler}>
@@ -125,7 +124,7 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
           }
 				</div>
 			</div>
-			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle || showFullMenu ? style.bar_second_line_scroll : ""} ${props.search ? style.bar_second_line_for_searching : ""}`}>
+			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle? style.bar_second_line_scroll : ""} ${showFullMenu || props.search ? style.bar_second_line_for_searching : ""}`}>
         <div className={style.category_bar_horizontal_scroll}>
           <nav className={style.category_bar}>
             <ul className={style.category_items}>

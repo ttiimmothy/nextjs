@@ -577,6 +577,9 @@
 	}
   .bar_second_line_for_searching{
     background-color: #f5f5f5;
+    .category_bar_horizontal_scroll{
+      display: none;
+    }
     &::after{
       box-shadow: none;
     }
