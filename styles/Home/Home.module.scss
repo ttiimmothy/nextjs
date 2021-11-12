@@ -12,6 +12,32 @@
     margin: 0 auto;
   }
 }
+@media screen and (min-width:450px){
+  .home.index{
+    .page{
+      .body{
+        .main_content{
+          .free_content_mobile,.latest_content_mobile{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:450px){
+  .home.index{
+    .page{
+      .body{
+        .main_content{
+          .free_content,.latest_content{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
 @media screen and (min-width:600px){
   .home.index{
     .upwards_button{

@@ -51,8 +51,6 @@
           .main_content{
             .video_player_with_description{
               .video_header{
-                align-items: center;
-                justify-content: space-between;
                 .top_buttons{
                   display: flex;
                   align-items: center;
@@ -114,6 +112,45 @@
           }
           .sidebar{
             display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (min-width:800px){
+  .video.pid{
+    .video_content{
+      .page{
+        .body{
+          .main_content{
+            .video_player_with_description{
+              .video_header{
+                align-items: flex-end;
+                justify-content: space-between;
+                flex-direction: row;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:800px){
+  .video.pid{
+    .video_content{
+      .page{
+        .body{
+          .main_content{
+            .video_player_with_description{
+              .video_header{
+                flex-direction: column;
+                .top_buttons{
+                  margin-top: 10px;
+                }
+              }
+            }
           }
         }
       }
@@ -199,7 +236,13 @@
               display: flex;
               .video_information{
                 max-width: 50%;
+                .video_subcategory{
+                  font-weight: 600;
+                  color: #adadad;
+                  padding-bottom: 12px;
+                }
                 .video_title{
+                  font-size: 20px;
                   font-weight: 600;
                   color: #db5959;
                   word-break: keep-all;
@@ -231,6 +274,12 @@
               padding: 10px 15px;
               border: solid 1px rgba(0,0,0,0.12);
               border-radius: 2px;
+            }
+            .small_word{
+              font-size: 10px;
+            }
+            .large_word{
+              font-size: 18px;
             }
           }
           .tag_list{

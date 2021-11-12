@@ -1,4 +1,5 @@
 import styles from "../../../styles/PageHeaderMobileMenu/PageHeaderMobileMenu.module.scss";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import {useSelector} from "react-redux";
 import React from "react";
@@ -12,6 +13,12 @@ export function PageHeaderMobileMenu(props:{toggle:boolean}){
     <nav className={styles.page_header_mobile_menu}>
       <div className={props.toggle ? styles.hidden_menu : styles.show_menu}>
         <div className={styles.menu}>
+          <div className={styles.search}>
+            <div className={styles.search_input_area}>
+              <input className={styles.input_area} placeholder="搜索"/>
+            </div>
+            <FontAwesomeIcon icon="search" height={24} width={24} className={styles.fontawesome_icon}/>
+          </div>
           <div className={styles.login}>
             <section className={styles.login_section}>
               <button className={styles.login_button}>

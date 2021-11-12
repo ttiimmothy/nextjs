@@ -3,7 +3,16 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import onClickOutside from "react-onclickoutside";
 import {useState} from "react";
 
-const MoreOptionsButtonWithMoreBox = () => {
+const MoreOptionsButtonWithMoreBox = (
+  props:{
+    smallWord:boolean,
+    mediumWord:boolean,
+    largeWord:boolean,
+    setSmallWord:React.Dispatch<React.SetStateAction<boolean>>,
+    setMediumWord:React.Dispatch<React.SetStateAction<boolean>>,
+    setLargeWord:React.Dispatch<React.SetStateAction<boolean>>,
+  }
+) => {
   const [wordSize,setWordSize] = useState(false);
   (MoreOptionsButtonWithMoreBox as any).handleClickOutside = () => setWordSize(false);
 
@@ -21,9 +30,21 @@ const MoreOptionsButtonWithMoreBox = () => {
           <div className={styles.more_options_box}>
             <div className={styles.word_size}>
               <div className={styles.size}>字型</div>
-              <div className={styles.small_size}>A</div>
-              <div className={styles.medium_size}>A</div>
-              <div className={styles.large_size}>A</div>
+              <div className={`${styles.small_size} ${props.smallWord ? styles.active_size : ""}`} onClick={() => {
+                props.setSmallWord(true);
+                props.setMediumWord(false);
+                props.setLargeWord(false);
+              }}>A</div>
+              <div className={`${styles.medium_size} ${props.mediumWord ? styles.active_size : ""}`} onClick={() => {
+                props.setSmallWord(false);
+                props.setMediumWord(true);
+                props.setLargeWord(false);
+              }}>A</div>
+              <div className={`${styles.large_size} ${props.largeWord ? styles.active_size : ""}`} onClick={() => {
+                props.setSmallWord(false);
+                props.setMediumWord(false);
+                props.setLargeWord(true);
+              }}>A</div>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";
 import {Breadcrumb,Modal} from "react-bootstrap";
-import React,{useEffect,useState} from "react";
+import React,{useEffect,useRef,useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
 import {getVideo} from "../redux/video/thunks";
 import {getHomeDetail} from "../redux/home/thunks";
@@ -45,6 +45,15 @@ const Video:NextPage = () => {
   const [emojiNumberDetail,setEmojiNumberDetail] = useState(false);
   const [toggle,setToggle] = useState(true);
   const [search,setSearch] = useState(false);
+  const [smallWord,setSmallWord] = useState(false);
+  const [mediumWord,setMediumWord] = useState(true);
+  const [largeWord,setLargeWord] = useState(false);
+	const [scrollHeight,setScrollHeight] = useState(0);
+  const displayDateOffset = useRef<any>(null);
+  console.log(displayDateOffset.current);
+  if(displayDateOffset.current){
+    console.log(displayDateOffset.current.getBoundingClientRect());
+  }
   let imaOptions = {
 		adTagUrl:process.env.VOD_PREROLL,
 		adLabel:"",
@@ -66,6 +75,13 @@ const Video:NextPage = () => {
   useEffect(() => {
     dispatch(getHomeDetail());
   },[dispatch])
+  useEffect(() => {
+		function updateScrollHeight(){
+			setScrollHeight(window.pageYOffset);
+		}
+		window.addEventListener("scroll",updateScrollHeight);
+		return () => window.removeEventListener("scroll",updateScrollHeight);
+	},[scrollHeight])
 
 	return(
     <div className={`${style.App} ${styles.video} ${styles.pid}`}>
@@ -102,8 +118,9 @@ const Video:NextPage = () => {
                     {
                       videos.filter((video) => video.id === pid[1]).map((video) =>
                         <div className={styles.video_information} key={video.id}>
+                          <div className={styles.video_subcategory}>{video.subcate_name}</div>
                           <div className={styles.video_title}>{video.title}</div>
-                          <div className={styles.video_date}>{video.updated_at}</div>
+                          <div className={styles.video_date} ref={displayDateOffset}>{video.updated_at}</div>
                         </div>
                       )
                     }
@@ -114,13 +131,13 @@ const Video:NextPage = () => {
                         <div className={styles.number}>10</div>
                       </button>
                       <ShareButtonWithShareBox/>
-                      <MoreOptionsButtonWithMoreBox/>
+                      <MoreOptionsButtonWithMoreBox smallWord={smallWord} mediumWord={mediumWord} largeWord={largeWord} setSmallWord={setSmallWord} setMediumWord={setMediumWord} setLargeWord={setLargeWord}/>
                     </div>
                   </header>
                   <div className={styles.video_player}>
                     {videoUrl && <VideoPlayer options={videoJsOptions}/>}
                   </div>
-                  <div className={styles.video_description}>
+                  <div className={`${styles.video_description} ${smallWord ? styles.small_word : ""} ${largeWord ? styles.large_word : ""}`}>
                     {videos.filter((video) => video.id === pid[1]).map((video) =>
                       <div key={video.id}>{video.desc}</div>
                     )}

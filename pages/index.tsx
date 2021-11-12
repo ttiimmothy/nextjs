@@ -111,46 +111,43 @@ const Home:NextPage = () => {
 								)
 							}
 						</Carousel>
-						{windowDimensions.width > 450 ?
-              <div ref={freeContentBlock} className={style.free_content}>
-                <section className={style.free_content_section}>
-                  <ComponentHeader header="免費任睇"/>
-                  <div className={style.video_list}>
-                    {
-                      videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12))
-                      .map((video) => {
-                        // return同括號一定要同一衘
-                        return(
-                          freeContentBlockWidth > 590 ?
-                          <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
-                          <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
-                        )
-                      })
-                    }
-                  </div>
+            <div ref={freeContentBlock} className={style.free_content}>
+              <section className={style.free_content_section}>
+                <ComponentHeader header="免費任睇"/>
+                <div className={style.video_list}>
+                  {
+                    videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12))
+                    .map((video) => {
+                      // return同括號一定要同一衘
+                      return(
+                        freeContentBlockWidth > 590 ?
+                        <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
+                        <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
+                      )
+                    })
+                  }
+                </div>
+              </section>
+            </div>
+            <div className={style.free_content_mobile}>
+              <header className={style.free_content_mobile_header}>
+                <h2>免費任睇</h2>
+                <div className={style.border_line}/>
+              </header>
+              <div className={style.video_list}>
+                {videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
+                  <HomeFullScreenVideoBlock video={video} key={video.id}/>
+                )}
+              </div>
+              <div className={style.more_button}>
+                <section className={style.more_button_section}>
+                  <button className={style.see_more}>
+                    <div className={style.more}>更多</div>
+                    <FontAwesomeIcon icon="chevron-down" className={style.fontawesome_icon} height={12} width={12}/>
+                  </button>
                 </section>
               </div>
-              :
-              <div className={style.free_content_mobile}>
-                <header className={style.free_content_mobile_header}>
-                  <h2>免費任睇</h2>
-                  <div className={style.border_line}/>
-                </header>
-                <div className={style.video_list}>
-                  {videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
-                    <HomeFullScreenVideoBlock video={video} key={video.id}/>
-                  )}
-                </div>
-                <div className={style.more_button}>
-                  <section className={style.more_button_section}>
-                    <button className={style.see_more}>
-                      <div className={style.more}>更多</div>
-                      <FontAwesomeIcon icon="chevron-down" className={style.fontawesome_icon} height={12} width={12}/>
-                    </button>
-                  </section>
-                </div>
-              </div>
-            }
+            </div>
 						<div className={style.trending_content}>
 							<section className={style.trending_content_section}>
 								<ComponentHeader header="熱門影片"/>
@@ -195,45 +192,42 @@ const Home:NextPage = () => {
 								</Swiper>
 							</section>
 						</div>
-						{windowDimensions.width > 450 ?
-              <div ref={latestContentBlock} className={style.latest_content}>
-                <section className={style.latest_content_section}>
-                  <ComponentHeader header="最新影片"/>
-                  <div className={style.video_list}>
-                    {
-                      videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12))
-                      .map((video) => {
-                        return(
-                          latestContentBlockWidth > 590 ?
-                          <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
-                          <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
-                        )
-                      })
-                    }
-                  </div>
+            <div ref={latestContentBlock} className={style.latest_content}>
+              <section className={style.latest_content_section}>
+                <ComponentHeader header="最新影片"/>
+                <div className={style.video_list}>
+                  {
+                    videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12))
+                    .map((video) => {
+                      return(
+                        latestContentBlockWidth > 590 ?
+                        <VideoBlock key={video.id} video={video} blockPerRow={3} titleHeight={40}/> :
+                        <VideoBlock key={video.id} video={video} blockPerRow={2} titleHeight={40}/>
+                      )
+                    })
+                  }
+                </div>
+              </section>
+            </div>
+            <div className={style.latest_content_mobile}>
+              <header className={style.latest_content_mobile_header}>
+                <h2>最新影片</h2>
+                <div className={style.border_line}/>
+              </header>
+              <div className={style.video_list}>
+                {videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
+                  <HomeFullScreenVideoBlock video={video} key={video.id}/>
+                )}
+              </div>
+              <div className={style.more_button}>
+                <section className={style.more_button_section}>
+                  <button className={style.see_more}>
+                    <div className={style.more}>更多</div>
+                    <FontAwesomeIcon icon="chevron-down" className={style.fontawesome_icon} height={12} width={12}/>
+                  </button>
                 </section>
               </div>
-              :
-              <div className={style.latest_content_mobile}>
-                <header className={style.latest_content_mobile_header}>
-                  <h2>最新影片</h2>
-                  <div className={style.border_line}/>
-                </header>
-                <div className={style.video_list}>
-                  {videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
-                    <HomeFullScreenVideoBlock video={video} key={video.id}/>
-                  )}
-                </div>
-                <div className={style.more_button}>
-                  <section className={style.more_button_section}>
-                    <button className={style.see_more}>
-                      <div className={style.more}>更多</div>
-                      <FontAwesomeIcon icon="chevron-down" className={style.fontawesome_icon} height={12} width={12}/>
-                    </button>
-                  </section>
-                </div>
-              </div>
-            }
+            </div>
 					</div>
 					<aside className={style.sidebar}>
 						<div className={style.latest_content}>

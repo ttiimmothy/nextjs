@@ -8,6 +8,20 @@
     }
   }
 }
+@media screen and (min-width:800px){
+  .like_button_with_emoji_box{
+    .absolute_choose_emoji{
+      left: -162px;
+    }
+  }
+}
+@media screen and (max-width:800px){
+  .like_button_with_emoji_box{
+    .absolute_choose_emoji{
+      left: -20px;
+    }
+  }
+}
 @media screen and (min-width:900px){
   .like_button_with_emoji_box{
     .like_button{
@@ -44,7 +58,6 @@
   .absolute_choose_emoji{
     position: absolute;
     top: 35px;
-    left: -162px;
     z-index: 10;
     .choose_emoji{
       background-color: rgba(255,255,255,0.87);

@@ -92,6 +92,7 @@ export function Header(){
                   <section className={style.search_section}>
                     <div className={style.search_input}>
                       <input className={style.input} placeholder="搜索"/>
+                      <FontAwesomeIcon icon="search" height={24} width={24} className={style.fontawesome_icon}/>
                     </div>
                     <div className={style.tag_list}>
                         <div className={style.tag_list_header}>熱門搜索</div>
