@@ -61,10 +61,6 @@
                     }
                   }
                 }
-                .hide_top_buttons{
-                  opacity: 0;
-                  visibility: hidden;
-                }
               }
             }
             .emoji_comment_section{
@@ -102,7 +98,7 @@
             .video_player_with_description{
               .video_header{
                 padding: 0 6px;
-                .top_buttons{
+                .hide_top_buttons,.top_buttons{
                   display: none;
                 }
               }
@@ -133,6 +129,9 @@
                 align-items: flex-end;
                 justify-content: space-between;
                 flex-direction: row;
+                .video_information{
+                  max-width: 50%;
+                }
               }
             }
           }
@@ -150,7 +149,7 @@
             .video_player_with_description{
               .video_header{
                 flex-direction: column;
-                .top_buttons{
+                .hide_top_buttons,.top_buttons{
                   margin-top: 10px;
                 }
               }
@@ -169,7 +168,7 @@
           .main_content{
             .video_player_with_description{
               .video_header{
-                .top_buttons{
+                .hide_top_buttons,.top_buttons{
                   .comment_button{
                     padding: 3px 9px;
                     border-radius: 20px;
@@ -194,7 +193,7 @@
           .main_content{
             .video_player_with_description{
               .video_header{
-                .top_buttons{
+                .hide_top_buttons,.top_buttons{
                   .comment_button{
                     padding: 6px;
                     border-radius: 50%;
@@ -239,7 +238,6 @@
               margin-bottom: 15px;
               display: flex;
               .video_information{
-                max-width: 50%;
                 .video_subcategory{
                   font-weight: 600;
                   color: #adadad;
@@ -256,7 +254,7 @@
                   color: #adadad;
                 }
               }
-              .top_buttons{
+              .hide_top_buttons,.top_buttons{
                 .comment_button{
                   background-color: #fff;
                   color: rgba(0,0,0,0.78);
@@ -266,6 +264,10 @@
                   display: flex;
                   align-items: center;
                 }
+              }
+              .hide_top_buttons{
+                opacity: 0;
+                visibility: hidden;
               }
             }
             .video_player{

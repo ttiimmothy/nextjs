@@ -8,14 +8,14 @@ import Image from "next/image";
 import onClickOutside from "react-onclickoutside";
 import {useEffect,useState} from "react";
 
-const LikeButtonWithEmojiBox = (props:{topButtonsOffset:number}) => {
+const LikeButtonWithEmojiBox = (props:{displayDateOffset:number,windowWidth:number}) => {
   const [topEmojiBox,setTopEmojiBox] = useState(false);
   (LikeButtonWithEmojiBox as any).handleClickOutside = () => setTopEmojiBox(false);
   useEffect(() => {
-    if(props.topButtonsOffset < 50){
+    if((props.displayDateOffset < 65 && props.windowWidth < 700) || (props.displayDateOffset < 15 && props.windowWidth >= 700)){
       setTopEmojiBox(false);
     }
-  },[props.topButtonsOffset])
+  },[props.displayDateOffset,props.windowWidth])
 
   return(
     <div className={styles.like_button_with_emoji_box}>

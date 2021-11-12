@@ -13,20 +13,23 @@ import {LoginModal} from "../LoginModal/LoginModal";
 import PageHeaderLikeButtonWithEmojiBox from "../PageHeaderLikeButtonWithEmojiBox/PageHeaderLikeButtonWithEmojiBox";
 import PageHeaderShareButtonWithShareBox from "../PageHeaderShareButtonWithShareBox/PageHeaderShareButtonWithShareBox";
 import PageHeaderMoreOptionsButtonWithMoreBox from "../PageHeaderMoreOptionsButtonWithMoreBox/PageHeaderMoreOptionsButtonWithMoreBox";
+import PageHeaderMobileViewMoreOptionsButtonWithMoreBox from "../PageHeaderMobileViewMoreOptionsButtonWithMoreBox/PageHeaderMobileViewMoreOptionsButtonWithMoreBox";
 
 export function PageHeader(
   props:{
     toggle:boolean,
     openToggle:React.Dispatch<React.SetStateAction<boolean>>,
     search:boolean,openSearch:React.Dispatch<React.SetStateAction<boolean>>,
-    topButtonsOffset:number,
+    displayDateOffset:number,
+    displayDateOffsetForPageHeaderTopButtons:number,
     smallWord:boolean,
     mediumWord:boolean,
     largeWord:boolean,
     setSmallWord:React.Dispatch<React.SetStateAction<boolean>>,
     setMediumWord:React.Dispatch<React.SetStateAction<boolean>>,
     setLargeWord:React.Dispatch<React.SetStateAction<boolean>>,
-    video:VideoDetail|null
+    video:VideoDetail|null,
+    windowWidth:number
   }
 ){
 	const dispatch = useDispatch();
@@ -35,6 +38,7 @@ export function PageHeader(
 	const [scrollHeight,setScrollHeight] = useState(0);
   const [showFullMenu,setShowFullMenu] = useState(false);
   const [login,setLogin] = useState(false);
+  const [wordSize,setWordSize] = useState(false);
 	useEffect(() => {
 		dispatch(getHeader());
     dispatch(getSubCategory());
@@ -49,7 +53,7 @@ export function PageHeader(
 
 	return(
 		<header className={style.page_header}>
-			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle ? style.bar_scroll : ""} ${showFullMenu || props.search ? style.bar_for_searching : ""}`}>
+			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle ? style.bar_scroll : ""} ${showFullMenu || props.search || wordSize ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
             <div className={style.toggler}>
@@ -67,7 +71,7 @@ export function PageHeader(
                 </div>
               </a>
             </Link>
-            <div className={scrollHeight > 10 || showFullMenu || props.search ? style.blank_scroll : style.blank}></div>
+            <div className={scrollHeight > 10 || showFullMenu || props.search ? style.blank_scroll : style.blank}/>
 						<nav className={style.category_bar}>
 							<ul className={`${style.category_items} ${scrollHeight > 10 || showFullMenu || props.search ? style.category_items_scroll : ""}`}>
 								{
@@ -86,64 +90,80 @@ export function PageHeader(
 							</ul>
 						</nav>
 					</div>
+          <div className={props.displayDateOffset < 100 ? style.middle_part : style.hide_middle_part}>
+            {props.video && <div className={style.sub_category_name}>{props.video.subcate_name.split("・").join("")}</div>}
+          </div>
 					{props.toggle &&
             <nav className={style.right_listing}>
-              <div className={style.menu}>
-                <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
-                  setShowFullMenu(!showFullMenu);
-                  props.openSearch(false);
-                }}/>
-              </div>
-              <div className={style.search}>
-                <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${props.search ? style.open_search_panel : style.close_search_panel}`} height={18} width={18} onClick={() => {
-                  props.openSearch(!props.search);
-                }}/>
-                <div className={props.search ? style.show_search : style.hide_search}>
-                  <section className={style.search_section}>
-                    <div className={style.search_input}>
-                      <input className={style.input} placeholder="搜索"/>
-                      <FontAwesomeIcon icon="search" height={24} width={24} className={style.fontawesome_icon}/>
-                    </div>
-                    <div className={style.tag_list}>
-                        <div className={style.tag_list_header}>熱門搜索</div>
-                        <ul className={style.tags}>
-                          <li className={style.tag}>
-                            <div className={style.tag_name}>魷魚遊戲</div>
-                          </li>
-                          <li className={style.tag}>
-                            <div className={style.tag_name}>魷魚遊戲</div>
-                          </li>
-                          <li className={style.tag}>
-                            <div className={style.tag_name}>魷魚遊戲</div>
-                          </li>
-                          <li className={style.tag}>
-                            <div className={style.tag_name}>魷魚遊戲</div>
-                          </li>
-                          <li className={style.tag}>
-                            <div className={style.tag_name}>魷魚遊戲</div>
-                          </li>
-                        </ul>
-                      </div>
-                  </section>
+              <div className={style.right_listing_scrollable}>
+                <div className={style.menu}>
+                  <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
+                    setShowFullMenu(!showFullMenu);
+                    props.openSearch(false);
+                  }}/>
                 </div>
-              </div>
-              <div className={style.login}>
-                <button className={style.login_button} onClick={() => {
-                  setLogin(true);
-                  setShowFullMenu(false);
-                  props.openSearch(false);
+                <div className={style.search}>
+                  <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${props.search ? style.open_search_panel : style.close_search_panel}`} height={18} width={18} onClick={() => {
+                    props.openSearch(!props.search);
+                  }}/>
+                  <div className={props.search ? style.show_search : style.hide_search}>
+                    <section className={style.search_section}>
+                      <div className={style.search_input}>
+                        <input className={style.input} placeholder="搜索"/>
+                        <FontAwesomeIcon icon="search" height={24} width={24} className={style.fontawesome_icon}/>
+                      </div>
+                      <div className={style.tag_list}>
+                          <div className={style.tag_list_header}>熱門搜索</div>
+                          <ul className={style.tags}>
+                            <li className={style.tag}>
+                              <div className={style.tag_name}>魷魚遊戲</div>
+                            </li>
+                            <li className={style.tag}>
+                              <div className={style.tag_name}>魷魚遊戲</div>
+                            </li>
+                            <li className={style.tag}>
+                              <div className={style.tag_name}>魷魚遊戲</div>
+                            </li>
+                            <li className={style.tag}>
+                              <div className={style.tag_name}>魷魚遊戲</div>
+                            </li>
+                            <li className={style.tag}>
+                              <div className={style.tag_name}>魷魚遊戲</div>
+                            </li>
+                          </ul>
+                        </div>
+                    </section>
+                  </div>
+                </div>
+                <div className={style.login}>
+                  <button className={style.login_button} onClick={() => {
+                    setLogin(true);
+                    setShowFullMenu(false);
+                    props.openSearch(false);
+                  }}>
+                    登入
+                  </button>
+                  <Modal show={login} className="login">
+                    <LoginModal closeButton={setLogin}/>
+                  </Modal>
+                </div>
+                <div className={style.size}>
+                  <PageHeaderMobileViewMoreOptionsButtonWithMoreBox smallWord={props.smallWord} mediumWord={props.mediumWord} largeWord={props.largeWord} wordSizeBox={wordSize} setSmallWord={props.setSmallWord} setMediumWord={props.setMediumWord} setLargeWord={props.setLargeWord} setWordSizeBox={setWordSize}/>
+                </div>
+                <button className={style.go_upwards} onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  })
                 }}>
-                  登入
+                  <FontAwesomeIcon icon="long-arrow-alt-up" height={14} width={14} className={style.fontawesome_icon}/>
                 </button>
-                <Modal show={login} className="login">
-                  <LoginModal closeButton={setLogin}/>
-                </Modal>
               </div>
             </nav>
           }
 				</div>
 			</div>
-			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle? style.bar_second_line_scroll : ""} ${showFullMenu || props.search ? style.bar_second_line_for_searching : ""}`}>
+			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle? style.bar_second_line_scroll : ""} ${showFullMenu || props.search || wordSize ? style.bar_second_line_for_searching : ""}`}>
         <div className={style.relative_bar_second_line}>
           <div className={style.category_bar_horizontal_scroll}>
             <nav className={style.category_bar}>
@@ -232,22 +252,35 @@ export function PageHeader(
           </footer>
         </section>
       </div>
-      <div className={`${style.video_information_bar} ${props.topButtonsOffset < 55 ? style.open_video_bar : style.close_video_bar}`}>
+      <div className={`${style.video_information_bar} ${(props.windowWidth < 600 && props.displayDateOffset < 100) || (props.windowWidth >= 600 && props.windowWidth < 700 && props.displayDateOffset < 70) || (props.windowWidth >= 700 && props.displayDateOffset < 25) ? style.open_video_bar : style.close_video_bar}`}>
         <div className={style.video_information_with_top_buttons}>
-          {props.video &&
-            <div className={style.video_information}>
-              <div className={style.video_subcategory}>{props.video.subcate_name}</div>
-              <div className={style.video_title}>{props.video.title}</div>
+          <div className={style.top_bar}>
+            {props.video &&
+              <div className={style.video_information}>
+                <div className={style.video_subcategory}>{props.video.subcate_name.split("・").join("")}</div>
+                <div className={style.video_title}>{props.video.title}</div>
+              </div>
+            }
+            <div className={style.top_buttons}>
+              <PageHeaderLikeButtonWithEmojiBox displayDateOffsetForPageHeaderTopButtons={props.displayDateOffsetForPageHeaderTopButtons}/>
+              <button className={style.comment_button}>
+                <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={style.fontawesome_icon}/>
+                <div className={style.number}>10</div>
+              </button>
+              <PageHeaderShareButtonWithShareBox displayDateOffsetForPageHeaderTopButtons={props.displayDateOffsetForPageHeaderTopButtons}/>
+              <PageHeaderMoreOptionsButtonWithMoreBox smallWord={props.smallWord} mediumWord={props.mediumWord} largeWord={props.largeWord} setSmallWord={props.setSmallWord} setMediumWord={props.setMediumWord} setLargeWord={props.setLargeWord} displayDateOffsetForPageHeaderTopButtons={props.displayDateOffsetForPageHeaderTopButtons}/>
+              <button className={style.upwards_button} onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+                })
+              }}>
+                <FontAwesomeIcon icon="long-arrow-alt-up" height={14} width={14} className={style.fontawesome_icon}/>
+              </button>
             </div>
-          }
-          <div className={style.top_buttons}>
-            <PageHeaderLikeButtonWithEmojiBox/>
-            <button className={style.comment_button}>
-              <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={style.fontawesome_icon}/>
-              <div className={style.number}>10</div>
-            </button>
-            <PageHeaderShareButtonWithShareBox/>
-            <PageHeaderMoreOptionsButtonWithMoreBox smallWord={props.smallWord} mediumWord={props.mediumWord} largeWord={props.largeWord} setSmallWord={props.setSmallWord} setMediumWord={props.setMediumWord} setLargeWord={props.setLargeWord}/>
+          </div>
+          <div className={style.bottom_bar}>
+            {props.video && <div className={style.video_title}>{props.video.title}</div>}
           </div>
         </div>
       </div>

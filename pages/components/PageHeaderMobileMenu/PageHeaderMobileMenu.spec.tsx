@@ -1,6 +1,5 @@
 import React,{useState} from "react";
 import {render,screen} from "@testing-library/react";
-import {video} from "../VideoBlock/VideoBlock.spec";
 import {PageHeaderMobileMenu} from "./PageHeaderMobileMenu";
 
 test("renders learn react link",() => {

@@ -3,14 +3,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import onClickOutside from "react-onclickoutside";
 import {useEffect,useState} from "react";
 
-const ShareButtonWithShareBox = (props:{topButtonsOffset:number}) => {
+const ShareButtonWithShareBox = (props:{displayDateOffset:number,windowWidth:number}) => {
   const [share,setShare] = useState(false);
-  (ShareButtonWithShareBox as any).handleClickOutside = (props:{topButtonsOffset:number}) => setShare(false);
+  (ShareButtonWithShareBox as any).handleClickOutside = (props:{displayDateOffset:number}) => setShare(false);
   useEffect(() => {
-	if(props.topButtonsOffset < 50){
+	if((props.displayDateOffset < 65 && props.windowWidth < 700) || (props.displayDateOffset < 15 && props.windowWidth >= 700)){
 		setShare(false);
 	}
-  },[props.topButtonsOffset])
+  },[props.displayDateOffset,props.windowWidth])
 
   return(
     <div className={styles.share_button_with_share_box}>

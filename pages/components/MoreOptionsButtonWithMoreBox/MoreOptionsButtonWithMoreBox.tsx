@@ -11,16 +11,17 @@ const MoreOptionsButtonWithMoreBox = (
     setSmallWord:React.Dispatch<React.SetStateAction<boolean>>,
     setMediumWord:React.Dispatch<React.SetStateAction<boolean>>,
     setLargeWord:React.Dispatch<React.SetStateAction<boolean>>,
-	  topButtonsOffset:number
+	  displayDateOffset:number,
+    windowWidth:number
   }
 ) => {
   const [wordSize,setWordSize] = useState(false);
   (MoreOptionsButtonWithMoreBox as any).handleClickOutside = () => setWordSize(false);
   useEffect(() => {
-	  if(props.topButtonsOffset < 50){
+	  if((props.displayDateOffset < 65 && props.windowWidth < 700) || (props.displayDateOffset < 15 && props.windowWidth >= 700)){
 		  setWordSize(false);
 	  }
-  },[props.topButtonsOffset])
+  },[props.displayDateOffset,props.windowWidth])
 
   return(
     <div className={styles.more_options_button_with_more_box}>
@@ -28,7 +29,7 @@ const MoreOptionsButtonWithMoreBox = (
         setWordSize(!wordSize);
       }}>
         <div className={styles.fontawesome_icon}>
-          <FontAwesomeIcon icon={"caret-down"} height={14} width={14} className={wordSize ? styles.caret_up : styles.caret_down}/>
+          <FontAwesomeIcon icon="caret-down" height={14} width={14} className={wordSize ? styles.caret_up : styles.caret_down}/>
         </div>
       </button>
       {wordSize &&

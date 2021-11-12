@@ -1,31 +1,31 @@
-import styles from "../../../styles/PageHeaderMoreOptionsButtonWithMoreBox/PageHeaderMoreOptionsButtonWithMoreBox.module.scss";
+import styles from "../../../styles/PageHeaderMobileViewMoreOptionsButtonWithMoreBox/PageHeaderMobileViewMoreOptionsButtonWithMoreBox.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import onClickOutside from "react-onclickoutside";
-import {useEffect,useState} from "react";
+import {useState} from "react";
 
-const PageHeaderMoreOptionsButtonWithMoreBox = (
+const PageHeaderMobileViewMoreOptionsButtonWithMoreBox = (
   props:{
     smallWord:boolean,
     mediumWord:boolean,
     largeWord:boolean,
+    wordSizeBox:boolean,
     setSmallWord:React.Dispatch<React.SetStateAction<boolean>>,
     setMediumWord:React.Dispatch<React.SetStateAction<boolean>>,
     setLargeWord:React.Dispatch<React.SetStateAction<boolean>>,
-    displayDateOffsetForPageHeaderTopButtons:number
+    setWordSizeBox:React.Dispatch<React.SetStateAction<boolean>>
   }
 ) => {
   const [wordSize,setWordSize] = useState(false);
-  (PageHeaderMoreOptionsButtonWithMoreBox as any).handleClickOutside = () => setWordSize(false);
-  useEffect(() => {
-    if(props.displayDateOffsetForPageHeaderTopButtons > 105){
-      setWordSize(false);
-    }
-  },[props.displayDateOffsetForPageHeaderTopButtons])
+  (PageHeaderMobileViewMoreOptionsButtonWithMoreBox as any).handleClickOutside = () => {
+    setWordSize(false);
+    props.setWordSizeBox(false);
+  }
 
   return(
-    <div className={styles.page_header_more_options_button_with_more_box}>
+    <div className={styles.page_header_mobile_view_more_options_button_with_more_box}>
       <button className={styles.more_options_button} onClick={() => {
         setWordSize(!wordSize);
+        props.setWordSizeBox(!props.wordSizeBox);
       }}>
         <div className={styles.fontawesome_icon}>
           <FontAwesomeIcon icon="caret-down" height={14} width={14} className={wordSize ? styles.caret_up : styles.caret_down}/>
@@ -59,7 +59,7 @@ const PageHeaderMoreOptionsButtonWithMoreBox = (
   )
 }
 const clickOutsideConfig = {
-  handleClickOutside:() => (PageHeaderMoreOptionsButtonWithMoreBox as any).handleClickOutside
+  handleClickOutside:() => (PageHeaderMobileViewMoreOptionsButtonWithMoreBox as any).handleClickOutside
 }
 
-export default onClickOutside(PageHeaderMoreOptionsButtonWithMoreBox,clickOutsideConfig);
+export default onClickOutside(PageHeaderMobileViewMoreOptionsButtonWithMoreBox,clickOutsideConfig);

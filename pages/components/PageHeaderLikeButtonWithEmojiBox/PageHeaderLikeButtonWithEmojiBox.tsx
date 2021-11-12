@@ -6,11 +6,16 @@ import sad from "../../image/emoji3.gif";
 import angry from "../../image/emoji4.gif";
 import Image from "next/image";
 import onClickOutside from "react-onclickoutside";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-const PageHeaderLikeButtonWithEmojiBox = () => {
+const PageHeaderLikeButtonWithEmojiBox = (props:{displayDateOffsetForPageHeaderTopButtons:number}) => {
   const [topEmojiBox,setTopEmojiBox] = useState(false);
   (PageHeaderLikeButtonWithEmojiBox as any).handleClickOutside = () => setTopEmojiBox(false);
+  useEffect(() => {
+    if(props.displayDateOffsetForPageHeaderTopButtons > 105){
+      setTopEmojiBox(false);
+    }
+  },[props.displayDateOffsetForPageHeaderTopButtons])
 
   return(
     <div className={styles.page_header_like_button_with_emoji_box}>

@@ -1,11 +1,16 @@
 import styles from "../../../styles/PageHeaderShareButtonWithShareBox/PageHeaderShareButtonWithShareBox.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import onClickOutside from "react-onclickoutside";
-import {useState} from "react";
+import {useEffect,useState} from "react";
 
-const PageHeaderShareButtonWithShareBox = () => {
+const PageHeaderShareButtonWithShareBox = (props:{displayDateOffsetForPageHeaderTopButtons:number}) => {
   const [share,setShare] = useState(false);
   (PageHeaderShareButtonWithShareBox as any).handleClickOutside = () => setShare(false);
+  useEffect(() => {
+    if(props.displayDateOffsetForPageHeaderTopButtons > 105){
+      setShare(false);
+    }
+  },[props.displayDateOffsetForPageHeaderTopButtons])
 
   return(
     <div className={styles.page_header_share_button_with_share_box}>
