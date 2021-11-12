@@ -32,6 +32,7 @@ import {EmojiNumberDetailModal} from "../components/EmojiNumberDetailModal/Emoji
 import {PageHeaderMobileMenu} from "../components/PageHeaderMobileMenu/PageHeaderMobileMenu";
 import LikeButtonWithEmojiBox from "../components/LikeButtonWithEmojiBox/LikeButtonWithEmojiBox";
 import ShareButtonWithShareBox from "../components/ShareButtonWithShareBox/ShareButtonWithShareBox";
+import MoreOptionsButtonWithMoreBox from "../components/MoreOptionsButtonWithMoreBox/MoreOptionsButtonWithMoreBox";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -113,23 +114,7 @@ const Video:NextPage = () => {
                         <div className={styles.number}>10</div>
                       </button>
                       <ShareButtonWithShareBox/>
-                      <div className={styles.more_options_button_with_more_box}>
-                        <button className={styles.more_options_button}>
-                          <div className={styles.font_awesome}>
-                            <FontAwesomeIcon icon={"caret-down"} height={14} width={14} className={styles.fontawesome_icon}/>
-                          </div>
-                        </button>
-                        <div className={styles.more_box}>
-                          <div className={styles.more_options_box}>
-                            <div className={styles.word_size}>
-                              <div className={styles.size}>字型</div>
-                              <div className={styles.small_size}>A</div>
-                              <div className={styles.medium_size}>A</div>
-                              <div className={styles.large_size}>A</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      <MoreOptionsButtonWithMoreBox/>
                     </div>
                   </header>
                   <div className={styles.video_player}>

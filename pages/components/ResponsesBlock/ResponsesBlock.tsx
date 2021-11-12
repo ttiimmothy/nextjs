@@ -4,7 +4,7 @@ import happyCount from "../../image/emoji2.png";
 import sadCount from "../../image/emoji3.png";
 import angryCount from "../../image/emoji4.png";
 import Image from "next/image";
-import {useEffect, useRef,useState} from "react";
+import {useState} from "react";
 
 export function ResponsesBlock(props:{responseNumber:number}){
   const [openAllResponses,setOpenAllResponses] = useState(false);
