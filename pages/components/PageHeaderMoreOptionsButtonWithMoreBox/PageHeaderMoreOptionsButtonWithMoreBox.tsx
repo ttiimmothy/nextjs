@@ -1,9 +1,9 @@
-import styles from "../../../styles/MoreOptionsButtonWithMoreBox/MoreOptionsButtonWithMoreBox.module.scss";
+import styles from "../../../styles/PageHeaderMoreOptionsButtonWithMoreBox/PageHeaderMoreOptionsButtonWithMoreBox.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import onClickOutside from "react-onclickoutside";
-import {useEffect,useState} from "react";
+import {useState} from "react";
 
-const MoreOptionsButtonWithMoreBox = (
+const PageHeaderMoreOptionsButtonWithMoreBox = (
   props:{
     smallWord:boolean,
     mediumWord:boolean,
@@ -11,19 +11,13 @@ const MoreOptionsButtonWithMoreBox = (
     setSmallWord:React.Dispatch<React.SetStateAction<boolean>>,
     setMediumWord:React.Dispatch<React.SetStateAction<boolean>>,
     setLargeWord:React.Dispatch<React.SetStateAction<boolean>>,
-	  topButtonsOffset:number
   }
 ) => {
   const [wordSize,setWordSize] = useState(false);
-  (MoreOptionsButtonWithMoreBox as any).handleClickOutside = () => setWordSize(false);
-  useEffect(() => {
-	  if(props.topButtonsOffset < 50){
-		  setWordSize(false);
-	  }
-  },[props.topButtonsOffset])
+  (PageHeaderMoreOptionsButtonWithMoreBox as any).handleClickOutside = () => setWordSize(false);
 
   return(
-    <div className={styles.more_options_button_with_more_box}>
+    <div className={styles.page_header_more_options_button_with_more_box}>
       <button className={styles.more_options_button} onClick={() => {
         setWordSize(!wordSize);
       }}>
@@ -59,7 +53,7 @@ const MoreOptionsButtonWithMoreBox = (
   )
 }
 const clickOutsideConfig = {
-  handleClickOutside:() => (MoreOptionsButtonWithMoreBox as any).handleClickOutside
+  handleClickOutside:() => (PageHeaderMoreOptionsButtonWithMoreBox as any).handleClickOutside
 }
 
-export default onClickOutside(MoreOptionsButtonWithMoreBox,clickOutsideConfig);
+export default onClickOutside(PageHeaderMoreOptionsButtonWithMoreBox,clickOutsideConfig);

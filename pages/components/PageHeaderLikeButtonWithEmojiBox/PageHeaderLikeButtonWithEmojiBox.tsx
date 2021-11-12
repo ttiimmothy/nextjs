@@ -1,4 +1,4 @@
-import styles from "../../../styles/LikeButtonWithEmojiBox/LikeButtonWithEmojiBox.module.scss";
+import styles from "../../../styles/PageHeaderLikeButtonWithEmojiBox/PageHeaderLikeButtonWithEmojiBox.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import like from "../../image/emoji.gif";
 import happy from "../../image/emoji2.gif";
@@ -6,19 +6,14 @@ import sad from "../../image/emoji3.gif";
 import angry from "../../image/emoji4.gif";
 import Image from "next/image";
 import onClickOutside from "react-onclickoutside";
-import {useEffect,useState} from "react";
+import {useState} from "react";
 
-const LikeButtonWithEmojiBox = (props:{topButtonsOffset:number}) => {
+const PageHeaderLikeButtonWithEmojiBox = () => {
   const [topEmojiBox,setTopEmojiBox] = useState(false);
-  (LikeButtonWithEmojiBox as any).handleClickOutside = () => setTopEmojiBox(false);
-  useEffect(() => {
-    if(props.topButtonsOffset < 50){
-      setTopEmojiBox(false);
-    }
-  },[props.topButtonsOffset])
+  (PageHeaderLikeButtonWithEmojiBox as any).handleClickOutside = () => setTopEmojiBox(false);
 
   return(
-    <div className={styles.like_button_with_emoji_box}>
+    <div className={styles.page_header_like_button_with_emoji_box}>
       <button className={styles.like_button} onClick={() => {
         setTopEmojiBox(!topEmojiBox);
       }}>
@@ -61,7 +56,7 @@ const LikeButtonWithEmojiBox = (props:{topButtonsOffset:number}) => {
   )
 }
 const clickOutsideConfig = {
-  handleClickOutside:() => (LikeButtonWithEmojiBox as any).handleClickOutside
+  handleClickOutside:() => (PageHeaderLikeButtonWithEmojiBox as any).handleClickOutside
 }
 
-export default onClickOutside(LikeButtonWithEmojiBox,clickOutsideConfig);
+export default onClickOutside(PageHeaderLikeButtonWithEmojiBox,clickOutsideConfig);

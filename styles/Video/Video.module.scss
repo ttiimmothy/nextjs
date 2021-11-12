@@ -51,7 +51,7 @@
           .main_content{
             .video_player_with_description{
               .video_header{
-                .top_buttons{
+                .hide_top_buttons,.top_buttons{
                   display: flex;
                   align-items: center;
                   .comment_button{
@@ -60,6 +60,10 @@
                       width: 14px;
                     }
                   }
+                }
+                .hide_top_buttons{
+                  opacity: 0;
+                  visibility: hidden;
                 }
               }
             }

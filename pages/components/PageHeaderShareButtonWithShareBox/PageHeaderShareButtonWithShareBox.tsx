@@ -1,19 +1,14 @@
-import styles from "../../../styles/ShareButtonWithShareBox/ShareButtonWithShareBox.module.scss";
+import styles from "../../../styles/PageHeaderShareButtonWithShareBox/PageHeaderShareButtonWithShareBox.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import onClickOutside from "react-onclickoutside";
-import {useEffect,useState} from "react";
+import {useState} from "react";
 
-const ShareButtonWithShareBox = (props:{topButtonsOffset:number}) => {
+const PageHeaderShareButtonWithShareBox = () => {
   const [share,setShare] = useState(false);
-  (ShareButtonWithShareBox as any).handleClickOutside = (props:{topButtonsOffset:number}) => setShare(false);
-  useEffect(() => {
-	if(props.topButtonsOffset < 50){
-		setShare(false);
-	}
-  },[props.topButtonsOffset])
+  (PageHeaderShareButtonWithShareBox as any).handleClickOutside = () => setShare(false);
 
   return(
-    <div className={styles.share_button_with_share_box}>
+    <div className={styles.page_header_share_button_with_share_box}>
       <button className={styles.share_button} onClick={() => {
         setShare(!share)
       }}>
@@ -38,7 +33,7 @@ const ShareButtonWithShareBox = (props:{topButtonsOffset:number}) => {
   )
 }
 const clickOutsideConfig = {
-  handleClickOutside:() => (ShareButtonWithShareBox as any).handleClickOutside
+  handleClickOutside:() => (PageHeaderShareButtonWithShareBox as any).handleClickOutside
 }
 
-export default onClickOutside(ShareButtonWithShareBox,clickOutsideConfig);
+export default onClickOutside(PageHeaderShareButtonWithShareBox,clickOutsideConfig);

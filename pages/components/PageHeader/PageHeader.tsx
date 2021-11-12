@@ -8,9 +8,27 @@ import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
 import {getHeader, getSubCategory} from "../../redux/header/thunks";
 import {IRootState} from "../../store";
+import {VideoDetail} from "../../redux/home/actions";
 import {LoginModal} from "../LoginModal/LoginModal";
+import PageHeaderLikeButtonWithEmojiBox from "../PageHeaderLikeButtonWithEmojiBox/PageHeaderLikeButtonWithEmojiBox";
+import PageHeaderShareButtonWithShareBox from "../PageHeaderShareButtonWithShareBox/PageHeaderShareButtonWithShareBox";
+import PageHeaderMoreOptionsButtonWithMoreBox from "../PageHeaderMoreOptionsButtonWithMoreBox/PageHeaderMoreOptionsButtonWithMoreBox";
 
-export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React.SetStateAction<boolean>>,search:boolean,openSearch:React.Dispatch<React.SetStateAction<boolean>>}){
+export function PageHeader(
+  props:{
+    toggle:boolean,
+    openToggle:React.Dispatch<React.SetStateAction<boolean>>,
+    search:boolean,openSearch:React.Dispatch<React.SetStateAction<boolean>>,
+    topButtonsOffset:number,
+    smallWord:boolean,
+    mediumWord:boolean,
+    largeWord:boolean,
+    setSmallWord:React.Dispatch<React.SetStateAction<boolean>>,
+    setMediumWord:React.Dispatch<React.SetStateAction<boolean>>,
+    setLargeWord:React.Dispatch<React.SetStateAction<boolean>>,
+    video:VideoDetail|null
+  }
+){
 	const dispatch = useDispatch();
 	const categories = useSelector((state:IRootState) => state.header.category);
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
@@ -126,24 +144,26 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
 				</div>
 			</div>
 			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle? style.bar_second_line_scroll : ""} ${showFullMenu || props.search ? style.bar_second_line_for_searching : ""}`}>
-        <div className={style.category_bar_horizontal_scroll}>
-          <nav className={style.category_bar}>
-            <ul className={style.category_items}>
-              {
-                categories.map((category,index) =>
-                  (
-                    <li className={style.category_item} key={index}>
-                      <Link href={category.name_en.toLowerCase().split(" ").join("")}>
-                        <a>
-                          {category.name_cn}
-                        </a>
-                      </Link>
-                    </li>
+        <div className={style.relative_bar_second_line}>
+          <div className={style.category_bar_horizontal_scroll}>
+            <nav className={style.category_bar}>
+              <ul className={style.category_items}>
+                {
+                  categories.map((category,index) =>
+                    (
+                      <li className={style.category_item} key={index}>
+                        <Link href={category.name_en.toLowerCase().split(" ").join("")}>
+                          <a>
+                            {category.name_cn}
+                          </a>
+                        </Link>
+                      </li>
+                    )
                   )
-                )
-              }
-            </ul>
-          </nav>
+                }
+              </ul>
+            </nav>
+          </div>
         </div>
 			</div>
       <div className={showFullMenu ? style.full_menu : style.hide_full_menu} onMouseLeave={() => {
@@ -211,6 +231,25 @@ export function PageHeader(props:{toggle:boolean,openToggle:React.Dispatch<React
             </section>
           </footer>
         </section>
+      </div>
+      <div className={`${style.video_information_bar} ${props.topButtonsOffset < 55 ? style.open_video_bar : style.close_video_bar}`}>
+        <div className={style.video_information_with_top_buttons}>
+          {props.video &&
+            <div className={style.video_information}>
+              <div className={style.video_subcategory}>{props.video.subcate_name}</div>
+              <div className={style.video_title}>{props.video.title}</div>
+            </div>
+          }
+          <div className={style.top_buttons}>
+            <PageHeaderLikeButtonWithEmojiBox/>
+            <button className={style.comment_button}>
+              <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={style.fontawesome_icon}/>
+              <div className={style.number}>10</div>
+            </button>
+            <PageHeaderShareButtonWithShareBox/>
+            <PageHeaderMoreOptionsButtonWithMoreBox smallWord={props.smallWord} mediumWord={props.mediumWord} largeWord={props.largeWord} setSmallWord={props.setSmallWord} setMediumWord={props.setMediumWord} setLargeWord={props.setLargeWord}/>
+          </div>
+        </div>
       </div>
 	  </header>
 	)
