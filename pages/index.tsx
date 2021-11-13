@@ -1,5 +1,5 @@
 import styles from "../styles/index.module.scss";
-import style from "../styles/Home/Home.module.scss";
+import style from "../styles/home/Home/Home.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper,SwiperSlide} from "swiper/react";
 import {Carousel} from "react-bootstrap";
@@ -11,13 +11,13 @@ import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useRef,useState} from "react";
 import {getHomeDetail} from "./redux/home/thunks";
 import {IRootState} from "./store";
-import {HorizontalScrollHomeCategoryBlock} from "./components/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
-import {HomeCategoryBlock} from "./components/HomeCategoryBlock/HomeCategoryBlock";
+import {HorizontalScrollHomeCategoryBlock} from "./components/home/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
+import {HomeCategoryBlock} from "./components/home/HomeCategoryBlock/HomeCategoryBlock";
 import {VideoBlock} from "./components/VideoBlock/VideoBlock";
 import {ComponentHeader} from "./components/ComponentHeader/ComponentHeader";
 import {Footer} from "./components/Footer/Footer";
 import {Header} from "./components/Header/Header";
-import {HomeFullScreenVideoBlock} from "./components/HomeFullScreenVideoBlock/HomeFullScreenVideoBlock";
+import {FullScreenVideoBlock} from "./components/FullScreenVideoBlock/FullScreenVideoBlock";
 
 const Home:NextPage = () => {
   const dispatch = useDispatch();
@@ -77,8 +77,8 @@ const Home:NextPage = () => {
       {scrollHeight > 5 &&
         <button className={style.upwards_button} onClick={() => {
           window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+            top:0,
+            behavior:"smooth"
           })
         }}>
           <FontAwesomeIcon icon="chevron-up" height={20} width={20}/>
@@ -136,7 +136,7 @@ const Home:NextPage = () => {
               </header>
               <div className={style.video_list}>
                 {videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
-                  <HomeFullScreenVideoBlock video={video} key={video.id}/>
+                  <FullScreenVideoBlock video={video} key={video.id}/>
                 )}
               </div>
               <div className={style.more_button}>
@@ -216,7 +216,7 @@ const Home:NextPage = () => {
               </header>
               <div className={style.video_list}>
                 {videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
-                  <HomeFullScreenVideoBlock video={video} key={video.id}/>
+                  <FullScreenVideoBlock video={video} key={video.id}/>
                 )}
               </div>
               <div className={style.more_button}>
