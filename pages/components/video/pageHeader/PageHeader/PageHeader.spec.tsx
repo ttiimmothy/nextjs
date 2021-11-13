@@ -10,7 +10,23 @@ test("renders learn react link",() => {
 	const [mediumWord,setMediumWord] = useState(true);
 	const [largeWord,setLargeWord] = useState(false);
 	const scrollToComment = useRef<any>(null);
-	render(<PageHeader toggle={toggle} openToggle={setToggle} search={search} openSearch={setSearch} displayDateOffset={0} displayDateOffsetForPageHeaderTopButtons={0} smallWord={smallWord} mediumWord={mediumWord} largeWord={largeWord} setSmallWord={setSmallWord} setMediumWord={setMediumWord} setLargeWord={setLargeWord} video={video} windowWidth={0} scrollToComment={scrollToComment}/>);
+	render(
+		<PageHeader
+			toggle={toggle}
+			openToggle={setToggle}
+			search={search} openSearch={setSearch}
+			displayDateOffset={0}
+			displayDateOffsetForPageHeaderTopButtons={0}
+			smallWord={smallWord} mediumWord={mediumWord}
+			largeWord={largeWord}
+			setSmallWord={setSmallWord}
+			setMediumWord={setMediumWord}
+			setLargeWord={setLargeWord}
+			video={video}
+			windowWidth={0}
+			scrollToComment={scrollToComment}
+		/>
+	)
 	const linkElement = screen.getByText(/learn react/i);
 	expect(linkElement).toBeInTheDocument();
 })

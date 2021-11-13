@@ -29,7 +29,8 @@ const EmojiMoreDropdownMenu = (
   return(
     <div className={styles.emoji_more_dropdown_menu}>
       <div className={styles.more_corner}>
-        <div className={`${styles.more} ${((props.emojiType < 270 && props.allClick) || (props.emojiType < 320 && props.likeClick) || (props.emojiType < 390 && props.happyClick) || props.sadClick || props.angryClick)  ? styles.active : ""}`} onClick={() => {
+        <div className={`${styles.more} ${((props.emojiType < 270 && props.allClick) || (props.emojiType < 320 && props.likeClick) || (props.emojiType < 390 && props.happyClick) || props.sadClick || props.angryClick)  ? styles.active : ""}`}
+        onClick={() => {
           setOpenEmojiMore(!openEmojiMore);
         }}>
           <div className={styles.text}>更多</div>

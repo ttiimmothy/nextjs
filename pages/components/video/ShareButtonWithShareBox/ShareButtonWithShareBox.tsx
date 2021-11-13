@@ -15,7 +15,7 @@ const ShareButtonWithShareBox = (props:{displayDateOffset:number,windowWidth:num
   return(
     <div className={styles.share_button_with_share_box}>
       <button className={styles.share_button} onClick={() => {
-        setShare(!share)
+        setShare(!share);
       }}>
         <FontAwesomeIcon icon={["far","share-square"]} height={14} width={14} className={styles.fontawesome_icon}/>
         <div className={styles.share}>分享</div>

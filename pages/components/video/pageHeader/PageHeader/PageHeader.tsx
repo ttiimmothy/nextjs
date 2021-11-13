@@ -14,6 +14,7 @@ import PageHeaderLikeButtonWithEmojiBox from "../PageHeaderLikeButtonWithEmojiBo
 import PageHeaderShareButtonWithShareBox from "../PageHeaderShareButtonWithShareBox/PageHeaderShareButtonWithShareBox";
 import PageHeaderMoreOptionsButtonWithMoreBox from "../PageHeaderMoreOptionsButtonWithMoreBox/PageHeaderMoreOptionsButtonWithMoreBox";
 import PageHeaderMobileViewMoreOptionsButtonWithMoreBox from "../PageHeaderMobileViewMoreOptionsButtonWithMoreBox/PageHeaderMobileViewMoreOptionsButtonWithMoreBox";
+import PageHeaderMobileViewShowMoreWithRightListingIcons from "../PageHeaderMobileViewShowMoreWithRightListingIcons/PageHeaderMobileViewShowMoreWithRightListingIcons";
 
 export function PageHeader(
   props:{
@@ -39,7 +40,7 @@ export function PageHeader(
 	const [scrollHeight,setScrollHeight] = useState(0);
   const [showFullMenu,setShowFullMenu] = useState(false);
   const [login,setLogin] = useState(false);
-  const [wordSize,setWordSize] = useState(false);
+  const [more,setMore] = useState(false);
 	useEffect(() => {
 		dispatch(getHeader());
     dispatch(getSubCategory());
@@ -54,7 +55,7 @@ export function PageHeader(
 
 	return(
 		<header className={style.page_header}>
-			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle ? style.bar_scroll : ""} ${showFullMenu || props.search || wordSize ? style.bar_for_searching : ""}`}>
+			<div className={`${style.bar} ${scrollHeight > 10 || !props.toggle ? style.bar_scroll : ""} ${showFullMenu || props.search || more ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
             <div className={style.toggler}>
@@ -148,23 +149,30 @@ export function PageHeader(
                     <LoginModal closeButton={setLogin}/>
                   </Modal>
                 </div>
-                <div className={style.size}>
-                  <PageHeaderMobileViewMoreOptionsButtonWithMoreBox smallWord={props.smallWord} mediumWord={props.mediumWord} largeWord={props.largeWord} wordSizeBox={wordSize} setSmallWord={props.setSmallWord} setMediumWord={props.setMediumWord} setLargeWord={props.setLargeWord} setWordSizeBox={setWordSize}/>
+                <div className={style.show_more}>
+                  <PageHeaderMobileViewShowMoreWithRightListingIcons
+                    showFullMenu={showFullMenu}
+                    search={props.search}
+                    login={login}
+                    more={more}
+                    smallWord={props.smallWord}
+                    mediumWord={props.mediumWord}
+                    largeWord={props.largeWord}
+                    setShowFullMenu={setShowFullMenu}
+                    openSearch={props.openSearch}
+                    setLogin={setLogin}
+                    setMore={setMore}
+                    setSmallWord={props.setSmallWord}
+                    setMediumWord={props.setMediumWord}
+                    setLargeWord={props.setLargeWord}
+                  />
                 </div>
-                <button className={style.go_upwards} onClick={() => {
-                  window.scrollTo({
-                    top:0,
-                    behavior:"smooth"
-                  })
-                }}>
-                  <FontAwesomeIcon icon="long-arrow-alt-up" height={14} width={14} className={style.fontawesome_icon}/>
-                </button>
               </div>
             </nav>
           }
 				</div>
 			</div>
-			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle? style.bar_second_line_scroll : ""} ${showFullMenu || props.search || wordSize ? style.bar_second_line_for_searching : ""}`}>
+			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle? style.bar_second_line_scroll : ""} ${showFullMenu || props.search || more ? style.bar_second_line_for_searching : ""}`}>
         <div className={style.relative_bar_second_line}>
           <div className={style.category_bar_horizontal_scroll}>
             <nav className={style.category_bar}>
@@ -274,7 +282,15 @@ export function PageHeader(
                 <div className={style.number}>10</div>
               </button>
               <PageHeaderShareButtonWithShareBox displayDateOffsetForPageHeaderTopButtons={props.displayDateOffsetForPageHeaderTopButtons}/>
-              <PageHeaderMoreOptionsButtonWithMoreBox smallWord={props.smallWord} mediumWord={props.mediumWord} largeWord={props.largeWord} setSmallWord={props.setSmallWord} setMediumWord={props.setMediumWord} setLargeWord={props.setLargeWord} displayDateOffsetForPageHeaderTopButtons={props.displayDateOffsetForPageHeaderTopButtons}/>
+              <PageHeaderMoreOptionsButtonWithMoreBox
+                smallWord={props.smallWord}
+                mediumWord={props.mediumWord}
+                largeWord={props.largeWord}
+                setSmallWord={props.setSmallWord}
+                setMediumWord={props.setMediumWord}
+                setLargeWord={props.setLargeWord}
+                displayDateOffsetForPageHeaderTopButtons={props.displayDateOffsetForPageHeaderTopButtons}
+              />
               <button className={style.upwards_button} onClick={() => {
                 window.scrollTo({
                   top: 0,

@@ -101,7 +101,21 @@ export function EmojiNumberDetailModal(props:{closeButton:React.Dispatch<React.S
               </li>
             }
           </ul>
-          {emojiType < 440 && <EmojiMoreDropdownMenu allClick={allClick} likeClick={likeClick} happyClick={happyClick} sadClick={sadClick} angryClick={angryClick} setAllClick={setAllClick} setLikeClick={setLikeClick} setHappyClick={setHappyClick} setSadClick={setSadClick} setAngryClick={setAngryClick} emojiType={emojiType}/>}
+          {emojiType < 440 &&
+            <EmojiMoreDropdownMenu
+              allClick={allClick}
+              likeClick={likeClick}
+              happyClick={happyClick}
+              sadClick={sadClick}
+              angryClick={angryClick}
+              setAllClick={setAllClick}
+              setLikeClick={setLikeClick}
+              setHappyClick={setHappyClick}
+              setSadClick={setSadClick}
+              setAngryClick={setAngryClick}
+              emojiType={emojiType}
+            />
+          }
         </div>
         <div className={styles.close}>
           <button className={styles.close_button} onClick={() => {

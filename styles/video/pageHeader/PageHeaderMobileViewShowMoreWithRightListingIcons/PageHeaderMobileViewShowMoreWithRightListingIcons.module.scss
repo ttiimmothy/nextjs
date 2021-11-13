@@ -1,0 +1,97 @@
+$tw-ring-offset-shadow:0 0 rgba(0,0,0,0);
+$tw-shadow:1px 0px 5px 1px rgba(0,33,155,0.12);
+$tw-ring-shadow:0 0 rgba(0,0,0,0);
+.page_header_mobile_view_show_more_with_right_listing_icons{
+  position: relative;
+  .show_more{
+    background-color: transparent;
+    color: #fff;
+    margin-right: 5px;
+    padding: 0;
+    border: 0px none;
+    box-shadow: none;
+    outline: none;
+    .fontawesome_icon{
+      height: 18px;
+      width: 18px;
+      font-size: 18px;
+      transition: all 0.2s ease-in-out 0s;
+    }
+    .open{
+      transform: rotate(90deg);
+    }
+    .close{
+      transform: rotate(0deg);
+    }
+  }
+  .right_listing_icons{
+    position: absolute;
+    top: 35px;
+    right: 0;
+    z-index: 15;
+    .right_listing_icons_box{
+      background-color: rgba(255,255,255,0.87);
+      color: #db5959;
+      font-weight: 500;
+      padding: 12px 16px;
+      border-radius: 6px;
+      box-shadow: $tw-ring-offset-shadow,0 0 transparent,$tw-ring-shadow,0 0 transparent,$tw-shadow;
+      display: flex;
+      align-items: center;
+      .right_listing_icon{
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .menu,.hide_menu{
+        margin-right: 8px;
+        padding: 3px;
+        border-radius: 20px;
+        transition: all 0.2s ease 0s;
+        .open_codepen_icon,.close_codepen_icon{
+          width: 20px;
+          transition: all 0.2s ease 0s;
+        }
+        .open_codepen_icon{
+          color: #adadad;
+          transform: scaleY(1);
+        }
+        .close_codepen_icon{
+          transform: scaleY(-1);
+        }
+      }
+      .menu{
+        border: solid 2px #adadad;
+      }
+      .hide_menu{
+        border: solid 2px #db5959;
+      }
+      .login{
+        flex: 0 0 auto;
+        .login_button{
+          font-weight: 500;
+          background-color: transparent;
+          color: #db5959;
+          padding: 3px 5px;
+          border-radius: 4px;
+          border: solid 2px #db5959;
+          box-shadow: none;
+        }
+      }
+      .go_upwards{
+        background-color: transparent;
+        color: #db5959;
+        margin-right: 12px;
+        padding: 3px;
+        border: solid 2px #db5959;
+        border-radius: 20px;
+        outline: none;
+        flex: 0 0 auto;
+        cursor: pointer;
+        .fontawesome_icon{
+          width: 20px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

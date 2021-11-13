@@ -8,24 +8,20 @@ const PageHeaderMobileViewMoreOptionsButtonWithMoreBox = (
     smallWord:boolean,
     mediumWord:boolean,
     largeWord:boolean,
-    wordSizeBox:boolean,
     setSmallWord:React.Dispatch<React.SetStateAction<boolean>>,
     setMediumWord:React.Dispatch<React.SetStateAction<boolean>>,
     setLargeWord:React.Dispatch<React.SetStateAction<boolean>>,
-    setWordSizeBox:React.Dispatch<React.SetStateAction<boolean>>
   }
 ) => {
   const [wordSize,setWordSize] = useState(false);
   (PageHeaderMobileViewMoreOptionsButtonWithMoreBox as any).handleClickOutside = () => {
     setWordSize(false);
-    props.setWordSizeBox(false);
   }
 
   return(
     <div className={styles.page_header_mobile_view_more_options_button_with_more_box}>
-      <button className={styles.more_options_button} onClick={() => {
+      <button className={wordSize ? styles.open_more_options_button : styles.more_options_button} onClick={() => {
         setWordSize(!wordSize);
-        props.setWordSizeBox(!props.wordSizeBox);
       }}>
         <div className={styles.fontawesome_icon}>
           <FontAwesomeIcon icon="caret-down" height={14} width={14} className={wordSize ? styles.caret_up : styles.caret_down}/>
