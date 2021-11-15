@@ -214,18 +214,6 @@
   .video_content{
     .page{
       @include max-view-width;
-      .breadcrumb{
-        padding-top: 20px;
-        .breadcrumb_link{
-          a{
-            text-decoration: none;
-            color: #6c757d;
-            &:hover{
-              color: #adadad;
-            }
-          }
-        }
-      }
       .body{
         margin-bottom: 25px;
         position: relative;

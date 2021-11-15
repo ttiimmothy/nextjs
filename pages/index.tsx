@@ -16,7 +16,7 @@ import {HomeCategoryBlock} from "./components/home/HomeCategoryBlock/HomeCategor
 import {VideoBlock} from "./components/VideoBlock/VideoBlock";
 import {ComponentHeader} from "./components/ComponentHeader/ComponentHeader";
 import {Footer} from "./components/Footer/Footer";
-import {Header} from "./components/Header/Header";
+import {Header} from "./components/home/Header/Header";
 import {FullScreenVideoBlock} from "./components/FullScreenVideoBlock/FullScreenVideoBlock";
 
 const Home:NextPage = () => {

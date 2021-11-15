@@ -1,4 +1,4 @@
-import style from "../../../styles/Header/Header.module.scss";
+import style from "../../../styles/TypeHeader/TypeHeader.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import weather from "../../image/weather.png";
 import headerIcon from "../../image/unnamed_thumbnail.png";
@@ -12,7 +12,7 @@ import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
 import {FooterInHeader} from "../FooterInHeader/FooterInHeader";
 
-export function Header(){
+export function TypeHeader(){
 	const dispatch = useDispatch();
 	const categories = useSelector((state:IRootState) => state.header.category);
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
@@ -34,7 +34,7 @@ export function Header(){
 	},[scrollHeight])
 
 	return(
-		<header className={style.header}>
+		<header className={style.type_header}>
 			<div className={`${style.bar} ${scrollHeight > 10 || !toggle ? style.bar_scroll : ""} ${showFullMenu || search ? style.bar_for_searching : ""}`}>
 				<div className={style.navbar}>
 					<div className={style.left_major_navbar_part}>
@@ -128,6 +128,16 @@ export function Header(){
                 <Modal show={login} className="login">
                   <LoginModal closeButton={setLogin}/>
                 </Modal>
+              </div>
+              <div className={style.upward}>
+                <button className={style.go_upwards} onClick={() => {
+                  window.scrollTo({
+                    top:0,
+                    behavior:"smooth"
+                  })
+                }}>
+                  <FontAwesomeIcon icon="long-arrow-alt-up" height={20} width={20} className={style.fontawesome_icon}/>
+                </button>
               </div>
             </nav>
           }

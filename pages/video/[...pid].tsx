@@ -15,7 +15,7 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Script from "next/script";
-import {Breadcrumb,Modal} from "react-bootstrap";
+import {Modal} from "react-bootstrap";
 import React,{useEffect,useRef,useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
 import {getVideo} from "../redux/video/thunks";
@@ -33,6 +33,7 @@ import {PageHeaderMobileMenu} from "../components/video/pageHeader/PageHeaderMob
 import LikeButtonWithEmojiBox from "../components/video/LikeButtonWithEmojiBox/LikeButtonWithEmojiBox";
 import ShareButtonWithShareBox from "../components/video/ShareButtonWithShareBox/ShareButtonWithShareBox";
 import MoreOptionsButtonWithMoreBox from "../components/video/MoreOptionsButtonWithMoreBox/MoreOptionsButtonWithMoreBox";
+import { Breadcrumb } from "../components/Breadcrumb/Breadcrumb";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -118,18 +119,7 @@ const Video:NextPage = () => {
       }}>
         <main className={styles.page}>
           <div className={styles.breadcrumb}>
-            {pid && videos.filter((video) => video.id === pid[1]).map((video) =>
-              <Breadcrumb key={video.id}>
-                <Breadcrumb.Item href="/" className={styles.breadcrumb_link}>主頁</Breadcrumb.Item>
-                <Breadcrumb.Item href={`/category/${categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en.toLowerCase().split(" ").join(""))}`} className={styles.breadcrumb_link}>
-                  {categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}
-                </Breadcrumb.Item>
-                <Breadcrumb.Item href={`/channel/${video.subcate_name.split("・").join("")}/${video.subcate_id}`} className={styles.breadcrumb_link}>
-                  {video.subcate_name}
-                </Breadcrumb.Item>
-                <Breadcrumb.Item active>{pid && videos.filter((video) => video.id === pid[1]).map((video) => video.title)}</Breadcrumb.Item>
-              </Breadcrumb>
-            )}
+            <Breadcrumb pid={pid} videos={videos} categories={categories}/>
           </div>
           <div className={styles.body}>
             <div className={styles.main_content}>
