@@ -414,7 +414,8 @@
     .horizontal_scroll_category_blocks{
       @include max-view-width;
       .horizontal_scroll_category_blocks_section{
-        margin: 0 4px 25px 4px;
+        margin: 0 4px;
+        padding-bottom: 25px;
       }
     }
   }
