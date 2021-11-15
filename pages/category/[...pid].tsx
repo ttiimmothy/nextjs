@@ -1,13 +1,12 @@
 import styles from "../../styles/Category/Category.module.scss";
 import style from "../../styles/index.module.scss";
 import {Swiper,SwiperSlide} from "swiper/react";
-import Swiper as SideSwiper from "swiper";
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
 import {getHomeDetail} from "../redux/home/thunks";
 import {TypeHeader} from "../components/TypeHeader/TypeHeader";
@@ -21,24 +20,20 @@ const Category:NextPage = () => {
   const {pid} = router.query;
   const videos = useSelector((state:IRootState) => state.home.video);
   const categories = useSelector((state:IRootState) => state.header.category);
-  let [sideSwiper,setSideSwiper] = useState<any>(null);
-  useEffect(() => {
-    let swiper = new SideSwiper(".swiper-container",{
-      direction:"vertical",
-      loop:true,
-      slidesPerView:3,
-      spaceBetween:2,
-      autoplay:{
-        delay:3000,
-        disableOnInteraction:false
-      },
-      initialSlide:3
-    })
-    setSideSwiper(swiper);
-  },[])
+  const [scrollHeight,setScrollHeight] = useState(0);
+  const [controlledSwiper,setControlledSwiper] = useState<Swiper|Swiper[]>();
+  let swiperList = videos.filter((video,index) => index < 3 || (index > 8 && index < 12));
+  swiperList = swiperList.reverse();
   useEffect(() => {
     dispatch(getHomeDetail());
   },[dispatch])
+  useEffect(() => {
+		function updateScrollHeight(){
+			setScrollHeight(window.pageYOffset);
+		}
+		window.addEventListener("scroll",updateScrollHeight);
+		return () => window.removeEventListener("scroll",updateScrollHeight);
+	},[])
 
 	return(
     <div className={`${styles.category} ${styles.pid}`}>
@@ -62,10 +57,10 @@ const Category:NextPage = () => {
                   spaceBetween={5}
                   loop
                   autoplay={{delay:3000,disableOnInteraction:false}}
+                  controller={{control:controlledSwiper,inverse:true}}
                 >
                   {
-                    videos.filter((video,index) => index < 3 || (index > 8 && index < 10))
-                    .map((video) =>
+                    videos.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
                       <SwiperSlide key={video.id}>
                         <div className={styles.video_block}>
                           <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
@@ -91,18 +86,15 @@ const Category:NextPage = () => {
                 </Swiper>
               </div>
               <div className={`${styles.side_carousel} category_side_carousel`}>
-                {/* <Swiper
+                <Swiper
                   direction="vertical"
                   spaceBetween={2}
                   slidesPerView={3}
                   loop
-                  autoplay={{delay:3000,disableOnInteraction:false}}
-                  initialSlide={3}
-                  ref={sideSwiper}
+                  onSwiper={setControlledSwiper}
                 >
                   {
-                    videos.filter((video,index) => index < 3 || (index > 8 && index < 10))
-                    .map((video) =>
+                    swiperList.map((video) =>
                       <SwiperSlide key={video.id}>
                         <div className={styles.video_block}>
                           <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
@@ -116,28 +108,7 @@ const Category:NextPage = () => {
                       </SwiperSlide>
                     )
                   }
-                </Swiper> */}
-                <div className="swiper-container">
-                  <div className="swiper-wrapper">
-                    {
-                      videos.filter((video,index) => index < 3 || (index > 8 && index < 10)).map((video) =>
-                        (
-                          <div key={video.id} className="swiper-slide">
-                            <div className={styles.video_block}>
-                              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
-                                <a className={styles.video_block_link}>
-                                  <div className={styles.image}>
-                                    <Image src={video.pic_url} alt="video detail" layout="fill"/>
-                                  </div>
-                                </a>
-                              </Link>
-                            </div>
-                          </div>
-                        )
-                      )
-                    }
-                  </div>
-                </div>
+                </Swiper>
               </div>
             </div>
           </div>
