@@ -12,6 +12,15 @@
     margin: 0 auto;
   }
 }
+@mixin max-carousel-width{
+  @media screen and (min-width:600px){
+    width: calc(100% - 350px);
+    margin-right: 2px;
+  }
+  @media screen and (max-width:600px){
+    width: 100%;
+  }
+}
 @media screen and (min-width:600px){
   .category.pid{
     .category_content{
@@ -33,7 +42,94 @@
       @include max-view-width;
       .body{
         .main_content{
-
+          display: flex;
+          .carousel{
+            @include max-carousel-width;
+            .video_block{
+              width: 100%;
+              position: relative;
+              .video_block_link{
+                color: #fff;
+                &:hover{
+                  text-decoration: none;
+                  color: #adadad;
+                }
+                .image{
+                  width: 100%;
+                  position: relative;
+                  overflow: hidden;
+                  aspect-ratio: 16/9;
+                }
+                .video_description{
+                  width: 100%;
+                  text-align: left;
+                  padding: 16px;
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  z-index: 1;
+                  .carousel_category{
+                    margin-bottom: 8px;
+                    a{
+                      font-weight: 600;
+                      text-decoration: none;
+                      background-color: #db5959;
+                      color: #fff;
+                      padding: 5px 10px;
+                      border-radius: 4px;
+                      &:hover{
+                        background-color: rgba(219,89,89,0.8);
+                        color: #e2e2e2;
+                      }
+                    }
+                  }
+                  .video_title{
+                    font-size: 20px;
+                    font-weight: 600;
+                  }
+                  .display_date{
+                    font-size: 10px;
+                    color: #adadad;
+                    &:hover{
+                      color: #747474;
+                    }
+                  }
+                }
+              }
+              &::after{
+                content: "";
+                height: 70%;
+                width: 100%;
+                background-image: linear-gradient(rgba(3, 7, 15, 0), rgba(3, 7, 15, 0.7));
+                color: #000;
+                position: absolute;
+                bottom: 0px;
+                z-index: 0;
+                pointer-events: none;
+              }
+            }
+          }
+          .side_carousel{
+            height: 375px;
+            width: 220px;
+            .video_block{
+              width: 100%;
+              position: relative;
+              .video_block_link{
+                color: #fff;
+                &:hover{
+                  text-decoration: none;
+                  color: #adadad;
+                }
+                .image{
+                  width: 100%;
+                  position: relative;
+                  overflow: hidden;
+                  aspect-ratio: 16/9;
+                }
+              }
+            }
+          }
         }
       }
     }

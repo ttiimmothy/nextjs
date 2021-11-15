@@ -1,16 +1,18 @@
 import styles from "../../styles/Category/Category.module.scss";
 import style from "../../styles/index.module.scss";
 import {Swiper,SwiperSlide} from "swiper/react";
+import Swiper as SideSwiper from "swiper";
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import {useDispatch, useSelector} from "react-redux";
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import {getHomeDetail} from "../redux/home/thunks";
 import {TypeHeader} from "../components/TypeHeader/TypeHeader";
 import {Footer} from "../components/Footer/Footer";
 import {Breadcrumb} from "../components/Breadcrumb/Breadcrumb";
-import {VideoBlock} from "../components/VideoBlock/VideoBlock";
 import {IRootState} from "../store";
 
 const Category:NextPage = () => {
@@ -19,6 +21,21 @@ const Category:NextPage = () => {
   const {pid} = router.query;
   const videos = useSelector((state:IRootState) => state.home.video);
   const categories = useSelector((state:IRootState) => state.header.category);
+  let [sideSwiper,setSideSwiper] = useState<any>(null);
+  useEffect(() => {
+    let swiper = new SideSwiper(".swiper-container",{
+      direction:"vertical",
+      loop:true,
+      slidesPerView:3,
+      spaceBetween:2,
+      autoplay:{
+        delay:3000,
+        disableOnInteraction:false
+      },
+      initialSlide:3
+    })
+    setSideSwiper(swiper);
+  },[])
   useEffect(() => {
     dispatch(getHomeDetail());
   },[dispatch])
@@ -38,17 +55,89 @@ const Category:NextPage = () => {
           </div>
           <div className={styles.body}>
             <div className={styles.main_content}>
-              <div className="category_carousel">
-                <Swiper navigation pagination={{clickable:true}}>
+              <div className={`${styles.carousel} category_carousel`}>
+                <Swiper
+                  navigation
+                  pagination={{clickable:true}}
+                  spaceBetween={5}
+                  loop
+                  autoplay={{delay:3000,disableOnInteraction:false}}
+                >
                   {
                     videos.filter((video,index) => index < 3 || (index > 8 && index < 10))
                     .map((video) =>
                       <SwiperSlide key={video.id}>
-                        <VideoBlock video={video} blockPerRow={1}/>
+                        <div className={styles.video_block}>
+                          <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
+                            <a className={styles.video_block_link}>
+                              <div className={styles.image}>
+                                <Image src={video.pic_url} alt="video detail" layout="fill"/>
+                              </div>
+                              <div className={styles.video_description}>
+                                <div className={styles.carousel_category}>
+                                  <Link href={`/category/${categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_en)}`}>
+                                    <a>{categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}</a>
+                                  </Link>
+                                </div>
+                                <header className={styles.video_title}>{video.title}</header>
+                                <div className={styles.display_date}>{video.display_date}</div>
+                              </div>
+                            </a>
+                          </Link>
+                        </div>
                       </SwiperSlide>
                     )
                   }
                 </Swiper>
+              </div>
+              <div className={`${styles.side_carousel} category_side_carousel`}>
+                {/* <Swiper
+                  direction="vertical"
+                  spaceBetween={2}
+                  slidesPerView={3}
+                  loop
+                  autoplay={{delay:3000,disableOnInteraction:false}}
+                  initialSlide={3}
+                  ref={sideSwiper}
+                >
+                  {
+                    videos.filter((video,index) => index < 3 || (index > 8 && index < 10))
+                    .map((video) =>
+                      <SwiperSlide key={video.id}>
+                        <div className={styles.video_block}>
+                          <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
+                            <a className={styles.video_block_link}>
+                              <div className={styles.image}>
+                                <Image src={video.pic_url} alt="video detail" layout="fill"/>
+                              </div>
+                            </a>
+                          </Link>
+                        </div>
+                      </SwiperSlide>
+                    )
+                  }
+                </Swiper> */}
+                <div className="swiper-container">
+                  <div className="swiper-wrapper">
+                    {
+                      videos.filter((video,index) => index < 3 || (index > 8 && index < 10)).map((video) =>
+                        (
+                          <div key={video.id} className="swiper-slide">
+                            <div className={styles.video_block}>
+                              <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
+                                <a className={styles.video_block_link}>
+                                  <div className={styles.image}>
+                                    <Image src={video.pic_url} alt="video detail" layout="fill"/>
+                                  </div>
+                                </a>
+                              </Link>
+                            </div>
+                          </div>
+                        )
+                      )
+                    }
+                  </div>
+                </div>
               </div>
             </div>
           </div>
