@@ -1,0 +1,41 @@
+@mixin max-view-width(){
+  @media screen and (min-width:600px){
+    max-width: 77vw;
+    margin: 0 auto;
+  }
+  @media screen and (min-width:1200px){
+    max-width: calc(100vw - 118px - 118px);
+    margin: 0 auto;
+  }
+  @media screen and (min-width:1346px){
+    max-width: 1110px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width:600px){
+  .category.pid{
+    .category_content{
+      margin-top: 80px;
+    }
+  }
+}
+@media screen and (max-width:600px){
+  .category.pid{
+    .category_content{
+      margin-top: 88px
+    }
+  }
+}
+.category.pid{
+  font-size: 14px;
+  .category_content{
+    .page{
+      @include max-view-width;
+      .body{
+        .main_content{
+
+        }
+      }
+    }
+  }
+}

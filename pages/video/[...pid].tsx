@@ -33,7 +33,7 @@ import {PageHeaderMobileMenu} from "../components/video/pageHeader/PageHeaderMob
 import LikeButtonWithEmojiBox from "../components/video/LikeButtonWithEmojiBox/LikeButtonWithEmojiBox";
 import ShareButtonWithShareBox from "../components/video/ShareButtonWithShareBox/ShareButtonWithShareBox";
 import MoreOptionsButtonWithMoreBox from "../components/video/MoreOptionsButtonWithMoreBox/MoreOptionsButtonWithMoreBox";
-import { Breadcrumb } from "../components/Breadcrumb/Breadcrumb";
+import {Breadcrumb} from "../components/Breadcrumb/Breadcrumb";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -119,7 +119,7 @@ const Video:NextPage = () => {
       }}>
         <main className={styles.page}>
           <div className={styles.breadcrumb}>
-            <Breadcrumb pid={pid} videos={videos} categories={categories}/>
+            <Breadcrumb pid={pid} videos={videos} categories={categories} type="video"/>
           </div>
           <div className={styles.body}>
             <div className={styles.main_content}>
