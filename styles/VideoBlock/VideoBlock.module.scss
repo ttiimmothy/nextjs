@@ -1,7 +1,7 @@
 .video_block{
   padding: 3px;
   .video_block_link{
-    color: #000;
+    color: #1a1e28;
     &:hover{
       text-decoration: none;
       color: #adadad;
@@ -14,8 +14,6 @@
     }
     .video_description{
       text-align: left;
-      background-color: #f2f2f2;
-      padding: 3px;
       .video_title{
         font-weight: 600;
       }

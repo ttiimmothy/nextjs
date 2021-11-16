@@ -12,13 +12,13 @@ import {library} from "@fortawesome/fontawesome-svg-core";
 import {fab} from "@fortawesome/free-brands-svg-icons";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import {far} from "@fortawesome/free-regular-svg-icons";
-import SwiperCore,{Autoplay,Controller,Mousewheel,Navigation,Pagination,Scrollbar,Thumbs} from "swiper";
+import SwiperCore,{Autoplay,Controller,EffectCube,EffectFade,Mousewheel,Navigation,Pagination,Scrollbar} from "swiper";
 import {AppProps} from "next/app";
 import {Provider} from "react-redux";
 import React from "react";
 import {store} from "./store";
 library.add(fab,fas,far);
-SwiperCore.use([Navigation,Pagination,Scrollbar,Mousewheel,Autoplay,Controller,Thumbs]);
+SwiperCore.use([Navigation,Pagination,Scrollbar,Mousewheel,Autoplay,Controller,EffectFade,EffectCube]);
 
 function MyApp({Component,pageProps}:AppProps){
 	return(

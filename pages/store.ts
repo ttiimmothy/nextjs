@@ -4,6 +4,7 @@ import logger from 'redux-logger';
 import {headerReducer,IHeaderState} from "./redux/header/reducer";
 import {homeReducer,IHomeState} from "./redux/home/reducer";
 import {IVideoState,videoReducer} from "./redux/video/reducer";
+import {categoryReducer,ICategoryState} from "./redux/category/reducer";
 
 declare global {
     /* tslint:disable:interface-name */
@@ -16,12 +17,14 @@ const composeEnhancers = typeof window != "undefined" && window.__REDUX_DEVTOOLS
 export interface IRootState{
 	home:IHomeState,
 	header:IHeaderState,
-	video:IVideoState
+	video:IVideoState,
+	category:ICategoryState
 }
 export const iRootReducer = combineReducers<IRootState>({
 	home:homeReducer,
 	header:headerReducer,
-	video:videoReducer
+	video:videoReducer,
+	category:categoryReducer
 })
 export const store = createStore(iRootReducer,composeEnhancers(
 	applyMiddleware(thunk),

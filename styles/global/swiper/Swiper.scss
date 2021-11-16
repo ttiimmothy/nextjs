@@ -93,10 +93,11 @@
   }
 }
 .category_side_carousel{
-  .swiper,.swiper-container.swiper-container-initialized{
+  .side-swiper,.swiper-container.swiper-container-initialized{
     height: 100%;
     width: 100%;
     margin: 0;
     padding-bottom: 0;
+    overflow: hidden;
   }
 }

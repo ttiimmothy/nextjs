@@ -14,7 +14,7 @@
 }
 @mixin max-carousel-width{
   @media screen and (min-width:600px){
-    width: calc(100% - 350px);
+    width: 666px;
     margin-right: 2px;
   }
   @media screen and (max-width:600px){
@@ -38,10 +38,13 @@
 .category.pid{
   font-size: 14px;
   .category_content{
+    padding-bottom: 25px;
     .page{
       @include max-view-width;
       .body{
+        margin-bottom: 20px;
         .main_content{
+          padding: 0 3px;
           display: flex;
           .carousel{
             @include max-carousel-width;
@@ -126,6 +129,78 @@
                   position: relative;
                   overflow: hidden;
                   aspect-ratio: 16/9;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .category_long_swiper{
+      @include max-view-width;
+      .long_swiper{
+        margin: 0 4px 15px 0;
+      }
+    }
+    .big_block_sub_category{
+      @include max-view-width;
+      .big_block_sub_category_section{
+        margin-bottom: 15px;
+        .video_list{
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+      }
+    }
+    .sub_category{
+      @include max-view-width;
+      .sub_category_section{
+        margin-bottom: 15px;
+        .video_list{
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+      }
+    }
+    .black_background_block{
+      background-color: #343a40;
+      margin-bottom: 15px;
+      .black_background_block_section{
+        @include max-view-width;
+        .video_list{
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          .video_block{
+            width: 33.33%;
+            color: #fff;
+            padding: 3px;
+            &:hover{
+              text-decoration: none;
+              color: #adadad;
+            }
+            .image{
+              width: 100%;
+              position: relative;
+              overflow: hidden;
+              aspect-ratio: 16/9;
+            }
+            .video_description{
+              background-color: #515050;
+              padding: 6px;
+              text-align: left;
+              .video_title{
+                height: 63px;
+                font-size: 18px;
+                font-weight: 600;
+              }
+              .display_date{
+                font-size: 10px;
+                color: #747474;
+                &:hover{
+                  color: #adadad;
                 }
               }
             }

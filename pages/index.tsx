@@ -14,7 +14,7 @@ import {IRootState} from "./store";
 import {HorizontalScrollHomeCategoryBlock} from "./components/home/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
 import {HomeCategoryBlock} from "./components/home/HomeCategoryBlock/HomeCategoryBlock";
 import {VideoBlock} from "./components/VideoBlock/VideoBlock";
-import {ComponentHeader} from "./components/ComponentHeader/ComponentHeader";
+import {ComponentHeader} from "./components/home/ComponentHeader/ComponentHeader";
 import {Footer} from "./components/Footer/Footer";
 import {Header} from "./components/home/Header/Header";
 import {FullScreenVideoBlock} from "./components/FullScreenVideoBlock/FullScreenVideoBlock";

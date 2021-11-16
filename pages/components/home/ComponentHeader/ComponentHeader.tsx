@@ -1,4 +1,4 @@
-import styles from "../../../styles/ComponentHeader/ComponentHeader.module.scss";
+import styles from "../../../../styles/home/ComponentHeader/ComponentHeader.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export function ComponentHeader(props:{header:string,color?:string,padding?:number,borderColor?:string}){
