@@ -13,11 +13,11 @@
   }
 }
 @mixin max-carousel-width{
-  @media screen and (min-width:600px){
+  @media screen and (min-width:1160px){
     width: 666px;
     margin-right: 2px;
   }
-  @media screen and (max-width:600px){
+  @media screen and (max-width:1160px){
     width: 100%;
   }
 }
@@ -32,6 +32,38 @@
   .category.pid{
     .category_content{
       margin-top: 88px
+    }
+  }
+}
+@media screen and (min-width:1160px){
+  .category.pid{
+    .category_content{
+      .page{
+        .body{
+          .main_content{
+            .side_carousel{
+              height: 375px;
+              width: 220px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:1160px){
+  .category.pid{
+    .category_content{
+      .page{
+        .body{
+          .main_content{
+            .side_carousel{
+              height: 0;
+              width: 0;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -113,8 +145,6 @@
             }
           }
           .side_carousel{
-            height: 375px;
-            width: 220px;
             .video_block{
               width: 100%;
               position: relative;
@@ -202,6 +232,40 @@
                 &:hover{
                   color: #adadad;
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+    .closest_videos{
+      margin-bottom: 15px;
+      .closest_videos_section{
+        @include max-view-width;
+        .component_header{
+          font-size: 16px;
+          font-weight: 600;
+          color: #db5959;
+          padding: 0 3px 5px 3px;
+        }
+        .video_list{
+          display: flex;
+          flex-wrap: wrap;
+          .blank_block{
+            width: 33.33%;
+            margin: 5px 0;
+            padding: 0 5px;
+            .blank{
+              height: 100%;
+              min-width: 0;
+              width: 100%;
+              background-color: #fff;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .flex_grow{
+                width: 100%;
+                flex-grow: 1;
               }
             }
           }

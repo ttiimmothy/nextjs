@@ -38,32 +38,28 @@ const Home:NextPage = () => {
         setFreeContentBlockWidth(freeContentBlock.current.offsetWidth);
       }
     }
-    window.addEventListener("resize",resizeFreeContentBlockWidth);
-    return () => window.removeEventListener("resize",resizeFreeContentBlockWidth);
-	},[])
-  useEffect(() => {
     function resizeLatestContentBlockWidth(){
       if(latestContentBlock.current){
         setLatestContentBlockWidth(latestContentBlock.current.offsetWidth);
       }
     }
-    window.addEventListener("resize",resizeLatestContentBlockWidth);
-    return () => window.removeEventListener("resize",resizeLatestContentBlockWidth);
-	},[])
-  useEffect(() => {
-		function updateScrollHeight(){
+    function updateScrollHeight(){
 			setScrollHeight(window.pageYOffset);
 		}
-		window.addEventListener("scroll",updateScrollHeight);
-		return () => window.removeEventListener("scroll",updateScrollHeight);
-	},[])
-  useEffect(() => {
-		function handleResize(){
+    function handleResize(){
 			setWindowDimensions({width:window.innerWidth,height:window.innerHeight});
 		}
-		window.addEventListener("resize",handleResize);
-		return () => window.removeEventListener("resize",handleResize);
-	},[])
+    window.addEventListener("resize",resizeFreeContentBlockWidth);
+    window.addEventListener("resize",resizeLatestContentBlockWidth);
+    window.addEventListener("scroll",updateScrollHeight);
+    window.addEventListener("resize",handleResize);
+    return () => {
+      window.removeEventListener("resize",resizeFreeContentBlockWidth);
+      window.removeEventListener("resize",resizeLatestContentBlockWidth);
+      window.removeEventListener("scroll",updateScrollHeight);
+      window.removeEventListener("resize",handleResize);
+    }
+	},[scrollHeight])
 
 	return(
 		<div className={`${style.home} ${style.index}`}>
@@ -160,8 +156,7 @@ const Home:NextPage = () => {
                     pagination={{clickable:true}}
                   >
                     {
-                      videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10))
-                      .map((video) => {
+                      videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10)).map((video) => {
                         return(
                           <SwiperSlide key={video.id}>
                             <VideoBlock video={video} blockPerRow={1}/>
@@ -183,8 +178,7 @@ const Home:NextPage = () => {
                     pagination={{clickable:true}}
                   >
                     {
-                      videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10))
-                      .map((video) =>
+                      videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10)).map((video) =>
                         <SwiperSlide key={video.id}>
                           <VideoBlock video={video} blockPerRow={1}/>
                         </SwiperSlide>
@@ -282,8 +276,7 @@ const Home:NextPage = () => {
             <ComponentHeader header="會員專區" color="#fff" padding={0} borderColor="#4d535a"/>
             <div className={style.video_list}>
               {
-                videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10))
-                .map((video) => {
+                videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10)).map((video) => {
                   return(
                     <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                       <a className={style.video_block}>

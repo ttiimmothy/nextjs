@@ -16,6 +16,8 @@ import {Breadcrumb} from "../components/Breadcrumb/Breadcrumb";
 import {IRootState} from "../store";
 import {CategoryComponentHeader} from "../components/CategoryComponentHeader/CategoryComponentHeader";
 import {VideoBlock} from "../components/VideoBlock/VideoBlock";
+import {CategoryVideoBlock} from "../components/CategoryVideoBlock/CategoryVideoBlock";
+import {WideCategoryVideoBlock} from "../components/WideCategoryVideoBlock/WideCategoryVideoBlock";
 
 const Category:NextPage = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const Category:NextPage = () => {
   const [scrollHeight,setScrollHeight] = useState(0);
   const [controlledSwiper,setControlledSwiper] = useState<any>(null);
   const [mainSwiper,setMainSwiper] = useState<any>(null);
+  const [windowDimensions,setWindowDimensions] = useState({width:0,height:0});
   let swiperList = videos.filter((video,index) => index < 3 || (index > 8 && index < 12));
   useEffect(() => {
     if(pid){
@@ -38,9 +41,16 @@ const Category:NextPage = () => {
 		function updateScrollHeight(){
 			setScrollHeight(window.pageYOffset);
 		}
+    function handleResize(){
+			setWindowDimensions({width:window.innerWidth,height:window.innerHeight});
+		}
 		window.addEventListener("scroll",updateScrollHeight);
-		return () => window.removeEventListener("scroll",updateScrollHeight);
-	},[])
+		window.addEventListener("resize",handleResize);
+		return () => {
+      window.removeEventListener("scroll",updateScrollHeight);
+      window.removeEventListener("resize",handleResize);
+    }
+	},[scrollHeight])
   swiperList = swiperList.reverse();
   if(swiperList.length > 0){
     for(let i = 0; i < 3; i++){
@@ -138,11 +148,12 @@ const Category:NextPage = () => {
               slidesPerView="auto"
               slidesPerGroup={2}
               navigation
+              pagination={{clickable:true}}
               mousewheel={{forceToAxis:true}}
             >
               {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[0].subcate_id).filter((video,index) => index < 10).map((video) =>
                 <SwiperSlide className={style.category_block} key={video.id}>
-                  <VideoBlock video={video} backgroundColor="#fff" titleHeight={200} descriptionPadding={6} width={300} titleSize={18}/>
+                  <VideoBlock video={video} backgroundColor="#fff" titleHeight={100} descriptionPadding={6} width={280} titleSize={18}/>
                 </SwiperSlide>
               )}
             </Swiper>
@@ -153,10 +164,10 @@ const Category:NextPage = () => {
             {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].name_cn}/>}
             <div className={styles.video_list}>
               {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index < 2).map((video) =>
-                <VideoBlock video={video} blockPerRow={2} backgroundColor="#fff" titleHeight={63} descriptionPadding={6} titleSize={18} key={video.id}/>
+                <WideCategoryVideoBlock video={video} key={video.id}/>
               )}
               {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index > 1 && index < 5).map((video) =>
-                <VideoBlock video={video} blockPerRow={3} backgroundColor="#fff" titleHeight={63} descriptionPadding={6} titleSize={18} key={video.id}/>
+                <CategoryVideoBlock video={video} key={video.id}/>
               )}
             </div>
           </section>
@@ -166,7 +177,7 @@ const Category:NextPage = () => {
             {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].name_cn}/>}
             <div className={styles.video_list}>
               {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 6).map((video) =>
-                <VideoBlock video={video} blockPerRow={3} backgroundColor="#fff" titleHeight={63} descriptionPadding={6} titleSize={18} key={video.id}/>
+                <CategoryVideoBlock video={video} key={video.id} padding={5}/>
               )}
             </div>
           </section>
@@ -174,9 +185,9 @@ const Category:NextPage = () => {
         {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 3 &&
           <div className={styles.black_background_block}>
             <section className={styles.black_background_block_section}>
-              <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].name_cn}/>
+              <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].name_cn} color="#fff" borderColor="#4d535a"/>
               <div className={styles.video_list}>
-                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index < 6).map((video) =>
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index < 3).map((video) =>
                   <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                     <a className={styles.video_block}>
                       <div className={styles.image}>
@@ -199,14 +210,40 @@ const Category:NextPage = () => {
               <CategoryComponentHeader header={subCategory.name_cn}/>
               <div className={styles.video_list}>
                 {videos.filter((video) => video.subcate_id === subCategory.subcate_id).filter((video,index) => index < 6).map((video) =>
-                  <VideoBlock video={video} blockPerRow={3} backgroundColor="#fff" titleHeight={63} descriptionPadding={6} titleSize={18} key={video.id}/>
+                  <CategoryVideoBlock video={video} key={video.id} padding={5}/>
                 )}
               </div>
             </section>
           </div>
         )}
         <div className={styles.closest_videos}>
-          <div className={styles.video_list}></div>
+          <section className={styles.closest_videos_section}>
+          <div className={styles.component_header}>
+              <div>最新影片</div>
+            </div>
+            <div className={styles.video_list}>
+              {videos.filter((video,index) => index < 2).map((video) =>
+                <CategoryVideoBlock video={video} key={video.id} padding={5}/>
+              )}
+              <div className={styles.blank_block}>
+                <div className={styles.blank}>
+                  <div className={styles.flex_grow}></div>
+                </div>
+              </div>
+              {videos.filter((video,index) => index > 1 && index < 100).map((video,index) =>
+                (
+                  (index + 1) % 6 === 0 ?
+                  <div className={styles.blank_block} key={index}>
+                    <div className={styles.blank}>
+                      <div className={styles.flex_grow}></div>
+                    </div>
+                  </div>
+                    :
+                  <CategoryVideoBlock video={video} key={video.id} padding={5}/>
+                )
+              )}
+            </div>
+          </section>
         </div>
       </div>
       <Footer/>

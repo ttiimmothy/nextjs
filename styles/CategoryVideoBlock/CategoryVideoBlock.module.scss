@@ -1,6 +1,15 @@
-.video_page_trending_video_swiper_block{
-  width: 100%;
-  .video_block{
+@media screen and (min-width:600px){
+  .category_video_block{
+    width: 33.33%;
+  }
+}
+@media screen and (max-width:600px){
+  .category_video_block{
+    width: 100%;
+  }
+}
+.category_video_block{
+  .video_block_link{
     color: #1a1e28;
     &:hover{
       text-decoration: none;
@@ -8,15 +17,18 @@
     }
     .image{
       width: 100%;
-      margin-bottom: 5px;
       position: relative;
       overflow: hidden;
       aspect-ratio: 16/9;
     }
     .video_description{
+      background-color: #fff;
+      padding: 6px;
       text-align: left;
       .video_title{
-        font-weight: 600;
+        height: 63px;
+        font-size: 18px;
+        font-weight: 500;
       }
       .display_date{
         font-size: 10px;

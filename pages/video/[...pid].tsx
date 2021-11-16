@@ -263,8 +263,7 @@ const Video:NextPage = () => {
               mousewheel={{forceToAxis:true}}
             >
               {
-                videos.filter((video,index) => index < 3 || (index > 7 && index < 12) || (index > 16 && index < 23) || (index > 25 && index < 30))
-                .map((video) => {
+                videos.filter((video,index) => index < 3 || (index > 7 && index < 12) || (index > 16 && index < 23) || (index > 25 && index < 30)).map((video) => {
                   return(
                     <SwiperSlide key={video.id}>
                       <VideoPageTrendingVideoSwiperBlock video={video} key={video.id}/>
