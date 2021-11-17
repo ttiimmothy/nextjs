@@ -537,9 +537,10 @@
           .go_upwards{
             background-color: transparent;
             color: #fff;
-            margin-left: 15px;
-            padding: 0;
-            border: 0px none;
+            margin-left: 10px;
+            padding: 2px;
+            border: solid 2px #fff;
+            border-radius: 5px;
             box-shadow: none;
             .fontawesome_icon{
               font-size: 20px;

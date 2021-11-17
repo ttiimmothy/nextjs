@@ -35,6 +35,41 @@
     }
   }
 }
+@media screen and (min-width:1000px){
+  .category.pid{
+    .category_content{
+      .big_block_sub_category,.sub_category,.dark_background_block{
+        .more_button{
+          display: none;
+        }
+      }
+      .dark_background_block{
+        .dark_background_block_section{
+          .video_list{
+            .video_block{
+              width: 33.33%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:1000px){
+  .category.pid{
+    .category_content{
+      .dark_background_block{
+        .dark_background_block_section{
+          .video_list{
+            .video_block{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 @media screen and (min-width:1160px){
   .category.pid{
     .category_content{
@@ -181,6 +216,32 @@
           align-items: center;
           flex-wrap: wrap;
         }
+        .more_button{
+          margin: 0 3px;
+          .more_button_section{
+            padding-bottom: 8px;
+            .see_more{
+              width: 100%;
+              background-color: transparent;
+              color: rgba(0,0,0,0.78);
+              padding: 8px 0;
+              border: solid 1px #adadad;
+              border-radius: 4px;
+              outline: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .more{
+                font-weight: 500;
+                padding-right: 5px;
+              }
+              .fontawesome_icon{
+                font-size: 12px;
+                color: #adadad;
+              }
+            }
+          }
+        }
       }
     }
     .sub_category{
@@ -192,6 +253,32 @@
           align-items: center;
           flex-wrap: wrap;
         }
+        .more_button{
+          margin: 0 3px;
+          .more_button_section{
+            padding-bottom: 8px;
+            .see_more{
+              width: 100%;
+              background-color: transparent;
+              color: rgba(0,0,0,0.78);
+              padding: 8px 0;
+              border: solid 1px #adadad;
+              border-radius: 4px;
+              outline: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .more{
+                font-weight: 500;
+                padding-right: 5px;
+              }
+              .fontawesome_icon{
+                font-size: 12px;
+                color: #adadad;
+              }
+            }
+          }
+        }
       }
     }
     .dark_background_block{
@@ -199,15 +286,14 @@
       margin-bottom: 15px;
       .dark_background_block_section{
         @include max-view-width;
-        padding-top: 10px;
+        padding: 10px 0 5px 0;
         .video_list{
           display: flex;
           align-items: center;
           flex-wrap: wrap;
           .video_block{
-            width: 33.33%;
             color: #fff;
-            padding: 3px;
+            padding: 5px;
             &:hover{
               text-decoration: none;
               color: #adadad;
@@ -229,10 +315,36 @@
               }
               .display_date{
                 font-size: 10px;
-                color: #747474;
+                color: #adadad;
                 &:hover{
-                  color: #adadad;
+                  color: #747474;
                 }
+              }
+            }
+          }
+        }
+        .more_button{
+          margin: 0 3px;
+          .more_button_section{
+            padding: 12px 0;
+            .see_more{
+              width: 100%;
+              background-color: transparent;
+              color: #fff;
+              padding: 8px 0;
+              border: solid 1px #adadad;
+              border-radius: 4px;
+              outline: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              .more{
+                font-weight: 500;
+                padding-right: 5px;
+              }
+              .fontawesome_icon{
+                font-size: 12px;
+                color: #adadad;
               }
             }
           }
@@ -260,7 +372,7 @@
               height: 100%;
               min-width: 0;
               width: 100%;
-              background-color: #fff;
+              background-color: #f3f3f3;
               display: flex;
               align-items: center;
               justify-content: center;

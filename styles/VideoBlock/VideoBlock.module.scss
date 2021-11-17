@@ -1,4 +1,5 @@
 .video_block{
+  padding: 3px;
   .video_block_link{
     color: #1a1e28;
     &:hover{
@@ -12,6 +13,7 @@
       aspect-ratio: 16/9;
     }
     .video_description{
+      padding: 3px;
       text-align: left;
       .video_title{
         font-weight: 600;

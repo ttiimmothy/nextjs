@@ -1,6 +1,7 @@
 import styles from "../../styles/Category/Category.module.scss";
 import style from "../../styles/index.module.scss";
 import {Swiper,SwiperSlide} from "swiper/react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
@@ -15,9 +16,9 @@ import {Footer} from "../components/Footer/Footer";
 import {Breadcrumb} from "../components/Breadcrumb/Breadcrumb";
 import {IRootState} from "../store";
 import {CategoryComponentHeader} from "../components/CategoryComponentHeader/CategoryComponentHeader";
-import {VideoBlock} from "../components/VideoBlock/VideoBlock";
 import {CategoryVideoBlock} from "../components/CategoryVideoBlock/CategoryVideoBlock";
 import {WideCategoryVideoBlock} from "../components/WideCategoryVideoBlock/WideCategoryVideoBlock";
+import {CategorySwiperBlock} from "../components/CategorySwiperBlock/CategorySwiperBlock";
 
 const Category:NextPage = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const Category:NextPage = () => {
       swiperList.push(swiperList.shift() as VideoDetail);
     }
   }
-  const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("") === (pid && pid[0])))[0]?.cate_id;
+  const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.cate_id;
 
 	return(
     <div className={`${styles.category} ${styles.pid}`}>
@@ -141,7 +142,7 @@ const Category:NextPage = () => {
           </div>
         </main>
         <div className={`long_swiper ${styles.category_long_swiper}`}>
-          {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[0].name_cn}/>}
+          {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[0].name_cn} swiper={true}/>}
           <div className={styles.long_swiper}>
             <Swiper
               spaceBetween={3}
@@ -153,7 +154,7 @@ const Category:NextPage = () => {
             >
               {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[0].subcate_id).filter((video,index) => index < 10).map((video) =>
                 <SwiperSlide className={style.category_block} key={video.id}>
-                  <VideoBlock video={video} backgroundColor="#fff" titleHeight={100} descriptionPadding={6} width={280} titleSize={18}/>
+                  <CategorySwiperBlock video={video}/>
                 </SwiperSlide>
               )}
             </Swiper>
@@ -163,12 +164,23 @@ const Category:NextPage = () => {
           <section className={styles.big_block_sub_category_section}>
             {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].name_cn}/>}
             <div className={styles.video_list}>
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index < 2).map((video) =>
+              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index < 1).map((video) =>
+                <WideCategoryVideoBlock video={video} main={true} key={video.id}/>
+              )}
+              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index === 1).map((video) =>
                 <WideCategoryVideoBlock video={video} key={video.id}/>
               )}
               {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index > 1 && index < 5).map((video) =>
                 <CategoryVideoBlock video={video} key={video.id}/>
               )}
+            </div>
+            <div className={styles.more_button}>
+              <section className={styles.more_button_section}>
+                <button className={styles.see_more}>
+                  <div className={styles.more}>更多</div>
+                  <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
+                </button>
+              </section>
             </div>
           </section>
         </div>
@@ -176,9 +188,20 @@ const Category:NextPage = () => {
           <section className={styles.sub_category_section}>
             {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].name_cn}/>}
             <div className={styles.video_list}>
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 6).map((video) =>
+              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 1).map((video) =>
+                <CategoryVideoBlock video={video} main={true} key={video.id}/>
+              )}
+              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index > 0 && index < 6).map((video) =>
                 <CategoryVideoBlock video={video} key={video.id}/>
               )}
+            </div>
+            <div className={styles.more_button}>
+              <section className={styles.more_button_section}>
+                <button className={styles.see_more}>
+                  <div className={styles.more}>更多</div>
+                  <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
+                </button>
+              </section>
             </div>
           </section>
         </div>
@@ -187,7 +210,7 @@ const Category:NextPage = () => {
             <section className={styles.dark_background_block_section}>
               <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].name_cn} color="#fff" borderColor="#4d535a"/>
               <div className={styles.video_list}>
-                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index < 3).map((video) =>
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 3).map((video) =>
                   <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                     <a className={styles.video_block}>
                       <div className={styles.image}>
@@ -201,6 +224,14 @@ const Category:NextPage = () => {
                   </Link>
                 )}
               </div>
+              <div className={styles.more_button}>
+                <section className={styles.more_button_section}>
+                  <button className={styles.see_more}>
+                    <div className={styles.more}>更多</div>
+                    <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
+                  </button>
+                </section>
+              </div>
             </section>
           </div>
         }
@@ -209,9 +240,20 @@ const Category:NextPage = () => {
             <section className={styles.sub_category_section}>
               <CategoryComponentHeader header={subCategory.name_cn}/>
               <div className={styles.video_list}>
-                {videos.filter((video) => video.subcate_id === subCategory.subcate_id).filter((video,index) => index < 6).map((video) =>
+                {videos.filter((video) => video.subcate_id === subCategory.subcate_id).filter((video,index) => index < 1).map((video) =>
+                  <CategoryVideoBlock video={video} main={true} key={video.id}/>
+                )}
+                {videos.filter((video) => video.subcate_id === subCategory.subcate_id).filter((video,index) => index > 0 && index < 6).map((video) =>
                   <CategoryVideoBlock video={video} key={video.id}/>
                 )}
+              </div>
+              <div className={styles.more_button}>
+                <section className={styles.more_button_section}>
+                  <button className={styles.see_more}>
+                    <div className={styles.more}>更多</div>
+                    <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
+                  </button>
+                </section>
               </div>
             </section>
           </div>

@@ -1,59 +1,90 @@
-@media screen and (min-width:600px){
-  .wide_category_video_block{
-    width: 50%;
-  }
-}
-@media screen and (max-width:600px){
-  .wide_category_video_block{
-    width: 100%;
-  }
-}
 @media screen and (min-width:1000px){
   .wide_category_video_block{
-    .video_description{
+    width: 50%;
+    padding: 5px;
+    .main_video_block_link,.video_block_link{
+      flex-direction: column;
+      .main_image_width,.image_width{
+        width: 100%;
+      }
       .video_title{
-        font-size: 18px;
+        height: 63px;
+        padding: 6px;
+      }
+      .display_date{
+        padding: 6px;
       }
     }
   }
 }
 @media screen and (max-width:1000px){
   .wide_category_video_block{
-    .video_description{
+    width: 100%;
+    padding: 8px 3px;
+    .main_video_block_link,.video_block_link{
+      flex-flow: column wrap;
+      .main_image_width{
+        width: 100%;
+      }
+      .image_width{
+        width: 220px;
+        padding-right: 8px;
+      }
       .video_title{
-        font-size: 16px;
+        flex: 1 1 auto;
+      }
+      .display_date{
+        width: calc(100% - 220px - 8px);
+        padding-bottom: 6px;
+      }
+    }
+    .main_video_block_link{
+      .video_title{
+        height: 63px;
+        padding: 6px;
+      }
+      .display_date{
+        padding: 6px;
+      }
+    }
+    .video_block_link{
+      height: 119px;
+      .video_title{
+        padding-top: 6px;
+      }
+      .display_date{
+        padding-bottom: 6px;
       }
     }
   }
 }
 .wide_category_video_block{
-  padding: 5px;
-  .video_block_link{
+  .main_video_block_link,.video_block_link{
+    background-color: #f3f3f3;
     color: #1a1e28;
+    display: flex;
     &:hover{
       text-decoration: none;
       color: #adadad;
     }
-    .image{
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-    }
-    .video_description{
-      background-color: #f9f9f9;
-      padding: 6px;
-      text-align: left;
-      .video_title{
-        height: 63px;
-        font-weight: 500;
+    .main_image_width,.image_width{
+      .image{
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16/9;
       }
-      .display_date{
-        font-size: 10px;
-        color: #747474;
-        &:hover{
-          color: #adadad;
-        }
+    }
+    .video_title{
+      font-size: 18px;
+      font-weight: 500;
+      text-align: left;
+    }
+    .display_date{
+      font-size: 10px;
+      color: #747474;
+      &:hover{
+        color: #adadad;
       }
     }
   }

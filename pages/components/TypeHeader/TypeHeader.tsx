@@ -60,7 +60,7 @@ export function TypeHeader(){
 									categories.map((category,index) =>
 										(
                       <li className={style.category_item} key={index}>
-                        <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("")}`}>
+                        <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("").split("/").join("")}`}>
                           <a>
                             {category.name_cn}
                           </a>
@@ -180,7 +180,7 @@ export function TypeHeader(){
                     (
                       <li className={style.category} key={category.cate_id}>
                         <header className={style.category_head}>
-                          <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("")}`}>
+                          <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("").split("/").join("")}`}>
                             <a className={style.category_link}>{category.name_cn}</a>
                           </Link>
                         </header>
