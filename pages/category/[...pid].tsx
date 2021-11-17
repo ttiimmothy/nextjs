@@ -82,7 +82,7 @@ const Category:NextPage = () => {
                   loop
                   effect="fade"
                   autoplay={{delay:3000,disableOnInteraction:false}}
-                  controller={{control:controlledSwiper,inverse:true,by:"slide"}}
+                  controller={{control:controlledSwiper,inverse:true}}
                   onSwiper={setMainSwiper}
                 >
                   {
