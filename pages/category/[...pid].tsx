@@ -210,16 +210,29 @@ const Category:NextPage = () => {
             <section className={styles.dark_background_block_section}>
               <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].name_cn} color="#fff" borderColor="#4d535a"/>
               <div className={styles.video_list}>
-                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 3).map((video) =>
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index < 1).map((video) =>
+                  <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                    <a className={styles.main_video_block}>
+                      <div className={styles.image_width}>
+                        <div className={styles.image}>
+                          <Image src={video.pic_url} alt="video detail" layout="fill"/>
+                        </div>
+                      </div>
+                      <header className={styles.video_title}>{video.title}</header>
+                      <div className={styles.display_date}>{video.display_date}</div>
+                    </a>
+                  </Link>
+                )}
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index > 0 && index < 3).map((video) =>
                   <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                     <a className={styles.video_block}>
-                      <div className={styles.image}>
-                        <Image src={video.pic_url} alt="video detail" layout="fill"/>
+                      <div className={styles.image_width}>
+                        <div className={styles.image}>
+                          <Image src={video.pic_url} alt="video detail" layout="fill"/>
+                        </div>
                       </div>
-                      <div className={styles.video_description}>
-                        <header className={styles.video_title}>{video.title}</header>
-                        <div className={styles.display_date}>{video.display_date}</div>
-                      </div>
+                      <header className={styles.video_title}>{video.title}</header>
+                      <div className={styles.display_date}>{video.display_date}</div>
                     </a>
                   </Link>
                 )}

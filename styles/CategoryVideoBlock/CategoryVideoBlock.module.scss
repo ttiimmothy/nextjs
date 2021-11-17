@@ -30,13 +30,6 @@
         width: 220px;
         padding-right: 8px;
       }
-      .video_title{
-        width: calc(100% - 220px - 8px);
-        flex: 1 1 auto;
-      }
-      .display_date{
-        padding-bottom: 6px;
-      }
     }
     .main_video_block_link{
       .video_title{
@@ -50,7 +43,9 @@
     .video_block_link{
       height: 119px;
       .video_title{
+        width: calc(100% - 220px - 8px);
         padding-top: 6px;
+        flex: 1 1 auto;
       }
       .display_date{
         padding-bottom: 6px;
