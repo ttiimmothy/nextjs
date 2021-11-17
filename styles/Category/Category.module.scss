@@ -194,11 +194,12 @@
         }
       }
     }
-    .black_background_block{
+    .dark_background_block{
       background-color: #343a40;
       margin-bottom: 15px;
-      .black_background_block_section{
+      .dark_background_block_section{
         @include max-view-width;
+        padding-top: 10px;
         .video_list{
           display: flex;
           align-items: center;

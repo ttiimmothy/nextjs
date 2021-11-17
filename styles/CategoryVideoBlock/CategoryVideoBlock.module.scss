@@ -9,6 +9,7 @@
   }
 }
 .category_video_block{
+  padding: 5px;
   .video_block_link{
     color: #1a1e28;
     &:hover{
@@ -22,7 +23,7 @@
       aspect-ratio: 16/9;
     }
     .video_description{
-      background-color: #fff;
+      background-color: #f9f9f9;
       padding: 6px;
       text-align: left;
       .video_title{

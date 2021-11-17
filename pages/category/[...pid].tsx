@@ -177,14 +177,14 @@ const Category:NextPage = () => {
             {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].name_cn}/>}
             <div className={styles.video_list}>
               {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 6).map((video) =>
-                <CategoryVideoBlock video={video} key={video.id} padding={5}/>
+                <CategoryVideoBlock video={video} key={video.id}/>
               )}
             </div>
           </section>
         </div>
         {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 3 &&
-          <div className={styles.black_background_block}>
-            <section className={styles.black_background_block_section}>
+          <div className={styles.dark_background_block}>
+            <section className={styles.dark_background_block_section}>
               <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].name_cn} color="#fff" borderColor="#4d535a"/>
               <div className={styles.video_list}>
                 {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index < 3).map((video) =>
@@ -210,7 +210,7 @@ const Category:NextPage = () => {
               <CategoryComponentHeader header={subCategory.name_cn}/>
               <div className={styles.video_list}>
                 {videos.filter((video) => video.subcate_id === subCategory.subcate_id).filter((video,index) => index < 6).map((video) =>
-                  <CategoryVideoBlock video={video} key={video.id} padding={5}/>
+                  <CategoryVideoBlock video={video} key={video.id}/>
                 )}
               </div>
             </section>
@@ -223,7 +223,7 @@ const Category:NextPage = () => {
             </div>
             <div className={styles.video_list}>
               {videos.filter((video,index) => index < 2).map((video) =>
-                <CategoryVideoBlock video={video} key={video.id} padding={5}/>
+                <CategoryVideoBlock video={video} key={video.id}/>
               )}
               <div className={styles.blank_block}>
                 <div className={styles.blank}>
@@ -239,7 +239,7 @@ const Category:NextPage = () => {
                     </div>
                   </div>
                     :
-                  <CategoryVideoBlock video={video} key={video.id} padding={5}/>
+                  <CategoryVideoBlock video={video} key={video.id}/>
                 )
               )}
             </div>

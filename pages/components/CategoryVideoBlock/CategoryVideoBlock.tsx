@@ -3,9 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import {VideoDetail} from "../../redux/home/actions";
 
-export const CategoryVideoBlock = (props:{video:VideoDetail,padding?:number}):JSX.Element => {
+export const CategoryVideoBlock = (props:{video:VideoDetail}):JSX.Element => {
 	return(
-    <div className={styles.category_video_block} style={{padding:props.padding ? props.padding : 3}}>
+    <div className={styles.category_video_block}>
       <Link href={`/video/${props.video.subcate_name.split("・").join("")}/${props.video.id}/${props.video.title}`}>
         <a className={styles.video_block_link}>
           <div className={styles.image}>
