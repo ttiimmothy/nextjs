@@ -12,7 +12,7 @@ import {IRootState} from "../../store";
 import {LoginModal} from "../LoginModal/LoginModal";
 import {FooterInHeader} from "../FooterInHeader/FooterInHeader";
 
-export function TypeHeader(){
+export function TypeHeader(props:{search:boolean,setSearch:React.Dispatch<React.SetStateAction<boolean>>}){
 	const dispatch = useDispatch();
 	const categories = useSelector((state:IRootState) => state.header.category);
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
@@ -82,11 +82,13 @@ export function TypeHeader(){
                 <FontAwesomeIcon icon={["fab","codepen"]} className={`${style.right_listing_icon} ${showFullMenu ? style.open_codepen_icon : style.close_codepen_icon}`} height={18} width={18} onClick={() => {
                   setShowFullMenu(!showFullMenu);
                   setSearch(false);
+                  props.setSearch(!props.search);
                 }}/>
               </div>
               <div className={style.search}>
                 <FontAwesomeIcon icon="search" className={`${style.right_listing_icon} ${search ? style.open_search_panel : style.close_search_panel}`} height={18} width={18} onClick={() => {
                   setSearch(!search);
+                  !showFullMenu && props.setSearch(!props.search);
                 }}/>
                 <div className={search ? style.show_search : style.hide_search}>
                   <section className={style.search_section}>

@@ -1,3 +1,21 @@
+@media screen and (min-width:500px){
+  .wide_category_video_block{
+    .video_block_link{
+      .video_title{
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media screen and (max-width:500px){
+  .wide_category_video_block{
+    .video_block_link{
+      .video_title{
+        font-size: 14px;
+      }
+    }
+  }
+}
 @media screen and (min-width:1000px){
   .wide_category_video_block{
     width: 50%;
@@ -71,7 +89,6 @@
       }
     }
     .video_title{
-      font-size: 18px;
       font-weight: 500;
       text-align: left;
     }
@@ -81,6 +98,11 @@
       &:hover{
         color: #adadad;
       }
+    }
+  }
+  .main_video_block_link{
+    .video_title{
+      font-size: 18px;
     }
   }
 }

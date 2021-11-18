@@ -4,6 +4,7 @@
 content
 height
 min-height
+line-height
 width
 min-width
 font-size
@@ -61,8 +62,8 @@ overflow
 aspect-ratio
 cursor
 z-index
-word-wrap
 white-space
+word-wrap
 transition
 transition-timing-function
 transition-duration
