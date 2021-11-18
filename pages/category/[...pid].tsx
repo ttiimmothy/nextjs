@@ -89,7 +89,7 @@ const Category:NextPage = () => {
           </div>
         </div>
       </header>
-      <div className={`${search ? styles.category_content_for_searching : styles.category_content} ${style.App}`}>
+      <div className={`${search ? styles.category_content_for_searching : scrollHeight > 10 ? styles.category_content_scroll : styles.category_content} ${style.App}`}>
         <main className={styles.page}>
           <div className={styles.breadcrumb}>
             <Breadcrumb pid={pid} videos={videos} categories={categories} type="category"/>

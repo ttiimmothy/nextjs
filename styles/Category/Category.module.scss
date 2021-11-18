@@ -23,7 +23,7 @@
 }
 @media screen and (min-width:500px){
   .category.pid{
-    .category_content_for_searching,.category_content{
+    .category_content_for_searching,.category_content_scroll,.category_content{
       .dark_background_block{
         .dark_background_block_section{
           .video_list{
@@ -40,7 +40,7 @@
 }
 @media screen and (max-width:500px){
   .category.pid{
-    .category_content_for_searching,.category_content{
+    .category_content_for_searching,.category_content_scroll,.category_content{
       .dark_background_block{
         .dark_background_block_section{
           .video_list{
@@ -97,8 +97,11 @@
     .category_content_for_searching{
       margin-top: 80px;
     }
+    .category_content_scroll{
+      margin-top: 114px;
+    }
     .category_content{
-      margin-top: 158px;
+      margin-top: 154px;
     }
   }
 }
@@ -168,6 +171,9 @@
     .category_content_for_searching{
       margin-top: 88px;
     }
+    .category_content_scroll{
+      margin-top: 84px;
+    }
     .category_content{
       margin-top: 128px;
     }
@@ -175,7 +181,7 @@
 }
 @media screen and (min-width:1000px){
   .category.pid{
-    .category_content_for_searching,.category_content{
+    .category_content_for_searching,.category_content_scroll,.category_content{
       .big_block_sub_category,.sub_category,.dark_background_block{
         .more_button{
           display: none;
@@ -221,7 +227,7 @@
 }
 @media screen and (max-width:1000px){
   .category.pid{
-    .category_content_for_searching,.category_content{
+    .category_content_for_searching,.category_content_scroll,.category_content{
       .dark_background_block{
         .dark_background_block_section{
           padding: 10px 0 5px 0;
@@ -279,7 +285,7 @@
 }
 @media screen and (min-width:1160px){
   .category.pid{
-    .category_content_for_searching,.category_content{
+    .category_content_for_searching,.category_content_scroll,.category_content{
       .page{
         .body{
           .main_content{
@@ -295,7 +301,7 @@
 }
 @media screen and (max-width:1160px){
   .category.pid{
-    .category_content_for_searching,.category_content{
+    .category_content_for_searching,.category_content_scroll,.category_content{
       .page{
         .body{
           .main_content{
@@ -383,7 +389,7 @@
       display: none;
     }
   }
-  .category_content_for_searching,.category_content{
+  .category_content_for_searching,.category_content_scroll,.category_content{
     padding-bottom: 25px;
     transition: margin-top 0.5s ease-in-out 0s;
     .page{
