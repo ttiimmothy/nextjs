@@ -29,8 +29,6 @@ const Category:NextPage = () => {
   const subCategories = useSelector((state:IRootState) => state.header.subCategory);
   const [scrollHeight,setScrollHeight] = useState(0);
   const [controlledSwiper,setControlledSwiper] = useState<any>(null);
-  const [mainSwiper,setMainSwiper] = useState<any>(null);
-  const [windowDimensions,setWindowDimensions] = useState({width:0,height:0});
   const [search,setSearch] = useState(false);
   let swiperList = videos.filter((video,index) => index < 3 || (index > 8 && index < 12));
   useEffect(() => {
@@ -43,14 +41,9 @@ const Category:NextPage = () => {
 		function updateScrollHeight(){
 			setScrollHeight(window.pageYOffset);
 		}
-    function handleResize(){
-			setWindowDimensions({width:window.innerWidth,height:window.innerHeight});
-		}
 		window.addEventListener("scroll",updateScrollHeight);
-		window.addEventListener("resize",handleResize);
 		return () => {
       window.removeEventListener("scroll",updateScrollHeight);
-      window.removeEventListener("resize",handleResize);
     }
 	},[scrollHeight])
   swiperList = swiperList.reverse();
@@ -112,7 +105,6 @@ const Category:NextPage = () => {
                   effect="fade"
                   autoplay={{delay:3000,disableOnInteraction:false}}
                   controller={{control:controlledSwiper,inverse:true}}
-                  onSwiper={setMainSwiper}
                 >
                   {
                     videos.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
