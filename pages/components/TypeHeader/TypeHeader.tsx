@@ -189,7 +189,7 @@ export function TypeHeader(props:{search:boolean,setSearch:React.Dispatch<React.
                         <ul className={style.sub_categories}>
                           {subCategories.filter((subCategory) => subCategory.cate_id === category.cate_id).map((subCategory) =>
                             <li className={style.sub_category} key={subCategory.subcate_id}>
-                              <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
+                              <Link href={`/channel/${subCategory.name_cn.split("．").join("").split("・").join("")}/${subCategory.subcate_id}`}>
                                 <a className={style.category_link}>{subCategory.name_cn}</a>
                               </Link>
                             </li>
@@ -263,7 +263,7 @@ export function TypeHeader(props:{search:boolean,setSearch:React.Dispatch<React.
                     return(
                       <li className={style.category_listitem} key={subCategory.subcate_id}>
                         <div className={style.category_listitem_block}>
-                          <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
+                          <Link href={`/channel/${subCategory.name_cn.split("．").join("").split("・").join("")}/${subCategory.subcate_id}`}>
                             <a className={style.category_listitem_link}>{subCategory.name_cn}</a>
                           </Link>
                         </div>

@@ -6,7 +6,7 @@ import {VideoDetail} from "../../../redux/home/actions";
 export function VideoPageAdviceVideoBlock(props:{video:VideoDetail}){
   return(
     <div className={styles.video_page_advice_video_block}>
-      <Link href={`/video/${props.video.subcate_name.split("・").join("")}/${props.video.id}/${props.video.title}`}>
+      <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${props.video.title}`}>
         <a className={styles.video_block}>
           <div className={styles.image}>
             <Image src={props.video.pic_url} alt="video detail" layout="fill"/>
@@ -14,7 +14,7 @@ export function VideoPageAdviceVideoBlock(props:{video:VideoDetail}){
           <div className={styles.video_description}>
             <header className={styles.video_title}>{props.video.title}</header>
             <div className={styles.category_and_date}>
-              <div className={styles.category}>{props.video.subcate_name.split("・").join("")}</div>
+              <div className={styles.category}>{props.video.subcate_name.split("．").join("").split("・").join("")}</div>
               <div className={styles.display_date}>{props.video.display_date}</div>
             </div>
           </div>

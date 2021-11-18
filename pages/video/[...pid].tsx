@@ -127,7 +127,7 @@ const Video:NextPage = () => {
                 <div className={styles.video_player_with_description}>
                   <header className={styles.video_header}>
                     <div className={styles.video_information} key={video.id}>
-                      <div className={styles.video_subcategory}>{video.subcate_name.split("・").join("")}</div>
+                      <div className={styles.video_subcategory}>{video.subcate_name.split("．").join("").split("・").join("")}</div>
                       <div className={styles.video_title}>{video.title}</div>
                       <div className={styles.video_date} ref={displayDateOffset}>{video.updated_at}</div>
                     </div>

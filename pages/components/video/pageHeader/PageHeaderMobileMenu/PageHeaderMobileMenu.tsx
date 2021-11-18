@@ -44,7 +44,7 @@ export function PageHeaderMobileMenu(props:{toggle:boolean}){
                     return(
                       <li className={styles.category_listitem} key={subCategory.subcate_id}>
                         <div className={styles.category_listitem_block}>
-                          <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
+                          <Link href={`/channel/${subCategory.name_cn.split("．").join("").split("・").join("")}/${subCategory.subcate_id}`}>
                             <a className={styles.category_listitem_link}>{subCategory.name_cn}</a>
                           </Link>
                         </div>

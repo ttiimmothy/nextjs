@@ -120,11 +120,11 @@ getCategory:
 
 getContent:
 
-<https://ent.i-cable.com/ci/api/content/{{cate_id>}}
+<https://ent.i-cable.com/ci/api/content/{{cate_id}}>
 
 getStream:
 
-<https://ent.i-cable.com/ci/api/stream/{{id>}}
+<https://ent.i-cable.com/ci/api/stream/{{id}}>
 
 getSubcategory:
 

@@ -1,0 +1,11 @@
+.channel.pid{
+  .channel_content{
+    padding-bottom: 25px;
+    .page{
+      @include max-view-width;
+      .body{
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

@@ -22,7 +22,7 @@ export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
               videoDetail.filter((video,index) => index < 1)
               .map((video) =>
                 (
-                  <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                  <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
                     <a className={styles.video_block}>
                       <div className={styles.image}>
                         <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>
@@ -45,7 +45,7 @@ export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
               .map((video) =>
                 (
                   <div className={styles.video_block} key={video.id}>
-                    <Link href={`/video/${video.subcate_name.split("・").join("")}/${video.id}/${video.title}`}>
+                    <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`}>
                       <a className={styles.video_block_section}>
                         <div className={styles.image}>
                           <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>

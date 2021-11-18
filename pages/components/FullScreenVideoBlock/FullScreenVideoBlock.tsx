@@ -6,7 +6,7 @@ import {VideoDetail} from "../../redux/home/actions";
 export function FullScreenVideoBlock(props:{video:VideoDetail}){
   return(
     <div className={styles.full_screen_video_block}>
-      <Link href={`/video/${props.video.subcate_name.split("・").join("")}/${props.video.id}/${props.video.title}`}>
+      <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${props.video.title}`}>
         <a className={styles.video_block}>
           <div className={styles.image}>
             <Image src={props.video.pic_url} alt="video-detail" layout="fill"/>

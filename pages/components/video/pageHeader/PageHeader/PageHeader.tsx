@@ -92,7 +92,7 @@ export function PageHeader(
 						</nav>
 					</div>
           <div className={props.displayDateOffset < 100 ? style.middle_part : style.hide_middle_part}>
-            {props.video && <div className={style.sub_category_name}>{props.video.subcate_name.split("・").join("")}</div>}
+            {props.video && <div className={style.sub_category_name}>{props.video.subcate_name.split("．").join("").split("・").join("")}</div>}
           </div>
 					{props.toggle &&
             <nav className={style.right_listing}>
@@ -265,7 +265,7 @@ export function PageHeader(
           <div className={style.top_bar}>
             {props.video &&
               <div className={style.video_information}>
-                <div className={style.video_subcategory}>{props.video.subcate_name.split("・").join("")}</div>
+                <div className={style.video_subcategory}>{props.video.subcate_name.split("．").join("").split("・").join("")}</div>
                 <div className={style.video_title}>{props.video.title}</div>
               </div>
             }
