@@ -68,6 +68,31 @@ const Category:NextPage = () => {
         <link rel="icon" href="/swiper_favicon.ico"/>
       </Head>
       <TypeHeader/>
+      <header className={scrollHeight > 5 ? styles.category_header_scroll : styles.category_header}>
+        <div className={styles.category_header_width}>
+          <div className={styles.flex_header}>
+            <h2>{categories.filter((category) => category.cate_id === categoryId).map((category) => category.name_cn)}</h2>
+            <div className={styles.sub_category_bar_horizontal_scroll}>
+              <nav className={styles.sub_category_bar}>
+                <ul className={styles.sub_category_items}>
+                  <li className={styles.sub_category_item}>全部</li>
+                  {
+                    subCategories.filter((subCategory) => subCategory.cate_id === categoryId).map((subCategory,index) =>
+                      (
+                        <li className={styles.sub_category_item} key={index}>
+                          <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
+                            <a>{subCategory.name_cn.split("・").join("")}</a>
+                          </Link>
+                        </li>
+                      )
+                    )
+                  }
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
       <div className={`${styles.category_content} ${style.App}`}>
         <main className={styles.page}>
           <div className={styles.breadcrumb}>
@@ -130,6 +155,7 @@ const Category:NextPage = () => {
                               <div className={styles.image}>
                                 <Image src={video.pic_url} alt="video detail" layout="fill"/>
                               </div>
+                              <header className={styles.video_title}>{video.title}</header>
                             </a>
                           </Link>
                         </div>

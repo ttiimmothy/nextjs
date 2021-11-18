@@ -13,7 +13,7 @@ export function Breadcrumb(props:{pid:string|string[]|undefined,videos:VideoDeta
             {props.categories.filter((category) => category.cate_id === video.cate_id).map((category) => category.name_cn)}
           </ReactBreadcrumb.Item>
           <ReactBreadcrumb.Item href={`/channel/${video.subcate_name.split("・").join("")}/${video.subcate_id}`} className={styles.breadcrumb_link}>
-            {video.subcate_name}
+            {video.subcate_name.split("・").join("")}
           </ReactBreadcrumb.Item>
           <ReactBreadcrumb.Item active>{props.pid && props.videos.filter((video) => video.id === (props.pid && props.pid[1])).map((video) => video.title)}</ReactBreadcrumb.Item>
         </ReactBreadcrumb>

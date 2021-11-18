@@ -27,7 +27,6 @@ padding-top
 padding-bottom
 padding-left
 padding-right
-text-align
 list-style
 border
 border-radius
@@ -43,6 +42,7 @@ bottom
 left
 right
 inset
+text-align
 vertical-align
 display
 align-items

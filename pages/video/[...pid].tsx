@@ -18,8 +18,8 @@ import Script from "next/script";
 import {Modal} from "react-bootstrap";
 import React,{useEffect,useRef,useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
+import {getContent} from "../redux/category/thunks";
 import {getVideo} from "../redux/video/thunks";
-import {getHomeDetail} from "../redux/home/thunks";
 import {IRootState} from "../store";
 import {PageHeader} from "../components/video/pageHeader/PageHeader/PageHeader";
 import {VideoPlayer} from "../components/VideoPlayer/VideoPlayer";
@@ -39,8 +39,9 @@ const Video:NextPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const {pid} = router.query;
-  const videos = useSelector((state:IRootState) => state.home.video);
+  const videos = useSelector((state:IRootState) => state.category.video);
   const categories = useSelector((state:IRootState) => state.header.category);
+  const subCategories = useSelector((state:IRootState) => state.header.subCategory);
   const videoUrl = useSelector((state:IRootState) => state.video.videoUrl.stream_url);
   const [openEmoji,setOpenEmoji] = useState(false);
   const [emojiNumberDetail,setEmojiNumberDetail] = useState(false);
@@ -70,11 +71,10 @@ const Video:NextPage = () => {
   useEffect(() => {
     if(pid && pid.length > 1){
       dispatch(getVideo(parseInt(pid[1])));
+      const categoryId = (subCategories.filter((subCategory) => subCategory.name_cn.split("・").join("") === pid[0]))[0]?.cate_id;
+      dispatch(getContent(categoryId));
     }
-  },[dispatch,pid])
-  useEffect(() => {
-    dispatch(getHomeDetail());
-  },[dispatch])
+  },[dispatch,pid,subCategories])
   useEffect(() => {
 		function updateScrollHeight(){
 			setScrollHeight(window.pageYOffset);

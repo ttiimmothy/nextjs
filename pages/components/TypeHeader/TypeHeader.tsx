@@ -155,7 +155,7 @@ export function TypeHeader(){
                 categories.map((category,index) =>
                   (
                     <li className={style.category_item} key={index}>
-                      <Link href={category.name_en.toLowerCase().split(" ").join("")}>
+                      <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("").split("/").join("")}`}>
                         <a>
                           {category.name_cn}
                         </a>
