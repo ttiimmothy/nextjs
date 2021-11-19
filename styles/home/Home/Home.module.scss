@@ -94,6 +94,9 @@
                     display: none;
                   }
                 }
+                ol.trending_tag_list{
+                  grid-template-columns: 1fr 1fr;
+                }
               }
             }
           }
@@ -121,10 +124,9 @@
                 }
                 ol.trending_tag_list{
                   text-align: center;
-                  padding: 5px 10px 1px 10px;
-                  display: block;
+                  padding: 5px 10px;
+                  grid-template-columns: 1fr 1fr 1fr;
                   .trending_tag_list_item{
-                    margin-bottom: 15px;
                     .tag{
                       background-color: #db5959;
                       color: #e1e1e1;
@@ -355,7 +357,6 @@
                 margin-bottom: 0;
                 list-style: none;
                 display: grid;
-                grid-template-columns: 1fr 1fr;
                 grid-template-rows: 25px 25px;
                 row-gap: 10px;
                 .trending_tag_list_item{

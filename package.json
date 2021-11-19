@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "PORT=3031 next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+	"export": "next export"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

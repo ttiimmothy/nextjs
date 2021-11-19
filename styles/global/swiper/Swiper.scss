@@ -92,6 +92,20 @@
     }
   }
 }
+.subcategory_carousel{
+  .swiper-container.swiper-container-initialized{
+    .swiper-pagination{
+      .swiper-pagination-bullet{
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+      }
+      .swiper-pagination-bullet-active{
+        border: solid 1px #f50;
+      }
+    }
+  }
+}
 .category_side_carousel{
   .side-swiper,.swiper-container.swiper-container-initialized{
     height: 100%;

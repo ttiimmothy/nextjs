@@ -31,6 +31,7 @@ const Category:NextPage = () => {
   const [controlledSwiper,setControlledSwiper] = useState<any>(null);
   const [search,setSearch] = useState(false);
   const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.cate_id;
+  const categoryName = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("") === (pid && pid[0])))[0]?.name_cn;
   let swiperList = videos.filter((video,index) => index < 3 || (index > 8 && index < 12));
   swiperList = swiperList.reverse();
   if(swiperList.length > 0){
@@ -60,33 +61,35 @@ const Category:NextPage = () => {
       </Head>
       <TypeHeader search={search} setSearch={setSearch}/>
       <header className={`${scrollHeight > 10 ? styles.category_header_scroll : styles.category_header} ${search ? styles.category_header_for_searching : ""}`}>
-        <div className={styles.category_header_width}>
-          <div className={styles.flex_header}>
-            <h2>{categories.filter((category) => category.cate_id === categoryId).map((category) => category.name_cn)}</h2>
-            <div className={styles.shadow}>
-              <div className={styles.sub_category_bar_horizontal_scroll}>
-                <nav className={styles.sub_category_bar}>
-                  <ul className={styles.sub_category_items}>
-                    <li className={`${styles.sub_category_item} ${styles.active}`}>
-                      <Link href={`/category/${pid && pid[0]}`}>
-                        <a>全部</a>
-                      </Link>
-                    </li>
-                    {
-                      subCategories.filter((subCategory) => subCategory.cate_id === categoryId).map((subCategory,index) =>
-                        (
-                          <li className={styles.sub_category_item} key={index}>
-                            <Link href={`/channel/${subCategory.name_cn.split("．").join("").split("・").join("")}/${subCategory.subcate_id}`}>
-                              <a>{subCategory.name_cn.split("．").join("").split("・").join("")}</a>
-                            </Link>
-                          </li>
+        <div className={`${styles.separate_category_color} ${categoryName === "新聞" ? styles.news_color : categoryName === "財經資訊" ? styles.finance_color : categoryName === "開電視任你睇" ? styles.opentv_color : categoryName === "娛樂" ? styles.entertainment_color : categoryName === "劇集" ? styles.drama_color : categoryName === "體育" ? styles.sports_color : categoryName === "賽馬" ? styles.horse_color : categoryName === "Fit開新領域" ? styles.fit_zone_color : ""}`}>
+          <div className={styles.category_header_width}>
+            <div className={styles.flex_header}>
+              <h2>{categories.filter((category) => category.cate_id === categoryId).map((category) => category.name_cn)}</h2>
+              <div className={styles.shadow}>
+                <div className={styles.sub_category_bar_horizontal_scroll}>
+                  <nav className={styles.sub_category_bar}>
+                    <ul className={styles.sub_category_items}>
+                      <li className={`${styles.sub_category_item} ${styles.active}`}>
+                        <Link href={`/category/${pid && pid[0]}`}>
+                          <a>全部</a>
+                        </Link>
+                      </li>
+                      {
+                        subCategories.filter((subCategory) => subCategory.cate_id === categoryId).map((subCategory,index) =>
+                          (
+                            <li className={styles.sub_category_item} key={index}>
+                              <Link href={`/channel/${subCategory.name_cn.split("．").join("").split("・").join("")}/${subCategory.subcate_id}`}>
+                                <a>{subCategory.name_cn.split("．").join("").split("・").join("")}</a>
+                              </Link>
+                            </li>
+                          )
                         )
-                      )
-                    }
-                  </ul>
-                </nav>
-              </div>
-              </div>
+                      }
+                    </ul>
+                  </nav>
+                </div>
+                </div>
+            </div>
           </div>
         </div>
       </header>
@@ -174,7 +177,7 @@ const Category:NextPage = () => {
               pagination={{clickable:true}}
               mousewheel={{forceToAxis:true}}
             >
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[0].subcate_id).filter((video,index) => index < 10).map((video) =>
+              {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && videos.filter((video) => video.subcate_id === ((subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[0] && (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[0].subcate_id)).filter((video,index) => index < 10).map((video) =>
                 <SwiperSlide className={style.category_block} key={video.id}>
                   <CategorySwiperBlock video={video}/>
                 </SwiperSlide>
@@ -182,51 +185,55 @@ const Category:NextPage = () => {
             </Swiper>
           </div>
         </div>
-        <div className={styles.big_block_sub_category}>
-          <section className={styles.big_block_sub_category_section}>
-            {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].name_cn.split("．").join("").split("・").join("")}/>}
-            <div className={styles.video_list}>
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index < 1).map((video) =>
-                <WideCategoryVideoBlock video={video} main={true} key={video.id}/>
-              )}
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index === 1).map((video) =>
-                <WideCategoryVideoBlock video={video} key={video.id}/>
-              )}
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index > 1 && index < 5).map((video) =>
-                <CategoryVideoBlock video={video} key={video.id}/>
-              )}
-            </div>
-            <div className={styles.more_button}>
-              <section className={styles.more_button_section}>
-                <button className={styles.see_more}>
-                  <div className={styles.more}>更多</div>
-                  <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
-                </button>
-              </section>
-            </div>
-          </section>
-        </div>
-        <div className={styles.sub_category}>
-          <section className={styles.sub_category_section}>
-            {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 0 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].name_cn.split("．").join("").split("・").join("")}/>}
-            <div className={styles.video_list}>
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 1).map((video) =>
-                <CategoryVideoBlock video={video} main={true} key={video.id}/>
-              )}
-              {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index > 0 && index < 6).map((video) =>
-                <CategoryVideoBlock video={video} key={video.id}/>
-              )}
-            </div>
-            <div className={styles.more_button}>
-              <section className={styles.more_button_section}>
-                <button className={styles.see_more}>
-                  <div className={styles.more}>更多</div>
-                  <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
-                </button>
-              </section>
-            </div>
-          </section>
-        </div>
+        {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 1 &&
+          <div className={styles.big_block_sub_category}>
+            <section className={styles.big_block_sub_category_section}>
+              {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 1 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].name_cn.split("．").join("").split("・").join("")}/>}
+              <div className={styles.video_list}>
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index < 1).map((video) =>
+                  <WideCategoryVideoBlock video={video} main={true} key={video.id}/>
+                )}
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index === 1).map((video) =>
+                  <WideCategoryVideoBlock video={video} key={video.id}/>
+                )}
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[1].subcate_id).filter((video,index) => index > 1 && index < 5).map((video) =>
+                  <CategoryVideoBlock video={video} key={video.id}/>
+                )}
+              </div>
+              <div className={styles.more_button}>
+                <section className={styles.more_button_section}>
+                  <button className={styles.see_more}>
+                    <div className={styles.more}>更多</div>
+                    <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
+                  </button>
+                </section>
+              </div>
+            </section>
+          </div>
+        }
+        {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 2 &&
+          <div className={styles.sub_category}>
+            <section className={styles.sub_category_section}>
+              {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 2 && <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].name_cn.split("．").join("").split("・").join("")}/>}
+              <div className={styles.video_list}>
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index < 1).map((video) =>
+                  <CategoryVideoBlock video={video} main={true} key={video.id}/>
+                )}
+                {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[2].subcate_id).filter((video,index) => index > 0 && index < 6).map((video) =>
+                  <CategoryVideoBlock video={video} key={video.id}/>
+                )}
+              </div>
+              <div className={styles.more_button}>
+                <section className={styles.more_button_section}>
+                  <button className={styles.see_more}>
+                    <div className={styles.more}>更多</div>
+                    <FontAwesomeIcon icon="chevron-down" className={styles.fontawesome_icon} height={12} width={12}/>
+                  </button>
+                </section>
+              </div>
+            </section>
+          </div>
+        }
         {subCategories.filter((subCategory) => subCategory.cate_id === categoryId).length > 3 &&
           <div className={styles.dark_background_block}>
             <section className={styles.dark_background_block_section}>

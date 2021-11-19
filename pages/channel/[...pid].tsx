@@ -27,6 +27,7 @@ const SubCategory:NextPage = () => {
   const [search,setSearch] = useState(false);
   const [scrollHeight,setScrollHeight] = useState(0);
   const categoryId = (subcategories.filter((subcategory) => subcategory.name_cn.split("．").join("").split("・").join("") === (pid && pid[0])))[0]?.cate_id;
+  const categoryName = (categories.filter((category) => category.cate_id === categoryId))[0]?.name_cn;
   useEffect(() => {
     dispatch(getContent(categoryId));
   },[dispatch,categoryId])
@@ -49,33 +50,35 @@ const SubCategory:NextPage = () => {
       </Head>
       <TypeHeader search={search} setSearch={setSearch}/>
       <header className={`${scrollHeight > 10 ? styles.category_header_scroll : styles.category_header} ${search ? styles.category_header_for_searching : ""}`}>
-        <div className={styles.category_header_width}>
-          <div className={styles.flex_header}>
-            <h2>{categories.filter((category) => category.cate_id === categoryId).map((category) => category.name_cn)}</h2>
-            <div className={styles.shadow}>
-              <div className={styles.sub_category_bar_horizontal_scroll}>
-                <nav className={styles.sub_category_bar}>
-                  <ul className={styles.sub_category_items}>
-                    <li className={styles.sub_category_item}>
-                      <Link href={`/category/${categories.filter((category) => category.cate_id === categoryId).map((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join(""))}`}>
-                        <a>全部</a>
-                      </Link>
-                    </li>
-                    {
-                      subCategories.filter((subCategory) => subCategory.cate_id === categoryId).map((subCategory,index) => {
-                        return(
-                          <li className={`${styles.sub_category_item} ${subCategory.name_cn.split("．").join("").split("・").join("") === (pid && pid[0]) ? styles.active : ""}`} key={index}>
-                            <Link href={`/channel/${subCategory.name_cn.split("．").join("").split("・").join("")}/${subCategory.subcate_id}`}>
-                              <a>{subCategory.name_cn.split("．").join("").split("・").join("")}</a>
-                            </Link>
-                          </li>
-                        )
-                      })
-                    }
-                  </ul>
-                </nav>
-              </div>
-              </div>
+        <div className={`${styles.separate_category_color} ${categoryName === "新聞" ? styles.news_color : categoryName === "財經資訊" ? styles.finance_color : categoryName === "開電視任你睇" ? styles.opentv_color : categoryName === "娛樂" ? styles.entertainment_color : categoryName === "劇集" ? styles.drama_color : categoryName === "體育" ? styles.sports_color : categoryName === "賽馬" ? styles.horse_color : categoryName === "Fit開新領域" ? styles.fit_zone_color : ""}`}>
+          <div className={styles.category_header_width}>
+            <div className={styles.flex_header}>
+              <h2>{categories.filter((category) => category.cate_id === categoryId).map((category) => category.name_cn)}</h2>
+              <div className={styles.shadow}>
+                <div className={styles.sub_category_bar_horizontal_scroll}>
+                  <nav className={styles.sub_category_bar}>
+                    <ul className={styles.sub_category_items}>
+                      <li className={styles.sub_category_item}>
+                        <Link href={`/category/${categories.filter((category) => category.cate_id === categoryId).map((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join(""))}`}>
+                          <a>全部</a>
+                        </Link>
+                      </li>
+                      {
+                        subCategories.filter((subCategory) => subCategory.cate_id === categoryId).map((subCategory,index) => {
+                          return(
+                            <li className={`${styles.sub_category_item} ${subCategory.name_cn.split("．").join("").split("・").join("") === (pid && pid[0]) ? styles.active : ""}`} key={index}>
+                              <Link href={`/channel/${subCategory.name_cn.split("．").join("").split("・").join("")}/${subCategory.subcate_id}`}>
+                                <a>{subCategory.name_cn.split("．").join("").split("・").join("")}</a>
+                              </Link>
+                            </li>
+                          )
+                        })
+                      }
+                    </ul>
+                  </nav>
+                </div>
+                </div>
+            </div>
           </div>
         </div>
       </header>
