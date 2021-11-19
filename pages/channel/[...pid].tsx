@@ -123,10 +123,10 @@ const SubCategory:NextPage = () => {
             </div>
             <div className={styles.main_video_list}>
               <div className={styles.video_list}>
-                {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index === 6).map((video) =>
+                {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index > 5 && index < 9).map((video) =>
                   <WideCategoryVideoBlock video={video} main={true} key={video.id}/>
                 )}
-                {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index > 6 && index < 10).map((video) =>
+                {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index === 9).map((video) =>
                   <WideCategoryVideoBlock video={video} key={video.id}/>
                 )}
                 {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index > 9 && index < 13).map((video) =>
@@ -136,6 +136,54 @@ const SubCategory:NextPage = () => {
             </div>
           </div>
         </main>
+        <div className={styles.dark_background_block}>
+          <section className={styles.dark_background_block_section}>
+            <div className={styles.video_list}>
+              {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index > 12 && index < 16).map((video) =>
+                <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                  <a className={styles.video_block}>
+                    <div className={styles.image_width}>
+                      <div className={styles.image}>
+                        <Image src={video.pic_url} alt="video detail" layout="fill"/>
+                      </div>
+                    </div>
+                    <header className={styles.video_title}>{video.title}</header>
+                    <div className={styles.display_date}>{video.display_date}</div>
+                  </a>
+                </Link>
+              )}
+            </div>
+          </section>
+        </div>
+        <div className={styles.closest_videos}>
+          <section className={styles.closest_videos_section}>
+          <div className={styles.component_header}>
+              <div>最新影片</div>
+            </div>
+            <div className={styles.video_list}>
+              {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index > 15 && index < 18).map((video) =>
+                <CategoryVideoBlock video={video} key={video.id}/>
+              )}
+              <div className={styles.blank_block}>
+                <div className={styles.blank}>
+                  <div className={styles.flex_grow}></div>
+                </div>
+              </div>
+              {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index > 17 && index < 120).map((video,index) =>
+                (
+                  (index + 1) % 6 === 0 ?
+                  <div className={styles.blank_block} key={index}>
+                    <div className={styles.blank}>
+                      <div className={styles.flex_grow}></div>
+                    </div>
+                  </div>
+                    :
+                  <CategoryVideoBlock video={video} key={video.id}/>
+                )
+              )}
+            </div>
+          </section>
+        </div>
       </div>
       <Footer/>
     </div>

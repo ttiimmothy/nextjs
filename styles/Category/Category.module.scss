@@ -21,40 +21,6 @@
     width: 100%;
   }
 }
-@media screen and (min-width:500px){
-  .category.pid{
-    .category_content_for_searching,.category_content_scroll,.category_content{
-      .dark_background_block{
-        .dark_background_block_section{
-          .video_list{
-            .video_block{
-              .video_title{
-                font-size: 18px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-@media screen and (max-width:500px){
-  .category.pid{
-    .category_content_for_searching,.category_content_scroll,.category_content{
-      .dark_background_block{
-        .dark_background_block_section{
-          .video_list{
-            .video_block{
-              .video_title{
-                font-size: 14px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
 @media screen and (min-width:600px){
   .category.pid{
     .category_header_scroll,.category_header{
@@ -88,6 +54,19 @@
                 .sub_category_items{
                   padding-left: 8px;
                 }
+              }
+            }
+          }
+        }
+      }
+    }
+    .category_content_for_searching,.category_content_scroll,.category_content{
+      .dark_background_block{
+        .dark_background_block_section{
+          .video_list{
+            .video_block{
+              .video_title{
+                font-size: 18px;
               }
             }
           }
@@ -162,6 +141,19 @@
         }
       }
     }
+    .category_content_for_searching,.category_content_scroll,.category_content{
+      .dark_background_block{
+        .dark_background_block_section{
+          .video_list{
+            .video_block{
+              .video_title{
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
     .category_header_scroll{
       top: 44px;
     }
@@ -206,9 +198,6 @@
                 padding: 6px;
               }
             }
-            .video_block{
-              width: 33.33%;
-            }
           }
         }
       }
@@ -236,9 +225,6 @@
               width: 100%;
               padding: 8px 3px;
               flex-flow: column wrap;
-              .main_image_width{
-                width: 100%;
-              }
             }
             .main_video_block{
               .video_title{
