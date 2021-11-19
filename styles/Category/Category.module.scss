@@ -12,7 +12,7 @@
     margin: 0 auto;
   }
 }
-@mixin max-carousel-width{
+@mixin max-carousel-width(){
   @media screen and (min-width:1160px){
     width: 666px;
     margin-right: 2px;

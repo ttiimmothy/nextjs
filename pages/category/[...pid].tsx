@@ -30,13 +30,17 @@ const Category:NextPage = () => {
   const [scrollHeight,setScrollHeight] = useState(0);
   const [controlledSwiper,setControlledSwiper] = useState<any>(null);
   const [search,setSearch] = useState(false);
+  const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.cate_id;
   let swiperList = videos.filter((video,index) => index < 3 || (index > 8 && index < 12));
-  useEffect(() => {
-    if(pid){
-      const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("") === pid[0]))[0]?.cate_id;
-      dispatch(getContent(categoryId));
+  swiperList = swiperList.reverse();
+  if(swiperList.length > 0){
+    for(let i = 0; i < 3; i++){
+      swiperList.push(swiperList.shift() as VideoDetail);
     }
-  },[dispatch,categories,pid])
+  }
+  useEffect(() => {
+    dispatch(getContent(categoryId));
+  },[dispatch,categoryId])
   useEffect(() => {
 		function updateScrollHeight(){
 			setScrollHeight(window.pageYOffset);
@@ -46,13 +50,6 @@ const Category:NextPage = () => {
       window.removeEventListener("scroll",updateScrollHeight);
     }
 	},[scrollHeight])
-  swiperList = swiperList.reverse();
-  if(swiperList.length > 0){
-    for(let i = 0; i < 3; i++){
-      swiperList.push(swiperList.shift() as VideoDetail);
-    }
-  }
-  const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.cate_id;
 
 	return(
     <div className={`${styles.category} ${styles.pid}`}>
@@ -70,7 +67,11 @@ const Category:NextPage = () => {
               <div className={styles.sub_category_bar_horizontal_scroll}>
                 <nav className={styles.sub_category_bar}>
                   <ul className={styles.sub_category_items}>
-                    <li className={`${styles.sub_category_item} ${styles.active}`}>全部</li>
+                    <li className={`${styles.sub_category_item} ${styles.active}`}>
+                      <Link href={`/category/${pid && pid[0]}`}>
+                        <a>全部</a>
+                      </Link>
+                    </li>
                     {
                       subCategories.filter((subCategory) => subCategory.cate_id === categoryId).map((subCategory,index) =>
                         (
