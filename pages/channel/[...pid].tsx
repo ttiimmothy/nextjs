@@ -8,13 +8,13 @@ import Image from "next/image";
 import Link from "next/link";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
-import {getContent} from "../redux/category/thunks";
-import {TypeHeader} from "../components/TypeHeader/TypeHeader";
-import {Footer} from "../components/Footer/Footer";
-import {Breadcrumb} from "../components/Breadcrumb/Breadcrumb";
-import {WideCategoryVideoBlock} from "../components/WideCategoryVideoBlock/WideCategoryVideoBlock";
-import {CategoryVideoBlock} from "../components/CategoryVideoBlock/CategoryVideoBlock";
-import {IRootState} from "../store";
+import {getContent} from "../../src/redux/category/thunks";
+import {TypeHeader} from "../../src/components/TypeHeader/TypeHeader";
+import {Footer} from "../../src/components/Footer/Footer";
+import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
+import {WideCategoryVideoBlock} from "../../src/components/WideCategoryVideoBlock/WideCategoryVideoBlock";
+import {CategoryVideoBlock} from "../../src/components/CategoryVideoBlock/CategoryVideoBlock";
+import {IRootState} from "../../src/store";
 
 const SubCategory:NextPage = () => {
   const dispatch = useDispatch();

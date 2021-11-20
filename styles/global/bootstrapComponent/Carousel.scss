@@ -80,7 +80,7 @@ $nav-button-shadow-color:rgba(0,0,0,0.15);
 		.carousel-control-prev-icon{
 			height: 34px;
 			width: 34px;
-			background: url(../../../pages/image/left_arrow.svg) no-repeat;
+			background: url(../../../src/image/left_arrow.svg) no-repeat;
 		}
 	}
 	.carousel-control-next{
@@ -88,7 +88,7 @@ $nav-button-shadow-color:rgba(0,0,0,0.15);
 		.carousel-control-next-icon{
 			height: 34px;
 			width: 34px;
-			background: url(../../../pages/image/left_arrow.svg) no-repeat;
+			background: url(../../../src/image/left_arrow.svg) no-repeat;
 			transform: rotate(180deg);
 		}
 	}

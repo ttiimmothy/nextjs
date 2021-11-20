@@ -9,15 +9,15 @@ import Link from "next/link";
 import {NextPage} from "next";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useRef,useState} from "react";
-import {getHomeDetail} from "./redux/home/thunks";
-import {IRootState} from "./store";
-import {HorizontalScrollHomeCategoryBlock} from "./components/home/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
-import {HomeCategoryBlock} from "./components/home/HomeCategoryBlock/HomeCategoryBlock";
-import {VideoBlock} from "./components/VideoBlock/VideoBlock";
-import {ComponentHeader} from "./components/home/ComponentHeader/ComponentHeader";
-import {Footer} from "./components/Footer/Footer";
-import {Header} from "./components/home/Header/Header";
-import {FullScreenVideoBlock} from "./components/FullScreenVideoBlock/FullScreenVideoBlock";
+import {getHomeDetail} from "../src/redux/home/thunks";
+import {IRootState} from "../src/store";
+import {HorizontalScrollHomeCategoryBlock} from "../src/components/home/HorizontalScrollHomeCategoryBlock/HorizontalScrollHomeCategoryBlock";
+import {HomeCategoryBlock} from "../src/components/home/HomeCategoryBlock/HomeCategoryBlock";
+import {VideoBlock} from "../src/components/VideoBlock/VideoBlock";
+import {ComponentHeader} from "../src/components/home/ComponentHeader/ComponentHeader";
+import {Footer} from "../src/components/Footer/Footer";
+import {Header} from "../src/components/home/Header/Header";
+import {FullScreenVideoBlock} from "../src/components/FullScreenVideoBlock/FullScreenVideoBlock";
 
 const Home:NextPage = () => {
   const dispatch = useDispatch();

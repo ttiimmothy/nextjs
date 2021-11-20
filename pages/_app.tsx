@@ -17,7 +17,7 @@ import SwiperCore,{Autoplay,Controller,EffectCube,EffectFade,Mousewheel,Navigati
 import {AppProps} from "next/app";
 import {Provider} from "react-redux";
 import React from "react";
-import {store} from "./store";
+import {store} from "../src/store";
 library.add(fab,fas,far);
 SwiperCore.use([Navigation,Pagination,Scrollbar,Mousewheel,Autoplay,Controller,EffectFade,EffectCube]);
 

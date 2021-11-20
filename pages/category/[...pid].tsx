@@ -9,16 +9,16 @@ import Image from "next/image";
 import Link from "next/link";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
-import {getContent} from "../redux/category/thunks";
-import {VideoDetail} from "../redux/home/actions";
-import {TypeHeader} from "../components/TypeHeader/TypeHeader";
-import {Footer} from "../components/Footer/Footer";
-import {Breadcrumb} from "../components/Breadcrumb/Breadcrumb";
-import {CategoryComponentHeader} from "../components/CategoryComponentHeader/CategoryComponentHeader";
-import {CategoryVideoBlock} from "../components/CategoryVideoBlock/CategoryVideoBlock";
-import {WideCategoryVideoBlock} from "../components/WideCategoryVideoBlock/WideCategoryVideoBlock";
-import {CategorySwiperBlock} from "../components/CategorySwiperBlock/CategorySwiperBlock";
-import {IRootState} from "../store";
+import {getContent} from "../../src/redux/category/thunks";
+import {VideoDetail} from "../../src/redux/home/actions";
+import {TypeHeader} from "../../src/components/TypeHeader/TypeHeader";
+import {Footer} from "../../src/components/Footer/Footer";
+import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
+import {CategoryComponentHeader} from "../../src/components/CategoryComponentHeader/CategoryComponentHeader";
+import {CategoryVideoBlock} from "../../src/components/CategoryVideoBlock/CategoryVideoBlock";
+import {WideCategoryVideoBlock} from "../../src/components/WideCategoryVideoBlock/WideCategoryVideoBlock";
+import {CategorySwiperBlock} from "../../src/components/CategorySwiperBlock/CategorySwiperBlock";
+import {IRootState} from "../../src/store";
 
 const Category:NextPage = () => {
   const dispatch = useDispatch();
