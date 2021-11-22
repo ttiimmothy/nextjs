@@ -89,7 +89,7 @@ const Home:NextPage = () => {
                   videoDetail.filter((video,index) => index < 3)
                   .map((video) =>
                     <Carousel.Item key={video.id}>
-                      <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`}>
+                      <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                         <a>
                           <div className="image">
                             <Image className="d-block w-100" src={video.pic_url} alt="slide" layout="fill"/>
@@ -278,7 +278,7 @@ const Home:NextPage = () => {
               {
                 videoDetail.filter((video,index) => index < 3 || (index > 8 && index < 10)).map((video) => {
                   return(
-                    <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                    <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                       <a className={style.video_block}>
                         <div className={style.image}>
                           <Image src={video.pic_url} alt="video detail" layout="fill"/>

@@ -1,3 +1,4 @@
+import {useRouter} from "next/router";
 import React from "react";
 import {render,screen} from "@testing-library/react";
 import {VideoPlayer} from "./VideoPlayer";
@@ -12,7 +13,8 @@ const videoJsOptions = {
 }
 
 test("renders learn react link",() => {
-	render(<VideoPlayer options={videoJsOptions}/>);
+	const router = useRouter();
+	render(<VideoPlayer options={videoJsOptions} router={router}/>);
 	const linkElement = screen.getByText(/learn react/i);
 	expect(linkElement).toBeInTheDocument();
 })

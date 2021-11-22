@@ -2,6 +2,10 @@ import style from "../../styles/index.module.scss";
 import styles from "../../styles/video/Video/Video.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper,SwiperSlide} from "swiper/react";
+import "video.js/dist/video-js.css";
+import "videojs-contrib-ads";
+import "videojs-ima";
+import videojs from "video.js";
 import likeCount from "../../src/image/emoji.png";
 import happyCount from "../../src/image/emoji2.png";
 import sadCount from "../../src/image/emoji3.png";
@@ -21,7 +25,6 @@ import {useDispatch,useSelector} from "react-redux";
 import {getContent} from "../../src/redux/category/thunks";
 import {getVideo} from "../../src/redux/video/thunks";
 import {PageHeader} from "../../src/components/video/pageHeader/PageHeader/PageHeader";
-import {VideoPlayer} from "../../src/components/VideoPlayer/VideoPlayer";
 import {PageFooter} from "../../src/components/video/PageFooter/PageFooter";
 import {CommentSection} from "../../src/components/video/comment/CommentSection/CommentSection";
 import {VideoPageListBlock} from "../../src/components/video/VideoPageListBlock/VideoPageListBlock";
@@ -34,6 +37,7 @@ import ShareButtonWithShareBox from "../../src/components/video/ShareButtonWithS
 import MoreOptionsButtonWithMoreBox from "../../src/components/video/MoreOptionsButtonWithMoreBox/MoreOptionsButtonWithMoreBox";
 import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
 import {IRootState} from "../../src/store";
+import {VideoPlayer} from "../../src/components/VideoPlayer/VideoPlayer";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -56,22 +60,22 @@ const Video:NextPage = () => {
   const scrollToComment = useRef<any>(null);
   let video = pid ? (videos.filter((video) => video.id === pid[1]))[0] : null;
   let imaOptions = {
-		adTagUrl:process.env.VOD_PREROLL,
-		adLabel:"",
-		autoPlayAdBreaks:true,
-	}
+    adTagUrl:process.env.VOD_PREROLL,
+    adLabel:"",
+    autoPlayAdBreaks:true,
+  }
   const videoJsOptions = {
-		sources:[
-			{
-				src:videoUrl,
-				type:"application/x-mpegURL"
-			}
-		]
-	}
+    sources:[
+      {
+        src:videoUrl,
+        type:"application/x-mpegURL"
+      }
+    ]
+  }
   useEffect(() => {
     if(pid && pid.length > 1){
       dispatch(getVideo(parseInt(pid[1])));
-      const categoryId = (subCategories.filter((subCategory) => subCategory.name_cn.split("・").join("") === pid[0]))[0]?.cate_id;
+      const categoryId = (subCategories.filter((subCategory) => subCategory.name_cn.split("．").join("").split("・").join("") === pid[0]))[0]?.cate_id;
       dispatch(getContent(categoryId));
     }
   },[dispatch,pid,subCategories])
@@ -162,7 +166,7 @@ const Video:NextPage = () => {
                     </div>
                   </header>
                   <div className={styles.video_player}>
-                    {videoUrl && <VideoPlayer options={videoJsOptions}/>}
+                    {videoUrl && <VideoPlayer options={videoJsOptions} ima={imaOptions} src={videoUrl} router={router}/>}
                   </div>
                   <div className={`${styles.video_description} ${smallWord ? styles.small_word : ""} ${largeWord ? styles.large_word : ""}`}>
                     <div>{video.desc}</div>
@@ -376,8 +380,6 @@ const Video:NextPage = () => {
       </div>
       <PageFooter/>
       <Script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></Script>
-      <Script src="https://googleads.github.io/videojs-ima/node_modules/video.js/dist/video.min.js"></Script>
-      <Script src="https://googleads.github.io/videojs-ima/node_modules/videojs-contrib-ads/dist/videojs.ads.min.js"></Script>
     </div>
   )
 }

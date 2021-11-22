@@ -101,7 +101,7 @@ const SubCategory:NextPage = () => {
                     videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index < 6).map((video) =>
                       <SwiperSlide key={video.id}>
                         <div className={styles.video_block}>
-                          <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`}>
+                          <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                             <a className={styles.video_block_link}>
                               <div className={styles.image}>
                                 <Image src={video.pic_url} alt="video detail" layout="fill"/>
@@ -143,7 +143,7 @@ const SubCategory:NextPage = () => {
           <section className={styles.dark_background_block_section}>
             <div className={styles.video_list}>
               {videos.filter((video) => video.subcate_name.split("．").join("").split("・").join("") === (pid && pid [0])).filter((video,index) => index > 12 && index < 16).map((video) =>
-                <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                   <a className={styles.video_block}>
                     <div className={styles.image_width}>
                       <div className={styles.image}>

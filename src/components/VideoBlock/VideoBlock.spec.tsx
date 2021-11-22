@@ -1,7 +1,6 @@
 import React from "react";
 import {render,screen} from "@testing-library/react";
 import {VideoBlock} from "./VideoBlock";
-
 export const video = {
 	cate_id:"",
 	created_at:"",
@@ -24,7 +23,7 @@ export const video = {
 }
 
 test("renders learn react link",() => {
-	render(<VideoBlock video={video}/>);
+	render(<VideoBlock video={video} blockPerRow={1}/>);
 	const linkElement = screen.getByText(/learn react/i);
 	expect(linkElement).toBeInTheDocument();
 })

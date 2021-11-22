@@ -15,9 +15,8 @@ export function HomeCategoryBlock(props:{category:Category}){
       <section className={style.home_category_block_section}>
         <div className={style.main_video}>
           {
-            videoDetail.filter((video,index) => index < 1)
-            .map((video) =>
-              <Link href={`/video/${video.subcate_name}/${video.id}/${video.title}`} key={video.id}>
+            videoDetail.filter((video,index) => index < 1).map((video) =>
+              <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                 <a className={style.video_block}>
                   <div className={style.image}>
                     <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>
@@ -40,10 +39,9 @@ export function HomeCategoryBlock(props:{category:Category}){
               <div className={style.border_line}></div>
             </div>
             {
-              videoDetail.filter((video,index) => index < 3)
-              .map((video) =>
+              videoDetail.filter((video,index) => index < 3).map((video) =>
                 <div className={style.video_block} key={video.id}>
-                  <Link href={`/video/${video.subcate_name}/${video.id}/${video.title}`}>
+                  <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                     <a className={style.video_block_section}>
                       <div className={style.image}>
                         <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>

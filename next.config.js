@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  	reactStrictMode:true,
+  	reactStrictMode:false,
 	images:{
 		domains:["app.m.i-cable.com"]
+		// loader:"akamai",
+		// path:""
 	},
 	webpack:(config,{isServer}) => {
 		if(!isServer){

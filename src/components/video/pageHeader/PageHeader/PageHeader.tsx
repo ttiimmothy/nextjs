@@ -214,7 +214,7 @@ export function PageHeader(
                           {subCategories.filter((subCategory) => subCategory.cate_id === category.cate_id).map((subCategory) =>
                             <li className={style.sub_category} key={subCategory.subcate_id}>
                               <Link href={`/channel/${subCategory.name_cn.split("・").join("")}/${subCategory.subcate_id}`}>
-                                <a className={style.category_link}>{subCategory.name_cn}</a>
+                                <a className={style.category_link}>{subCategory.name_cn.split("．").join("").split("・").join("")}</a>
                               </Link>
                             </li>
                           )}
@@ -260,7 +260,7 @@ export function PageHeader(
           </footer>
         </section>
       </div>
-      <div className={`${style.video_information_bar} ${(props.windowWidth < 600 && props.displayDateOffset < 100) || (props.windowWidth >= 600 && props.windowWidth < 700 && props.displayDateOffset < 70) || (props.windowWidth >= 700 && props.displayDateOffset < 30) ? style.open_video_bar : style.close_video_bar}`}>
+      <div className={`${style.video_information_bar} ${(props.windowWidth < 600 && props.displayDateOffset < 100) || (props.windowWidth >= 600 && props.windowWidth < 700 && props.displayDateOffset < 70) || (props.windowWidth >= 700 && props.displayDateOffset < 35) ? style.open_video_bar : style.close_video_bar}`}>
         <div className={style.video_information_with_top_buttons}>
           <div className={style.top_bar}>
             {props.video &&

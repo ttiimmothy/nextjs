@@ -6,7 +6,7 @@ import {VideoDetail} from "../../redux/home/actions";
 export const WideCategoryVideoBlock = (props:{video:VideoDetail,main?:boolean}):JSX.Element => {
 	return(
     <div className={styles.wide_category_video_block}>
-      <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${props.video.title}`}>
+      <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${encodeURI(props.video.title)}`}>
         <a className={props.main ? styles.main_video_block_link : styles.video_block_link}>
           <div className={props.main ? styles.main_image_width : styles.image_width}>
             <div className={styles.image}>

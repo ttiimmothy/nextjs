@@ -114,7 +114,7 @@ const Category:NextPage = () => {
                     videos.filter((video,index) => index < 3 || (index > 8 && index < 12)).map((video) =>
                       <SwiperSlide key={video.id}>
                         <div className={styles.video_block}>
-                          <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`}>
+                          <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                             <a className={styles.video_block_link}>
                               <div className={styles.image}>
                                 <Image src={video.pic_url} alt="video detail" layout="fill"/>
@@ -149,7 +149,7 @@ const Category:NextPage = () => {
                     swiperList.map((video) =>
                       <SwiperSlide key={video.id}>
                         <div className={styles.video_block}>
-                          <Link href={`/video/${video.subcate_name.split("．").join("")}/${video.id}/${video.title}`}>
+                          <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                             <a className={styles.video_block_link}>
                               <div className={styles.image}>
                                 <Image src={video.pic_url} alt="video detail" layout="fill"/>
@@ -240,7 +240,7 @@ const Category:NextPage = () => {
               <CategoryComponentHeader header={(subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].name_cn.split("．").join("").split("・").join("")} color="#fff" borderColor="#4d535a"/>
               <div className={styles.video_list}>
                 {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index < 1).map((video) =>
-                  <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                  <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                     <a className={styles.main_video_block}>
                       <div className={styles.image_width}>
                         <div className={styles.image}>
@@ -253,7 +253,7 @@ const Category:NextPage = () => {
                   </Link>
                 )}
                 {videos.filter((video) => video.subcate_id === (subCategories.filter((subCategory) => subCategory.cate_id === categoryId))[3].subcate_id).filter((video,index) => index > 0 && index < 3).map((video) =>
-                  <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${video.title}`} key={video.id}>
+                  <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                     <a className={styles.video_block}>
                       <div className={styles.image_width}>
                         <div className={styles.image}>
