@@ -2,10 +2,6 @@ import style from "../../styles/index.module.scss";
 import styles from "../../styles/video/Video/Video.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper,SwiperSlide} from "swiper/react";
-import "video.js/dist/video-js.css";
-import "videojs-contrib-ads";
-import "videojs-ima";
-import videojs from "video.js";
 import likeCount from "../../src/image/emoji.png";
 import happyCount from "../../src/image/emoji2.png";
 import sadCount from "../../src/image/emoji3.png";
@@ -18,7 +14,6 @@ import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
-import Script from "next/script";
 import {Modal} from "react-bootstrap";
 import React,{useEffect,useRef,useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
@@ -379,7 +374,6 @@ const Video:NextPage = () => {
         </div>
       </div>
       <PageFooter/>
-      <Script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></Script>
     </div>
   )
 }

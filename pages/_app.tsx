@@ -15,6 +15,7 @@ import {fas} from "@fortawesome/free-solid-svg-icons";
 import {far} from "@fortawesome/free-regular-svg-icons";
 import SwiperCore,{Autoplay,Controller,EffectCube,EffectFade,Mousewheel,Navigation,Pagination,Scrollbar} from "swiper";
 import {AppProps} from "next/app";
+import Script from "next/script";
 import {Provider} from "react-redux";
 import React from "react";
 import {store} from "../src/store";
@@ -25,6 +26,7 @@ function MyApp({Component,pageProps}:AppProps){
 	return(
     <Provider store={store}>
       <Component {...pageProps}/>
+      <Script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"/>
     </Provider>
   )
 }

@@ -35,7 +35,7 @@ export const VideoPlayer:React.FC<IVideoPlayerProps> = React.memo((props:{option
 			...initialOptions,
 			...props.options
 		})
-    if(props.ima){
+    if(player.current && props.ima){
       player.current.ima(props.ima);
     }
     if(player.current.currentSrc() !== props.src){

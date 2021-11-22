@@ -14,6 +14,9 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts","**/*.ts","**/*.tsx","src","pages/components/Footer/Footer.specttsx","pages/video/...pid.tsx","src/source.d.ts"],
-  "exclude": []
+  "include": ["next-env.d.ts","**/*.ts","**/*.tsx","src","src/source.d.ts"],
+  "exclude": [
+    "node_modules",
+    "out"
+  ]
 }

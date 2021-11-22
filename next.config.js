@@ -2,9 +2,9 @@
 module.exports = {
   	reactStrictMode:false,
 	images:{
-		domains:["app.m.i-cable.com"]
+		domains:["app.m.i-cable.com"],
 		// loader:"akamai",
-		// path:""
+		// path:"https://localhost:3031"
 	},
 	webpack:(config,{isServer}) => {
 		if(!isServer){
