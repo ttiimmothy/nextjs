@@ -14,6 +14,7 @@ import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
+import Script from "next/script";
 import {Modal} from "react-bootstrap";
 import React,{useEffect,useRef,useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
