@@ -181,6 +181,23 @@
         display: flex;
         .main_content{
           padding-top: 20px;
+          .main_carousel{
+            .category_link{
+              font-weight: 600;
+              text-decoration: none;
+              background-color: #db5959;
+              color: #fff;
+              padding: 5px 10px;
+              border-radius: 4px;
+              position: absolute;
+              bottom: -40px;
+              left: 15px;
+              &:hover{
+                background-color: rgba(219,89,89,0.8);
+                color: #e2e2e2;
+              }
+            }
+          }
           .free_content{
             background-color: #fff;
             margin-bottom: 10px;

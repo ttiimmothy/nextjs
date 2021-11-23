@@ -473,41 +473,6 @@
                   overflow: hidden;
                   aspect-ratio: 16/9;
                 }
-                .video_description{
-                  width: 100%;
-                  padding: 16px;
-                  position: absolute;
-                  bottom: 0;
-                  left: 0;
-                  text-align: left;
-                  z-index: 1;
-                  .carousel_category{
-                    margin-bottom: 8px;
-                    a{
-                      font-weight: 600;
-                      text-decoration: none;
-                      background-color: #db5959;
-                      color: #fff;
-                      padding: 5px 10px;
-                      border-radius: 4px;
-                      &:hover{
-                        background-color: rgba(219,89,89,0.8);
-                        color: #e2e2e2;
-                      }
-                    }
-                  }
-                  .video_title{
-                    font-size: 20px;
-                    font-weight: 600;
-                  }
-                  .display_date{
-                    font-size: 10px;
-                    color: #adadad;
-                    &:hover{
-                      color: #747474;
-                    }
-                  }
-                }
               }
               &::after{
                 content: "";
@@ -519,6 +484,43 @@
                 bottom: 0px;
                 z-index: 0;
                 pointer-events: none;
+              }
+              .video_description{
+                width: 100%;
+                color: #fff;
+                padding: 16px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                text-align: left;
+                cursor: pointer;
+                z-index: 1;
+                .carousel_category{
+                  margin-bottom: 8px;
+                  a{
+                    font-weight: 600;
+                    text-decoration: none;
+                    background-color: #db5959;
+                    color: #fff;
+                    padding: 5px 10px;
+                    border-radius: 4px;
+                    &:hover{
+                      background-color: rgba(219,89,89,0.8);
+                      color: #e2e2e2;
+                    }
+                  }
+                }
+                .video_title{
+                  font-size: 20px;
+                  font-weight: 600;
+                }
+                .display_date{
+                  font-size: 10px;
+                  color: #adadad;
+                  &:hover{
+                    color: #747474;
+                  }
+                }
               }
             }
           }

@@ -29,6 +29,7 @@ $nav-button-shadow-color:rgba(0,0,0,0.15);
 		background-color: rgba(102,102,102,0.377);
 		padding-bottom: 80px;
 		.carousel-item{
+      position: relative;
       .image{
         width: 100%;
         position: relative;
@@ -42,18 +43,6 @@ $nav-button-shadow-color:rgba(0,0,0,0.15);
 				text-align: left;
 				.carousel_category{
 					margin-bottom: 8px;
-					a{
-						font-weight: 600;
-						text-decoration: none;
-						background-color: #db5959;
-						color: #fff;
-						padding: 5px 10px;
-						border-radius: 4px;
-            &:hover{
-              background-color: rgba(219,89,89,0.8);
-              color: #e2e2e2;
-            }
-					}
 				}
         h6{
           margin-left: 2px;
