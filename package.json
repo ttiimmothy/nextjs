@@ -6,8 +6,7 @@
     "dev": "PORT=3031 next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint",
-	"export": "next export"
+    "lint": "next lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

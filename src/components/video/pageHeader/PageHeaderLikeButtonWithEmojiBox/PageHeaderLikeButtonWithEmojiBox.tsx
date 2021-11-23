@@ -1,9 +1,9 @@
 import styles from "../../../../../styles/video/pageHeader/PageHeaderLikeButtonWithEmojiBox/PageHeaderLikeButtonWithEmojiBox.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import like from "../../../../image/emoji.gif";
-import happy from "../../../../image/emoji2.gif";
-import sad from "../../../../image/emoji3.gif";
-import angry from "../../../../image/emoji4.gif";
+import like from "../../../../../public/image/emoji.gif";
+import happy from "../../../../../public/image/emoji2.gif";
+import sad from "../../../../../public/image/emoji3.gif";
+import angry from "../../../../../public/image/emoji4.gif";
 import Image from "next/image";
 import onClickOutside from "react-onclickoutside";
 import {useEffect, useState} from "react";

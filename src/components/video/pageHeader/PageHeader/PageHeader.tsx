@@ -273,8 +273,7 @@ export function PageHeader(
               <PageHeaderLikeButtonWithEmojiBox displayDateOffsetForPageHeaderTopButtons={props.displayDateOffsetForPageHeaderTopButtons}/>
               <button className={style.comment_button} onClick={() => {
                 props.scrollToComment.current.scrollIntoView({
-                  block:"center",
-                  behavior:"smooth"
+                  block:"center"
                 })
               }}>
                 <FontAwesomeIcon icon={["far","comment-alt"]} height={14} width={14} className={style.fontawesome_icon}/>

@@ -1,6 +1,6 @@
 import styles from "../../../styles/Footer/Footer.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import icon from "../../image/unnamed_thumbnail.png";
+import icon from "../../../public/image/unnamed_thumbnail.png";
 import Image from "next/image";
 
 export function Footer(){

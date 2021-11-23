@@ -1,6 +1,6 @@
 import styles from "../../../styles/LoginModal/LoginModal.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import vip from "../../image/login_vip_icon.png";
+import vip from "../../../public/image/login_vip_icon.png";
 import Image from "next/image";
 import {useState} from "react";
 
