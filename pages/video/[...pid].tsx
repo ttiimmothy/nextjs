@@ -230,7 +230,7 @@ const Video:NextPage = () => {
               <CommentSection scrollToCommentRef={scrollToComment}/>
             </div>
             <aside className={styles.sidebar}>
-              <div className={styles.sticky_sidebar} style={{top:windowDimensions.width < 700 && displayDateOffset.current && displayDateOffset.current.getBoundingClientRect().y < 70 ? 120 : 80}}>
+              <div className={styles.sticky_sidebar} style={{top:windowDimensions.width < 700 && displayDateOffset.current && displayDateOffset.current.getBoundingClientRect().y < 70?120:80}}>
                 <section className={styles.sidebar_section}>
                   <header>熱門影片</header>
                   <div className={styles.video_list_scrollable}>

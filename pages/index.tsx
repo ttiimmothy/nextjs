@@ -281,7 +281,7 @@ const Home:NextPage = () => {
                           <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
                         </div>
                         <div className={style.video_description}>
-                          <header className={style.video_title} style={{minHeight:windowDimensions.width < 600 ? 36 : 42,fontSize:windowDimensions.width < 600 ? 12 : 14}}>{video.title}</header>
+                          <header className={style.video_title} style={{minHeight:windowDimensions.width < 600?36:42,fontSize:windowDimensions.width < 600?"12px":"14px"}}>{video.title}</header>
                           <div className={style.display_date}>{video.display_date}</div>
                         </div>
                       </a>
