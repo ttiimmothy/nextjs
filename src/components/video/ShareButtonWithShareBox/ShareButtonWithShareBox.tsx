@@ -10,7 +10,7 @@ const ShareButtonWithShareBox = (props:{displayDateOffset:number,windowWidth:num
 	if((props.displayDateOffset < 65 && props.windowWidth < 700) || (props.displayDateOffset < 15 && props.windowWidth >= 700)){
 		setShare(false);
 	}
-  },[props.displayDateOffset,props.windowWidth])
+  },[props])
 
   return(
     <div className={styles.share_button_with_share_box}>
