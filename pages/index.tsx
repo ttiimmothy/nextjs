@@ -90,7 +90,7 @@ const Home:NextPage = () => {
                     <Carousel.Item key={video.id}>
                       <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                         <a>
-                          <div className="image">
+                          <div className={`image ${style.carousel_image}`}>
                             <Image src={video.pic_url} alt="slide" layout="fill" loader={customImageLoader}/>
                           </div>
                           <Carousel.Caption>

@@ -8,9 +8,9 @@ import {Modal} from "react-bootstrap";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
 import {getHeader,getSubCategory} from "../../../redux/header/thunks";
-import {IRootState} from "../../../store";
 import {LoginModal} from "../../LoginModal/LoginModal";
 import {FooterInHeader} from "../../FooterInHeader/FooterInHeader";
+import {IRootState} from "../../../store";
 import {customImageLoader} from "../../../customImageLoader";
 
 export function Header(){

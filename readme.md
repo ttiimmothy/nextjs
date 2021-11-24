@@ -111,7 +111,9 @@ image
 next library
 react library
 local thunk/redux
-local component
+local component (react components)
+store
+other local component (eg image loader)
 ```
 
 # api used
