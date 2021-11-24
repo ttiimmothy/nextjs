@@ -38,11 +38,9 @@ export const VideoPlayer:React.FC<IVideoPlayerProps> = React.memo((props:{option
     if(props.ima){
       player.current.ima(props.ima);
     }
-    props.router.events.on("hashChangeStart",function(){
-      if(player.current.currentSrc() !== props.src){
-        player.current.src(props.src);
-      }
-    })
+    if(player.current.currentSrc() !== props.src){
+      props.router.events.on("hashChangeStart",player.current.src(props.src));
+    }
 	},[props])
 
 	return <video ref={videoNode} className="vjs-matrix video-js"/>;
