@@ -34,6 +34,7 @@ import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
 import {IRootState} from "../../src/store";
 import {VideoPlayer} from "../../src/components/VideoPlayer/VideoPlayer";
 import {customImageLoader} from "../../src/customImageLoader";
+import {config} from "../../src/config";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const Video:NextPage = () => {
   const scrollToComment = useRef<any>(null);
   let video = pid ? (videos.filter((video) => video.id === pid[1]))[0] : null;
   let imaOptions = {
-    adTagUrl:process.env.VOD_PREROLL,
+    adTagUrl:config.vodPreroll,
     adLabel:"",
     autoPlayAdBreaks:true,
   }
