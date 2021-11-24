@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import vip from "../../../public/image/login_vip_icon.png";
 import Image from "next/image";
 import {useState} from "react";
+import {customImageLoader} from "../../customImageLoader";
 
 export function LoginModal(props:{closeButton:React.Dispatch<React.SetStateAction<boolean>>}){
   const [chooseMethod,setChooseMethod] = useState(true);
@@ -26,7 +27,7 @@ export function LoginModal(props:{closeButton:React.Dispatch<React.SetStateActio
               <div className={styles.header}>
                 <div className={styles.vip}>
                   <div className={styles.image}>
-                    <Image src={vip} alt="vip login" height={32} width={32}/>
+                    <Image src={vip} alt="vip login" height={32} width={32} loader={customImageLoader}/>
                   </div>
                   <div className={styles.vip_login}>請登入已繼續觀看</div>
                 </div>
@@ -58,7 +59,7 @@ export function LoginModal(props:{closeButton:React.Dispatch<React.SetStateActio
           <div className={`${styles.first_login_method} first_login`}>
             <div className={styles.header}>
               <div className={styles.image}>
-                <Image src={vip} alt="vip login" height={32} width={32}/>
+                <Image src={vip} alt="vip login" height={32} width={32} loader={customImageLoader}/>
               </div>
               <div className={styles.header_word}>以有線用戶身分登入</div>
             </div>
@@ -87,7 +88,7 @@ export function LoginModal(props:{closeButton:React.Dispatch<React.SetStateActio
           <div className={`${styles.second_login_method} second_login`}>
             <div className={styles.header}>
               <div className={styles.image}>
-                <Image src={vip} alt="vip login" height={32} width={32}/>
+                <Image src={vip} alt="vip login" height={32} width={32} loader={customImageLoader}/>
               </div>
               <div className={styles.header_word}>以流動用戶身分登入</div>
             </div>

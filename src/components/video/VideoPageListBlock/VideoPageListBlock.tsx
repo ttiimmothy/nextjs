@@ -2,6 +2,7 @@ import styles from "../../../../styles/video/VideoPageListBlock/VideoPageListBlo
 import Image from "next/image";
 import Link from "next/link";
 import {VideoDetail} from "../../../redux/home/actions";
+import {customImageLoader} from "../../../customImageLoader";
 
 export function VideoPageListBlock(props:{video:VideoDetail}){
 	return(
@@ -10,7 +11,7 @@ export function VideoPageListBlock(props:{video:VideoDetail}){
         <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${encodeURI(props.video.title)}`}>
           <a className={styles.video_link}>
             <div className={styles.image}>
-              <Image src={props.video.pic_url} layout="fill" alt="video thumbnail"/>
+              <Image src={props.video.pic_url} layout="fill" alt="video thumbnail" loader={customImageLoader}/>
             </div>
             <div className={styles.video_description}>
               <div className={styles.video_title}>{props.video.title}</div>

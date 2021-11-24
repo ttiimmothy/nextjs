@@ -6,7 +6,8 @@ import sad from "../../../../../public/image/emoji3.gif";
 import angry from "../../../../../public/image/emoji4.gif";
 import Image from "next/image";
 import onClickOutside from "react-onclickoutside";
-import {useEffect, useState} from "react";
+import {useEffect,useState} from "react";
+import {customImageLoader} from "../../../../customImageLoader";
 
 const PageHeaderLikeButtonWithEmojiBox = (props:{displayDateOffsetForPageHeaderTopButtons:number}) => {
   const [topEmojiBox,setTopEmojiBox] = useState(false);
@@ -31,25 +32,25 @@ const PageHeaderLikeButtonWithEmojiBox = (props:{displayDateOffsetForPageHeaderT
             <section className={styles.choose_emoji_section}>
               <div className={styles.emoji}>
                 <div className={`${styles.emoji_image} ${styles.like}`}>
-                  <Image src={like} layout="fill" alt="like"/>
+                  <Image src={like} layout="fill" alt="like" loader={customImageLoader}/>
                 </div>
                 <div className={styles.emoji_count}>10</div>
               </div>
               <div className={styles.emoji}>
                 <div className={`${styles.emoji_image} ${styles.happy}`}>
-                  <Image src={happy} layout="fill" alt="happy"/>
+                  <Image src={happy} layout="fill" alt="happy" loader={customImageLoader}/>
                 </div>
                 <div className={styles.emoji_count}>10</div>
               </div>
               <div className={styles.sad_emoji}>
                 <div className={styles.emoji_image}>
-                  <Image src={sad} layout="fill" alt="sad"/>
+                  <Image src={sad} layout="fill" alt="sad" loader={customImageLoader}/>
                 </div>
                 <div className={styles.emoji_count}>10</div>
               </div>
               <div className={styles.emoji}>
                 <div className={`${styles.emoji_image} ${styles.angry}`}>
-                  <Image src={angry} layout="fill" alt="angry"/>
+                  <Image src={angry} layout="fill" alt="angry" loader={customImageLoader}/>
                 </div>
                 <div className={styles.emoji_count}>10</div>
               </div>

@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import React from "react";
 import {Category} from "../../../redux/header/actions";
 import {IRootState} from "../../../store";
+import {customImageLoader} from "../../../customImageLoader";
 
 export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
 	const videoDetail = useSelector((state:IRootState) => state.home.video);
@@ -25,7 +26,7 @@ export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
                   <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                     <a className={styles.video_block}>
                       <div className={styles.image}>
-                        <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>
+                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
                       </div>
                       <div className={styles.video_description}>
                         <header className={styles.video_title}>
@@ -48,7 +49,7 @@ export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
                     <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                       <a className={styles.video_block_section}>
                         <div className={styles.image}>
-                          <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>
+                          <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
                         </div>
                         <div className={styles.video_description}>
                           <header className={styles.video_title}>

@@ -7,6 +7,7 @@ import angry from "../../../../public/image/emoji4.png";
 import Image from "next/image";
 import onClickOutside from "react-onclickoutside";
 import {useState} from "react";
+import {customImageLoader} from "../../../customImageLoader";
 
 const EmojiMoreDropdownMenu = (
   props:{
@@ -64,7 +65,7 @@ const EmojiMoreDropdownMenu = (
                   }}>
                     <div className={styles.emoji_type_detail}>
                       <div className={styles.image}>
-                        <Image src={like} layout="fill" alt="like"/>
+                        <Image src={like} layout="fill" alt="like" loader={customImageLoader}/>
                       </div>
                       <div className={styles.emoji_count}>10</div>
                       {props.likeClick && <FontAwesomeIcon icon="check" height={20} width={20} className={styles.fontawesome_icon}/>}
@@ -81,7 +82,7 @@ const EmojiMoreDropdownMenu = (
                   }}>
                     <div className={styles.emoji_type_detail}>
                       <div className={styles.image}>
-                        <Image src={happy} layout="fill" alt="happy"/>
+                        <Image src={happy} layout="fill" alt="happy" loader={customImageLoader}/>
                       </div>
                       <div className={styles.emoji_count}>10</div>
                       {props.happyClick && <FontAwesomeIcon icon="check" height={20} width={20} className={styles.fontawesome_icon}/>}
@@ -98,7 +99,7 @@ const EmojiMoreDropdownMenu = (
                   }}>
                     <div className={styles.emoji_type_detail}>
                       <div className={styles.image}>
-                        <Image src={sad} layout="fill" alt="sad"/>
+                        <Image src={sad} layout="fill" alt="sad" loader={customImageLoader}/>
                       </div>
                       <div className={styles.emoji_count}>10</div>
                       {props.sadClick && <FontAwesomeIcon icon="check" height={20} width={20} className={styles.fontawesome_icon}/>}
@@ -115,7 +116,7 @@ const EmojiMoreDropdownMenu = (
                   }}>
                     <div className={styles.emoji_type_detail}>
                       <div className={styles.image}>
-                        <Image src={angry} layout="fill" alt="angry"/>
+                        <Image src={angry} layout="fill" alt="angry" loader={customImageLoader}/>
                       </div>
                       <div className={styles.emoji_count}>10</div>
                       {props.angryClick && <FontAwesomeIcon icon="check" height={20} width={20} className={styles.fontawesome_icon}/>}

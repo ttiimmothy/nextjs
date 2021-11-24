@@ -3,8 +3,7 @@ module.exports = {
   reactStrictMode:false,
 	images:{
 		domains:["app.m.i-cable.com"],
-		// loader:"imgix",
-		// path:""
+		// loader:"custom"
 	},
 	webpack:(config,{isServer}) => {
 		if(!isServer){

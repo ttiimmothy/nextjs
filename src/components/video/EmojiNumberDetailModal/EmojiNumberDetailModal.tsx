@@ -6,6 +6,7 @@ import angry from "../../../../public/image/emoji4.png";
 import Image from "next/image";
 import React,{useEffect,useRef,useState} from "react";
 import EmojiMoreDropdownMenu from "../EmojiMoreDropdownMenu/EmojiMoreDropdownMenu";
+import {customImageLoader} from "../../../customImageLoader";
 
 export function EmojiNumberDetailModal(props:{closeButton:React.Dispatch<React.SetStateAction<boolean>>}){
   const emojiTypeWidth = useRef<any>(null);
@@ -49,7 +50,7 @@ export function EmojiNumberDetailModal(props:{closeButton:React.Dispatch<React.S
                 setAngryClick(false);
               }}>
                 <div className={styles.emoji_image}>
-                  <Image src={like} layout="fill" alt="like"/>
+                  <Image src={like} layout="fill" alt="like" loader={customImageLoader}/>
                 </div>
                 <span className={styles.emoji_count}>10</span>
                 <div className={styles.border_bottom}></div>
@@ -64,7 +65,7 @@ export function EmojiNumberDetailModal(props:{closeButton:React.Dispatch<React.S
                 setAngryClick(false);
               }}>
                 <div className={styles.emoji_image}>
-                  <Image src={happy} layout="fill" alt="happy"/>
+                  <Image src={happy} layout="fill" alt="happy" loader={customImageLoader}/>
                 </div>
                 <span className={styles.emoji_count}>10</span>
                 <div className={styles.border_bottom}/>
@@ -79,7 +80,7 @@ export function EmojiNumberDetailModal(props:{closeButton:React.Dispatch<React.S
                 setAngryClick(false);
               }}>
                 <div className={styles.emoji_image}>
-                  <Image src={sad} layout="fill" alt="sad"/>
+                  <Image src={sad} layout="fill" alt="sad" loader={customImageLoader}/>
                 </div>
                 <span className={styles.emoji_count}>10</span>
                 <div className={styles.border_bottom}/>
@@ -94,7 +95,7 @@ export function EmojiNumberDetailModal(props:{closeButton:React.Dispatch<React.S
                 setAngryClick(true);
               }}>
                 <div className={styles.emoji_image}>
-                  <Image src={angry} layout="fill" alt="angry"/>
+                  <Image src={angry} layout="fill" alt="angry" loader={customImageLoader}/>
                 </div>
                 <span className={styles.emoji_count}>10</span>
                 <div className={styles.border_bottom}/>

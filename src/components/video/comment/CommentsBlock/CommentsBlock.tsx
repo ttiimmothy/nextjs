@@ -6,6 +6,7 @@ import angryCount from "../../../../../public/image/emoji4.png";
 import Image from "next/image";
 import {useState} from "react";
 import {ResponsesBlock} from "../ResponsesBlock/ResponsesBlock";
+import {customImageLoader} from "../../../../customImageLoader";
 
 export function CommentsBlock(props:{responseNumber:number}){
   const [openAllResponses,setOpenAllResponses] = useState(false);
@@ -39,16 +40,16 @@ export function CommentsBlock(props:{responseNumber:number}){
             <div className={styles.others_like}>
               <div className={styles.emoji_comments}>
                 <div className={`${styles.emoji_comment} ${styles.like_emoji}`}>
-                  <Image src={likeCount} alt="like count" layout="fill"/>
+                  <Image src={likeCount} alt="like count" layout="fill" loader={customImageLoader}/>
                 </div>
                 <div className={`${styles.emoji_comment} ${styles.happy_emoji}`}>
-                  <Image src={happyCount} alt="happy count" layout="fill"/>
+                  <Image src={happyCount} alt="happy count" layout="fill" loader={customImageLoader}/>
                 </div>
                 <div className={`${styles.emoji_comment} ${styles.sad_emoji}`}>
-                  <Image src={sadCount} alt="sad count" layout="fill"/>
+                  <Image src={sadCount} alt="sad count" layout="fill" loader={customImageLoader}/>
                 </div>
                 <div className={`${styles.emoji_comment} ${styles.angry_emoji}`}>
-                  <Image src={angryCount} alt="angry count" layout="fill"/>
+                  <Image src={angryCount} alt="angry count" layout="fill" loader={customImageLoader}/>
                 </div>
               </div>
               <span>4</span>

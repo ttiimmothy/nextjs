@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import React from "react";
 import {Category} from "../../../redux/header/actions";
 import {IRootState} from "../../../store";
+import {customImageLoader} from "../../../customImageLoader";
 
 export function HomeCategoryBlock(props:{category:Category}){
 	const videoDetail = useSelector((state:IRootState) => state.home.video);
@@ -19,7 +20,7 @@ export function HomeCategoryBlock(props:{category:Category}){
               <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                 <a className={style.video_block}>
                   <div className={style.image}>
-                    <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>
+                    <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
                   </div>
                   <div className={style.video_description}>
                     <header className={style.video_title}>
@@ -44,7 +45,7 @@ export function HomeCategoryBlock(props:{category:Category}){
                   <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                     <a className={style.video_block_section}>
                       <div className={style.image}>
-                        <Image src={video.pic_url} alt="video detail" className="d-block w-100" layout="fill"/>
+                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
                       </div>
                       <div className={style.video_description}>
                         <header className={style.video_title}>

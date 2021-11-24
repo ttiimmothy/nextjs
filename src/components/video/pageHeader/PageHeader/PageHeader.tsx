@@ -1,6 +1,6 @@
 import style from "../../../../../styles/video/pageHeader/PageHeader/PageHeader.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import headerIcon from "../../../../image/unnamed_thumbnail.png";
+import headerIcon from "../../../../../public/image/unnamed_thumbnail.png";
 import Image from "next/image";
 import Link from "next/link";
 import {Modal} from "react-bootstrap";
@@ -14,6 +14,7 @@ import PageHeaderLikeButtonWithEmojiBox from "../PageHeaderLikeButtonWithEmojiBo
 import PageHeaderShareButtonWithShareBox from "../PageHeaderShareButtonWithShareBox/PageHeaderShareButtonWithShareBox";
 import PageHeaderMoreOptionsButtonWithMoreBox from "../PageHeaderMoreOptionsButtonWithMoreBox/PageHeaderMoreOptionsButtonWithMoreBox";
 import PageHeaderMobileViewShowMoreWithRightListingIcons from "../PageHeaderMobileViewShowMoreWithRightListingIcons/PageHeaderMobileViewShowMoreWithRightListingIcons";
+import {customImageLoader} from "../../../../customImageLoader";
 
 export function PageHeader(
   props:{
@@ -68,7 +69,7 @@ export function PageHeader(
             <Link href="/">
               <a className={`${style.navbar_logo} ${scrollHeight > 10 || showFullMenu || props.search ? style.navbar_small_logo : ""}`}>
                 <div className={style.header_icon}>
-                  <Image src={headerIcon} alt="header-icon"/>
+                  <Image src={headerIcon} alt="header-icon" loader={customImageLoader}/>
                 </div>
               </a>
             </Link>

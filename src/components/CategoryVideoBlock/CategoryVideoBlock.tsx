@@ -2,6 +2,7 @@ import styles from "../../../styles/CategoryVideoBlock/CategoryVideoBlock.module
 import Image from "next/image";
 import Link from "next/link";
 import {VideoDetail} from "../../redux/home/actions";
+import {customImageLoader} from "../../customImageLoader";
 
 export const CategoryVideoBlock = (props:{video:VideoDetail,main?:boolean}):JSX.Element => {
 	return(
@@ -10,7 +11,7 @@ export const CategoryVideoBlock = (props:{video:VideoDetail,main?:boolean}):JSX.
         <a className={props.main ? styles.main_video_block_link : styles.video_block_link}>
           <div className={props.main ? styles.main_image_width : styles.image_width}>
             <div className={styles.image}>
-              <Image src={props.video.pic_url} alt="video detail" layout="fill"/>
+              <Image src={props.video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
             </div>
           </div>
           <header className={styles.video_title}>{props.video.title}</header>

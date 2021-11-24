@@ -2,6 +2,7 @@ import styles from "../../../styles/Footer/Footer.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import icon from "../../../public/image/unnamed_thumbnail.png";
 import Image from "next/image";
+import {customImageLoader} from "../../customImageLoader";
 
 export function Footer(){
 	return(
@@ -9,7 +10,7 @@ export function Footer(){
       <section className={styles.footer_section}>
         <section className={styles.content_section}>
           <div className={styles.icable_logo}>
-            <Image src={icon} alt="i-cable logo" height={70} width={70}/>
+            <Image src={icon} alt="i-cable logo" height={70} width={70} loader={customImageLoader}/>
           </div>
           <div className={styles.contents}>
             <div className={styles.content}>關於我們</div>

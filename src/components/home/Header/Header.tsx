@@ -11,6 +11,7 @@ import {getHeader,getSubCategory} from "../../../redux/header/thunks";
 import {IRootState} from "../../../store";
 import {LoginModal} from "../../LoginModal/LoginModal";
 import {FooterInHeader} from "../../FooterInHeader/FooterInHeader";
+import {customImageLoader} from "../../../customImageLoader";
 
 export function Header(){
 	const dispatch = useDispatch();
@@ -49,7 +50,7 @@ export function Header(){
             <Link href="/">
               <a className={`${style.navbar_logo} ${scrollHeight > 10 || showFullMenu || search ? style.navbar_small_logo : ""}`}>
                 <div className={style.header_icon}>
-                  <Image src={headerIcon} alt="header-icon"/>
+                  <Image src={headerIcon} alt="header-icon" layout="fill" loader={customImageLoader}/>
                 </div>
               </a>
             </Link>
@@ -136,7 +137,7 @@ export function Header(){
 			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !toggle ? style.bar_second_line_scroll : ""} ${showFullMenu || search ? style.bar_second_line_for_searching : ""}`}>
 				<div className={style.weather_category_bar}>
 					<div className={style.weather}>2021-09-08 33℃ 58%</div>
-					<Image src={weather} alt="icon" height={35} width={35}/>
+					<Image src={weather} alt="icon" height={35} width={35} loader={customImageLoader}/>
 				</div>
         <div className={style.category_bar_horizontal_scroll}>
           <nav className={style.category_bar}>

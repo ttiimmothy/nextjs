@@ -2,6 +2,7 @@ import styles from "../../../styles/CategorySwiperBlock/CategorySwiperBlock.modu
 import Image from "next/image";
 import Link from "next/link";
 import {VideoDetail} from "../../redux/home/actions";
+import {customImageLoader} from "../../customImageLoader";
 
 export const CategorySwiperBlock = (props:{video:VideoDetail}):JSX.Element => {
 	return(
@@ -9,7 +10,7 @@ export const CategorySwiperBlock = (props:{video:VideoDetail}):JSX.Element => {
       <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${encodeURI(props.video.title)}`}>
         <a className={styles.video_block_link}>
           <div className={styles.image}>
-            <Image src={props.video.pic_url} alt="video detail" layout="fill"/>
+            <Image src={props.video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
           </div>
           <div className={styles.video_description}>
             <header className={styles.video_title}>{props.video.title}</header>
