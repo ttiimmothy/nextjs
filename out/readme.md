@@ -11,14 +11,14 @@ git init
 git add readme.md
 git commit -m "first commit"
 git branch -M master
-git remote add origin git@github.com:ttiimmothy/cable-next-js.git
+git remote add origin git@github.com:ttiimmothhy/cable-next-js.git
 git push -u origin master
 ```
 
 ### …or push an existing repository from the command line
 
 ```
-git remote add origin git@github.com:ttiimmothy/cable-next-js.git
+git remote add origin git@github.com:ttiimmothhy/cable-next-js.git
 git branch -M master
 git push -u origin master
 ```
