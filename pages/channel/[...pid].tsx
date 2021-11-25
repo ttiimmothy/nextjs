@@ -14,8 +14,8 @@ import {Footer} from "../../src/components/Footer/Footer";
 import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
 import {WideCategoryVideoBlock} from "../../src/components/WideCategoryVideoBlock/WideCategoryVideoBlock";
 import {CategoryVideoBlock} from "../../src/components/CategoryVideoBlock/CategoryVideoBlock";
-import {IRootState} from "../../src/store";
 import {customImageLoader} from "../../src/customImageLoader";
+import {IRootState} from "../../src/store";
 
 const SubCategory:NextPage = () => {
   const dispatch = useDispatch();

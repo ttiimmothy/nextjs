@@ -10,5 +10,15 @@ module.exports = {
 			config.resolve.fallback.fs = false;
 		}
 		return config;
-	}
+	},
+	exportPathMap:async function(defaultPathMap,{dev,dir,outDir,distDir,buildId}){
+		return {
+			"/":{page:"/"},
+			"/video/[...pid]":{page:"/video/[...pid]"},
+			"/category/[...pid]":{page:"/category/[...pid]"},
+			"/channel/[...pid]":{page:"/channel/[...pid]"},
+			"/tags/[...pid]":{page:"/tags/[...pid]"}
+    }
+  },
+  trailingSlash:true,
 }

@@ -116,6 +116,74 @@ store
 other local component (eg image loader)
 ```
 
+## category page
+
+```typescript
+export async function getStaticPaths(){
+  const categoryFetch = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_PATH}/category`);
+  const categories = await categoryFetch.json();
+  const paths = categories.map((category:Category) => {
+    return {params:{pid:[category.name_en.toLowerCase().split(" ").join("").split("/").join("")]}}; // Route is something like "this-is-my-post"
+  })
+
+  return {
+    paths,
+    fallback:false,
+  }
+}
+```
+
+## channel page
+
+```typescript
+export async function getStaticPaths(){
+  const subcategoryFetch = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_PATH}/subcategory`);
+  const subcategories = await subcategoryFetch.json();
+  const paths = subcategories.map((subcategory:SubCategory) => {
+    return {params:{pid:[subcategory.name_cn.split("．").join("").split("・").join(""),subcategory.subcate_id]}}; // Route is something like "this-is-my-post"
+  })
+
+  return {
+    paths,
+    fallback:false,
+  }
+}
+```
+
+## video page
+
+```typescript
+export async function getStaticPaths(){
+  const categoryFetch = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_PATH}/category`);
+  const category = await categoryFetch.json();
+  let paths:any[] = [];
+  for(let i = 0 ; i < category.length; i++){
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_PATH}/content/${category[i].cate_id}`);
+    const result = await res.json();
+    paths.push(result.map((video:VideoDetail) => {
+      return {params:{pid:[video.subcate_name.split("．").join("").split("・").join(""),video.id,encodeURI(video.title)]}}; // Route is something like "this-is-my-post"
+    }))
+  }
+
+  return {
+    paths,
+    fallback:false,
+  }
+}
+```
+
+## index/tags page
+
+```typescript
+export async function getStaticPaths(){
+  return {
+    paths:"/",
+    fallback:false,
+  }
+}
+
+```
+
 # api used
 
 getCategory:

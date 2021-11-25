@@ -31,10 +31,10 @@ import LikeButtonWithEmojiBox from "../../src/components/video/LikeButtonWithEmo
 import ShareButtonWithShareBox from "../../src/components/video/ShareButtonWithShareBox/ShareButtonWithShareBox";
 import MoreOptionsButtonWithMoreBox from "../../src/components/video/MoreOptionsButtonWithMoreBox/MoreOptionsButtonWithMoreBox";
 import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
-import {IRootState} from "../../src/store";
 import {VideoPlayer} from "../../src/components/VideoPlayer/VideoPlayer";
 import {customImageLoader} from "../../src/customImageLoader";
 import {config} from "../../src/config";
+import {IRootState} from "../../src/store";
 
 const Video:NextPage = () => {
   const dispatch = useDispatch();

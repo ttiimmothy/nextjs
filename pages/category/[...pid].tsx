@@ -18,8 +18,8 @@ import {CategoryComponentHeader} from "../../src/components/CategoryComponentHea
 import {CategoryVideoBlock} from "../../src/components/CategoryVideoBlock/CategoryVideoBlock";
 import {WideCategoryVideoBlock} from "../../src/components/WideCategoryVideoBlock/WideCategoryVideoBlock";
 import {CategorySwiperBlock} from "../../src/components/CategorySwiperBlock/CategorySwiperBlock";
-import {IRootState} from "../../src/store";
 import {customImageLoader} from "../../src/customImageLoader";
+import {IRootState} from "../../src/store";
 
 const Category:NextPage = () => {
   const dispatch = useDispatch();
@@ -334,4 +334,4 @@ const Category:NextPage = () => {
   )
 }
 
-export default Category
+export default Category;
