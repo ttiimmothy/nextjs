@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="20">
+	<rect width="100%" height="100%" fill="none" />
+	<g class="currentLayer">
+		<path d="M9.857 19.11a.54.54 0 0 1 0 .736.478.478 0 0 1-.7 0L.146 10.37a.54.54 0 0 1 0-.738L9.156.152a.478.478 0 0 1 .7 0 .54.54 0 0 1 0 .737L1.199 10l8.659 9.11z" fill="#fff" />
+	</g>
+</svg>
