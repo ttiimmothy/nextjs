@@ -1,6 +1,6 @@
 # css
 
-```scss
+```css
 content
 height
 min-height

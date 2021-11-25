@@ -17,7 +17,8 @@ module.exports = {
 			"/video/[...pid]":{page:"/video/[...pid]"},
 			"/category/[...pid]":{page:"/category/[...pid]"},
 			"/channel/[...pid]":{page:"/channel/[...pid]"},
-			"/tags/[...pid]":{page:"/tags/[...pid]"}
+			"/tags/[...pid]":{page:"/tags/[...pid]"},
+			"/404":{page:"/404"}
     }
   },
   trailingSlash:true,
