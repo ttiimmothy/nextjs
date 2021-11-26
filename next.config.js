@@ -20,6 +20,5 @@ module.exports = {
 			"/tags/[...pid]":{page:"/tags/[...pid]"},
 			"/404":{page:"/404"}
     }
-  },
-  trailingSlash:true
+  }
 }

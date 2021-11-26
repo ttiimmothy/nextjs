@@ -32,7 +32,7 @@ const Category:NextPage = () => {
   const [controlledSwiper,setControlledSwiper] = useState<any>(null);
   const [search,setSearch] = useState(false);
   const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.cate_id;
-  const categoryName = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("") === (pid && pid[0])))[0]?.name_cn;
+  const categoryName = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.name_cn;
   let swiperList = videos.filter((video,index) => index < 3 || (index > 8 && index < 12));
   swiperList = swiperList.reverse();
   if(swiperList.length > 0){

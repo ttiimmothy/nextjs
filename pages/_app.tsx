@@ -1,14 +1,14 @@
-import "../styles/globals.css";
 import "../styles/global/bootstrapComponent/Carousel.scss";
 import "../styles/global/swiper/Swiper.scss";
 import "../styles/global/bootstrapComponent/Modal.scss";
 import "../styles/VideoPlayer/VideoPlayer.scss";
 import "../styles/global/bootstrapComponent/Breadcrumb.scss";
 import "../styles/styles.scss";
+import "../styles/VideoPlayer/videojs.ima.css";
+import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
-import "../styles/VideoPlayer/videojs.ima.css";
 import {library} from "@fortawesome/fontawesome-svg-core";
 import {fab} from "@fortawesome/free-brands-svg-icons";
 import {fas} from "@fortawesome/free-solid-svg-icons";
