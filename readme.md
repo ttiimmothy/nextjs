@@ -75,6 +75,14 @@ pointer-event
 resize
 ```
 
+## className
+
+- [ ] ${pageName}${moduleName}
+- [ ] app ${moduleName}_content
+- [ ] page
+- [ ] body
+- [ ] main_content
+
 # packages to install
 
 ```Bash

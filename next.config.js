@@ -14,10 +14,10 @@ module.exports = {
 	exportPathMap:async function(defaultPathMap,{dev,dir,outDir,distDir,buildId}){
 		return {
 			"/":{page:"/"},
-			"/video/[...pid]":{page:"/video/[...pid]"},
-			"/category/[...pid]":{page:"/category/[...pid]"},
-			"/channel/[...pid]":{page:"/channel/[...pid]"},
-			"/tags/[...pid]":{page:"/tags/[...pid]"},
+			"/video/[...pid]":{page:"/video/[...pid]",query:{}},
+			"/category/[...pid]":{page:"/category/[...pid]",query:{}},
+			"/channel/[...pid]":{page:"/channel/[...pid]",query:{}},
+			"/tags/[...pid]":{page:"/tags/[...pid]",query:{}},
 			"/404":{page:"/404"}
     }
   },
