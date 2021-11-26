@@ -174,24 +174,26 @@ export function PageHeader(
 			</div>
 			<div className={`${style.bar_second_line} ${scrollHeight > 10 || !props.toggle? style.bar_second_line_scroll : ""} ${showFullMenu || props.search || more ? style.bar_second_line_for_searching : ""}`}>
         <div className={style.relative_bar_second_line}>
-          <div className={style.category_bar_horizontal_scroll}>
-            <nav className={style.category_bar}>
-              <ul className={style.category_items}>
-                {
-                  categories.map((category,index) =>
-                    (
-                      <li className={style.category_item} key={index}>
-                        <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("").split("/").join("")}`}>
-                          <a>
-                            {category.name_cn}
-                          </a>
-                        </Link>
-                      </li>
+          <div className={style.shadow}>
+            <div className={style.category_bar_horizontal_scroll}>
+              <nav className={style.category_bar}>
+                <ul className={style.category_items}>
+                  {
+                    categories.map((category,index) =>
+                      (
+                        <li className={style.category_item} key={index}>
+                          <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("").split("/").join("")}`}>
+                            <a>
+                              {category.name_cn}
+                            </a>
+                          </Link>
+                        </li>
+                      )
                     )
-                  )
-                }
-              </ul>
-            </nav>
+                  }
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
 			</div>

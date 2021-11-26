@@ -30,7 +30,7 @@
       .weather_category_bar{
         display: flex;
       }
-      .category_bar_horizontal_scroll{
+      .shadow{
         display: none;
       }
     }
@@ -570,36 +570,61 @@
         margin-right: 10px;
       }
     }
-    .category_bar_horizontal_scroll{
-      overflow-x: auto;
-      .category_bar{
+    .shadow{
+      height: 44px;
+      overflow-y: hidden;
+      .category_bar_horizontal_scroll{
         height: 100%;
-        display: flex;
-        align-items: center;
-        ul.category_items{
-          margin-bottom: 0;
-          padding-left: 15px;
-          list-style: none;
+        overflow-x: auto;
+        .category_bar{
+          height: 100%;
           display: flex;
           align-items: center;
-          transition: padding-left .2s ease;
-          .category_item{
-            height: 100%;
-            font-weight: 500;
-            color: #db5959;
-            padding-right: 15px;
+          ul.category_items{
+            margin-bottom: 0;
+            padding-left: 15px;
+            list-style: none;
             display: flex;
             align-items: center;
-            white-space: nowrap;
-            a{
-              text-decoration: none;
+            transition: padding-left .2s ease;
+            .category_item{
+              height: 100%;
+              font-weight: 500;
               color: #db5959;
+              padding-right: 15px;
+              display: flex;
+              align-items: center;
+              white-space: nowrap;
+              a{
+                text-decoration: none;
+                color: #db5959;
+              }
             }
           }
+          ul.category_items_scroll{
+            padding-left: 60px;
+          }
         }
-        ul.category_items_scroll{
-          padding-left: 60px;
-        }
+      }
+      &::before{
+        content: "";
+        height: 100%;
+        width: 16px;
+        background: linear-gradient(to right,#fafbfd,rgba(250,251,253,0));
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+      }
+      &::after{
+        content: "";
+        height: 100%;
+        width: 16px;
+        background: linear-gradient(to left,#fafbfd,rgba(250,251,253,0));
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 1;
       }
     }
     &::after{
@@ -618,7 +643,7 @@
 	}
   .bar_second_line_for_searching{
     background-color: #fbfafa;
-    .category_bar_horizontal_scroll,.weather_category_bar{
+    .shadow,.weather_category_bar{
       display: none;
     }
     &::after{

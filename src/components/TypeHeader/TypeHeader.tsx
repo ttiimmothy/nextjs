@@ -150,25 +150,27 @@ export function TypeHeader(props:{search:boolean,setSearch:React.Dispatch<React.
 				<div className={style.weather_category_bar}>
 					<div className={style.weather}>2021-09-08 33℃ 58%</div>
 					<Image src={weather} alt="icon" height={35} width={35} loader={customImageLoader}/>
-				</div>
-        <div className={style.category_bar_horizontal_scroll}>
-          <nav className={style.category_bar}>
-            <ul className={style.category_items}>
-              {
-                categories.map((category,index) =>
-                  (
-                    <li className={style.category_item} key={index}>
-                      <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("").split("/").join("")}`}>
-                        <a>
-                          {category.name_cn}
-                        </a>
-                      </Link>
-                    </li>
+        </div>
+        <div className={style.shadow}>
+          <div className={style.category_bar_horizontal_scroll}>
+            <nav className={style.category_bar}>
+              <ul className={style.category_items}>
+                {
+                  categories.map((category,index) =>
+                    (
+                      <li className={style.category_item} key={index}>
+                        <Link href={`/category/${category.name_en.toLowerCase().split(" ").join("").split("/").join("")}`}>
+                          <a>
+                            {category.name_cn}
+                          </a>
+                        </Link>
+                      </li>
+                    )
                   )
-                )
-              }
-            </ul>
-          </nav>
+                }
+              </ul>
+            </nav>
+          </div>
         </div>
 			</div>
       <div className={showFullMenu ? style.full_menu : style.hide_full_menu} onMouseLeave={() => {

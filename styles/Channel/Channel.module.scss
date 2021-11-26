@@ -99,6 +99,8 @@
               }
             }
             .shadow{
+              height: 40px;
+              overflow-y: hidden;
               .sub_category_bar_horizontal_scroll{
                 line-height: 40px;
                 .sub_category_bar{
