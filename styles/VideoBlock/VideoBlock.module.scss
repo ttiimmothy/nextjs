@@ -11,6 +11,19 @@
       position: relative;
       overflow: hidden;
       aspect-ratio: 16/9;
+      &::before{
+      content: "";
+      height: 0px;
+      min-height: 90px;
+      background-color: #f3f3f3;
+      background-image: url("../../public/image/image.png");
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position: 50% center;
+      padding-top: 56.25%;
+      display: block;
+      overflow: hidden;
+      }
     }
     .video_description{
       padding: 3px;
