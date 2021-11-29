@@ -12,7 +12,7 @@ module.exports = {
 		return config;
 	},
 	exportPathMap:async function(defaultPathMap,{dev,dir,outDir,distDir,buildId}){
-		return {
+		return{
 			"/":{page:"/"},
 			"/video/[...pid]":{page:"/video/[...pid]"},
 			"/category/[...pid]":{page:"/category/[...pid]"},
