@@ -11,7 +11,7 @@ export const CategoryVideoBlock = (props:{video:VideoDetail,main?:boolean}):JSX.
         <a className={props.main ? styles.main_video_block_link : styles.video_block_link}>
           <div className={props.main ? styles.main_image_width : styles.image_width}>
             <div className={styles.image}>
-              <Image src={props.video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
+              <Image src={props.video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.target.style.display = "none"}/>
             </div>
           </div>
           <header className={styles.video_title}>{props.video.title}</header>
