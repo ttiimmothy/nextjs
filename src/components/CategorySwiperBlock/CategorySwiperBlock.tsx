@@ -10,7 +10,7 @@ export const CategorySwiperBlock = (props:{video:VideoDetail}):JSX.Element => {
       <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${encodeURI(props.video.title)}`}>
         <a className={styles.video_block_link}>
           <div className={styles.image}>
-            <Image src={props.video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.target.style.display = "none"}/>
+            <Image src={props.video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
           </div>
           <div className={styles.video_description}>
             <header className={styles.video_title}>{props.video.title}</header>

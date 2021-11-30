@@ -7,6 +7,7 @@ min-height
 line-height
 width
 min-width
+font-family
 font-size
 font-weight
 text-decoration

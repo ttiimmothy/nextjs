@@ -26,7 +26,7 @@ export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
                   <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                     <a className={styles.video_block}>
                       <div className={styles.image}>
-                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
+                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                       </div>
                       <div className={styles.video_description}>
                         <header className={styles.video_title}>
@@ -49,7 +49,7 @@ export function HorizontalScrollHomeCategoryBlock(props:{category:Category}){
                     <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                       <a className={styles.video_block_section}>
                         <div className={styles.image}>
-                          <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
+                          <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                         </div>
                         <div className={styles.video_description}>
                           <header className={styles.video_title}>

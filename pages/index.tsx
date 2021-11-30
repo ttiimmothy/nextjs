@@ -91,7 +91,7 @@ const Home:NextPage = () => {
                       <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                         <a>
                           <div className={`image ${style.carousel_image}`}>
-                            <Image src={video.pic_url} alt="slide" layout="fill" loader={customImageLoader} onError={(e) => e.target.style.display = "none"}/>
+                            <Image src={video.pic_url} alt="slide" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                           </div>
                           <Carousel.Caption>
                             <div className="carousel_category">
@@ -278,7 +278,7 @@ const Home:NextPage = () => {
                     <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                       <a className={style.video_block}>
                         <div className={style.image}>
-                          <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.target.style.display = "none"}/>
+                          <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                         </div>
                         <div className={style.video_description}>
                           <header className={style.video_title} style={{minHeight:windowDimensions.width < 600?36:42,fontSize:windowDimensions.width < 600?"12px":"14px"}}>{video.title}</header>

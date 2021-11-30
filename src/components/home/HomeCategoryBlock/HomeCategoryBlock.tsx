@@ -20,7 +20,7 @@ export function HomeCategoryBlock(props:{category:Category}){
               <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`} key={video.id}>
                 <a className={style.video_block}>
                   <div className={style.image}>
-                    <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
+                    <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                   </div>
                   <div className={style.video_description}>
                     <header className={style.video_title}>
@@ -45,7 +45,7 @@ export function HomeCategoryBlock(props:{category:Category}){
                   <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                     <a className={style.video_block_section}>
                       <div className={style.image}>
-                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader}/>
+                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                       </div>
                       <div className={style.video_description}>
                         <header className={style.video_title}>

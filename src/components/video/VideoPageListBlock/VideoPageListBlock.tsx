@@ -11,7 +11,7 @@ export function VideoPageListBlock(props:{video:VideoDetail}){
         <Link href={`/video/${props.video.subcate_name.split("．").join("").split("・").join("")}/${props.video.id}/${encodeURI(props.video.title)}`}>
           <a className={styles.video_link}>
             <div className={styles.image}>
-              <Image src={props.video.pic_url} layout="fill" alt="video thumbnail" loader={customImageLoader}/>
+              <Image src={props.video.pic_url} layout="fill" alt="video thumbnail" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
             </div>
             <div className={styles.video_description}>
               <div className={styles.video_title}>{props.video.title}</div>

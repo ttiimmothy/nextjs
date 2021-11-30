@@ -102,7 +102,7 @@ const SubCategory:NextPage = () => {
                           <Link href={`/video/${video.subcate_name.split("．").join("").split("・").join("")}/${video.id}/${encodeURI(video.title)}`}>
                             <a className={styles.video_block_link}>
                               <div className={styles.image}>
-                                <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.target.style.display = "none"}/>
+                                <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                               </div>
                             </a>
                           </Link>
@@ -145,7 +145,7 @@ const SubCategory:NextPage = () => {
                   <a className={styles.video_block}>
                     <div className={styles.image_width}>
                       <div className={styles.image}>
-                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.target.style.display = "none"}/>
+                        <Image src={video.pic_url} alt="video detail" layout="fill" loader={customImageLoader} onError={(e) => e.currentTarget.style.display = "none"}/>
                       </div>
                     </div>
                     <header className={styles.video_title}>{video.title}</header>
