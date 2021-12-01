@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "PORT=3031 next dev",
+	"buildown": "next build",
     "build": "next build && next export -o build",
-    "start": "next start",
+    "start": "PORT=3031 next start",
     "lint": "next lint",
 	"export": "yarn export",
 	"exporttofolder": "./export.sh"
