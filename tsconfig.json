@@ -23,6 +23,7 @@
     "pages"
   ],
   "exclude": [
+	  "build",
     "node_modules",
     "out",
     "scripts"
