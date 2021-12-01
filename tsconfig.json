@@ -20,7 +20,8 @@
     "**/*.tsx",
     "src",
     "source.d.ts",
-    "pages"
+    "pages",
+    "server.ts"
   ],
   "exclude": [
 	  "build",

@@ -5,4 +5,4 @@ cd ../cable_website_nextjs
 # build the next js project with the latest content
 next build && next export -o build
 cd build
-cp -r _next category channel image tags video 404.html index.html myfavicon.ico swiper_favicon.ico ../../cable-website-next-js-out
+cp -r _next category channel image tags video 404,html index.html myfavicon.ico swiper_favicon.ico ../../cable-website-next-js-out

@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "PORT=3031 next dev",
-	"buildnow": "next build",
+    "buildnow": "next build",
     "build": "next build && next export -o build",
     "start": "PORT=3031 next start",
     "lint": "next lint",
-	"exportnow": "next export",
-	"export": "./nextexport.sh"
+    "exportnow": "next export",
+    "export": "./nextexport.sh",
+    "server": "ts-node --project tsconfig.app.json server.ts",
+	"server:build": "next build && tsc --project tsconfig.app.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -20,7 +22,9 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.11",
     "@types/node-sass": "^4.11.2",
     "@types/react-dom": "^17.0.10",
     "@types/react-onclickoutside": "^6.7.4",
@@ -31,6 +35,8 @@
     "@videojs/http-streaming": "^2.11.2",
     "bootstrap": "4",
     "connected-react-router": "^6.8.0",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
     "history": "^4.10.1",
     "immer": "^9.0.6",
     "next": "11.1.2",
@@ -46,6 +52,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.0",
     "swiper": "6",
+    "ts-node": "^10.4.0",
     "video.js": "^7.15.4",
     "videojs-contrib-ads": "^6.9.0",
     "videojs-ima": "^1.11.0"
