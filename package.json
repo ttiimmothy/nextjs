@@ -11,7 +11,8 @@
     "exportnow": "next export",
     "export": "./nextexport.sh",
     "server": "ts-node --project tsconfig.app.json server.ts",
-	"server:build": "next build && tsc --project tsconfig.app.json"
+	"server:build": "next build && tsc --project tsconfig.app.json",
+	"server:start": "cross-env NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

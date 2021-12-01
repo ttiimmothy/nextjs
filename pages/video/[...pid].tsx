@@ -89,7 +89,7 @@ const Video:NextPage = () => {
       window.removeEventListener("scroll",updateScrollHeight);
       window.removeEventListener("resize",handleResize);
     }
-	},[scrollHeight])
+  },[scrollHeight])
 
 	return(
     <div className={`${styles.video} ${styles.pid}`}>
