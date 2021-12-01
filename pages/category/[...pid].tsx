@@ -18,6 +18,7 @@ import {CategoryComponentHeader} from "../../src/components/CategoryComponentHea
 import {CategoryVideoBlock} from "../../src/components/CategoryVideoBlock/CategoryVideoBlock";
 import {WideCategoryVideoBlock} from "../../src/components/WideCategoryVideoBlock/WideCategoryVideoBlock";
 import {CategorySwiperBlock} from "../../src/components/CategorySwiperBlock/CategorySwiperBlock";
+// import Error404 from "../404";
 import {customImageLoader} from "../../src/customImageLoader";
 import {IRootState} from "../../src/store";
 
@@ -31,6 +32,7 @@ const Category:NextPage = () => {
   const [scrollHeight,setScrollHeight] = useState(0);
   const [controlledSwiper,setControlledSwiper] = useState<any>(null);
   const [search,setSearch] = useState(false);
+  const categoryCheck = categories.find((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0]));
   const categoryId = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.cate_id;
   const categoryName = (categories.filter((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (pid && pid[0])))[0]?.name_cn;
   let swiperList = videos.filter((video,index) => index < 3 || (index > 8 && index < 12));
@@ -51,7 +53,7 @@ const Category:NextPage = () => {
 		return () => {
       window.removeEventListener("scroll",updateScrollHeight);
     }
-	},[scrollHeight])
+  },[scrollHeight])
 
 	return(
     <div className={`${styles.category} ${styles.pid}`}>
