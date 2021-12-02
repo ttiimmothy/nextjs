@@ -24,13 +24,13 @@ export function Breadcrumb(props:{pid:string|string[]|undefined,videos:VideoDeta
           <ReactBreadcrumb.Item active>{category.name_cn}</ReactBreadcrumb.Item>
         </ReactBreadcrumb>
       )}
-      {props.type === "subCategory" && props.subCategories && props.subCategories.filter((subCategory) => subCategory.name_cn.split("．").join("").split("・").join("") === (props.pid && props.pid[0])).map((subCategory) =>
+      {props.type === "subCategory" && props.subCategories && props.subCategories.filter((subCategory) => subCategory.subcate_id === (props.pid && props.pid[1])).map((subCategory) =>
         <ReactBreadcrumb key={subCategory.subcate_id}>
           <ReactBreadcrumb.Item href="/" className={styles.breadcrumb_link}>主頁</ReactBreadcrumb.Item>
           <ReactBreadcrumb.Item href={`/category/${props.categories.filter((category) => category.cate_id === subCategory.cate_id).map((category) => category.name_en.toLowerCase().split(" ").join("").split("/").join(""))}`} className={styles.breadcrumb_link}>
             {props.categories.filter((category) => category.cate_id === subCategory.cate_id).map((category) => category.name_cn)}
           </ReactBreadcrumb.Item>
-          <ReactBreadcrumb.Item active>{props.pid && props.pid[0]}</ReactBreadcrumb.Item>
+          <ReactBreadcrumb.Item active>{subCategory.name_cn.split("．").join("").split("・").join("")}</ReactBreadcrumb.Item>
         </ReactBreadcrumb>
       )}
     </div>

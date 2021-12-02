@@ -10,3 +10,8 @@ export function getContent(categoryId:string|undefined){
 		}
 	}
 }
+
+export async function getCategoryProps(){
+	const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_PATH}/category`);
+	return await res.json();
+}

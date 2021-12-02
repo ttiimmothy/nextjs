@@ -9,8 +9,9 @@ import Image from "next/image";
 import Link from "next/link";
 import {useDispatch,useSelector} from "react-redux";
 import React,{useEffect,useState} from "react";
-import {getContent} from "../../src/redux/category/thunks";
+import {getCategoryProps,getContent} from "../../src/redux/category/thunks";
 import {VideoDetail} from "../../src/redux/home/actions";
+import {Category as CategoryType} from "../../src/redux/header/actions";
 import {TypeHeader} from "../../src/components/TypeHeader/TypeHeader";
 import {Footer} from "../../src/components/Footer/Footer";
 import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
@@ -334,6 +335,23 @@ const Category:NextPage = () => {
       <Footer/>
     </div>
   )
+}
+
+export async function getServerSideProps(context:any){
+  const params = context.params.pid;
+  const existingCategory = await getCategoryProps();
+  if(!existingCategory.find((category:CategoryType) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === params[0])){
+    return{
+      notFound:true
+    }
+    // this will display your /pages/404.js error page,
+    // in the current page, with the 404 http status code.
+  }
+  return{
+    props:{
+      params
+    }
+  }
 }
 
 export default Category;
