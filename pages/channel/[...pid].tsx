@@ -31,7 +31,11 @@ const SubCategory:NextPage = () => {
   const categoryId = (subcategories.filter((subcategory) => subcategory.subcate_id === (pid && pid[1])))[0]?.cate_id;
   const categoryName = (categories.filter((category) => category.cate_id === categoryId))[0]?.name_cn;
   useEffect(() => {
-    router.push(`/channel/${subcategories.find((subcategory) => subcategory.subcate_id === (pid && pid[1]))?.name_cn.split("．").join("").split("・").join("")}/${pid && pid[1]}`,undefined,{shallow:true});
+    // correct the url and do not refresh the page
+    console.log(decodeURIComponent(router.asPath).split("/")[2]);
+    if(decodeURIComponent(router.asPath).split("/")[2] !== subcategories.find((subcategory) => subcategory.subcate_id === (pid && pid[1]))?.name_cn.split("．").join("").split("・").join("")){
+      router.push(`/channel/${subcategories.find((subcategory) => subcategory.subcate_id === (pid && pid[1]))?.name_cn.split("．").join("").split("・").join("")}/${pid && pid[1]}`,`/channel/${subcategories.find((subcategory) => subcategory.subcate_id === (pid && pid[1]))?.name_cn.split("．").join("").split("・").join("")}/${pid && pid[1]}`,{shallow:true});
+    }
   },[pid,router,subcategories])
   useEffect(() => {
     dispatch(getContent(categoryId));
