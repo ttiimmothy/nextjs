@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "PORT=3031 next dev",
-    "buildnow": "next build",
+    "build:next": "next build",
     "build": "next build && next export -o build",
     "start": "PORT=3031 next start",
     "lint": "next lint",
-    "exportnow": "next export",
+    "export:next": "next export",
     "export": "./nextexport.sh",
     "server": "ts-node --project tsconfig.app.json server.ts",
 	"server:build": "next build && tsc --project tsconfig.app.json",

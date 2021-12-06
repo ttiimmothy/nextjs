@@ -337,15 +337,33 @@ const Category:NextPage = () => {
   )
 }
 
-export async function getServerSideProps(context:any){
-  const params = context.params.pid;
+export async function getStaticPaths(){
+  const pid = await getCategoryProps();
+  const paths = pid.map((id:CategoryType) => ({
+    params:{
+      pid:[id.name_en.toLowerCase().split(" ").join("").split("/").join("")]
+    }
+  }))
+  return{
+    paths,
+    fallback:false
+  }
+}
+
+export async function getStaticProps(context:any){
+  let params:string|null;
+  if(context.params.pid){
+    params = context.params.pid;
+  }else{
+    params = null;
+  }
   const existingCategory = await getCategoryProps();
-  if(!existingCategory.find((category:CategoryType) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === params[0])){
+  if(params && !existingCategory.find((category:CategoryType) => category.name_en.toLowerCase().split(" ").join("").split("/").join("") === (params && params[0]))){
+    // this will display your /pages/404.js error page,
+    // in the current page, with the 404 http status code.
     return{
       notFound:true
     }
-    // this will display your /pages/404.js error page,
-    // in the current page, with the 404 http status code.
   }
   return{
     props:{

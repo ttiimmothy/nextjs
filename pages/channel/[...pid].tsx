@@ -199,10 +199,28 @@ const SubCategory:NextPage = () => {
   )
 }
 
-export async function getServerSideProps(context:any){
-  const params = context.params.pid;
+export async function getStaticPaths(){
+  const pid = await getChannelProps();
+  const paths = pid.map((id:SubcategoryType) => ({
+    params:{
+      pid:[id.name_cn.split("．").join("").split("・").join(""),id.subcate_id]
+    }
+  }))
+  return{
+    paths,
+    fallback:false
+  }
+}
+
+export async function getStaticProps(context:any){
+  let params:string|null;
+  if(context.params.pid){
+    params = context.params.pid;
+  }else{
+    params = null;
+  }
   const existingSubcategory = await getChannelProps();
-  if(!existingSubcategory.find((subcategory:SubcategoryType) => subcategory.subcate_id === params[1])){
+  if(params && !existingSubcategory.find((subcategory:SubcategoryType) => subcategory.subcate_id === (params && params[1]))){
     return{
       notFound:true
     }
