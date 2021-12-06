@@ -17,7 +17,9 @@ export const headerReducer = produce((state:IHeaderState,actions:IHeaderActions)
 		state.category = actions.categories;
 		return;
 		case "@@header/Get_sub_category":
-		state.subCategory = actions.subCategories;
+		const omitIndex = actions.subCategories.findIndex((subcategory) => parseInt(subcategory.subcate_id) === 133);
+		const newSubcategories = actions.subCategories.filter((subcategory,index) => index < omitIndex).concat(actions.subCategories.filter((subcategory,index) => index > omitIndex));
+		state.subCategory = newSubcategories;
 		return;
 	}
 },initialState)
