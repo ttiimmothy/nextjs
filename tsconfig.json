@@ -19,12 +19,13 @@
     "**/*.ts",
     "**/*.tsx",
     "src",
-    "source.d.ts",
+	"src/source.d.ts",
+    "doc.d.ts",
     "pages",
     "server.ts"
   ],
   "exclude": [
-	  "build",
+	"build",
     "node_modules",
     "out",
     "scripts"

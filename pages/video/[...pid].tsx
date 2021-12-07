@@ -14,6 +14,7 @@ import {NextPage} from "next";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import Image from "next/image";
+// import Script from "next/script";
 import {Modal} from "react-bootstrap";
 import React,{useEffect,useRef,useState} from "react";
 import {useDispatch,useSelector} from "react-redux";
@@ -160,7 +161,7 @@ const Video:NextPage = () => {
                     </div>
                   </header>
                   <div className={styles.video_player}>
-                    {videoUrl && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router}/>}
+                    {videoUrl && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router} ima={imaOptions}/>}
                   </div>
                   <div className={`${styles.video_description} ${smallWord ? styles.small_word : ""} ${largeWord ? styles.large_word : ""}`}>
                     <div>{video.desc}</div>
@@ -371,6 +372,7 @@ const Video:NextPage = () => {
         </div>
       </div>
       <PageFooter/>
+      {/* <Script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js" strategy="beforeInteractive"/> */}
     </div>
   )
 }
