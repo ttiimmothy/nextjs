@@ -34,3 +34,6 @@ npm-debug.log
 
 # vscode
 .vscode
+
+# ci-cd
+.gitlab-ci.yml

@@ -32,7 +32,7 @@ import LikeButtonWithEmojiBox from "../../src/components/video/LikeButtonWithEmo
 import ShareButtonWithShareBox from "../../src/components/video/ShareButtonWithShareBox/ShareButtonWithShareBox";
 import MoreOptionsButtonWithMoreBox from "../../src/components/video/MoreOptionsButtonWithMoreBox/MoreOptionsButtonWithMoreBox";
 import {Breadcrumb} from "../../src/components/Breadcrumb/Breadcrumb";
-import {VideoPlayer} from "../../src/components/VideoPlayer/VideoPlayer.jsx";
+import {VideoPlayer} from "../../src/components/VideoPlayer/VideoPlayer";
 import {customImageLoader} from "../../src/customImageLoader";
 import {config} from "../../src/config";
 import {IRootState} from "../../src/store";
@@ -60,7 +60,7 @@ const Video:NextPage = () => {
   let imaOptions = {
     adTagUrl:config.vodPreroll,
     adLabel:"",
-    autoPlayAdBreaks:true,
+    autoPlayAdBreaks:true
   }
   const videoJsOptions = {
     sources:[
@@ -71,11 +71,9 @@ const Video:NextPage = () => {
     ]
   }
   useEffect(() => {
-    if(pid && pid.length > 1){
-      dispatch(getVideo(parseInt(pid[1])));
-      const categoryId = (subCategories.filter((subCategory) => subCategory.name_cn.split("．").join("").split("・").join("") === pid[0]))[0]?.cate_id;
-      dispatch(getContent(categoryId));
-    }
+    dispatch(getVideo(pid));
+    const categoryId = (subCategories.filter((subCategory) => subCategory.name_cn.split("．").join("").split("・").join("") === (pid && pid[0])))[0]?.cate_id;
+    dispatch(getContent(categoryId));
   },[dispatch,pid,subCategories])
   useEffect(() => {
 		function updateScrollHeight(){
@@ -96,6 +94,10 @@ const Video:NextPage = () => {
     <div className={`${styles.video} ${styles.pid}`}>
       <Head>
         <title>{videos.filter((video) => video.id === (pid && pid[1])).map((video) => video.title)}</title>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js" defer={true}></script>
+        {/* eslint-disable-next-line @next/next/no-css-tags */}
+        <link rel="stylesheet" href="//googleads.github.io/videojs-ima/dist/videojs.ima.css"></link>
       </Head>
       <PageHeader
         toggle={toggle}
@@ -161,7 +163,7 @@ const Video:NextPage = () => {
                     </div>
                   </header>
                   <div className={styles.video_player}>
-                    {videoUrl && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router} ima={imaOptions}/>}
+                    {videoUrl && videos.length > 0 && (pid !== undefined && pid.length > 1) && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router}/>}
                   </div>
                   <div className={`${styles.video_description} ${smallWord ? styles.small_word : ""} ${largeWord ? styles.large_word : ""}`}>
                     <div>{video.desc}</div>

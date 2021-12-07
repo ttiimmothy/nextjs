@@ -7,16 +7,17 @@ import React,{useEffect,useRef} from "react";
 
 interface IVideoPlayerProps{
 	options:any;
-	className?:any;
+	// className?:any;
 	ima?:any;
   src?:string;
-  videoRef?:React.MutableRefObject<any>;
+  // videoRef?:React.MutableRefObject<any>;
   router:NextRouter;
 }
+
 const initialOptions:any = {
 	controls:true,
 	autoplay:true,
-	muted:false,
+	muted:true,
 	fluid:true,
 	controlBar:{
 		volumePanel:{
@@ -25,10 +26,9 @@ const initialOptions:any = {
 	}
 }
 
-export const VideoPlayer:React.FC<IVideoPlayerProps> = React.memo((props:{options:any,className?:any,ima?:any,src?:string,videoRef?:React.MutableRefObject<any>,router:NextRouter}) => {
+export const VideoPlayer:React.FC<IVideoPlayerProps> = React.memo((props:{options:any,ima?:any,src?:string,router:NextRouter}) => {
   const videoNode = useRef<any>(null);
 	const player = useRef<any>(null);
-  videojs.log.level("error");
 
 	useEffect(() => {
 		player.current = videojs(videoNode.current,{

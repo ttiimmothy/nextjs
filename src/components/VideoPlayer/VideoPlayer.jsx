@@ -7,7 +7,7 @@ import React,{useEffect,useRef} from "react";
 const initialOptions = {
 	controls:true,
 	autoplay:true,
-	muted:false,
+	muted:true,
 	fluid:true,
 	controlBar:{
 		volumePanel:{
@@ -16,10 +16,9 @@ const initialOptions = {
 	}
 }
 
-export const VideoPlayer = ({options,className = "",ima = "",src,videoRef = "",router}) => {
+export const VideoPlayer = ({options,className = "",ima = null,src,videoRef = "",router}) => {
   const videoNode = useRef(null);
 	const player = useRef(null);
-  videojs.log.level("error");
 
 	useEffect(() => {
 		player.current = videojs(videoNode.current,{

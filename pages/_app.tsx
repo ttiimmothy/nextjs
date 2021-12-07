@@ -4,7 +4,6 @@ import "../styles/global/bootstrapComponent/Modal.scss";
 import "../styles/VideoPlayer/VideoPlayer.scss";
 import "../styles/global/bootstrapComponent/Breadcrumb.scss";
 import "../styles/styles.scss";
-import "../styles/VideoPlayer/videojs.ima.css";
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "swiper/swiper-bundle.min.css";
