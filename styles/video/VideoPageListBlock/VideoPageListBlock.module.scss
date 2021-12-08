@@ -11,11 +11,9 @@
         margin-right: 10px;
         position: relative;
         flex-shrink: 0;
-        aspect-ratio: 16/9;
         &::before{
           content: "";
           height: 0px;
-          min-height: 90px;
           background-color: #f3f3f3;
           background-image: url("../../../public/image/image.png");
           background-repeat: no-repeat;

@@ -37,3 +37,23 @@ npm-debug.log
 
 # ci-cd
 .gitlab-ci.yml
+.travis.yml
+Jenkinsfile
+
+.eslintrc
+.prettierrc
+.prettierignore
+.snyk
+webpack.config.json
+tsconfig.app.json
+changelog.md
+ip address.png
+netstat -nr.png
+server.ts
+circle.yml
+readme_github.md
+
+# folder
+.circleci
+.github
+workflow

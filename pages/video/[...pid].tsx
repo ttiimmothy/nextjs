@@ -97,7 +97,7 @@ const Video:NextPage = () => {
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js" defer={true}></script>
         {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="//googleads.github.io/videojs-ima/dist/videojs.ima.css"></link>
+        <link rel="stylesheet" href="https://googleads.github.io/videojs-ima/dist/videojs.ima.css"></link>
       </Head>
       <PageHeader
         toggle={toggle}
