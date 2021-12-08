@@ -26,22 +26,28 @@ const initialOptions:any = {
 
 export const VideoPlayer:React.FC<IVideoPlayerProps> = (props:{options:any,ima?:any,src?:string,router:NextRouter}) => {
   const videoNode = useRef<any>(null);
-	const player = useRef<any>(null);
+  const player = useRef<any>(null);
 
-	useEffect(() => {
+  useEffect(() => {
+    const onReady = (player:any) => {
+      if(props.ima){
+        player.ima(props.ima);
+      }
+      player.on("waiting",() => {});
+    }
     if(!player.current){
       player.current = videojs(videoNode.current,{
         ...initialOptions,
         ...props.options
+      },() => {
+        onReady && onReady(player.current);
       })
     }
-    console.log(player.current.ima);
-    if(props.ima){
-      player.current.ima(props.ima);
+    const handleRouteChange = (url:string,params:{shallow:any}) => {
+      const {shallow} = params;
+      player.current.src(props.src);
     }
-    if(player.current.currentSrc() !== props.src){
-      props.router.events.on("hashChangeStart",player.current.src(props.src));
-    }
+    props.router.events.on("routeChangeStart",handleRouteChange);
     // return() => {
     //   if(player.current && player.current.currentSrc() !== props.src) {
     //     /* Invalid target for null#trigger; must be a DOM node or evented object */

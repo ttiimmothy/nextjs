@@ -47,6 +47,7 @@ Jenkinsfile
 webpack.config.json
 tsconfig.app.json
 changelog.md
+contributing.md
 ip address.png
 netstat -nr.png
 server.ts

@@ -204,7 +204,7 @@ const Video:NextPage = () => {
                     </div>
                   </header>
                   <div className={styles.video_player}>
-                    {videoUrl && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router}/>}
+                    {videoUrl && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router} ima={imaOptions}/>}
                     {/* <video ref={videoNode} className="vjs-matrix video-js"/>; */}
                   </div>
                   <div className={`${styles.video_description} ${smallWord ? styles.small_word : ""} ${largeWord ? styles.large_word : ""}`}>
