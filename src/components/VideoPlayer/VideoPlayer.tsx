@@ -7,10 +7,8 @@ import React,{useEffect,useRef} from "react";
 
 interface IVideoPlayerProps{
 	options:any;
-	// className?:any;
 	ima?:any;
   src?:string;
-  // videoRef?:React.MutableRefObject<any>;
   router:NextRouter;
 }
 

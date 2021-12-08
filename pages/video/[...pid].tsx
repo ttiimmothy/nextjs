@@ -2,6 +2,10 @@ import style from "../../styles/index.module.scss";
 import styles from "../../styles/video/Video/Video.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Swiper,SwiperSlide} from "swiper/react";
+import "video.js/dist/video-js.css";
+import "videojs-contrib-ads";
+import "videojs-ima";
+import videojs from "video.js";
 import likeCount from "../../public/image/emoji.png";
 import happyCount from "../../public/image/emoji2.png";
 import sadCount from "../../public/image/emoji3.png";
@@ -89,6 +93,43 @@ const Video:NextPage = () => {
       window.removeEventListener("resize",handleResize);
     }
   },[scrollHeight])
+  // useEffect(() => {
+  //   let imaOptions = {
+  //     adTagUrl:config.vodPreroll,
+  //     adLabel:"",
+  //     autoPlayAdBreaks:true
+  //   }
+  //   const initialOptions:any = {
+  //     controls:true,
+  //     autoplay:true,
+  //     muted:true,
+  //     fluid:true,
+  //     controlBar:{
+  //       volumePanel:{
+  //         inline:false
+  //       }
+  //     }
+  //   }
+  //   const videoJsOptions = {
+  //     sources:[
+  //       {
+  //         src:videoUrl,
+  //         type:"application/x-mpegURL"
+  //       }
+  //     ]
+  //   }
+  //   // videojs must use a separate folder to hold, otherwise the video player cannot be initiated
+  //   player.current = videojs(videoNode.current,{
+  //     ...initialOptions,
+  //     ...videoJsOptions
+  //   })
+  //   if(imaOptions){
+  //     player.current.ima(imaOptions);
+  //   }
+  //   if(player.current.currentSrc() !== videoUrl){
+  //     router.events.on("hashChangeStart",player.current.src(videoUrl));
+  //   }
+	// },[router.events,videoUrl])
 
 	return(
     <div className={`${styles.video} ${styles.pid}`}>
@@ -163,7 +204,8 @@ const Video:NextPage = () => {
                     </div>
                   </header>
                   <div className={styles.video_player}>
-                    {videoUrl && videos.length > 0 && (pid !== undefined && pid.length > 1) && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router}/>}
+                    {videoUrl && <VideoPlayer options={videoJsOptions} src={videoUrl} router={router}/>}
+                    {/* <video ref={videoNode} className="vjs-matrix video-js"/>; */}
                   </div>
                   <div className={`${styles.video_description} ${smallWord ? styles.small_word : ""} ${largeWord ? styles.large_word : ""}`}>
                     <div>{video.desc}</div>
