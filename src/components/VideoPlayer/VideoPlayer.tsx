@@ -24,22 +24,31 @@ const initialOptions:any = {
 	}
 }
 
-export const VideoPlayer:React.FC<IVideoPlayerProps> = React.memo((props:{options:any,ima?:any,src?:string,router:NextRouter}) => {
+export const VideoPlayer:React.FC<IVideoPlayerProps> = (props:{options:any,ima?:any,src?:string,router:NextRouter}) => {
   const videoNode = useRef<any>(null);
 	const player = useRef<any>(null);
 
 	useEffect(() => {
-		player.current = videojs(videoNode.current,{
-			...initialOptions,
-			...props.options
-		})
+    if(!player.current){
+      player.current = videojs(videoNode.current,{
+        ...initialOptions,
+        ...props.options
+      })
+    }
+    console.log(player.current.ima);
     if(props.ima){
       player.current.ima(props.ima);
     }
     if(player.current.currentSrc() !== props.src){
       props.router.events.on("hashChangeStart",player.current.src(props.src));
     }
+    // return() => {
+    //   if(player.current && player.current.currentSrc() !== props.src) {
+    //     /* Invalid target for null#trigger; must be a DOM node or evented object */
+    //     player.current.dispose();
+    //   }
+    // }
 	},[props])
 
 	return <video ref={videoNode} className="vjs-matrix video-js"/>;
-})
+}
