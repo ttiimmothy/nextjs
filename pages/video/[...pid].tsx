@@ -66,7 +66,6 @@ const Video:NextPage = () => {
     adLabel:"",
     autoPlayAdBreaks:true
   }
-  console.log(config.vodPreroll);
   const videoJsOptions = {
     sources:[
       {
