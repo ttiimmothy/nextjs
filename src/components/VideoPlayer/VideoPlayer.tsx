@@ -4,6 +4,7 @@ import "videojs-ima";
 import videojs from "video.js";
 import {NextRouter} from "next/router";
 import React,{useEffect,useRef} from "react";
+import {config} from "../../config";
 
 interface IVideoPlayerProps{
 	options:any;
@@ -33,7 +34,6 @@ export const VideoPlayer:React.FC<IVideoPlayerProps> = (props:{options:any,ima?:
       if(props.ima){
         player.ima(props.ima);
       }
-      player.on("waiting",() => {});
     }
     if(!player.current){
       player.current = videojs(videoNode.current,{
@@ -45,7 +45,11 @@ export const VideoPlayer:React.FC<IVideoPlayerProps> = (props:{options:any,ima?:
     }
     const handleRouteChange = (url:string,params:{shallow:any}) => {
       const {shallow} = params;
+      player.current.ima.changeAdTag(null);
+      player.current.ima.adsResponse = config.vodPreroll;
+      player.current.ima.requestAds();
       player.current.src(props.src);
+      player.current.play();
     }
     props.router.events.on("routeChangeStart",handleRouteChange);
     // return() => {
