@@ -12,6 +12,7 @@
 }
 .vjs-matrix.video-js{
   cursor: pointer;
+  z-index: 10;
 	.vjs-big-play-button{
     height: 1.7em;
     width: 1.7em;

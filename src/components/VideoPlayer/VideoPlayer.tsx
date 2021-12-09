@@ -45,11 +45,12 @@ export const VideoPlayer:React.FC<IVideoPlayerProps> = (props:{options:any,ima?:
     }
     const handleRouteChange = (url:string,params:{shallow:any}) => {
       const {shallow} = params;
+      console.log(shallow);
       // player.current.ima.setContent(null);
       // player.current.ima.adsResponse = config.vodPreroll;
-      // console.log(config.vodPreroll);
-      player.current.ima.requestAds();
-      // console.log(player.current.ima.adsResponse);
+      if(player.current.ima.adsResponse){
+        player.current.ima.requestAds();
+      }
       player.current.src(props.src);
       player.current.play();
     }
