@@ -4,17 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "PORT=3031 next dev",
-	"window:dev": "set PORT=3031 && next dev",
+    "window:dev": "set PORT=3031 && next dev",
     "build:next": "next build",
     "build": "next build && next export -o build",
     "start": "./start.sh",
-	"start:current": "PORT=3031 next start",
+    "start:current": "PORT=3031 next start",
     "lint": "next lint",
     "export:next": "next export",
     "export": "./nextexport.sh",
     "server": "ts-node --project tsconfig.app.json server.ts",
-	"server:build": "next build && tsc --project tsconfig.app.json",
-	"server:start": "cross-env NODE_ENV=production node dist/server.js"
+    "server:build": "next build && tsc --project tsconfig.app.json",
+    "server:start": "cross-env NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -35,7 +35,7 @@
     "@types/react-router-dom": "^5.3.2",
     "@types/redux-logger": "^3.0.9",
     "@types/video.js": "^7.3.27",
-    "@videojs/http-streaming": "^2.11.2",
+    "@videojs/http-streaming": "^2.12.0",
     "bootstrap": "4",
     "connected-react-router": "^6.8.0",
     "cross-env": "^7.0.3",

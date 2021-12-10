@@ -109,9 +109,10 @@ yarn add @fortawesome/free-solid-svg-icons
 yarn add react-onclickoutside @types/react-onclickoutside
 yarn add video.js @types/video.js
 yarn add videojs-ima videojs-contrib-ads
-yarn add express @types/express
-yarn add ts-node @types/ts-node
-yarn add cross-env
+# yarn add express @types/express
+# yarn add ts-node @types/ts-node
+# yarn add cross-env
+yarn add @videojs/http-streaming
 ```
 
 # import order
