@@ -18,7 +18,8 @@ module.exports = {
 			"/category/[...pid]":{page:"/category/[...pid]"},
 			"/channel/[...pid]":{page:"/channel/[...pid]"},
 			"/tags/[...pid]":{page:"/tags/[...pid]"},
-			"/404":{page:"/404"}
+      "/404":{page:"/404"},
+      "/500":{page:"/500"}
     }
   }
 }
