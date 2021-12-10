@@ -5,8 +5,8 @@ import Head from "next/head";
 import {useRouter} from "next/router";
 import {NextPage} from "next";
 import React,{useEffect,useState} from "react";
-import {Header} from "../components/home/Header/Header";
-import {Footer} from "../components/Footer/Footer";
+import {Header} from "../src/components/home/Header/Header";
+import {Footer} from "../src/components/Footer/Footer";
 
 const Error404:NextPage = () => {
   const router = useRouter();

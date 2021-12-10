@@ -3,7 +3,6 @@ import style from "../styles/index.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import {useRouter} from "next/router";
-import {NextPage} from "next";
 import React,{useEffect,useState} from "react";
 import {Header} from "../src/components/home/Header/Header";
 import {Footer} from "../src/components/Footer/Footer";
