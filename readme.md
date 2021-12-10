@@ -87,7 +87,7 @@ resize
 # packages to install
 
 ```Bash
-yarn add node-sass@6.0.0 @types/node-sass
+yarn add node-sass@^6.0.0 @types/node-sass
 yarn add bootstrap@4
 yarn add react-bootstrap@1.6.4
 yarn add redux react-redux @types/react-redux
