@@ -20,6 +20,7 @@ function Error(props:{statusCode:number}){
       window.removeEventListener("scroll",updateScrollHeight);
     }
   },[])
+  console.log("status:"+statusCode);
 
   return(
     <div className={styles.error}>

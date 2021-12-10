@@ -50,7 +50,7 @@ export function Header(){
             <Link href="/">
               <a className={`${style.navbar_logo} ${scrollHeight > 10 || showFullMenu || search ? style.navbar_small_logo : ""}`}>
                 <div className={style.header_icon}>
-                  <Image src={headerIcon} alt="header-icon" layout="fill" loader={customImageLoader}/>
+                  <Image src={headerIcon} alt="header-icon" layout="fill" loader={customImageLoader} priority={true}/>
                 </div>
               </a>
             </Link>
