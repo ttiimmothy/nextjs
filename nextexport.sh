@@ -7,3 +7,8 @@ cd ../cable_website_nextjs
 next build && next export -o build
 cd build
 cp -r _next category channel image tags video 404.html index.html myfavicon.ico swiper_favicon.ico ../../cable-website-next-js-out
+
+# push to github
+git add .
+git commit -m "renew build folder"
+git push
