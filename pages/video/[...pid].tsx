@@ -93,43 +93,6 @@ const Video:NextPage = () => {
       window.removeEventListener("resize",handleResize);
     }
   },[scrollHeight])
-  // useEffect(() => {
-  //   let imaOptions = {
-  //     adTagUrl:config.vodPreroll,
-  //     adLabel:"",
-  //     autoPlayAdBreaks:true
-  //   }
-  //   const initialOptions:any = {
-  //     controls:true,
-  //     autoplay:true,
-  //     muted:true,
-  //     fluid:true,
-  //     controlBar:{
-  //       volumePanel:{
-  //         inline:false
-  //       }
-  //     }
-  //   }
-  //   const videoJsOptions = {
-  //     sources:[
-  //       {
-  //         src:videoUrl,
-  //         type:"application/x-mpegURL"
-  //       }
-  //     ]
-  //   }
-  //   // videojs must use a separate folder to hold, otherwise the video player cannot be initiated
-  //   player.current = videojs(videoNode.current,{
-  //     ...initialOptions,
-  //     ...videoJsOptions
-  //   })
-  //   if(imaOptions){
-  //     player.current.ima(imaOptions);
-  //   }
-  //   if(player.current.currentSrc() !== videoUrl){
-  //     router.events.on("hashChangeStart",player.current.src(videoUrl));
-  //   }
-	// },[router.events,videoUrl])
 
 	return(
     <div className={`${styles.video} ${styles.pid}`}>
@@ -138,7 +101,7 @@ const Video:NextPage = () => {
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script src="https://imasdk.googleapis.com/js/sdkloader/ima3.js" defer={true}></script>
         {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="https://googleads.github.io/videojs-ima/dist/videojs.ima.css"></link>
+        <link rel="stylesheet" href="https://googleads.github.io/videojs-ima/dist/videojs.ima.css"/>
       </Head>
       <PageHeader
         toggle={toggle}
