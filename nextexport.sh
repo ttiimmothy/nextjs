@@ -9,6 +9,7 @@ cd build
 cp -r _next category channel image tags video 404.html index.html myfavicon.ico swiper_favicon.ico ../../cable-website-next-js-out
 
 # push to github
+cd ../../cable-website-next-js-out
 git add .
 git commit -m "renew build folder"
 git push
