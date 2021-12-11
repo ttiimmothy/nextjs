@@ -78,7 +78,7 @@ resize
 
 ## className
 
-- [ ] ${pageName}${moduleName}
+- [ ] ${pageName} ${moduleName}
 - [ ] app ${moduleName}_content
 - [ ] page
 - [ ] body
