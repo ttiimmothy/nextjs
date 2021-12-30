@@ -23,7 +23,7 @@
     "src/source.d.ts",
     "doc.d.ts",
     "pages",
-    "server.ts"
+    "irrelevant/server.ts"
   ],
   "exclude": [
     "build",

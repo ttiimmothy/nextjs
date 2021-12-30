@@ -1,9 +1,0 @@
-# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.14.0
-language-settings:
-ignore:
-  SNYK-JS-NODESASS-535500:
-    - "*":
-      reason: none given
-      expires: 2023-04-04T17:33:45.004Z
-patch:
